@@ -9,15 +9,19 @@ public class PlayerContro : MonoBehaviour
     public float rotationspeed;
     InputMaster inputmaster;//actionmap產生ㄉC#
     float maxSpeed = 10;
+
+    [SerializeField]
+    InputActionMap inputActions;
     void Start()
     {
         rb = this.transform.GetComponent<Rigidbody>();
 
         inputmaster = new InputMaster();
         inputmaster.PlayerNormal.Enable();//此為player一般狀態,若是進入水中可以在actionmap增加一個playerinwater的actionmap,藉由開啟關閉來決定狀態
+        inputActions.FindAction("Player");
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Vector2 vector2d = inputmaster.PlayerNormal.Movement.ReadValue<Vector2>();//獲取player這張actionmap中movement這個map的WASD回傳值(x,y)
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
