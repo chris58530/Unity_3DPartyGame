@@ -37,18 +37,18 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Movement1"",
-                    ""type"": ""Value"",
-                    ""id"": ""24354c78-a5c8-4dfa-a37f-0f6f3d6ec07a"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""404f34c5-bc83-4db3-93da-da5ea6e90798"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Join"",
+                    ""type"": ""Button"",
+                    ""id"": ""1eace7fd-04c9-49e9-add5-c216bf59db55"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -123,85 +123,105 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""WASD"",
-                    ""id"": ""1111fb4b-bc70-485b-942d-36078fca63ec"",
-                    ""path"": ""2DVector"",
+                    ""name"": """",
+                    ""id"": ""3b6e0911-2c62-4ebb-a394-aa85c86fdae2"",
+                    ""path"": ""<Keyboard>/numpadPlus"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement1"",
-                    ""isComposite"": true,
+                    ""action"": ""Join"",
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""f8c30d57-8b9f-4f00-a85b-e674c8940136"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""58224e77-2c6f-4cb4-bfee-1a24e519c2a6"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""787809e3-f497-4c5e-842b-3ecf7c588bdc"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""9f8bf0e6-e32f-46db-b3d0-d11a2c368555"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 }
             ]
         },
         {
-            ""name"": ""Player2"",
-            ""id"": ""ed9ee943-958e-447a-ac97-f51232e84121"",
+            ""name"": ""player 2"",
+            ""id"": ""083ff361-ef26-4f79-b51f-1cde524a8085"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""d5872068-72f3-4738-8fd4-f437d76a1c82"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
                     ""type"": ""Button"",
-                    ""id"": ""1e882f8a-a5e2-4abd-b084-a8cd9f46b0ab"",
+                    ""id"": ""8c8ce8c1-f69d-4f60-ac71-69f121b3d67d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""cf1bad37-ec72-4115-91b5-8cb99228fec6"",
-                    ""path"": """",
+                    ""name"": ""WASD"",
+                    ""id"": ""e4193281-a671-42c5-a1a9-d3576dc66f5e"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""60a75739-fdcc-4d93-bf4a-148acca3f3af"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""f2e3fd07-cfba-45f6-97c7-67b2267e0977"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""14eefe3a-1ea0-4f9c-b182-fee020b407c4"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""d0b4163b-a07b-42ee-ba2a-a04a56d03a04"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""64333304-b4a6-4147-857a-ac7e0349a1db"",
+                    ""path"": ""<Keyboard>/numpadPeriod"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -213,11 +233,12 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         // PlayerNormal
         m_PlayerNormal = asset.FindActionMap("PlayerNormal", throwIfNotFound: true);
         m_PlayerNormal_Movement = m_PlayerNormal.FindAction("Movement", throwIfNotFound: true);
-        m_PlayerNormal_Movement1 = m_PlayerNormal.FindAction("Movement1", throwIfNotFound: true);
         m_PlayerNormal_Jump = m_PlayerNormal.FindAction("Jump", throwIfNotFound: true);
-        // Player2
-        m_Player2 = asset.FindActionMap("Player2", throwIfNotFound: true);
-        m_Player2_Newaction = m_Player2.FindAction("New action", throwIfNotFound: true);
+        m_PlayerNormal_Join = m_PlayerNormal.FindAction("Join", throwIfNotFound: true);
+        // player 2
+        m_player2 = asset.FindActionMap("player 2", throwIfNotFound: true);
+        m_player2_Movement = m_player2.FindAction("Movement", throwIfNotFound: true);
+        m_player2_Jump = m_player2.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -280,15 +301,15 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerNormal;
     private List<IPlayerNormalActions> m_PlayerNormalActionsCallbackInterfaces = new List<IPlayerNormalActions>();
     private readonly InputAction m_PlayerNormal_Movement;
-    private readonly InputAction m_PlayerNormal_Movement1;
     private readonly InputAction m_PlayerNormal_Jump;
+    private readonly InputAction m_PlayerNormal_Join;
     public struct PlayerNormalActions
     {
         private @InputMaster m_Wrapper;
         public PlayerNormalActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerNormal_Movement;
-        public InputAction @Movement1 => m_Wrapper.m_PlayerNormal_Movement1;
         public InputAction @Jump => m_Wrapper.m_PlayerNormal_Jump;
+        public InputAction @Join => m_Wrapper.m_PlayerNormal_Join;
         public InputActionMap Get() { return m_Wrapper.m_PlayerNormal; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -301,12 +322,12 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @Movement1.started += instance.OnMovement1;
-            @Movement1.performed += instance.OnMovement1;
-            @Movement1.canceled += instance.OnMovement1;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Join.started += instance.OnJoin;
+            @Join.performed += instance.OnJoin;
+            @Join.canceled += instance.OnJoin;
         }
 
         private void UnregisterCallbacks(IPlayerNormalActions instance)
@@ -314,12 +335,12 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @Movement1.started -= instance.OnMovement1;
-            @Movement1.performed -= instance.OnMovement1;
-            @Movement1.canceled -= instance.OnMovement1;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Join.started -= instance.OnJoin;
+            @Join.performed -= instance.OnJoin;
+            @Join.canceled -= instance.OnJoin;
         }
 
         public void RemoveCallbacks(IPlayerNormalActions instance)
@@ -338,16 +359,18 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     }
     public PlayerNormalActions @PlayerNormal => new PlayerNormalActions(this);
 
-    // Player2
-    private readonly InputActionMap m_Player2;
+    // player 2
+    private readonly InputActionMap m_player2;
     private List<IPlayer2Actions> m_Player2ActionsCallbackInterfaces = new List<IPlayer2Actions>();
-    private readonly InputAction m_Player2_Newaction;
+    private readonly InputAction m_player2_Movement;
+    private readonly InputAction m_player2_Jump;
     public struct Player2Actions
     {
         private @InputMaster m_Wrapper;
         public Player2Actions(@InputMaster wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Player2_Newaction;
-        public InputActionMap Get() { return m_Wrapper.m_Player2; }
+        public InputAction @Movement => m_Wrapper.m_player2_Movement;
+        public InputAction @Jump => m_Wrapper.m_player2_Jump;
+        public InputActionMap Get() { return m_Wrapper.m_player2; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
@@ -356,16 +379,22 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_Player2ActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_Player2ActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @Movement.started += instance.OnMovement;
+            @Movement.performed += instance.OnMovement;
+            @Movement.canceled += instance.OnMovement;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         private void UnregisterCallbacks(IPlayer2Actions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Movement.started -= instance.OnMovement;
+            @Movement.performed -= instance.OnMovement;
+            @Movement.canceled -= instance.OnMovement;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         public void RemoveCallbacks(IPlayer2Actions instance)
@@ -382,15 +411,16 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             AddCallbacks(instance);
         }
     }
-    public Player2Actions @Player2 => new Player2Actions(this);
+    public Player2Actions @player2 => new Player2Actions(this);
     public interface IPlayerNormalActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnMovement1(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnJoin(InputAction.CallbackContext context);
     }
     public interface IPlayer2Actions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnMovement(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
 }

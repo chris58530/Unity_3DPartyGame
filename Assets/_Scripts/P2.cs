@@ -2,32 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class PlayerContro : MonoBehaviour
-{   
+public class P2 : MonoBehaviour
+{
     InputMaster inputmaster;//actionmap產生ㄉC#
     private Rigidbody rb;
     public float speed;
     public float rotationspeed;
     public float maxSpeed = 10;
     public float jumpStrength = 10;
-    [SerializeField]
-    //public InputActionMap inputActions;
-
     void Start()
     {
         rb = this.transform.GetComponent<Rigidbody>();
+
+
         inputmaster = new InputMaster();
-
-        inputmaster.PlayerNormal.Enable();//此為player一般狀態,若是進入水中可以在actionmap增加一個playerinwater的actionmap,藉由開啟關閉來決定狀態
+        inputmaster.player2.Enable();//此為player一般狀態,若是進入水中可以在actionmap增加一個playerinwater的actionmap,藉由開啟關閉來決定狀態
         //inputActions.FindAction("Player");
-
-        inputmaster.PlayerNormal.Enable();//此為player一般狀態,若是進入水中可以在actionmap增加一個playerinwater的actionmap,藉由開啟關閉來決定狀態
-        inputmaster.PlayerNormal.Jump.performed += Jump;
+        inputmaster.player2.Jump.performed += Jump;
     }
 
     void FixedUpdate()
     {
-        Vector2 vector2d = inputmaster.PlayerNormal.Movement.ReadValue<Vector2>();//獲取player這張actionmap中movement這個map的WASD回傳值(x,y)
+        Vector2 vector2d = inputmaster.player2.Movement.ReadValue<Vector2>();//獲取player這張actionmap中movement這個map的WASD回傳值(x,y)
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
         if (vector2d != Vector2.zero)//判斷方式為上下一組(1,0)(-1,0)和左右一組(0,1)(0,-1)的2維向量,上右一起按可得(0.7,0.7)
         {
