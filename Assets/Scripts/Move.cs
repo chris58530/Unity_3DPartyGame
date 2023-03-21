@@ -8,22 +8,25 @@ public class Move : MonoBehaviour
     [SerializeField]
     private float MovementSpeed;
     [SerializeField]
-    private KeyCode forward, back, left, right;
+    private KeyCode forward, back, left, right, skill;
 
     private Rigidbody rb;
+    private Magnet magnet;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        magnet = GetComponent<Magnet>();
     }
 
     // Update is called once per frame
     void Update()
     {
-       AddForce();
+        AddForce();
+        SwitchMag();
     }
     void FixeUpdate()
     {
-        
+
     }
     void AddForce()
     {
@@ -46,5 +49,13 @@ public class Move : MonoBehaviour
             rb.AddForce(Vector3.right * MovementSpeed);
         }
 
+    }
+    void SwitchMag()
+    {
+        if (Input.GetKeyDown(skill))
+        { 
+            print("skill");
+            magnet.Invoke("SwitchMag",0f);
+        }
     }
 }
