@@ -1597,25 +1597,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8836356248343630564, guid: bb4191b13890fa04dacc3f736def4ee2, type: 3}
-      propertyPath: back
-      value: 104
-      objectReference: {fileID: 0}
-    - target: {fileID: 8836356248343630564, guid: bb4191b13890fa04dacc3f736def4ee2, type: 3}
-      propertyPath: left
-      value: 103
-      objectReference: {fileID: 0}
-    - target: {fileID: 8836356248343630564, guid: bb4191b13890fa04dacc3f736def4ee2, type: 3}
-      propertyPath: right
-      value: 106
-      objectReference: {fileID: 0}
-    - target: {fileID: 8836356248343630564, guid: bb4191b13890fa04dacc3f736def4ee2, type: 3}
-      propertyPath: forward
-      value: 121
-      objectReference: {fileID: 0}
     - target: {fileID: 8836356248343630570, guid: bb4191b13890fa04dacc3f736def4ee2, type: 3}
       propertyPath: m_Name
       value: Player3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8836356248343630571, guid: bb4191b13890fa04dacc3f736def4ee2, type: 3}
+      propertyPath: m_Drag
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb4191b13890fa04dacc3f736def4ee2, type: 3}
@@ -2050,6 +2038,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 8836356248343630571, guid: 62b3834d9536d374fb9b7f4671d7c1e5, type: 3}
+      propertyPath: m_Drag
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62b3834d9536d374fb9b7f4671d7c1e5, type: 3}
 --- !u!1001 &1339331914
@@ -2103,25 +2095,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8836356248343630564, guid: ed77089ee29eb2f498b63ca49ab8a354, type: 3}
-      propertyPath: back
-      value: 261
-      objectReference: {fileID: 0}
-    - target: {fileID: 8836356248343630564, guid: ed77089ee29eb2f498b63ca49ab8a354, type: 3}
-      propertyPath: left
-      value: 260
-      objectReference: {fileID: 0}
-    - target: {fileID: 8836356248343630564, guid: ed77089ee29eb2f498b63ca49ab8a354, type: 3}
-      propertyPath: right
-      value: 262
-      objectReference: {fileID: 0}
-    - target: {fileID: 8836356248343630564, guid: ed77089ee29eb2f498b63ca49ab8a354, type: 3}
-      propertyPath: forward
-      value: 264
-      objectReference: {fileID: 0}
     - target: {fileID: 8836356248343630570, guid: ed77089ee29eb2f498b63ca49ab8a354, type: 3}
       propertyPath: m_Name
       value: Player4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8836356248343630571, guid: ed77089ee29eb2f498b63ca49ab8a354, type: 3}
+      propertyPath: m_Drag
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed77089ee29eb2f498b63ca49ab8a354, type: 3}
@@ -3123,6 +3103,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7871859384564041442, guid: 7e6d6536eb6f3dd49a1bbd8c774e89c6, type: 3}
+      propertyPath: m_Drag
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7871859384564041448, guid: 7e6d6536eb6f3dd49a1bbd8c774e89c6, type: 3}
       propertyPath: m_Name
       value: 'Player1 '
