@@ -4,30 +4,21 @@ using UnityEngine;
 
 public class PlayerState : ScriptableObject, IState
 {
-    Animator animator;
+    protected Animator animator;
 
-    PlayerStateMachine stateMachine;
+    protected PlayerStateMachine playerStateMachine;
+    protected PlayerController playerController;    
+    protected PlayerMoveInput playerMoveInput;
 
-    public void Initialize(Animator animator,PlayerStateMachine stateMachine)
+    public void Initialize(Animator animator,PlayerStateMachine stateMachine,PlayerMoveInput moveInput,PlayerController playerController)
     {
         this.animator = animator;
-        this.stateMachine = stateMachine;
+        this.playerStateMachine = stateMachine;
+        this.playerMoveInput = moveInput;
+        this.playerController = playerController;
     }
-    public virtual void Enter()
-    {
-    }
-
-    public virtual void Exit()
-    {
-    }
-
-    public virtual void LogicUpdate()
-    {
-    }
-
-    public virtual void PhysicUpdate()
-    {
-    }
-
-  
+    public virtual void Enter() { }
+    public virtual void Exit() { }
+    public virtual void LogicUpdate() { }   
+    public virtual void PhysicUpdate() { }  
 }

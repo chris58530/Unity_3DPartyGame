@@ -6,6 +6,7 @@ public class StateMachine : MonoBehaviour
 {
     IState currentState;
 
+    protected Dictionary<System.Type, IState> stateTable;
     private void Update()
     {
         currentState.LogicUpdate();
@@ -23,5 +24,9 @@ public class StateMachine : MonoBehaviour
     {
         currentState.Exit();
         SwitchOn(newState);
+    }
+    public void SwitchState(System.Type newType)
+    {
+        SwitchOn(stateTable[newType]);
     }
 }
