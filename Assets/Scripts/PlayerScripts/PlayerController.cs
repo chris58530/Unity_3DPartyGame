@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    
+    //this class is player action  
     Rigidbody rb;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>(); 
+        rb = GetComponent<Rigidbody>();
     }
-    public void SetPlayerVelocity(float speed)
+   
+    public void SetPlayerVelocity(Vector3 dir,float speed)
+    {      
+        var rotation = Quaternion.LookRotation(dir);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation,rotation,8);
+        rb.AddForce(dir*speed);
+    }
+    public void SetPlayerJump()
     {
-        rb.AddForce(Vector3.forward * speed);
+
     }
-    public void SetPlayerHorizontal(float speed)
-    {
-        rb.AddForce(Vector3.right * speed);
-    }
+  
 }
