@@ -11,6 +11,9 @@ public class PlayerState_Walk : PlayerState
     [Header("玩家移速加乘(乘上DeltaTime)")]
     [SerializeField]
     private float speedAddition;
+    [Header("玩家跳躍加速度")]
+    [SerializeField]
+    private float jumpForce;
 
     public override void Enter()
     {
@@ -22,7 +25,7 @@ public class PlayerState_Walk : PlayerState
         {
             playerStateMachine.SwitchState(typeof(PlayerState_Idle));
         }
-        if (playerMoveInput.speedtime > 3)
+        if (playerMoveInput.speedtime > 1)
         {
             playerStateMachine.SwitchState(typeof(PlayerState_Rush));
         }
@@ -40,6 +43,8 @@ public class PlayerState_Walk : PlayerState
     }
     public override void Exit()
     {
-        base.Exit();
+        playerController.SetPlayerJump(jumpForce*10000);
+        Debug.Log("jump");
+
     }
 }

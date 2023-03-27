@@ -22,7 +22,7 @@ public class PlayerState_Rush : PlayerState
         {
             playerStateMachine.SwitchState(typeof(PlayerState_Idle));
         }
-        if (playerMoveInput.speedtime <= 3)
+        if (playerMoveInput.speedtime <= 1)
         {
             playerStateMachine.SwitchState(typeof(PlayerState_Walk));
         }
@@ -35,7 +35,7 @@ public class PlayerState_Rush : PlayerState
         Vector3 lookAt = new Vector3(h, 0, v);
         float speedtime = playerMoveInput.speedtime * speedAddition;
 
-        playerController.SetPlayerVelocity(lookAt, (moveSpeed + speedtime));
+        playerController.SetPlayerAddForece(lookAt, (moveSpeed + speedtime));
 
     }
     public override void Exit()

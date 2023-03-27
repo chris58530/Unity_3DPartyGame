@@ -12,15 +12,21 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
    
-    public void SetPlayerVelocity(Vector3 dir,float speed)
+    public void SetPlayerAddForece(Vector3 dir,float speed)
     {      
         var rotation = Quaternion.LookRotation(dir);
         transform.rotation = Quaternion.RotateTowards(transform.rotation,rotation,8);
         rb.AddForce(dir*speed);
     }
-    public void SetPlayerJump()
+    public void SetPlayerVelocity(Vector3 dir, float speed)
     {
-
+        var rotation = Quaternion.LookRotation(dir);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 8);
+        rb.velocity = transform.forward * speed;
+    }
+    public void SetPlayerJump(float jumpSpeed)
+    {
+        rb.AddForce(Vector3.up * jumpSpeed,ForceMode.Impulse);
     }
   
 }
