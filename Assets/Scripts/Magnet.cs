@@ -39,24 +39,24 @@ public class Magnet : MonoBehaviour
     {
         otherGameobj = other.gameObject;
         Rigidbody otherrb = GetComponent<Rigidbody>();
-        if (other.tag == "Positive")//接觸物品為正
+        if (other.tag == "Positive")//??????~????
         {
-            if (this.polarity == false)//本體為正
+            if (this.polarity == false)//??????
             {
                 Attract(otherGameobj, otherrb);
             }
-            else                    //本體為負
+            else                    //?????t
             { 
                 Repel(otherGameobj, otherrb);
             }
         }
-        else if (other.tag == "Negative")//接觸物品為負
+        else if (other.tag == "Negative")//??????~???t
         {
-            if (this.polarity == true)//本體為正
+            if (this.polarity == true)//??????
             {
                 Attract(otherGameobj, otherrb);
             }
-            else                    //本體為負
+            else                    //?????t
             {
                 Repel(otherGameobj, otherrb);
             }
@@ -79,7 +79,7 @@ public class Magnet : MonoBehaviour
     }
     void Attract(GameObject other , Rigidbody otherrb) // Attraction logic
     {
-        print(this.name+"相C");
+        print(this.name+"??C");
         //if (otherrb.mass > rb.mass) // Moves smaller magnet towards player
         //{
         //    transform.position = Vector3.MoveTowards(transform.position, other.transform.position, 0.2f);
@@ -96,7 +96,7 @@ public class Magnet : MonoBehaviour
     }
     void Repel(GameObject other, Rigidbody otherrb) // Repulsion logic
     {
-        print(this.name + "相斥");
+        print(this.name + "???");
         //if (other.transform.localScale.x > transform.localScale.x) // Moves smaller magnet away from player
         //{
         //    Vector3 vector = transform.position - other.transform.position;

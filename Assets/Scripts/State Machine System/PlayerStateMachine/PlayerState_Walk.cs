@@ -5,15 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/StateMachine/PlayerState/Walk", fileName ="PlayerState_Walk")]
 public class PlayerState_Walk : PlayerState
 {
-    [Header("玩家基本移速")]
-    [SerializeField]
+    [Header("Player Move Speed"),SerializeField]
     private float moveSpeed;
-    [Header("玩家移速加乘(乘上DeltaTime)")]
-    [SerializeField]
+    [Header("Player Speed Addition(Walk)"),SerializeField]
     private float speedAddition;
-    [Header("玩家跳躍加速度")]
-    [SerializeField]
+    [Header("Player Jump Force"),SerializeField]
     private float jumpForce;
+    [Header("Switch Rush Value"),SerializeField]
+    private float switchtoRush;
 
     public override void Enter()
     {
@@ -25,7 +24,7 @@ public class PlayerState_Walk : PlayerState
         {
             playerStateMachine.SwitchState(typeof(PlayerState_Idle));
         }
-        if (playerMoveInput.speedtime > 1)
+        if (playerMoveInput.speedtime > switchtoRush)
         {
             playerStateMachine.SwitchState(typeof(PlayerState_Rush));
         }

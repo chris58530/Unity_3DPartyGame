@@ -5,11 +5,9 @@ using UnityEngine;
 
 public class PlayerState_Rush : PlayerState
 {
-    [Header("玩家基本移速")]
-    [SerializeField]
+    [Header("Player Move Speed"),SerializeField]
     private float moveSpeed;
-    [Header("玩家移速加乘(乘上DeltaTime)")]
-    [SerializeField]
+    [Header("Player Speed Addition(Rush)"),SerializeField]
     private float speedAddition;
 
     public override void Enter()
