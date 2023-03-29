@@ -37,8 +37,9 @@ public class PlayerState_Walk : PlayerState
         Vector3 lookAt = new Vector3(h, 0, v);
         float speedtime = playerMoveInput.speedtime * speedAddition;
 
-        playerController.SetPlayerVelocity(lookAt, (moveSpeed + speedtime));
-      
+       // playerController.SetPlayerVelocity(lookAt, (moveSpeed + speedtime));
+        playerController.SetPlayerAddForece(lookAt, (moveSpeed + speedtime));
+
     }
     public override void Exit()
     {

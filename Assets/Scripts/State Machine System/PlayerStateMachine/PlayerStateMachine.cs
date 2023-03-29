@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(PlayerMoveInput))]
 [RequireComponent(typeof(PlayerController))]
-[RequireComponent(typeof(MagnetBody))]
 
 public class PlayerStateMachine : StateMachine
 {

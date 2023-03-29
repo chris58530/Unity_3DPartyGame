@@ -5,22 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //this class is player action  
-    [SerializeField]
-    private float detectionRadius;
-    [SerializeField]
-    private float magneticForce;
+  
     Rigidbody rb;
-    MagnetBody magnetBody;
-    SphereCollider magnetCollider;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        magnetBody = GetComponent<MagnetBody>();
-        magnetCollider = GetComponentInChildren<SphereCollider>();
     }
     private void Start()
     {
-        magnetCollider.radius = detectionRadius;
     }
 
     public void SetPlayerAddForece(Vector3 dir, float speed)
@@ -39,31 +31,6 @@ public class PlayerController : MonoBehaviour
     {
         rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
     }
-    public void SetPlayerMagneticForce()
-    {
-
-    }
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
-    }
-    void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Negative") || other.CompareTag("Positive"))
-        {
-            string otherTag = other.tag;
-            string myTag = this.tag;
-            Transform target = other.transform;
-
-            if (otherTag == myTag)
-            {
-                magnetBody.Repel(target, this.rb, magneticForce);
-            }
-            else
-            {
-                magnetBody.Attract(target, this.rb, magneticForce);
-            }
-        }
-    }
+ 
+    
 }
