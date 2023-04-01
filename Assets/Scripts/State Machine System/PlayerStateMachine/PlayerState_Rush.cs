@@ -7,9 +7,7 @@ public class PlayerState_Rush : PlayerState
 {
     [Header("Player Move Speed"),SerializeField]
     private float moveSpeed;
-    [Header("Player Speed Addition(Rush)"),SerializeField]
-    private float speedAddition;
-
+  
     public override void Enter()
     {
         Debug.Log("Rush Animation");
@@ -31,9 +29,8 @@ public class PlayerState_Rush : PlayerState
         float v = playerMoveInput.moveInput.x;
         float h = playerMoveInput.moveInput.y;
         Vector3 lookAt = new Vector3(h, 0, v);
-        float speedtime = playerMoveInput.speedtime * speedAddition;
 
-        playerController.SetPlayerAddForece(lookAt, (moveSpeed + speedtime));
+        playerController.SetPlayerAddForece(lookAt,moveSpeed);
 
     }
     public override void Exit()

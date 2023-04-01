@@ -44,6 +44,7 @@ public class MagnetBody : MonoBehaviour
             else
             {
                 SetAttract(target, this.rb, magneticForce+additionByCurve);
+            
             }
         }
     }

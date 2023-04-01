@@ -7,13 +7,12 @@ public class PlayerState_Walk : PlayerState
 {
     [Header("Player Move Speed"),SerializeField]
     private float moveSpeed;
-    [Header("Player Speed Addition(Walk)"),SerializeField]
-    private float speedAddition;
+   
     [Header("Player Jump Force"),SerializeField]
     private float jumpForce;
     [Header("Switch Rush Value"),SerializeField]
-    private float switchtoRush;
-
+    
+    private float switchToRush;
     public override void Enter()
     {
         Debug.Log("Walk Animation");
@@ -24,7 +23,7 @@ public class PlayerState_Walk : PlayerState
         {
             playerStateMachine.SwitchState(typeof(PlayerState_Idle));
         }
-        if (playerMoveInput.speedtime > switchtoRush)
+        if (playerMoveInput.speedtime > switchToRush)
         {
             playerStateMachine.SwitchState(typeof(PlayerState_Rush));
         }
@@ -35,10 +34,8 @@ public class PlayerState_Walk : PlayerState
         float v = playerMoveInput.moveInput.x;
         float h = playerMoveInput.moveInput.y;
         Vector3 lookAt = new Vector3(h, 0, v);
-        float speedtime = playerMoveInput.speedtime * speedAddition;
 
-       // playerController.SetPlayerVelocity(lookAt, (moveSpeed + speedtime));
-        playerController.SetPlayerAddForece(lookAt, (moveSpeed + speedtime));
+        playerController.SetPlayerAddForece(lookAt, moveSpeed );
 
     }
     public override void Exit()

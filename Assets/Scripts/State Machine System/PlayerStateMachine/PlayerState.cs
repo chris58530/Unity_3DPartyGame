@@ -9,7 +9,9 @@ public class PlayerState : ScriptableObject, IState
     protected PlayerStateMachine playerStateMachine;
     protected PlayerController playerController;    
     protected PlayerMoveInput playerMoveInput;
-
+    protected Vector3 currentSpeed;
+    protected float currentSpeedX;
+    protected float currentSpeedZ;
     public void Initialize(Animator animator,PlayerStateMachine stateMachine,PlayerMoveInput moveInput,PlayerController playerController)
     {
         this.animator = animator;
