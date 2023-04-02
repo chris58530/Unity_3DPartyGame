@@ -23,7 +23,7 @@ public class PlayerState_Idle : PlayerState
     }
     public override void PhysicUpdate()
     {
-        playerController.SetPlayerVelocity(currentSpeed);
+        // playerController.SetPlayerVelocity(currentSpeed);
 
     }
     public override void Exit()

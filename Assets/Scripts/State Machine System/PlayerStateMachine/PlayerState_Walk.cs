@@ -35,13 +35,13 @@ public class PlayerState_Walk : PlayerState
         float h = playerMoveInput.moveInput.y;
         Vector3 lookAt = new Vector3(h, 0, v);
 
-        playerController.SetPlayerAddForece(lookAt, moveSpeed );
+        playerController.SetPlayerVelocity(lookAt, moveSpeed );
 
     }
     public override void Exit()
     {
         playerController.SetPlayerJump(jumpForce*10000);
-        Debug.Log("jump");
+        Debug.Log("jump!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
     }
 }

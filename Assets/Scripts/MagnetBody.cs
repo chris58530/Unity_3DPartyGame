@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MagnetBody : MonoBehaviour
 {
+    public static Vector3 MagnetForce;
     [SerializeField]
     private float detectionRadius;
     [SerializeField]
@@ -24,7 +25,8 @@ public class MagnetBody : MonoBehaviour
     {
         magnetCollider.radius = detectionRadius;
     }
-    void Update(){
+    void Update()
+    {
         ChangeMagnetic();
     }
     void OnTriggerStay(Collider other)
@@ -34,36 +36,47 @@ public class MagnetBody : MonoBehaviour
             string otherTag = other.tag;
             string myTag = this.tag;
             Vector3 target = otherBody.gameObject.transform.position;
-            float distance = Vector3.Distance(transform.position, other.transform.position);         
+            float distance = Vector3.Distance(transform.position, other.transform.position);
             float additionByCurve = magnetForceCurve.Evaluate(distance);
 
             if (otherTag == myTag)
             {
-                SetRepel(target, this.rb, magneticForce+additionByCurve);
+                SetRepel(target, this.rb, magneticForce + additionByCurve);
             }
             else
             {
-                SetAttract(target, this.rb, magneticForce+additionByCurve);
-            
+                SetAttract(target, this.rb, magneticForce + additionByCurve);
+
             }
+        }
+    }
+    void OnTriggerExit(Collider other){
+        if (other.TryGetComponent<MagnetBody>(out MagnetBody otherBody))
+        {
+          MagnetForce = new Vector3(0,0,0);
         }
     }
 
     public void SetRepel(Vector3 forceDirection, Rigidbody rb, float magneticForce) // Repulsion logic
     {
-        rb.AddForce((transform.position - forceDirection) * magneticForce);
+        // rb.velocity = ((transform.position - forceDirection) * magneticForce);
 
-
+        MagnetForce = ((transform.position - forceDirection) * magneticForce);
     }
     public void SetAttract(Vector3 forceDirection, Rigidbody rb, float magneticForce) // Attraction logic
     {
-        rb.AddForce((forceDirection - transform.position) * magneticForce);
+        // rb.velocity = ((forceDirection - transform.position) * magneticForce);
+       MagnetForce= (-(transform.position - forceDirection) * magneticForce);
     }
-    private void ChangeMagnetic(){
-        if(this.tag =="Positive"){
+    private void ChangeMagnetic()
+    {
+        if (this.tag == "Positive")
+        {
             meshRenderer.material.color = Color.red;
 
-        }else if (this.tag == "Negative"){
+        }
+        else if (this.tag == "Negative")
+        {
             meshRenderer.material.color = Color.blue;
 
         }

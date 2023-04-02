@@ -22,6 +22,7 @@ public class PlayerState_Rush : PlayerState
         {
             playerStateMachine.SwitchState(typeof(PlayerState_Walk));
         }
+        Debug.Log("Rush Animation");
 
     }
     public override void PhysicUpdate()
