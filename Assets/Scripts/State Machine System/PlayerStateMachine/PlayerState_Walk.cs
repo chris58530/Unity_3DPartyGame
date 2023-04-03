@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Data/StateMachine/PlayerState/Walk", fileName ="PlayerState_Walk")]
+[CreateAssetMenu(menuName = "Data/StateMachine/PlayerState/Walk", fileName = "PlayerState_Walk")]
 public class PlayerState_Walk : PlayerState
 {
-    [Header("Player Move Speed"),SerializeField]
+    [Header("Player Move Speed"), SerializeField]
     private float moveSpeed;
-   
-    [Header("Player Jump Force"),SerializeField]
+
+    [Header("Player Jump Force"), SerializeField]
     private float jumpForce;
-    [Header("Switch Rush Value"),SerializeField]
-    
+    [Header("Switch Rush Value"), SerializeField]
+
     private float switchToRush;
     public override void Enter()
     {
@@ -27,7 +27,7 @@ public class PlayerState_Walk : PlayerState
         {
             playerStateMachine.SwitchState(typeof(PlayerState_Rush));
         }
-        
+
     }
     public override void PhysicUpdate()
     {
@@ -35,13 +35,11 @@ public class PlayerState_Walk : PlayerState
         float h = playerMoveInput.moveInput.y;
         Vector3 lookAt = new Vector3(h, 0, v);
 
-        playerController.SetPlayerVelocity(lookAt, moveSpeed );
+        playerController.SetPlayerAddForece(lookAt, moveSpeed);
 
     }
     public override void Exit()
     {
-        playerController.SetPlayerJump(jumpForce*10000);
-        Debug.Log("jump!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
     }
 }

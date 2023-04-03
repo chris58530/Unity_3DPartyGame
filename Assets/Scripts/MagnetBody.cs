@@ -50,23 +50,24 @@ public class MagnetBody : MonoBehaviour
             }
         }
     }
-    void OnTriggerExit(Collider other){
+    void OnTriggerExit(Collider other)
+    {
         if (other.TryGetComponent<MagnetBody>(out MagnetBody otherBody))
         {
-          MagnetForce = new Vector3(0,0,0);
+            MagnetForce = new Vector3(0, 0, 0);
         }
     }
 
     public void SetRepel(Vector3 forceDirection, Rigidbody rb, float magneticForce) // Repulsion logic
     {
-        // rb.velocity = ((transform.position - forceDirection) * magneticForce);
+        rb.AddForce((transform.position - forceDirection) * magneticForce);
 
-        MagnetForce = ((transform.position - forceDirection) * magneticForce);
+        //MagnetForce = ((transform.position - forceDirection) * magneticForce);
     }
     public void SetAttract(Vector3 forceDirection, Rigidbody rb, float magneticForce) // Attraction logic
     {
-        // rb.velocity = ((forceDirection - transform.position) * magneticForce);
-       MagnetForce= (-(transform.position - forceDirection) * magneticForce);
+        rb.AddForce((forceDirection - transform.position) * magneticForce);
+        // MagnetForce= (-(transform.position - forceDirection) * magneticForce);
     }
     private void ChangeMagnetic()
     {
