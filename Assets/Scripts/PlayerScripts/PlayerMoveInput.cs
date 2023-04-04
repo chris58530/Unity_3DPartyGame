@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlayerMoveInput : MonoBehaviour
 {
     [SerializeField]
-    public KeyCode forwardArrow, backArrow, leftArrow, rightArrow;
+    public KeyCode forwardArrow, backArrow, leftArrow, rightArrow,jumpArrow;
     public Vector2 moveInput { get; private set; }
     public float speedtime { get; private set; }
+    public bool Jump =>Input.GetKeyDown(jumpArrow);
+    public bool StopJump =>!Input.GetKeyDown(jumpArrow);
 
     float v, h = 0;
 
@@ -18,5 +20,7 @@ public class PlayerMoveInput : MonoBehaviour
         h = Input.GetKey(rightArrow) ? 1 : (Input.GetKey(leftArrow) ? -1 : 0);
         speedtime += (Input.GetKey(forwardArrow) || Input.GetKey(backArrow) || Input.GetKey(leftArrow) || Input.GetKey(rightArrow)) ? Time.deltaTime : ((speedtime >= 0) ? -Time.deltaTime*10 : 0);
         moveInput = new Vector2(v, h);
+
+
     }
 }

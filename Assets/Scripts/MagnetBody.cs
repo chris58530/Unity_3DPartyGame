@@ -24,6 +24,7 @@ public class MagnetBody : MonoBehaviour
     private void Start()
     {
         magnetCollider.radius = detectionRadius;
+
     }
     void Update()
     {
@@ -46,9 +47,10 @@ public class MagnetBody : MonoBehaviour
             else
             {
                 SetAttract(target, this.rb, magneticForce + additionByCurve);
+                Debug.Log("距離:" + distance + "    力道:" + additionByCurve);
 
             }
-        }
+        }else{return;};
     }
     void OnTriggerExit(Collider other)
     {

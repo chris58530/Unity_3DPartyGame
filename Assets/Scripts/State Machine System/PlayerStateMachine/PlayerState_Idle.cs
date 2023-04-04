@@ -7,23 +7,25 @@ public class PlayerState_Idle : PlayerState
 {
     [SerializeField]
     private float deceleration;
-    public override void Enter()
-    {
-        currentSpeed = playerController.MoveSpeed;
-
-    }
+   
     public override void LogicUpdate()
     {
-        if (Input.GetKey(playerMoveInput.forwardArrow) || Input.GetKey(playerMoveInput.backArrow) || Input.GetKey(playerMoveInput.leftArrow) || Input.GetKey(playerMoveInput.rightArrow))
+        if (Input.GetKey(moveInput.forwardArrow) || Input.GetKey(moveInput.backArrow) || Input.GetKey(moveInput.leftArrow) || Input.GetKey(moveInput.rightArrow))
         {
-            playerStateMachine.SwitchState(typeof(PlayerState_Walk));
+            stateMachine.SwitchState(typeof(PlayerState_Walk));
         }
-        currentSpeed = Vector3.MoveTowards(currentSpeed, new Vector3(0, 0, 0), deceleration * Time.deltaTime);
-
+        if (moveInput.Jump)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Jump));
+        }
+        if (!controller.IsGround)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Fall));
+        }
+        Debug.Log("idle");
     }
     public override void PhysicUpdate()
     {
-        // playerController.SetPlayerVelocity(currentSpeed);
 
     }
     public override void Exit()

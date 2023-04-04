@@ -15,27 +15,34 @@ public class PlayerState_Walk : PlayerState
     private float switchToRush;
     public override void Enter()
     {
-        Debug.Log("Walk Animation");
     }
     public override void LogicUpdate()
     {
-        if (!(Input.GetKey(playerMoveInput.forwardArrow) || Input.GetKey(playerMoveInput.backArrow) || Input.GetKey(playerMoveInput.leftArrow) || Input.GetKey(playerMoveInput.rightArrow)))
+        if (!(Input.GetKey(moveInput.forwardArrow) || Input.GetKey(moveInput.backArrow) || Input.GetKey(moveInput.leftArrow) || Input.GetKey(moveInput.rightArrow)))
         {
-            playerStateMachine.SwitchState(typeof(PlayerState_Idle));
+            stateMachine.SwitchState(typeof(PlayerState_Idle));
         }
-        if (playerMoveInput.speedtime > switchToRush)
+        if (moveInput.speedtime > switchToRush)
         {
-            playerStateMachine.SwitchState(typeof(PlayerState_Rush));
+            stateMachine.SwitchState(typeof(PlayerState_Rush));
+        }
+        if (moveInput.Jump)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Jump));
+        }
+        if (!controller.IsGround)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Fall));
         }
 
     }
     public override void PhysicUpdate()
     {
-        float v = playerMoveInput.moveInput.x;
-        float h = playerMoveInput.moveInput.y;
+        float v = moveInput.moveInput.x;
+        float h = moveInput.moveInput.y;
         Vector3 lookAt = new Vector3(h, 0, v);
 
-        playerController.SetPlayerAddForece(lookAt, moveSpeed);
+        controller.SetPlayerAddForce(lookAt, moveSpeed);
 
     }
     public override void Exit()

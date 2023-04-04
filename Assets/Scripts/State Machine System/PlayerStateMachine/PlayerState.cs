@@ -6,21 +6,24 @@ public class PlayerState : ScriptableObject, IState
 {
     protected Animator animator;
 
-    protected PlayerStateMachine playerStateMachine;
-    protected PlayerController playerController;    
-    protected PlayerMoveInput playerMoveInput;
-    protected Vector3 currentSpeed;
-    protected float currentSpeedX;
-    protected float currentSpeedZ;
-    public void Initialize(Animator animator,PlayerStateMachine stateMachine,PlayerMoveInput moveInput,PlayerController playerController)
+    protected PlayerStateMachine stateMachine;
+    protected PlayerController controller;
+    protected PlayerMoveInput moveInput;
+
+    protected float StateDuration => Time.time - stateStartTime;
+    float stateStartTime;
+    public void Initialize(Animator animator, PlayerStateMachine stateMachine, PlayerMoveInput moveInput, PlayerController playerController)
     {
         this.animator = animator;
-        this.playerStateMachine = stateMachine;
-        this.playerMoveInput = moveInput;
-        this.playerController = playerController;
+        this.stateMachine = stateMachine;
+        this.moveInput = moveInput;
+        this.controller = playerController;
     }
-    public virtual void Enter() { }
+    public virtual void Enter()
+    {
+        stateStartTime = Time.time;
+    }
     public virtual void Exit() { }
-    public virtual void LogicUpdate() { }   
-    public virtual void PhysicUpdate() { }  
+    public virtual void LogicUpdate() { }
+    public virtual void PhysicUpdate() { }
 }
