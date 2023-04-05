@@ -13,18 +13,15 @@ public class MagnetBody : MonoBehaviour
     private AnimationCurve magnetForceCurve;
     MeshRenderer meshRenderer;
 
-    SphereCollider magnetCollider;
     Rigidbody rb;
     private void Awake()
     {
-        magnetCollider = GetComponent<SphereCollider>();
         rb = GetComponentInParent<Rigidbody>();
-        meshRenderer = GetComponentInParent<MeshRenderer>();
+        meshRenderer = GetComponent<MeshRenderer>();
     }
     private void Start()
     {
-        magnetCollider.radius = detectionRadius;
-
+        transform.localScale = new Vector3(detectionRadius, detectionRadius, detectionRadius);
     }
     void Update()
     {
@@ -47,10 +44,10 @@ public class MagnetBody : MonoBehaviour
             else
             {
                 SetAttract(target, this.rb, magneticForce + additionByCurve);
-                Debug.Log("距離:" + distance + "    力道:" + additionByCurve);
 
             }
-        }else{return;};
+        }
+        else { return; };
     }
     void OnTriggerExit(Collider other)
     {
@@ -75,20 +72,21 @@ public class MagnetBody : MonoBehaviour
     {
         if (this.tag == "Positive")
         {
-            meshRenderer.material.color = Color.red;
+            meshRenderer.material.color = new Color(1, 0,0, 0.3f);
 
         }
         else if (this.tag == "Negative")
         {
-            meshRenderer.material.color = Color.blue;
+            meshRenderer.material.color = new Color(0, 0, 1, 0.3f);
+
 
         }
     }
 
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
-    }
+    // void OnDrawGizmosSelected()
+    // {
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawWireSphere(transform.position, detectionRadius);
+    // }
 
 }

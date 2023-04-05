@@ -5,24 +5,28 @@ using UnityEngine;
 
 public class PlayerState_Rush : PlayerState
 {
-    [Header("Player Move Speed"),SerializeField]
-    private float moveSpeed;
   
-    public override void Enter()
-    {
-    }
+  [Header("Rush Value"), SerializeField]
+
+    private float switchToRush = 1;
+  
     public override void LogicUpdate()
     {
         if (!(Input.GetKey(moveInput.forwardArrow) || Input.GetKey(moveInput.backArrow) || Input.GetKey(moveInput.leftArrow) || Input.GetKey(moveInput.rightArrow)))
         {
             stateMachine.SwitchState(typeof(PlayerState_Idle));
         }
-        if (moveInput.speedtime <= 1)
+        if (moveInput.speedtime <= switchToRush)
         {
             stateMachine.SwitchState(typeof(PlayerState_Walk));
-        }  if (moveInput.Jump)
+        }
+        if (moveInput.Jump)
         {
             stateMachine.SwitchState(typeof(PlayerState_Jump));
+        }
+        if (!controller.IsGround)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Fall));
         }
 
     }
@@ -32,7 +36,7 @@ public class PlayerState_Rush : PlayerState
         float h = moveInput.moveInput.y;
         Vector3 lookAt = new Vector3(h, 0, v);
 
-        controller.SetPlayerAddForce(lookAt,moveSpeed);
+        controller.SetPlayerAddForce(lookAt, controller.rushSpeed);
 
     }
     public override void Exit()

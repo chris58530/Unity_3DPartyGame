@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerState_Land : PlayerState
 {
+
     public override void LogicUpdate()
     {
         if (moveInput.Jump)
@@ -13,12 +14,14 @@ public class PlayerState_Land : PlayerState
         }
         if (Input.GetKey(moveInput.forwardArrow) || Input.GetKey(moveInput.backArrow) || Input.GetKey(moveInput.leftArrow) || Input.GetKey(moveInput.rightArrow))
         {
+            if(moveInput.speedtime>controller.switchToRush)
             stateMachine.SwitchState(typeof(PlayerState_Walk));
         }
         if (!Input.GetKey(moveInput.forwardArrow) || Input.GetKey(moveInput.backArrow) || Input.GetKey(moveInput.leftArrow) || Input.GetKey(moveInput.rightArrow))
         {
-            stateMachine.SwitchState(typeof(PlayerState_Walk));
+            stateMachine.SwitchState(typeof(PlayerState_Idle));
         }
+        
     }
 
 }

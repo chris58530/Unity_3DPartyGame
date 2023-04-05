@@ -9,15 +9,16 @@ public class PlayerController : MonoBehaviour
 
     public bool IsGround => playerGroundDetector.IsGround;
     public bool IsFalling => !playerGroundDetector.IsGround && rb.velocity.y < 0;
+    public float walkSpeed ;
+    public float rushSpeed ;
+    public float switchToRush = 1;
+    // public float rushValue{get;private set;}
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         playerGroundDetector = GetComponentInChildren<PlayerGroundDetector>();
     }
-    private void Start()
-    {
-    }
-
+   
     public void SetPlayerAddForce(Vector3 dir, float speed)
     {
 
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
         }
         rb.AddForce(output * speed);
     }
-    public void SetPlayerAddForceY(float speed)
+    public void SetPlayerFallDown(float speed)
     {
         rb.AddForce(Vector3.up * speed);
 
