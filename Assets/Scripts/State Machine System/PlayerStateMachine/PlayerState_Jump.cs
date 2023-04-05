@@ -7,6 +7,9 @@ public class PlayerState_Jump : PlayerState
 {
     [SerializeField]
     private float jumpForce;
+
+     [Header("Player Jump Speed"), SerializeField]
+    private float moveSpeed;
     public override void Enter()
     {
         base.Enter();
@@ -18,5 +21,13 @@ public class PlayerState_Jump : PlayerState
        if(controller.IsFalling){
         stateMachine.SwitchState(typeof(PlayerState_Fall));
        }
+    }
+    public override void PhysicUpdate()
+    {
+         float v = moveInput.moveInput.x;
+        float h = moveInput.moveInput.y;
+        Vector3 lookAt = new Vector3(h, 0, v);
+
+        controller.SetPlayerAddForce(lookAt, moveSpeed);
     }
 }

@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class PlayerState_Fall : PlayerState
 {
+    
     [SerializeField]
     private AnimationCurve speedCurve;
+       [Header("Player Fall Speed"), SerializeField]
+    private float moveSpeed;
     public override void LogicUpdate()
     {
         if(controller.IsGround){
@@ -17,7 +20,12 @@ public class PlayerState_Fall : PlayerState
     }
     public override void PhysicUpdate()
     {
-        speedCurve.Evaluate(StateDuration);
-      
+       
+        controller.SetPlayerAddForceY( speedCurve.Evaluate(StateDuration));
+        float v = moveInput.moveInput.x;
+        float h = moveInput.moveInput.y;
+        Vector3 lookAt = new Vector3(h, 0, v);
+
+        controller.SetPlayerAddForce(lookAt, moveSpeed);
     }
 }

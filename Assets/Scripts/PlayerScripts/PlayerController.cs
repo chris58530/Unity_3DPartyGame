@@ -20,22 +20,22 @@ public class PlayerController : MonoBehaviour
 
     public void SetPlayerAddForce(Vector3 dir, float speed)
     {
-        var rotation = Quaternion.LookRotation(dir);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 8);
-        rb.AddForce(dir * speed);
+
+        Vector3 output = Vector3.zero;
+        output.x = dir.x * Mathf.Sqrt(1 - (dir.z * dir.z) / 2.0f);
+        output.z = dir.z * Mathf.Sqrt(1 - (dir.x * dir.x) / 2.0f);
+
+        if (dir != Vector3.zero)
+        {
+            var rotation = Quaternion.LookRotation(dir);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 8);
+        }
+        rb.AddForce(output * speed);
     }
-    public void SetPlayerVelocity(Vector3 dir, float speed)
+    public void SetPlayerAddForceY(float speed)
     {
-        Vector3 lookAt = new Vector3(dir.x, rb.velocity.y, dir.z);
-        var rotation = Quaternion.LookRotation(lookAt);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 8);
-        // rb.velocity = lookAt * speed;
-        print(((lookAt * speed) + MagnetBody.MagnetForce));
-        rb.velocity = ((lookAt * speed) + MagnetBody.MagnetForce);
-    }
-    public void SetPlayerVelocityY(float speed)
-    {
-        // rb.velocity.y =
+        rb.AddForce(Vector3.up * speed);
+
     }
     public void SetPlayerJump(float jumpSpeed)
     {
