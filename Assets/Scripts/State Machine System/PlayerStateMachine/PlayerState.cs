@@ -14,6 +14,7 @@ public class PlayerState : ScriptableObject, IState
     protected PlayerStateMachine stateMachine;
     protected PlayerController controller;
     protected PlayerMoveInput moveInput;
+    protected bool IsAnimationFinish => StateDuration>= animator.GetCurrentAnimatorStateInfo(0).length;
 
     protected float StateDuration => Time.time - stateStartTime;
     float stateStartTime;

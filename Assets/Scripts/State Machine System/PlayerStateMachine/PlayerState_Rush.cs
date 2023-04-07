@@ -18,8 +18,8 @@ public class PlayerState_Rush : PlayerState
 
     public override void LogicUpdate()
     {
-        if(StateDuration>0.12f){
-        controller.SwitchModel(2);
+        if(IsAnimationFinish){
+            controller.SwitchModel(2);
 
         }
         

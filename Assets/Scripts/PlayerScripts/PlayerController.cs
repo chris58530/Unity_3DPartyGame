@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     GameObject model_2;
 
     public bool IsGround => playerGroundDetector.IsGround;
-    public bool IsFalling => !playerGroundDetector.IsGround && rb.velocity.y < 0;
+    public bool IsFalling => !IsGround && rb.velocity.y < 0;
     public float walkSpeed;
     public float rushSpeed;
     public float switchToRush = 1;
@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     }
     public void SetPlayerJump(float jumpSpeed)
     {
+        // rb.velocity = new Vector3(rb.velocity.x,jumpSpeed);
         rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
     }
     public void SwitchModel(int num)

@@ -19,7 +19,10 @@ public class PlayerState_Fall : PlayerState
     {
         if (controller.IsGround)
         {
-            stateMachine.SwitchState(typeof(PlayerState_Land));
+            if (moveInput.speedtime > controller.switchToRush)
+                stateMachine.SwitchState(typeof(PlayerState_Rush));
+            else
+                stateMachine.SwitchState(typeof(PlayerState_Land));
         }
         Debug.Log("FALL");
 

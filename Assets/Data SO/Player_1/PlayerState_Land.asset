@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerState_Land
   m_EditorClassIdentifier: 
   stateName: Land
-  transitionDuartion: 0.1
+  transitionDuartion: 0

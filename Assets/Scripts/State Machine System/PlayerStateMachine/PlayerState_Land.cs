@@ -18,7 +18,7 @@ public class PlayerState_Land : PlayerState
         if (Input.GetKey(moveInput.forwardArrow) || Input.GetKey(moveInput.backArrow) || Input.GetKey(moveInput.leftArrow) || Input.GetKey(moveInput.rightArrow))
         {
             if (moveInput.speedtime > controller.switchToRush)
-                stateMachine.SwitchState(typeof(PlayerState_Walk));
+                stateMachine.SwitchState(typeof(PlayerState_Rush));
         }
         if (!Input.GetKey(moveInput.forwardArrow) || Input.GetKey(moveInput.backArrow) || Input.GetKey(moveInput.leftArrow) || Input.GetKey(moveInput.rightArrow))
         {
