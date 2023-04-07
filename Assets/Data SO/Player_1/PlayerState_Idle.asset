@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36ae9e01d40fcbe459c57b37344e337e, type: 3}
-  m_Name: PlayerState_Idle 1
+  m_Name: PlayerState_Idle
   m_EditorClassIdentifier: 
-  deceleration: 10
+  stateName: Idle
+  transitionDuartion: 0.1

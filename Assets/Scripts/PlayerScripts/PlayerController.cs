@@ -6,19 +6,23 @@ public class PlayerController : MonoBehaviour
 {
     Rigidbody rb;
     PlayerGroundDetector playerGroundDetector;
+    GameObject model_1;
+    GameObject model_2;
 
     public bool IsGround => playerGroundDetector.IsGround;
     public bool IsFalling => !playerGroundDetector.IsGround && rb.velocity.y < 0;
-    public float walkSpeed ;
-    public float rushSpeed ;
+    public float walkSpeed;
+    public float rushSpeed;
     public float switchToRush = 1;
     // public float rushValue{get;private set;}
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         playerGroundDetector = GetComponentInChildren<PlayerGroundDetector>();
+        model_1 = transform.GetChild(0).gameObject;
+        model_2 = transform.GetChild(1).gameObject;
     }
-   
+
     public void SetPlayerAddForce(Vector3 dir, float speed)
     {
 
@@ -42,6 +46,18 @@ public class PlayerController : MonoBehaviour
     {
         rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
     }
-
+    public void SwitchModel(int num)
+    {
+        if (num == 1)
+        {
+            model_1.SetActive(true);
+            model_2.SetActive(false);
+        }
+        else
+        {
+            model_2.SetActive(true);
+            model_1.SetActive(false);
+        }
+    }
 
 }

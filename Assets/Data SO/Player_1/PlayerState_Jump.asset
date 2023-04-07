@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 723b0f063fba16544a21842ec3049a1e, type: 3}
-  m_Name: PlayerState_Rush 1
+  m_Script: {fileID: 11500000, guid: d1f13feb70c1ef5429ee6fbef300f6f2, type: 3}
+  m_Name: PlayerState_Jump
   m_EditorClassIdentifier: 
-  moveSpeed: 500
+  stateName: Jump_up
+  transitionDuartion: 0.1
+  jumpForce: 100
+  moveSpeed: 120

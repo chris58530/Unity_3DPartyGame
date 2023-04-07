@@ -5,18 +5,22 @@ using UnityEngine;
 
 public class PlayerState_Rush : PlayerState
 {
-  
-  [Header("Rush Value"), SerializeField]
+      [SerializeField]
+    private float jumpForce;
 
-    private float switchToRush = 1;
-  
+ 
+    public override void Enter()
+    {
+        controller.SwitchModel(2);
+    }
+
     public override void LogicUpdate()
     {
         if (!(Input.GetKey(moveInput.forwardArrow) || Input.GetKey(moveInput.backArrow) || Input.GetKey(moveInput.leftArrow) || Input.GetKey(moveInput.rightArrow)))
         {
             stateMachine.SwitchState(typeof(PlayerState_Idle));
         }
-        if (moveInput.speedtime <= switchToRush)
+        if (moveInput.speedtime <= controller.switchToRush)
         {
             stateMachine.SwitchState(typeof(PlayerState_Walk));
         }

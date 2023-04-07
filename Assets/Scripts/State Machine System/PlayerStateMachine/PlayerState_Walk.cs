@@ -5,13 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/StateMachine/PlayerState/Walk", fileName = "PlayerState_Walk")]
 public class PlayerState_Walk : PlayerState
 {
+    public override void Enter()
+    {
+        base.Enter();
+        controller.SwitchModel(1);
 
-    [Header("Player Jump Force"), SerializeField]
-    private float jumpForce;
-    [Header("Rush Value"), SerializeField]
-
-    private float switchToRush = 1;
-
+    }
     public override void LogicUpdate()
     {
         if (!(Input.GetKey(moveInput.forwardArrow) || Input.GetKey(moveInput.backArrow) || Input.GetKey(moveInput.leftArrow) || Input.GetKey(moveInput.rightArrow)))

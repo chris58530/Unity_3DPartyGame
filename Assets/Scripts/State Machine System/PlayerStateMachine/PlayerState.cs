@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerState : ScriptableObject, IState
 {
+    [SerializeField]
+    private string stateName;
+    [SerializeField, Range(0f, 1f)]
+    private float transitionDuartion = 0.1f;
+    int stateHash;
     protected Animator animator;
 
     protected PlayerStateMachine stateMachine;
@@ -12,6 +17,10 @@ public class PlayerState : ScriptableObject, IState
 
     protected float StateDuration => Time.time - stateStartTime;
     float stateStartTime;
+    void OnEnable()
+    {
+        stateHash = Animator.StringToHash(stateName);
+    }
     public void Initialize(Animator animator, PlayerStateMachine stateMachine, PlayerMoveInput moveInput, PlayerController playerController)
     {
         this.animator = animator;
@@ -22,6 +31,10 @@ public class PlayerState : ScriptableObject, IState
     public virtual void Enter()
     {
         stateStartTime = Time.time;
+        if (animator != null)
+        {
+            animator.CrossFade(stateHash, transitionDuartion);
+        }
     }
     public virtual void Exit() { }
     public virtual void LogicUpdate() { }

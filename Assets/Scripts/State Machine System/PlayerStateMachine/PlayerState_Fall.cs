@@ -10,9 +10,11 @@ public class PlayerState_Fall : PlayerState
     private AnimationCurve speedCurve;
     [Header("Player Fall Speed"), SerializeField]
     private float moveSpeed;
-    [Header("Rush Value"), SerializeField]
 
-    private float switchToRush = 1;
+    public override void Enter()
+    {
+        base.Enter();
+    }
     public override void LogicUpdate()
     {
         if (controller.IsGround)

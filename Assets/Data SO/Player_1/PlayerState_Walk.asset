@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1f13feb70c1ef5429ee6fbef300f6f2, type: 3}
-  m_Name: PlayerState_Jump 1
+  m_Script: {fileID: 11500000, guid: 1a25d83933caac44e959c589767e891c, type: 3}
+  m_Name: PlayerState_Walk
   m_EditorClassIdentifier: 
-  jumpForce: 100
-  moveSpeed: 120
+  stateName: Walk_loop
+  transitionDuartion: 0.1
+  jumpForce: 0
+  switchToRush: 1

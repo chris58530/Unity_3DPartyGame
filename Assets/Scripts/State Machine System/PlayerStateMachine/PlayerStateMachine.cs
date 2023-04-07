@@ -19,7 +19,7 @@ public class PlayerStateMachine : StateMachine
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         playerMoveInput = GetComponent<PlayerMoveInput>();
         playerController = GetComponent<PlayerController>();
 

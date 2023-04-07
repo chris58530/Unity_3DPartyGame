@@ -5,9 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Data/StateMachine/PlayerState/Idle", fileName = "PlayerState_Idle")]
 public class PlayerState_Idle : PlayerState
 {
-    [SerializeField]
-    private float deceleration;
-   
+
+    public override void Enter()
+    {
+        base.Enter();
+    }
+
     public override void LogicUpdate()
     {
         if (Input.GetKey(moveInput.forwardArrow) || Input.GetKey(moveInput.backArrow) || Input.GetKey(moveInput.leftArrow) || Input.GetKey(moveInput.rightArrow))
