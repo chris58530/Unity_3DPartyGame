@@ -16,12 +16,10 @@ public class PlayerState_Rush : PlayerState
 
     public override void LogicUpdate()
     {
-        if (!(Input.GetKey(moveInput.forwardArrow) || Input.GetKey(moveInput.backArrow) || Input.GetKey(moveInput.leftArrow) || Input.GetKey(moveInput.rightArrow)))
-        {
-            stateMachine.SwitchState(typeof(PlayerState_Idle));
-        }
         if (moveInput.speedtime <= controller.switchToRush)
         {
+        controller.SwitchModel(1);
+
             stateMachine.SwitchState(typeof(PlayerState_Walk));
         }
         if (moveInput.Jump)

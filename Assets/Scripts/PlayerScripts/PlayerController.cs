@@ -50,12 +50,14 @@ public class PlayerController : MonoBehaviour
     {
         if (num == 1)
         {
-            model_1.SetActive(true);
+            if (!model_1.activeSelf)
+                model_1.SetActive(true);
             model_2.SetActive(false);
         }
         else
         {
-            model_2.SetActive(true);
+            if (!model_2.activeSelf)
+                model_2.SetActive(true);
             model_1.SetActive(false);
         }
     }

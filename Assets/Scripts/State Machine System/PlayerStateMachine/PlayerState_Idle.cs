@@ -9,6 +9,7 @@ public class PlayerState_Idle : PlayerState
     public override void Enter()
     {
         base.Enter();
+controller.SwitchModel(1);
     }
 
     public override void LogicUpdate()

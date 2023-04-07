@@ -29,10 +29,7 @@ public class PlayerState_Walk : PlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));
         }
-        if (controller.IsFalling)
-        {
-            stateMachine.SwitchState(typeof(PlayerState_Fall));
-        }
+     
 
     }
     public override void PhysicUpdate()

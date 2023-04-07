@@ -31,7 +31,7 @@ public class PlayerState : ScriptableObject, IState
     public virtual void Enter()
     {
         stateStartTime = Time.time;
-        if (animator != null)
+        if (animator != null && animator.transform.gameObject.activeSelf)
         {
             animator.CrossFade(stateHash, transitionDuartion);
         }

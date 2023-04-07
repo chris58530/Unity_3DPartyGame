@@ -12,7 +12,6 @@ public class PlayerMoveInput : MonoBehaviour
     public bool StopJump => !Input.GetKeyDown(jumpArrow);
 
     float v, h = 0;
-    bool magent = true;
     void Update()
     {
 
