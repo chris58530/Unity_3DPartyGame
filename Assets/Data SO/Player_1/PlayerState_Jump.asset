@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateName: Jump_up
   transitionDuartion: 0
-  jumpForce: 50
+  jumpForce: 150
   moveSpeed: 120
