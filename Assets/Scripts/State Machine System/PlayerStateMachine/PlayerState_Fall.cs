@@ -31,19 +31,17 @@ public class PlayerState_Fall : PlayerState
     {
 
         controller.SetPlayerFallDown(speedCurve.Evaluate(StateDuration));
-        float v = moveInput.moveInput.x;
-        float h = moveInput.moveInput.y;
-        Vector3 lookAt = new Vector3(h, 0, v);
+     
         if (moveInput.speedtime > controller.switchToRush)
 
         {
-            controller.SetPlayerAddForce(lookAt, controller.rushSpeed);
+            controller.SetPlayerAddForce(controller.rushSpeed);
 
         }
         else
         {
 
-            controller.SetPlayerAddForce(lookAt, controller.walkSpeed);
+            controller.SetPlayerAddForce(controller.walkSpeed);
 
         }
 

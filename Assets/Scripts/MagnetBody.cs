@@ -78,7 +78,8 @@ public class MagnetBody : MonoBehaviour
         else if (this.tag == "Negative")
         {
             meshRenderer.material.color = new Color(0, 0, 1, 0.3f);
-
+        }else{
+            meshRenderer.material.color = new Color(0, 0, 0, 0f);
 
         }
     }

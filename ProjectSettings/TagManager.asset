@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Positive
   - Negative
+  - None
   layers:
   - Default
   - TransparentFX

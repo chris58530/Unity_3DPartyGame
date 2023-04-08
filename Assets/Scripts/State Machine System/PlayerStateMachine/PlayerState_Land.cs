@@ -15,12 +15,15 @@ public class PlayerState_Land : PlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_Jump));
         }
-        if (Input.GetKey(moveInput.forwardArrow) || Input.GetKey(moveInput.backArrow) || Input.GetKey(moveInput.leftArrow) || Input.GetKey(moveInput.rightArrow))
+        if (moveInput.Move)
         {
             if (moveInput.speedtime > controller.switchToRush)
                 stateMachine.SwitchState(typeof(PlayerState_Rush));
+            else
+                stateMachine.SwitchState(typeof(PlayerState_Walk));
+
         }
-        if (!Input.GetKey(moveInput.forwardArrow) || Input.GetKey(moveInput.backArrow) || Input.GetKey(moveInput.leftArrow) || Input.GetKey(moveInput.rightArrow))
+        if (!moveInput.Move)
         {
             stateMachine.SwitchState(typeof(PlayerState_Idle));
         }

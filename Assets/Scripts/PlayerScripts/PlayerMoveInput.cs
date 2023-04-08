@@ -1,23 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMoveInput : MonoBehaviour
 {
-    [SerializeField]
-    public KeyCode forwardArrow, backArrow, leftArrow, rightArrow, jumpArrow, magentArrow;
-    public Vector2 moveInput { get; private set; }
-    public float speedtime { get; private set; }
-    public bool Jump => Input.GetKeyDown(jumpArrow);
-    public bool StopJump => !Input.GetKeyDown(jumpArrow);
+    
 
-    float v, h = 0;
+    // public Vector2 moveInput { get; private set; }
+    public float speedtime { get; private set; }
+    Vector2 axes => playerInputAction.GamePlay1.Axes.ReadValue<Vector2>();
+    public float AxisX => axes.x;
+    public float AxisZ => axes.y;
+    public bool Move => AxisX != 0 || AxisZ != 0;
+    public bool Jump => playerInputAction.GamePlay1.Jump.WasPressedThisFrame();
+    public bool StopJump => playerInputAction.GamePlay1.Jump.WasReleasedThisFrame();
+    public bool positiveArrow =>playerInputAction.GamePlay1.Positive.IsPressed();
+    public bool nagativeArrow =>playerInputAction.GamePlay1.Negative.IsPressed();
+   [SerializeField]
+   string map;
+   InputActionMap mapp;
+    PlayerInputAction playerInputAction;
+   
+    GameObject magentDetector;
+    // float v, h = 0;
+    void Awake()
+    {
+        playerInputAction = new PlayerInputAction();
+    }
+    void OnEnable()
+    {
+        magentDetector = transform.GetComponentInChildren<MagnetBody>().gameObject;
+    }
     void Update()
     {
 
-        v = Input.GetKey(forwardArrow) ? 1 : (Input.GetKey(backArrow) ? -1 : 0);
-        h = Input.GetKey(rightArrow) ? 1 : (Input.GetKey(leftArrow) ? -1 : 0);
-        if (Input.GetKey(forwardArrow) || Input.GetKey(backArrow) || Input.GetKey(leftArrow) || Input.GetKey(rightArrow))
+        // v = Input.GetKey(forwardArrow) ? 1 : (Input.GetKey(backArrow) ? -1 : 0);
+        // h = Input.GetKey(rightArrow) ? 1 : (Input.GetKey(leftArrow) ? -1 : 0);
+        if (Move)
         {
             speedtime += Time.deltaTime;
         }
@@ -32,16 +52,29 @@ public class PlayerMoveInput : MonoBehaviour
                 speedtime = 0;
             }
         }
-        moveInput = new Vector2(v, h);
+        // moveInput = new Vector2(v, h);
+        MagentChange();
 
-        if (Input.GetKeyDown(magentArrow))
+    }
+    public void EnableGamePlayInputs()
+    {
+        playerInputAction.FindAction(map).Enable();
+        playerInputAction.FindAction(map).actionMap.Enable();
+    }
+    void MagentChange()
+    {
+        if (positiveArrow)
         {
-            GameObject magentDetector = transform.GetComponentInChildren<MagnetBody>().gameObject;
-            if (magentDetector.tag == "Negative")
-                magentDetector.tag = "Positive";
-            else
-                magentDetector.tag = "Negative";
+            magentDetector.tag = "Positive";
+        }
+        else if (nagativeArrow)
+        {
+            magentDetector.tag = "Negative";
+        }
+        else
+        {
 
+            magentDetector.tag = "None";
         }
     }
 }

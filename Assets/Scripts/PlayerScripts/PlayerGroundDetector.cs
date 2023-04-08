@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerGroundDetector : MonoBehaviour
 {
-    [SerializeField,Range(0.1f,0.5f)]
+    [SerializeField,Range(0.1f,1f)]
     private float detectionRadius = 0.1f;
     [SerializeField]
     private LayerMask layer;

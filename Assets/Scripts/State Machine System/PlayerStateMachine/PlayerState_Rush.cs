@@ -18,12 +18,13 @@ public class PlayerState_Rush : PlayerState
 
     public override void LogicUpdate()
     {
-        if(IsAnimationFinish){
+        if (IsAnimationFinish)
+        {
             controller.SwitchModel(2);
 
         }
-        
-        
+
+
         if (moveInput.speedtime <= controller.switchToRush)
         {
             controller.SwitchModel(1);
@@ -42,11 +43,9 @@ public class PlayerState_Rush : PlayerState
     }
     public override void PhysicUpdate()
     {
-        float v = moveInput.moveInput.x;
-        float h = moveInput.moveInput.y;
-        Vector3 lookAt = new Vector3(h, 0, v);
+    
 
-        controller.SetPlayerAddForce(lookAt, controller.rushSpeed);
+        controller.SetPlayerAddForce(controller.rushSpeed);
 
     }
     public override void Exit()

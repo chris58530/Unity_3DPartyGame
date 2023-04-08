@@ -13,7 +13,7 @@ public class PlayerState_Walk : PlayerState
     }
     public override void LogicUpdate()
     {
-        if (!(Input.GetKey(moveInput.forwardArrow) || Input.GetKey(moveInput.backArrow) || Input.GetKey(moveInput.leftArrow) || Input.GetKey(moveInput.rightArrow)))
+        if (!moveInput.Move)
         {
             stateMachine.SwitchState(typeof(PlayerState_Idle));
         }
@@ -34,11 +34,11 @@ public class PlayerState_Walk : PlayerState
     }
     public override void PhysicUpdate()
     {
-        float v = moveInput.moveInput.x;
-        float h = moveInput.moveInput.y;
-        Vector3 lookAt = new Vector3(h, 0, v);
+        // float v = moveInput.AxisX;
+        // float h = moveInput.AxisZ;
+        // Vector3 lookAt = new Vector3(h, 0, v);
 
-        controller.SetPlayerAddForce(lookAt, controller.walkSpeed);
+        controller.SetPlayerAddForce(controller.walkSpeed);
 
     }
     public override void Exit()

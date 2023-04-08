@@ -9,13 +9,14 @@ public class PlayerState_Idle : PlayerState
     public override void Enter()
     {
         base.Enter();
-controller.SwitchModel(1);
+        controller.SwitchModel(1);
     }
 
     public override void LogicUpdate()
     {
-        if (Input.GetKey(moveInput.forwardArrow) || Input.GetKey(moveInput.backArrow) || Input.GetKey(moveInput.leftArrow) || Input.GetKey(moveInput.rightArrow))
+        if (moveInput.Move)
         {
+            Debug.Log("1212");
             stateMachine.SwitchState(typeof(PlayerState_Walk));
         }
         if (moveInput.Jump)

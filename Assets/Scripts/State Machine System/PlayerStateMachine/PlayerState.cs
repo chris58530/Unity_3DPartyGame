@@ -10,7 +10,6 @@ public class PlayerState : ScriptableObject, IState
     private float transitionDuartion = 0.1f;
     int stateHash;
     protected Animator animator;
-
     protected PlayerStateMachine stateMachine;
     protected PlayerController controller;
     protected PlayerMoveInput moveInput;
