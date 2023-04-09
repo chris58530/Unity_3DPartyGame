@@ -24,7 +24,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     ""name"": ""PlayerInputAction"",
     ""maps"": [
         {
-            ""name"": ""GamePlay1"",
+            ""name"": ""GamePlay"",
             ""id"": ""fbf3a550-83c6-46e3-bd73-2a9bc3483ad1"",
             ""actions"": [
                 {
@@ -231,231 +231,16 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
-        },
-        {
-            ""name"": ""GamePlay2"",
-            ""id"": ""49bd5e3c-1281-46e7-8053-2c199a203f8a"",
-            ""actions"": [
-                {
-                    ""name"": ""Axes"",
-                    ""type"": ""Value"",
-                    ""id"": ""f1acf1fd-b875-4d24-b87d-cefdaf3f628c"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""7df1a5da-d17a-4120-a3b7-5d4e6f13a725"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Positive"",
-                    ""type"": ""Button"",
-                    ""id"": ""dc39c882-fbe3-40f7-bce6-ceb2f37fa0e8"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Negative"",
-                    ""type"": ""Button"",
-                    ""id"": ""613d88a2-6e64-44a3-af7e-c01ddb82ce69"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": ""WASD"",
-                    ""id"": ""75d8b416-fab5-4bfc-be28-bab5c898d923"",
-                    ""path"": ""2DVector(mode=1)"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Axes"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""cd5f610f-abfd-49fa-937b-748065e5a327"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Axes"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""df74ae06-1b91-48e9-8415-2cd625152c69"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Axes"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""ad97fa97-599d-4f00-951a-e36bc07b2293"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Axes"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""6408646d-cf11-44b7-8ebc-b65a558a5331"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Axes"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Stick"",
-                    ""id"": ""f9c29260-c5cd-42d7-b5dc-45c696217dba"",
-                    ""path"": ""2DVector(mode=1)"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Axes"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""7f8ce65b-b16d-4b33-838d-6c12b44c1dd6"",
-                    ""path"": ""<HID::Nintendo Wireless Gamepad>/hat/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Axes"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""97a91745-61a9-4806-b737-44976f51873a"",
-                    ""path"": ""<HID::Nintendo Wireless Gamepad>/hat/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Axes"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""6cf093af-ec97-42d2-900f-2d44be817503"",
-                    ""path"": ""<HID::Nintendo Wireless Gamepad>/hat/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Axes"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""2a8c9136-99ab-40f3-93fd-020b3f006a37"",
-                    ""path"": ""<HID::Nintendo Wireless Gamepad>/hat/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Axes"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c62ee9d4-55e3-42aa-beff-c5d2fc79af5d"",
-                    ""path"": ""<Joystick>/trigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""31733066-bcb7-4de6-850e-499e89ccc198"",
-                    ""path"": ""<Keyboard>/j"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Positive"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e06b6c93-9954-4dce-bdb1-5bbb60a7cc79"",
-                    ""path"": ""<HID::Nintendo Wireless Gamepad>/button5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Positive"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""90a15db7-8946-4592-8826-77464f4d5fa7"",
-                    ""path"": ""<Keyboard>/k"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Negative"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f0432dfa-2984-43de-9928-2d394dfa4cf7"",
-                    ""path"": ""<HID::Nintendo Wireless Gamepad>/button6"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Negative"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // GamePlay1
-        m_GamePlay1 = asset.FindActionMap("GamePlay1", throwIfNotFound: true);
-        m_GamePlay1_Axes = m_GamePlay1.FindAction("Axes", throwIfNotFound: true);
-        m_GamePlay1_Jump = m_GamePlay1.FindAction("Jump", throwIfNotFound: true);
-        m_GamePlay1_Positive = m_GamePlay1.FindAction("Positive", throwIfNotFound: true);
-        m_GamePlay1_Negative = m_GamePlay1.FindAction("Negative", throwIfNotFound: true);
-        // GamePlay2
-        m_GamePlay2 = asset.FindActionMap("GamePlay2", throwIfNotFound: true);
-        m_GamePlay2_Axes = m_GamePlay2.FindAction("Axes", throwIfNotFound: true);
-        m_GamePlay2_Jump = m_GamePlay2.FindAction("Jump", throwIfNotFound: true);
-        m_GamePlay2_Positive = m_GamePlay2.FindAction("Positive", throwIfNotFound: true);
-        m_GamePlay2_Negative = m_GamePlay2.FindAction("Negative", throwIfNotFound: true);
+        // GamePlay
+        m_GamePlay = asset.FindActionMap("GamePlay", throwIfNotFound: true);
+        m_GamePlay_Axes = m_GamePlay.FindAction("Axes", throwIfNotFound: true);
+        m_GamePlay_Jump = m_GamePlay.FindAction("Jump", throwIfNotFound: true);
+        m_GamePlay_Positive = m_GamePlay.FindAction("Positive", throwIfNotFound: true);
+        m_GamePlay_Negative = m_GamePlay.FindAction("Negative", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -512,44 +297,44 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // GamePlay1
-    private readonly InputActionMap m_GamePlay1;
-    private IGamePlay1Actions m_GamePlay1ActionsCallbackInterface;
-    private readonly InputAction m_GamePlay1_Axes;
-    private readonly InputAction m_GamePlay1_Jump;
-    private readonly InputAction m_GamePlay1_Positive;
-    private readonly InputAction m_GamePlay1_Negative;
-    public struct GamePlay1Actions
+    // GamePlay
+    private readonly InputActionMap m_GamePlay;
+    private IGamePlayActions m_GamePlayActionsCallbackInterface;
+    private readonly InputAction m_GamePlay_Axes;
+    private readonly InputAction m_GamePlay_Jump;
+    private readonly InputAction m_GamePlay_Positive;
+    private readonly InputAction m_GamePlay_Negative;
+    public struct GamePlayActions
     {
         private @PlayerInputAction m_Wrapper;
-        public GamePlay1Actions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Axes => m_Wrapper.m_GamePlay1_Axes;
-        public InputAction @Jump => m_Wrapper.m_GamePlay1_Jump;
-        public InputAction @Positive => m_Wrapper.m_GamePlay1_Positive;
-        public InputAction @Negative => m_Wrapper.m_GamePlay1_Negative;
-        public InputActionMap Get() { return m_Wrapper.m_GamePlay1; }
+        public GamePlayActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Axes => m_Wrapper.m_GamePlay_Axes;
+        public InputAction @Jump => m_Wrapper.m_GamePlay_Jump;
+        public InputAction @Positive => m_Wrapper.m_GamePlay_Positive;
+        public InputAction @Negative => m_Wrapper.m_GamePlay_Negative;
+        public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(GamePlay1Actions set) { return set.Get(); }
-        public void SetCallbacks(IGamePlay1Actions instance)
+        public static implicit operator InputActionMap(GamePlayActions set) { return set.Get(); }
+        public void SetCallbacks(IGamePlayActions instance)
         {
-            if (m_Wrapper.m_GamePlay1ActionsCallbackInterface != null)
+            if (m_Wrapper.m_GamePlayActionsCallbackInterface != null)
             {
-                @Axes.started -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnAxes;
-                @Axes.performed -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnAxes;
-                @Axes.canceled -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnAxes;
-                @Jump.started -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnJump;
-                @Positive.started -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnPositive;
-                @Positive.performed -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnPositive;
-                @Positive.canceled -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnPositive;
-                @Negative.started -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnNegative;
-                @Negative.performed -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnNegative;
-                @Negative.canceled -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnNegative;
+                @Axes.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnAxes;
+                @Axes.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnAxes;
+                @Axes.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnAxes;
+                @Jump.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnJump;
+                @Positive.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnPositive;
+                @Positive.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnPositive;
+                @Positive.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnPositive;
+                @Negative.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnNegative;
+                @Negative.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnNegative;
+                @Negative.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnNegative;
             }
-            m_Wrapper.m_GamePlay1ActionsCallbackInterface = instance;
+            m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Axes.started += instance.OnAxes;
@@ -567,72 +352,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
             }
         }
     }
-    public GamePlay1Actions @GamePlay1 => new GamePlay1Actions(this);
-
-    // GamePlay2
-    private readonly InputActionMap m_GamePlay2;
-    private IGamePlay2Actions m_GamePlay2ActionsCallbackInterface;
-    private readonly InputAction m_GamePlay2_Axes;
-    private readonly InputAction m_GamePlay2_Jump;
-    private readonly InputAction m_GamePlay2_Positive;
-    private readonly InputAction m_GamePlay2_Negative;
-    public struct GamePlay2Actions
-    {
-        private @PlayerInputAction m_Wrapper;
-        public GamePlay2Actions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Axes => m_Wrapper.m_GamePlay2_Axes;
-        public InputAction @Jump => m_Wrapper.m_GamePlay2_Jump;
-        public InputAction @Positive => m_Wrapper.m_GamePlay2_Positive;
-        public InputAction @Negative => m_Wrapper.m_GamePlay2_Negative;
-        public InputActionMap Get() { return m_Wrapper.m_GamePlay2; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(GamePlay2Actions set) { return set.Get(); }
-        public void SetCallbacks(IGamePlay2Actions instance)
-        {
-            if (m_Wrapper.m_GamePlay2ActionsCallbackInterface != null)
-            {
-                @Axes.started -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnAxes;
-                @Axes.performed -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnAxes;
-                @Axes.canceled -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnAxes;
-                @Jump.started -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnJump;
-                @Positive.started -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnPositive;
-                @Positive.performed -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnPositive;
-                @Positive.canceled -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnPositive;
-                @Negative.started -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnNegative;
-                @Negative.performed -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnNegative;
-                @Negative.canceled -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnNegative;
-            }
-            m_Wrapper.m_GamePlay2ActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Axes.started += instance.OnAxes;
-                @Axes.performed += instance.OnAxes;
-                @Axes.canceled += instance.OnAxes;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
-                @Positive.started += instance.OnPositive;
-                @Positive.performed += instance.OnPositive;
-                @Positive.canceled += instance.OnPositive;
-                @Negative.started += instance.OnNegative;
-                @Negative.performed += instance.OnNegative;
-                @Negative.canceled += instance.OnNegative;
-            }
-        }
-    }
-    public GamePlay2Actions @GamePlay2 => new GamePlay2Actions(this);
-    public interface IGamePlay1Actions
-    {
-        void OnAxes(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
-        void OnPositive(InputAction.CallbackContext context);
-        void OnNegative(InputAction.CallbackContext context);
-    }
-    public interface IGamePlay2Actions
+    public GamePlayActions @GamePlay => new GamePlayActions(this);
+    public interface IGamePlayActions
     {
         void OnAxes(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);

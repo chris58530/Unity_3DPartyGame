@@ -5,28 +5,30 @@ using UnityEngine.InputSystem;
 
 public class PlayerMoveInput : MonoBehaviour
 {
-    
+
 
     // public Vector2 moveInput { get; private set; }
     public float speedtime { get; private set; }
-    Vector2 axes => playerInputAction.GamePlay1.Axes.ReadValue<Vector2>();
+    Vector2 axes => playerInputAction.GamePlay.Axes.ReadValue<Vector2>();
     public float AxisX => axes.x;
     public float AxisZ => axes.y;
     public bool Move => AxisX != 0 || AxisZ != 0;
-    public bool Jump => playerInputAction.GamePlay1.Jump.WasPressedThisFrame();
-    public bool StopJump => playerInputAction.GamePlay1.Jump.WasReleasedThisFrame();
-    public bool positiveArrow =>playerInputAction.GamePlay1.Positive.IsPressed();
-    public bool nagativeArrow =>playerInputAction.GamePlay1.Negative.IsPressed();
-   [SerializeField]
-   string map;
-   InputActionMap mapp;
+    public bool Jump => playerInputAction.GamePlay.Jump.WasPressedThisFrame();
+    public bool StopJump => playerInputAction.GamePlay.Jump.WasReleasedThisFrame();
+    public bool positiveArrow => playerInputAction.GamePlay.Positive.IsPressed();
+    public bool nagativeArrow => playerInputAction.GamePlay.Negative.IsPressed();
+    
     PlayerInputAction playerInputAction;
-   
+    // [SerializeField]
+    // InputActionAsset dsd;
+
+
     GameObject magentDetector;
     // float v, h = 0;
     void Awake()
     {
         playerInputAction = new PlayerInputAction();
+        // dsd.FindActionMap("asas").Enable();
     }
     void OnEnable()
     {
@@ -58,8 +60,9 @@ public class PlayerMoveInput : MonoBehaviour
     }
     public void EnableGamePlayInputs()
     {
-        playerInputAction.FindAction(map).Enable();
-        playerInputAction.FindAction(map).actionMap.Enable();
+        playerInputAction.GamePlay.Enable();
+
+
     }
     void MagentChange()
     {

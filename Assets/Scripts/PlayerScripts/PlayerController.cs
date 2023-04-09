@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
             var rotation = Quaternion.LookRotation(dir);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 8);
         }
+        Debug.Log(output);
         rb.AddForce(output * speed);
     }
     public void SetPlayerFallDown(float speed)
