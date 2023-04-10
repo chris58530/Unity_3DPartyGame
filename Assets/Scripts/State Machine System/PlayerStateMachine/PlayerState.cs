@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerState : ScriptableObject, IState
 {
     [SerializeField]
-    private string stateName;
+    private string[] stateName;
     [SerializeField, Range(0f, 1f)]
     private float transitionDuartion = 0.1f;
     int stateHash;
@@ -13,13 +13,14 @@ public class PlayerState : ScriptableObject, IState
     protected PlayerStateMachine stateMachine;
     protected PlayerController controller;
     protected PlayerMoveInput moveInput;
-    protected bool IsAnimationFinish => StateDuration>= animator.GetCurrentAnimatorStateInfo(0).length;
+    protected bool IsAnimationFinish => StateDuration >= animator.GetCurrentAnimatorStateInfo(0).length;
 
     protected float StateDuration => Time.time - stateStartTime;
     float stateStartTime;
+    string aniString;
     void OnEnable()
     {
-        stateHash = Animator.StringToHash(stateName);
+
     }
     public void Initialize(Animator animator, PlayerStateMachine stateMachine, PlayerMoveInput moveInput, PlayerController playerController)
     {
@@ -33,6 +34,11 @@ public class PlayerState : ScriptableObject, IState
         stateStartTime = Time.time;
         if (animator != null && animator.transform.gameObject.activeSelf)
         {
+        //     int aniInt = Random.Range(0, 2);
+        //     aniString = stateName[aniInt];
+        //     Debug.Log(aniInt);
+            stateHash = Animator.StringToHash(stateName[Random.Range(0, stateName.Length)]);
+
             animator.CrossFade(stateHash, transitionDuartion);
         }
     }

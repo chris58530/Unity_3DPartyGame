@@ -17,13 +17,13 @@ public class PlayerMoveInput : MonoBehaviour
     public bool StopJump => playerInputAction.GamePlay.Jump.WasReleasedThisFrame();
     public bool positiveArrow => playerInputAction.GamePlay.Positive.IsPressed();
     public bool nagativeArrow => playerInputAction.GamePlay.Negative.IsPressed();
-    
+
     PlayerInputAction playerInputAction;
     // [SerializeField]
     // InputActionAsset dsd;
 
 
-    GameObject magentDetector;
+
     // float v, h = 0;
     void Awake()
     {
@@ -32,7 +32,8 @@ public class PlayerMoveInput : MonoBehaviour
     }
     void OnEnable()
     {
-        magentDetector = transform.GetComponentInChildren<MagnetBody>().gameObject;
+        
+
     }
     void Update()
     {
@@ -55,7 +56,6 @@ public class PlayerMoveInput : MonoBehaviour
             }
         }
         // moveInput = new Vector2(v, h);
-        MagentChange();
 
     }
     public void EnableGamePlayInputs()
@@ -64,20 +64,5 @@ public class PlayerMoveInput : MonoBehaviour
 
 
     }
-    void MagentChange()
-    {
-        if (positiveArrow)
-        {
-            magentDetector.tag = "Positive";
-        }
-        else if (nagativeArrow)
-        {
-            magentDetector.tag = "Negative";
-        }
-        else
-        {
-
-            magentDetector.tag = "None";
-        }
-    }
+   
 }

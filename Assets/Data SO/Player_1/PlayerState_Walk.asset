@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a25d83933caac44e959c589767e891c, type: 3}
   m_Name: PlayerState_Walk
   m_EditorClassIdentifier: 
-  stateName: Walk_loop
+  stateName:
+  - Walk
   transitionDuartion: 0.1
-  jumpForce: 0
-  switchToRush: 1

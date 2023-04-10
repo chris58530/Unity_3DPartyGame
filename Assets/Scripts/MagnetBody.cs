@@ -4,28 +4,30 @@ using UnityEngine;
 
 public class MagnetBody : MonoBehaviour
 {
-    public static Vector3 MagnetForce;
     [SerializeField]
     private float detectionRadius;
     [SerializeField]
     private float magneticForce;
     [SerializeField]
     private AnimationCurve magnetForceCurve;
-    MeshRenderer meshRenderer;
 
+    MeshRenderer meshRenderer;
     Rigidbody rb;
+    PlayerMoveInput moveInput;
     private void Awake()
     {
         rb = GetComponentInParent<Rigidbody>();
+        moveInput = GetComponentInParent<PlayerMoveInput>();
         meshRenderer = GetComponent<MeshRenderer>();
+
     }
     private void Start()
     {
-        transform.localScale = new Vector3(detectionRadius, detectionRadius, detectionRadius);
+
     }
     void Update()
     {
-        ChangeMagnetic();
+        MagentChange();
     }
     void OnTriggerStay(Collider other)
     {
@@ -44,50 +46,64 @@ public class MagnetBody : MonoBehaviour
             else
             {
                 SetAttract(target, this.rb, magneticForce + additionByCurve);
-
             }
         }
         else { return; };
     }
-    void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent<MagnetBody>(out MagnetBody otherBody))
-        {
-            MagnetForce = new Vector3(0, 0, 0);
-        }
-    }
+
 
     public void SetRepel(Vector3 forceDirection, Rigidbody rb, float magneticForce) // Repulsion logic
     {
-        rb.AddForce((transform.position - forceDirection) * magneticForce);
+        rb.AddForce((transform.position - forceDirection).normalized * magneticForce);
 
-        //MagnetForce = ((transform.position - forceDirection) * magneticForce);
     }
     public void SetAttract(Vector3 forceDirection, Rigidbody rb, float magneticForce) // Attraction logic
     {
-        rb.AddForce((forceDirection - transform.position) * magneticForce);
-        // MagnetForce= (-(transform.position - forceDirection) * magneticForce);
+        rb.AddForce((forceDirection - transform.position).normalized * magneticForce);
     }
-    private void ChangeMagnetic()
+    void MagentChange()
     {
-        if (this.tag == "Positive")
+        if (moveInput.positiveArrow&&!moveInput.nagativeArrow)
         {
-            meshRenderer.material.color = new Color(1, 0,0, 0.3f);
+            this.tag = "Positive";
+
+            Vector3 currentScale = this.transform.localScale;
+            if (currentScale.x < detectionRadius)
+            {
+                this.transform.localScale += new Vector3(10, 10, 10) * Time.deltaTime;
+            }
+            else
+            {
+                meshRenderer.material.color = new Color(1, 0, 0, 0.3f);
+            }
+            if (moveInput.nagativeArrow)
+            {
+
+                this.transform.localScale = new Vector3(0, 0, 0);
+                return;
+            }
+
 
         }
-        else if (this.tag == "Negative")
+        else if (moveInput.nagativeArrow &&!moveInput.positiveArrow)
         {
-            meshRenderer.material.color = new Color(0, 0, 1, 0.3f);
-        }else{
+            this.tag = "Negative";
+            Vector3 currentScale = this.transform.localScale;
+            if (currentScale.x < detectionRadius)
+            {
+                transform.localScale += new Vector3(10, 10, 10) * Time.deltaTime;
+            }
+            else
+            {
+                meshRenderer.material.color = new Color(0, 0, 1, 0.3f);
+            }
+          
+        }
+        else
+        {
+            this.transform.localScale = new Vector3(0, 0, 0);
             meshRenderer.material.color = new Color(0, 0, 0, 0f);
-
+            this.tag = "None";
         }
     }
-
-    // void OnDrawGizmosSelected()
-    // {
-    //     Gizmos.color = Color.red;
-    //     Gizmos.DrawWireSphere(transform.position, detectionRadius);
-    // }
-
 }
