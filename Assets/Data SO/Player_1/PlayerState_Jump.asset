@@ -13,15 +13,8 @@ MonoBehaviour:
   m_Name: PlayerState_Jump
   m_EditorClassIdentifier: 
   stateName:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Jump_up_R
+  - Jump_up_L
   transitionDuartion: 0
   jumpForce: 150
   moveSpeed: 120

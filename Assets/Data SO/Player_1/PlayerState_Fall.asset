@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 396667ed9cd40fb4d959f5e06ca311b4, type: 3}
   m_Name: PlayerState_Fall
   m_EditorClassIdentifier: 
-  stateName: Fall
-  transitionDuartion: 0.038
+  stateName:
+  - Fall_L
+  - Fall_R
+  transitionDuartion: 1
   speedCurve:
     serializedVersion: 2
     m_Curve:
