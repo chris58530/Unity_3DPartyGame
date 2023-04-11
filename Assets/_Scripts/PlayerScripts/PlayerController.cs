@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     public float rushSpeed;
     public float switchToRush = 1;
     // public float rushValue{get;private set;}
+    ///////////
+    Vector3 originalTrans;
+    ///////////
     private void Awake()
     {
         playerMoveInput = GetComponent<PlayerMoveInput>();
@@ -26,6 +29,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start(){
         playerMoveInput.EnableGamePlayInputs();
+        originalTrans = this.transform.position;
     }
     public void SetPlayerAddForce( float speed)
     {
@@ -69,5 +73,15 @@ public class PlayerController : MonoBehaviour
             model_1.SetActive(false);
         }
     }
+    public void SwitchTag(string tag){
+        transform.tag = tag;
+    }
+    void OnCollisionEnter(Collision other){
+        if(other.gameObject.CompareTag("DeadZone")){
+            Debug.Log("back");
+            transform.position = originalTrans;
+        }
+    }
+
 
 }

@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: 8
-  magneticForce: 0
+  magneticForce: 30
   magnetForceCurve:
     serializedVersion: 2
     m_Curve:
@@ -2268,7 +2268,7 @@ GameObject:
   - component: {fileID: 890321684}
   m_Layer: 0
   m_Name: PlayerWASD (1)
-  m_TagString: Untagged
+  m_TagString: Walk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2286,12 +2286,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStates:
-  - {fileID: 11400000, guid: 7adf35b32c8ee7342a24bc28fcaeb067, type: 2}
-  - {fileID: 11400000, guid: c6edbe1b71f1b1344a45853eb17a6128, type: 2}
-  - {fileID: 11400000, guid: ad9812f3568ab354890486391bae323f, type: 2}
-  - {fileID: 11400000, guid: 2b168cd1545445f4da9ec2bbda6dd33e, type: 2}
-  - {fileID: 11400000, guid: 913c432b973d3fb4caba8d11f58a1e1b, type: 2}
-  - {fileID: 11400000, guid: d46df356fe25df645861846e0c59cacd, type: 2}
+  - {fileID: 11400000, guid: 0e3784195f2abb34b9d3991646694747, type: 2}
+  - {fileID: 11400000, guid: ff44faba30b4a614984a0259c69ed6a6, type: 2}
+  - {fileID: 11400000, guid: c15dfa095184d784cadb1f8b8522e59b, type: 2}
+  - {fileID: 11400000, guid: b8e4feb8f2d4fea40b017dca6d6ce711, type: 2}
+  - {fileID: 11400000, guid: ee6777a7fd109114c88136353bb50d77, type: 2}
+  - {fileID: 11400000, guid: 334df9a3bb5419146a1176591f4a77cf, type: 2}
 --- !u!114 &890321685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2409,7 +2409,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890321683}
   m_LocalRotation: {x: 0, y: -0.9993494, z: 0, w: 0.03606825}
-  m_LocalPosition: {x: -4.06, y: 1.55, z: -8.63}
+  m_LocalPosition: {x: 4.8, y: 3.4, z: 3.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4344,9 +4344,9 @@ GameObject:
   - component: {fileID: 1649699660}
   - component: {fileID: 1649699659}
   - component: {fileID: 1649699658}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Dead Zone
-  m_TagString: Untagged
+  m_TagString: DeadZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6667,7 +6667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: 8
-  magneticForce: 0
+  magneticForce: 30
   magnetForceCurve:
     serializedVersion: 2
     m_Curve:
@@ -7009,7 +7009,7 @@ GameObject:
   - component: {fileID: 2151400454769742449}
   m_Layer: 0
   m_Name: PlayerWASD
-  m_TagString: Untagged
+  m_TagString: Walk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

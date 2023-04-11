@@ -14,6 +14,7 @@ public class PlayerState_Rush : PlayerState
     public override void Enter()
     {
         base.Enter();
+        controller.SwitchTag("Rush");
     }
 
     public override void LogicUpdate()
@@ -51,5 +52,7 @@ public class PlayerState_Rush : PlayerState
     public override void Exit()
     {
         base.Exit();
+        controller.SwitchTag("Walk");
+
     }
 }
