@@ -17,7 +17,6 @@ public class PlayerState : ScriptableObject, IState
 
     protected float StateDuration => Time.time - stateStartTime;
     float stateStartTime;
-    string aniString;
     void OnEnable()
     {
 
@@ -34,11 +33,8 @@ public class PlayerState : ScriptableObject, IState
         stateStartTime = Time.time;
         if (animator != null && animator.transform.gameObject.activeSelf)
         {
-        //     int aniInt = Random.Range(0, 2);
-        //     aniString = stateName[aniInt];
-        //     Debug.Log(aniInt);
+            //stateName[Random.Range(0, stateName.Length)] = 隨機抽一個動畫
             stateHash = Animator.StringToHash(stateName[Random.Range(0, stateName.Length)]);
-
             animator.CrossFade(stateHash, transitionDuartion);
         }
     }

@@ -14,7 +14,7 @@ public class PlayerState_Jump : PlayerState
     public override void Enter()
     {
         base.Enter();
-        // animation
+      
         controller.SetPlayerJump(jumpForce);
     }
     public override void LogicUpdate()
