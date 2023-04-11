@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 723b0f063fba16544a21842ec3049a1e, type: 3}
   m_Name: PlayerState_Rush
   m_EditorClassIdentifier: 
-  moveSpeed: 500
+  stateName:
+  - 
+  transitionDuartion: 0
+  jumpForce: 0

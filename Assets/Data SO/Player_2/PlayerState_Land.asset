@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf460afdd37a0294b903226b1fbdd1bd, type: 3}
   m_Name: PlayerState_Land
   m_EditorClassIdentifier: 
+  stateName:
+  - Land_L
+  - Land_R
+  transitionDuartion: 0
