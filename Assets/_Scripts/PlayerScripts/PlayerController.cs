@@ -80,6 +80,11 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("DeadZone")){
             Debug.Log("back");
             transform.position = originalTrans;
+        }   if(other.gameObject.CompareTag("Rush")){
+            Debug.Log("rush");
+            Vector3 output = (transform.position-other.transform.position).normalized;
+        rb.AddForce(output * 100,ForceMode.Impulse);
+            
         }
     }
 
