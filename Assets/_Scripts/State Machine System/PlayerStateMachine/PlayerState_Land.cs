@@ -23,7 +23,7 @@ public class PlayerState_Land : PlayerState
                 stateMachine.SwitchState(typeof(PlayerState_Walk));
 
         }
-        if (!moveInput.Move)
+        if (!moveInput.Move && IsAnimationFinish)
         {
             stateMachine.SwitchState(typeof(PlayerState_Idle));
         }

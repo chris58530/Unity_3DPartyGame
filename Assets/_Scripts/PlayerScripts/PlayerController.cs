@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed;
     public float rushSpeed;
     public float switchToRush = 1;
-    // public float rushValue{get;private set;}
     ///////////
     Vector3 originalTrans;
     ///////////
@@ -45,13 +44,11 @@ public class PlayerController : MonoBehaviour
             var rotation = Quaternion.LookRotation(dir);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 8);
         }
-        Debug.Log(output);
         rb.AddForce(output * speed);
     }
     public void SetPlayerFallDown(float speed)
     {
         rb.AddForce(Vector3.up * speed);
-
     }
     public void SetPlayerJump(float jumpSpeed)
     {
@@ -75,6 +72,9 @@ public class PlayerController : MonoBehaviour
     }
     public void SwitchTag(string tag){
         transform.tag = tag;
+    }
+    public void Throwing(){
+
     }
     void OnCollisionEnter(Collision other){
         if(other.gameObject.CompareTag("DeadZone")){

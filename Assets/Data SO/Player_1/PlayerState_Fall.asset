@@ -15,27 +15,27 @@ MonoBehaviour:
   stateName:
   - Fall_L
   - Fall_R
-  transitionDuartion: 1
+  transitionDuartion: 0
   speedCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: -876.47626
-      outSlope: -876.47626
+      value: -50
+      inSlope: -338.16577
+      outSlope: -338.16577
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.049217
+      outWeight: 0.28411633
     - serializedVersion: 3
       time: 1
-      value: -2000
-      inSlope: 40.099884
-      outSlope: 40.099884
+      value: -1000
+      inSlope: -2113.8396
+      outSlope: -2113.8396
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.68456376
+      inWeight: 0.03803134
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

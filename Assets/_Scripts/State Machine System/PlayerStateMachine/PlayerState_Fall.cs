@@ -24,7 +24,6 @@ public class PlayerState_Fall : PlayerState
             else
                 stateMachine.SwitchState(typeof(PlayerState_Land));
         }
-        Debug.Log("FALL");
 
     }
     public override void PhysicUpdate()

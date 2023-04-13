@@ -15,15 +15,13 @@ public class PlayerState_Rush : PlayerState
     {
         base.Enter();
         controller.SwitchTag("Rush");
+         controller.SwitchModel(2);
+
     }
 
     public override void LogicUpdate()
     {
-        if (IsAnimationFinish)
-        {
-            controller.SwitchModel(2);
-
-        }
+      
 
 
         if (moveInput.speedtime <= controller.switchToRush)
