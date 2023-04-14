@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagnetBody : MonoBehaviour
+public class MagnetBody : MonoBehaviour, IMagnet
 {
+    public bool IsMagnetTag => this.tag == "Positive" || this.tag == "Negative" ;
+    public string LastTag;
     [SerializeField]
     private float detectionRadius;
     [SerializeField]
     private float magneticForce;
     [SerializeField]
     private AnimationCurve magnetForceCurve;
-
+    [SerializeField, Header("磁力持續時間")]
+    private float magnetTime;
+    float currentMagnetTime;
+    bool isDoneMagnet;
     MeshRenderer meshRenderer;
     Rigidbody rb;
     PlayerMoveInput moveInput;
@@ -19,15 +24,24 @@ public class MagnetBody : MonoBehaviour
         rb = GetComponentInParent<Rigidbody>();
         moveInput = GetComponentInParent<PlayerMoveInput>();
         meshRenderer = GetComponent<MeshRenderer>();
-
     }
     private void Start()
     {
+        ResetMagnet();
+        isDoneMagnet = false;
 
     }
     void Update()
     {
         MagentChange();
+        if (isDoneMagnet)
+        {
+            currentMagnetTime -= Time.deltaTime;
+        }
+        if (currentMagnetTime < 0)
+        {
+            ResetMagnet();
+        }
     }
     void OnTriggerStay(Collider other)
     {
@@ -41,69 +55,63 @@ public class MagnetBody : MonoBehaviour
 
             if (otherTag == myTag)
             {
-                SetRepel(target, this.rb, magneticForce + additionByCurve);
+                SetRepel(target, magneticForce + additionByCurve);
             }
             else
             {
-                SetAttract(target, this.rb, magneticForce + additionByCurve);
+                SetAttract(target, magneticForce + additionByCurve);
             }
         }
-        else { return; };
     }
-
-
-    public void SetRepel(Vector3 forceDirection, Rigidbody rb, float magneticForce) // Repulsion logic
+    #region IMagnet function
+    public void SetRepel(Vector3 forceDirection, float magneticForce) // Repulsion logic
     {
         rb.AddForce((transform.position - forceDirection).normalized * magneticForce);
-
     }
-    public void SetAttract(Vector3 forceDirection, Rigidbody rb, float magneticForce) // Attraction logic
+    public void SetAttract(Vector3 forceDirection, float magneticForce) // Attraction logic
     {
         rb.AddForce((forceDirection - transform.position).normalized * magneticForce);
     }
+    #endregion
     void MagentChange()
     {
-        if (moveInput.positiveArrow&&!moveInput.nagativeArrow)
+        if (moveInput.positiveArrow && !moveInput.nagativeArrow)
         {
-            this.tag = "Positive";
-
-            Vector3 currentScale = this.transform.localScale;
-            if (currentScale.x < detectionRadius)
-            {
-                this.transform.localScale += new Vector3(10, 10, 10) * Time.deltaTime;
-            }
-            else
-            {
-                meshRenderer.material.color = new Color(1, 0, 0, 0.3f);
-            }
-            if (moveInput.nagativeArrow)
-            {
-
-                this.transform.localScale = new Vector3(0, 0, 0);
-                return;
-            }
-
-
+            ScaleMagentZone("Positive", new Color(1, 0, 0, 0.3f));
         }
-        else if (moveInput.nagativeArrow &&!moveInput.positiveArrow)
+        else if (moveInput.nagativeArrow && !moveInput.positiveArrow)
         {
-            this.tag = "Negative";
-            Vector3 currentScale = this.transform.localScale;
-            if (currentScale.x < detectionRadius)
-            {
-                transform.localScale += new Vector3(10, 10, 10) * Time.deltaTime;
-            }
-            else
-            {
-                meshRenderer.material.color = new Color(0, 0, 1, 0.3f);
-            }
-          
+
+            ScaleMagentZone("Negative", new Color(0, 0, 1, 0.3f));
         }
+        else if (!moveInput.positiveArrow && !moveInput.nagativeArrow && !isDoneMagnet)
+        {
+            ResetMagnet();
+        }
+
+    }
+    void ResetMagnet()
+    {
+        currentMagnetTime = magnetTime;
+        isDoneMagnet = false;
+        this.transform.localScale = new Vector3(0, 0, 0);
+        meshRenderer.material.color = new Color(0, 0, 0, 0f);
+        this.tag = "None";
+    }
+    void ScaleMagentZone(string tag, Color color)
+    {
+
+        Vector3 currentScale = this.transform.localScale;
+        if (currentScale.x < detectionRadius)
+            this.transform.localScale += new Vector3(10, 10, 10) * Time.deltaTime;
         else
         {
-            this.transform.localScale = new Vector3(0, 0, 0);
-            meshRenderer.material.color = new Color(0, 0, 0, 0f);
-            this.tag = "None";
+            meshRenderer.material.color = color;
+            this.tag = tag;
+            LastTag = tag;
+            isDoneMagnet = true;
+            return;
         }
+
     }
 }

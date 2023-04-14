@@ -7,25 +7,34 @@ public class PlayerThrow : MonoBehaviour
     PlayerMoveInput moveInput;
     LineRenderer line;
     [SerializeField]
-    private GameObject magnetObject;
+    private GameObject magnetObjectRed;
+    [SerializeField]
+    private GameObject magnetObjectBlue;
     [SerializeField]
     private float lineSpeed;
 
     float lineLength;
+    bool canTrow = false;
+    string magnetTag;
+    MagnetBody magnetBody;
 
     void Awake()
     {
-        line = GetComponent<LineRenderer>();
-        moveInput = GetComponentInParent<PlayerMoveInput>();
+        line = GetComponentInChildren<LineRenderer>();
+        moveInput = GetComponent<PlayerMoveInput>();
+        magnetBody = GetComponentInChildren<MagnetBody>();
     }
     void Update()
     {
-        Throw();
+        if (magnetBody.IsMagnetTag || canTrow)
+            TrowMagnet();
     }
-    void Throw()
+    void TrowMagnet()
     {
         if (moveInput.Throw)
         {
+            magnetTag = magnetBody.LastTag;
+            canTrow = true;
             line.enabled = true;
             if (lineLength <= 10)//line 最大長度
             {
@@ -38,14 +47,22 @@ public class PlayerThrow : MonoBehaviour
             line.enabled = false;
             lineLength = 0;
             Vector3 ee = line.GetPosition(1);
-          
-            Debug.Log(transform.TransformPoint(ee));
-            TrowMagnet(transform.TransformPoint(ee));
+            if (magnetTag== "Positive")
+            {
+                GameObject magnet = Instantiate(magnetObjectRed, transform.position, transform.rotation);
+                magnet.GetComponent<MagnetDevice>().target = transform.TransformPoint(ee);
+                canTrow = false;
+            }
+            else
+            {
+                GameObject magnet = Instantiate(magnetObjectBlue, transform.position, transform.rotation);
+                magnet.GetComponent<MagnetDevice>().target = transform.TransformPoint(ee);
+                canTrow = false;
+
+            }
         }
     }
-    void TrowMagnet(Vector3 target)
-    {
-        GameObject magnet = Instantiate(magnetObject, transform.position, transform.rotation);
-        magnet.GetComponent<MagnetDevice>().target = target;
-    }
+
 }
+
+

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 262.36157, g: 325.07837, b: 430.26367, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -361,7 +361,6 @@ GameObject:
   m_Component:
   - component: {fileID: 184992357}
   - component: {fileID: 184992358}
-  - component: {fileID: 184992359}
   m_Layer: 0
   m_Name: LaserLine
   m_TagString: Untagged
@@ -483,20 +482,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
---- !u!114 &184992359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 184992356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4fba480cf5173a4a859e807dc03c4a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magnetObject: {fileID: 4974045446007135739, guid: 29e1880b551fc9b4da706e9f377581c6, type: 3}
-  lineSpeed: 7
 --- !u!1 &325258747
 GameObject:
   m_ObjectHideFlags: 0
@@ -4843,6 +4828,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  magnetTime: 1
 --- !u!1 &1719600468281258899
 GameObject:
   m_ObjectHideFlags: 0
@@ -5159,6 +5145,7 @@ GameObject:
   - component: {fileID: 2151400454769742455}
   - component: {fileID: 2151400454769742454}
   - component: {fileID: 2151400454769742449}
+  - component: {fileID: 2151400454769742456}
   m_Layer: 0
   m_Name: PlayerWASD
   m_TagString: Walk
@@ -5244,6 +5231,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asset: {fileID: -944628639613478452, guid: 34d788214f803a344ab618f2fe66aa85, type: 3}
   mapName: GamePlay1
+--- !u!114 &2151400454769742456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2151400454769742448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4fba480cf5173a4a859e807dc03c4a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnetObjectRed: {fileID: 4974045446007135739, guid: 29e1880b551fc9b4da706e9f377581c6, type: 3}
+  magnetObjectBlue: {fileID: 4974045446007135739, guid: 33340d463703e5641a2ac91464d2e2b9, type: 3}
+  lineSpeed: 7
 --- !u!1 &2308971358845761472
 GameObject:
   m_ObjectHideFlags: 0
@@ -7380,6 +7382,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  magnetTime: 0
 --- !u!4 &6940492539760647691
 Transform:
   m_ObjectHideFlags: 0
