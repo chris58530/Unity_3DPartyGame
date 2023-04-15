@@ -13,6 +13,9 @@ public class MagnetDevice : MonoBehaviour
 
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private float magnetForce = 150;
+    [HideInInspector]
     public Vector3 target;
     private float startTime => Time.time - timer;
     float timer;
@@ -39,16 +42,17 @@ public class MagnetDevice : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if (other.TryGetComponent<IMagnet>(out IMagnet magnet))
+        if (other.TryGetComponent(out IMagnet magnet))
         {
             if (other.tag == this.tag)
             {
-                magnet.SetRepel(transform.position, 10);
+                magnet.SetRepel(transform.position, magnetForce);
+                Debug.Log("setrepel");
             }
             else
-                magnet.SetAttract(transform.position, 10);
+                magnet.SetAttract(transform.position, magnetForce);
         }
     }
 
