@@ -13,14 +13,14 @@ ModelImporter:
       74: -945436022992802792
     second: Walk_loop
   - first:
-      74: 340163818573534814
-    second: Jump_up_R
+      74: 9060002271864667994
+    second: Jump_up
   - first:
-      74: -3202308343280922560
-    second: Fall_R
+      74: 5917537482288442099
+    second: Fall
   - first:
-      74: -4495638343006186902
-    second: Land_R
+      74: -7497848331705974981
+    second: Land
   - first:
       74: -5207543154922391511
     second: Fall_to_Ground
@@ -31,17 +31,8 @@ ModelImporter:
       74: 5071076526327935608
     second: Wakeup
   - first:
-      74: -8141211257761044168
-    second: Jump_up_L
-  - first:
-      74: 7476520586956813846
-    second: Fall_L
-  - first:
-      74: -8201589134236075210
-    second: Land_L
-  - first:
-      74: -5410129332304954752
-    second: Ball_Back
+      74: -7783421484498724652
+    second: Ball_back
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -83,7 +74,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -141,6 +132,35 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Jump_up
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 302
+      lastFrame: 306
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
@@ -159,11 +179,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Jump_up_R
+      name: Fall
       takeName: Take 001
       internalID: 0
-      firstFrame: 159
-      lastFrame: 165
+      firstFrame: 307
+      lastFrame: 312
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -188,40 +208,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Fall_R
+      name: Land
       takeName: Take 001
       internalID: 0
-      firstFrame: 166
-      lastFrame: 168
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Land_R
-      takeName: Take 001
-      internalID: 0
-      firstFrame: 169
-      lastFrame: 180
+      firstFrame: 313
+      lastFrame: 320
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -249,8 +240,8 @@ ModelImporter:
       name: Fall_to_Ground
       takeName: Take 001
       internalID: 0
-      firstFrame: 190
-      lastFrame: 210
+      firstFrame: 194
+      lastFrame: 209
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -279,7 +270,7 @@ ModelImporter:
       takeName: Take 001
       internalID: 0
       firstFrame: 210
-      lastFrame: 212
+      lastFrame: 214
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -307,8 +298,8 @@ ModelImporter:
       name: Wakeup
       takeName: Take 001
       internalID: 0
-      firstFrame: 220
-      lastFrame: 236
+      firstFrame: 214
+      lastFrame: 230
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -333,97 +324,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Jump_up_L
+      name: Ball_back
       takeName: Take 001
       internalID: 0
-      firstFrame: 238
-      lastFrame: 243
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Fall_L
-      takeName: Take 001
-      internalID: 0
-      firstFrame: 244
-      lastFrame: 247
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Land_L
-      takeName: Take 001
-      internalID: 0
-      firstFrame: 248
-      lastFrame: 259
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Ball_Back
-      takeName: Take 001
-      internalID: 0
-      firstFrame: 271
+      firstFrame: 270
       lastFrame: 291
       wrapMode: 0
       orientationOffsetY: 0
@@ -448,7 +352,7 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -473,8 +377,8 @@ ModelImporter:
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
-    meshOptimizationFlags: 0
-    indexFormat: 2
+    meshOptimizationFlags: -1
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
