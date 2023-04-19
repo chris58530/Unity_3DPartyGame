@@ -5,6 +5,9 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
+    second: Take 001
+  - first:
+      74: -3100369314251171874
     second: Idle
   - first:
       74: 2667949614841947897
@@ -132,7 +135,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -182,8 +185,8 @@ ModelImporter:
       name: Fall
       takeName: Take 001
       internalID: 0
-      firstFrame: 307
-      lastFrame: 312
+      firstFrame: 306
+      lastFrame: 308
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -212,7 +215,7 @@ ModelImporter:
       takeName: Take 001
       internalID: 0
       firstFrame: 313
-      lastFrame: 320
+      lastFrame: 323
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
