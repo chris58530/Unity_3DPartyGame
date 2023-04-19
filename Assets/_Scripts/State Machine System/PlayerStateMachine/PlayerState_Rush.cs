@@ -53,4 +53,18 @@ public class PlayerState_Rush : PlayerState
         controller.SwitchTag("Walk");
 
     }
+    void KnockSomthing()
+    {
+
+    }
+
+    public void IncreaseRate()
+    {
+        throw new System.NotImplementedException();
+    }
+
+   IEnumerator Dizzy()
+    {
+        throw new System.NotImplementedException();
+    }
 }
