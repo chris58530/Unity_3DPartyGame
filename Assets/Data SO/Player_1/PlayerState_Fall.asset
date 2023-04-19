@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: PlayerState_Fall
   m_EditorClassIdentifier: 
   stateName:
-  - Fall_L
-  - Fall_R
+  - Fall
   transitionDuartion: 0
   speedCurve:
     serializedVersion: 2

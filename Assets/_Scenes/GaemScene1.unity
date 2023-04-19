@@ -5217,7 +5217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 100
   rushSpeed: 150
-  switchToRush: 1
+  switchToRush: 5
 --- !u!114 &2151400454769742455
 MonoBehaviour:
   m_ObjectHideFlags: 0
