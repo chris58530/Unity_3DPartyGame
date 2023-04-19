@@ -30,18 +30,15 @@ public class PlayerState_Fall : PlayerState
     {
 
         controller.SetPlayerFallDown(speedCurve.Evaluate(StateDuration));
-     
+
         if (moveInput.speedtime > controller.switchToRush)
 
         {
             controller.SetPlayerAddForce(controller.rushSpeed);
-
         }
         else
         {
-
             controller.SetPlayerAddForce(controller.walkSpeed);
-
         }
 
     }

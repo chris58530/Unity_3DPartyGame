@@ -4802,6 +4802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5ca8ff8bc9bb948bba57502940dfff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LastTag: 
   detectionRadius: 8
   magneticForce: 30
   magnetForceCurve:
@@ -7356,6 +7357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5ca8ff8bc9bb948bba57502940dfff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LastTag: 
   detectionRadius: 8
   magneticForce: 0
   magnetForceCurve:

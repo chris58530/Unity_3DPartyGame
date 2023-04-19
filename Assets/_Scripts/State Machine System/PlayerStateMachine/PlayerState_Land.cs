@@ -15,19 +15,32 @@ public class PlayerState_Land : PlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_Jump));
         }
-        if (moveInput.Move)
+        if (IsAnimationFinish)
         {
-            if (moveInput.speedtime > controller.switchToRush)
-                stateMachine.SwitchState(typeof(PlayerState_Rush));
-            else
-                stateMachine.SwitchState(typeof(PlayerState_Walk));
+            if (moveInput.Move)
+            {
+                if (moveInput.speedtime > controller.switchToRush)
+                    stateMachine.SwitchState(typeof(PlayerState_Rush));
+                else
+                    stateMachine.SwitchState(typeof(PlayerState_Walk));
 
+            }
+            if (!moveInput.Move)
+            {
+                stateMachine.SwitchState(typeof(PlayerState_Idle));
+            }
         }
-        if (!moveInput.Move && IsAnimationFinish)
+    }
+    public override void PhysicUpdate()
+    {
+        if (moveInput.speedtime > controller.switchToRush)
         {
-            stateMachine.SwitchState(typeof(PlayerState_Idle));
+            controller.SetPlayerAddForce(controller.rushSpeed);
         }
-
+        else
+        {
+            controller.SetPlayerAddForce(controller.walkSpeed);
+        }
     }
 
 }
