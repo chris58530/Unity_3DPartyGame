@@ -313,7 +313,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &217890688
 MonoBehaviour:
@@ -542,7 +542,7 @@ Transform:
   - {fileID: 536456453}
   - {fileID: 1165015473}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &512058620 stripped
 GameObject:
@@ -577,6 +577,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7859cf6b113ab72439d39f637f0fc243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkSpeed: 0
+  rushSpeed: 0
+  switchToRush: 1
 --- !u!114 &512058623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,10 +592,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb997c56fe736146b002efd066eb1b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardArrow: 119
-  backArrow: 115
-  leftArrow: 97
-  rightArrow: 100
+  asset: {fileID: 0}
+  mapName: 
 --- !u!54 &512058624
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1033,7 +1034,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 34.92, y: 0.115, z: 0.024}
 --- !u!114 &587554451
 MonoBehaviour:
