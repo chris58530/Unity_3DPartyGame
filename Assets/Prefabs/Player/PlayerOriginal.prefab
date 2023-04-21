@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8413827871797170084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8413827871797170095}
+  - component: {fileID: 8413827871797170094}
+  - component: {fileID: 8413827871797170081}
+  - component: {fileID: 8413827871797170080}
+  - component: {fileID: 8413827871797170083}
+  - component: {fileID: 8413827871797170082}
+  - component: {fileID: 8413827871797170085}
+  m_Layer: 0
+  m_Name: PlayerOriginal
+  m_TagString: Walk
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8413827871797170095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8413827871797170084}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &8413827871797170094
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8413827871797170084}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.53
+  m_Height: 0.99
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0.12}
+--- !u!54 &8413827871797170081
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8413827871797170084}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 10
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1
+--- !u!114 &8413827871797170080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8413827871797170084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb997c56fe736146b002efd066eb1b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asset: {fileID: -944628639613478452, guid: 34d788214f803a344ab618f2fe66aa85, type: 3}
+  mapName: GamePlay1
+--- !u!114 &8413827871797170083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8413827871797170084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7859cf6b113ab72439d39f637f0fc243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 100
+  rushSpeed: 150
+  switchToRush: 1
+--- !u!114 &8413827871797170082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8413827871797170084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ed992d159551eb458f033dfb1338b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStates:
+  - {fileID: 11400000, guid: 9e67d61a6bff8c14a84223e32a8c72c3, type: 2}
+  - {fileID: 11400000, guid: 6035636f6f7f9a8418047fc48c6c2a1a, type: 2}
+  - {fileID: 11400000, guid: 4f0bf955e5727824593031d635037566, type: 2}
+  - {fileID: 11400000, guid: 8f94efd1c35afba41b529fc93e47235c, type: 2}
+  - {fileID: 11400000, guid: 2608cde914952904b9ae694072371f38, type: 2}
+  - {fileID: 11400000, guid: 5d1f0aba4f3a5db43b778d62c4c49787, type: 2}
+--- !u!114 &8413827871797170085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8413827871797170084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4fba480cf5173a4a859e807dc03c4a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnetObjectRed: {fileID: 4974045446007135739, guid: 29e1880b551fc9b4da706e9f377581c6, type: 3}
+  magnetObjectBlue: {fileID: 4974045446007135739, guid: 33340d463703e5641a2ac91464d2e2b9, type: 3}
+  lineSpeed: 7
