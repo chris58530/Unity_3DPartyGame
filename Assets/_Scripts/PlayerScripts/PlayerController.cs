@@ -5,13 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody rb;
-    PlayerGroundDetector playerGroundDetector;
-    PlayerMoveInput playerMoveInput;
+    PlayerGroundDetector groundDetector;
+    PlayerMoveInput moveInput;
     GameObject model_1;
     GameObject model_2;
 
-    public bool IsGround => playerGroundDetector.IsGround;
+    public bool IsGround => groundDetector.IsGround;
     public bool IsFalling => !IsGround && rb.velocity.y < 0f;
+    public bool IsStun;
     public float walkSpeed;
     public float rushSpeed;
     public float switchToRush = 1;
@@ -20,27 +21,28 @@ public class PlayerController : MonoBehaviour
     ///////////
     private void Awake()
     {
-        playerMoveInput = GetComponent<PlayerMoveInput>();
+        moveInput = GetComponent<PlayerMoveInput>();
         rb = GetComponent<Rigidbody>();
-        playerGroundDetector = GetComponentInChildren<PlayerGroundDetector>();
+        groundDetector = GetComponentInChildren<PlayerGroundDetector>();
         model_1 = transform.GetChild(0).gameObject;
         model_2 = transform.GetChild(1).gameObject;
     }
-    void Start(){
-        playerMoveInput.EnableGamePlayInputs();
+    void Start()
+    {
+        moveInput.EnableGamePlayInputs();
         originalTrans = this.transform.position;
     }
-    public void SetPlayerAddForce( float speed)
+    public void SetPlayerAddForce(float speed)
     {
-        float x =playerMoveInput.AxisX;
-        float z =playerMoveInput.AxisZ;
+        float x = moveInput.AxisX;
+        float z = moveInput.AxisZ;
         Vector3 output = Vector3.zero;
         output.x = x * Mathf.Sqrt(1 - (z * z) / 2.0f);
         output.z = z * Mathf.Sqrt(1 - (x * x) / 2.0f);
 
-        if (playerMoveInput.Move)
+        if (moveInput.Move)
         {
-            Vector3 dir = new Vector3(x,0,z);
+            Vector3 dir = new Vector3(x, 0, z);
             var rotation = Quaternion.LookRotation(dir);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 8);
         }
@@ -70,22 +72,38 @@ public class PlayerController : MonoBehaviour
             model_1.SetActive(false);
         }
     }
-    public void SwitchTag(string tag){
+    public void SwitchTag(string tag)
+    {
         transform.tag = tag;
     }
-    public void Throwing(){
+    public void Throwing()
+    {
 
     }
-    void OnCollisionEnter(Collision other){
-        if(other.gameObject.CompareTag("DeadZone")){
-            Debug.Log("back");
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("DeadZone"))
+        {
             transform.position = originalTrans;
-        }   if(other.gameObject.CompareTag("Rush")){
-            Debug.Log("rush");
-            Vector3 output = (transform.position-other.transform.position).normalized;
-        rb.AddForce(output * 100,ForceMode.Impulse);
-            
         }
+        if (other.gameObject.CompareTag("Rush"))
+        {
+            //如果此物件速度大於other物件速度
+            if (moveInput.speedtime < other.gameObject.GetComponent<PlayerMoveInput>().speedtime)
+            {
+                Vector3 output = (transform.position - other.transform.position).normalized;
+                rb.AddForce(output * 50 , ForceMode.Impulse);
+                IsStun = true;
+            }
+
+        }
+        IStrikeable hitObject = other.gameObject.GetComponent<IStrikeable>();
+        if (hitObject != null && moveInput.speedtime > switchToRush)
+        {
+            hitObject.Knock(transform.position, moveInput.speedtime);
+            Debug.Log("hitobject knock");
+        }
+
     }
 
 

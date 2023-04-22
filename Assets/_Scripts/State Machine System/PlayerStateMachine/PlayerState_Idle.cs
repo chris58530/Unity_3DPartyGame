@@ -26,6 +26,9 @@ public class PlayerState_Idle : PlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));
         }
+        if(controller.IsStun){
+            stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+        }
     }
     public override void PhysicUpdate()
     {

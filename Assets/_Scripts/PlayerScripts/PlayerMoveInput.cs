@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using TMPro;
 public class PlayerMoveInput : MonoBehaviour
 {
 
@@ -13,30 +13,28 @@ public class PlayerMoveInput : MonoBehaviour
     public float AxisX => axes.x;
     public float AxisZ => axes.y;
     public bool Move => AxisX != 0 || AxisZ != 0;
-    public bool Jump =>map.FindAction("Jump").WasPressedThisFrame();
+    public bool Jump => map.FindAction("Jump").WasPressedThisFrame();
     public bool StopJump => map.FindAction("Jump").WasReleasedThisFrame();
     public bool positiveArrow => map.FindAction("Positive").IsPressed();
     public bool nagativeArrow => map.FindAction("Negative").IsPressed();
     public bool Throw => map.FindAction("Throw").IsPressed();
     public bool StopThrow => map.FindAction("Throw").WasReleasedThisFrame();
-
+    [SerializeField]
+    private TMP_Text speedText;
 
     [SerializeField]
     InputActionAsset asset;
     InputActionMap map;
     [SerializeField]
     private string mapName;
-  
+
     void Awake()
     {
         map = asset.FindActionMap(mapName);
-    }
-    void OnEnable()
-    {
-
+        speedText.enabled = false;
 
     }
-
+   
     void Update()
     {
 
@@ -55,12 +53,14 @@ public class PlayerMoveInput : MonoBehaviour
                 speedtime = 0;
             }
         }
-
+    }
+    public void ShowRushSpeed(bool active){
+        speedText.enabled = active;
+        speedText.text = Mathf.Round(speedtime).ToString();
     }
     public void EnableGamePlayInputs()
     {
         asset.FindActionMap(mapName).Enable();
-
     }
 
 }

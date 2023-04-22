@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IStrikeable {
 
-    void Knock(Vector3 forcePoint, float force);
+    void Knock(Vector3 forcePoint,float force);
 
 }

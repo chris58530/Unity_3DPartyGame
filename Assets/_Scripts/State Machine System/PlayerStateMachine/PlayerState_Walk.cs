@@ -8,7 +8,6 @@ public class PlayerState_Walk : PlayerState
     public override void Enter()
     {
         base.Enter();
-        controller.SwitchModel(1);
 
     }
     public override void LogicUpdate()
@@ -29,7 +28,10 @@ public class PlayerState_Walk : PlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));
         }
-     
+        if (controller.IsStun)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+        }
 
     }
     public override void PhysicUpdate()

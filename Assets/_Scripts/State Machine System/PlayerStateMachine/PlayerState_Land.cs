@@ -30,6 +30,10 @@ public class PlayerState_Land : PlayerState
                 stateMachine.SwitchState(typeof(PlayerState_Idle));
             }
         }
+        if (controller.IsStun)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+        }
     }
     public override void PhysicUpdate()
     {

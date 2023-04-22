@@ -85,7 +85,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ball_Back
+  m_Name: Ball_back
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -98,7 +98,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -5410129332304954752, guid: faf3b0bf34a152d4ba9c3c8d49a736ef, type: 3}
+  m_Motion: {fileID: -7783421484498724652, guid: faf3b0bf34a152d4ba9c3c8d49a736ef, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
