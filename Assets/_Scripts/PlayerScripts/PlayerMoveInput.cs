@@ -43,6 +43,7 @@ public class PlayerMoveInput : MonoBehaviour
         }
         else
         {
+            ShowRushSpeed(false);
             if (speedtime >= 0)
             {
                 speedtime -= Time.deltaTime * 5;

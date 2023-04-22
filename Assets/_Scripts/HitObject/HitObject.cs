@@ -14,7 +14,7 @@ public class HitObject : MonoBehaviour
     private void Update()
     {
         //當速度大於 " " 時切換成擊飛物體
-        if (rb.velocity.magnitude > 5)
+        if (rb.velocity.magnitude > 3)
             this.tag = "KnockingObject";
         else
             this.tag = "HitObject";

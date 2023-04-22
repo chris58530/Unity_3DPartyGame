@@ -11,20 +11,20 @@ public class PlayerState_Rush : PlayerState
         base.Enter();
         controller.SwitchTag("Rush");
         controller.SwitchModel(2);
-
     }
 
     public override void LogicUpdate()
     {
-        if (moveInput.speedtime <= controller.switchToRush)
+        if(moveInput.speedtime <= controller.switchToRush)
             stateMachine.SwitchState(typeof(PlayerState_FinsihRush));
-        if (moveInput.Jump)
+        if(moveInput.Jump)
             stateMachine.SwitchState(typeof(PlayerState_Jump));
-        if (!controller.IsGround)
+        if(!controller.IsGround)
             stateMachine.SwitchState(typeof(PlayerState_Fall));
 
         moveInput.ShowRushSpeed(true);//開啟 speed 文字
-        if(controller.IsStun){
+        if(controller.IsStun)
+        {
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
     }
@@ -36,6 +36,5 @@ public class PlayerState_Rush : PlayerState
     {
         controller.SwitchModel(1);
     }
-    
 
 }

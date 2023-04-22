@@ -11,6 +11,5 @@ public class LightObject : HitObject, IStrikeable
     {
         rb.AddForce(-forcePoint*knockForce*force,ForceMode.Impulse);
         this.tag = "KnockingObject";
-        Debug.Log(force);
     }
 }
