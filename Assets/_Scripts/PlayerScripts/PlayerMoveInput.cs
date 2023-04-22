@@ -8,7 +8,7 @@ public class PlayerMoveInput : MonoBehaviour
 
 
     // public Vector2 moveInput { get; private set; }
-    public float speedtime { get; private set; }
+    public float speedtime;
     Vector2 axes => map.FindAction("Axes").ReadValue<Vector2>();
     public float AxisX => axes.x;
     public float AxisZ => axes.y;
@@ -34,10 +34,9 @@ public class PlayerMoveInput : MonoBehaviour
         speedText.enabled = false;
 
     }
-   
+
     void Update()
     {
-
         if (Move)
         {
             speedtime += Time.deltaTime;
@@ -46,15 +45,17 @@ public class PlayerMoveInput : MonoBehaviour
         {
             if (speedtime >= 0)
             {
-                speedtime -= Time.deltaTime * 50;
+                speedtime -= Time.deltaTime * 5;
             }
             else
             {
                 speedtime = 0;
             }
         }
+        
     }
-    public void ShowRushSpeed(bool active){
+    public void ShowRushSpeed(bool active)
+    {
         speedText.enabled = active;
         speedText.text = Mathf.Round(speedtime).ToString();
     }

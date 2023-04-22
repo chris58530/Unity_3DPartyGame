@@ -14,9 +14,9 @@ public class PlayerState_WakeUp : PlayerState
     {
         if (IsAnimationFinish)
             stateMachine.SwitchState(typeof(PlayerState_Idle));
-        if (controller.IsStun)
+        if (!controller.IsGround)
         {
-            stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+            stateMachine.SwitchState(typeof(PlayerState_Fall));
         }
     }
     public override void PhysicUpdate()

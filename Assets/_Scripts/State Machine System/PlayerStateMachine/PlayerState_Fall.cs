@@ -24,15 +24,18 @@ public class PlayerState_Fall : PlayerState
             else
                 stateMachine.SwitchState(typeof(PlayerState_Land));
         }
+     
+
 
     }
     public override void PhysicUpdate()
     {
 
         controller.SetPlayerFallDown(speedCurve.Evaluate(StateDuration));
+        if (controller.IsStun)
+            return;
 
         if (moveInput.speedtime > controller.switchToRush)
-
         {
             controller.SetPlayerAddForce(controller.rushSpeed);
         }

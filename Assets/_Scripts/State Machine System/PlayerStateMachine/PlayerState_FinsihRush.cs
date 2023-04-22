@@ -15,12 +15,15 @@ public class PlayerState_FinsihRush : PlayerState
         if (IsAnimationFinish)
             stateMachine.SwitchState(typeof(PlayerState_Walk));
 
-        if (moveInput.Jump)        
+        if (moveInput.Jump)
             stateMachine.SwitchState(typeof(PlayerState_Jump));
-        
-        if (!controller.IsGround)        
-            stateMachine.SwitchState(typeof(PlayerState_Fall));       
 
+        if (!controller.IsGround)
+            stateMachine.SwitchState(typeof(PlayerState_Fall));
+        if (controller.IsStun)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+        }
     }
     public override void PhysicUpdate()
     {

@@ -39,6 +39,54 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2855098019767011506}
     m_Modifications:
+    - target: {fileID: 8413827871797170080, guid: 45e0455ef1c857049823d2cb18879251, type: 3}
+      propertyPath: mapName
+      value: GamePlay2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413827871797170082, guid: 45e0455ef1c857049823d2cb18879251, type: 3}
+      propertyPath: playerStates.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413827871797170082, guid: 45e0455ef1c857049823d2cb18879251, type: 3}
+      propertyPath: playerStates.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6bdac5fb2d4784b4e9eb2d547985a99f, type: 2}
+    - target: {fileID: 8413827871797170082, guid: 45e0455ef1c857049823d2cb18879251, type: 3}
+      propertyPath: playerStates.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: bfa23f45a7116ff4ca8b6a7293b3ae43, type: 2}
+    - target: {fileID: 8413827871797170082, guid: 45e0455ef1c857049823d2cb18879251, type: 3}
+      propertyPath: playerStates.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: fb75ff60a62152e48ac0bb808457f25b, type: 2}
+    - target: {fileID: 8413827871797170082, guid: 45e0455ef1c857049823d2cb18879251, type: 3}
+      propertyPath: playerStates.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: d00a1581e7ec44947b27b4c7a5adedb2, type: 2}
+    - target: {fileID: 8413827871797170082, guid: 45e0455ef1c857049823d2cb18879251, type: 3}
+      propertyPath: playerStates.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: cc5e0dfbba32f1047a3a37e57f27ff18, type: 2}
+    - target: {fileID: 8413827871797170082, guid: 45e0455ef1c857049823d2cb18879251, type: 3}
+      propertyPath: playerStates.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9351c09fece334f4a82e877d9bedfd53, type: 2}
+    - target: {fileID: 8413827871797170082, guid: 45e0455ef1c857049823d2cb18879251, type: 3}
+      propertyPath: playerStates.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 98de84a4a1e1a664caf354e33f2ba891, type: 2}
+    - target: {fileID: 8413827871797170082, guid: 45e0455ef1c857049823d2cb18879251, type: 3}
+      propertyPath: playerStates.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 653dbfe34a2aaac499299c92e6546217, type: 2}
+    - target: {fileID: 8413827871797170082, guid: 45e0455ef1c857049823d2cb18879251, type: 3}
+      propertyPath: playerStates.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e3b0175d003b054390eca70de8b7ff7, type: 2}
+    - target: {fileID: 8413827871797170082, guid: 45e0455ef1c857049823d2cb18879251, type: 3}
+      propertyPath: playerStates.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d642888a20a6cb499fe27c49a3407a7, type: 2}
     - target: {fileID: 8413827871797170084, guid: 45e0455ef1c857049823d2cb18879251, type: 3}
       propertyPath: m_Name
       value: PlayerOriginal
@@ -278,11 +326,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 554626454576584916, guid: 67769c6a7e464b34bae704d3ceca0f9a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9732831
+      value: 0.536
       objectReference: {fileID: 0}
     - target: {fileID: 554626454576584916, guid: 67769c6a7e464b34bae704d3ceca0f9a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 554626454576584916, guid: 67769c6a7e464b34bae704d3ceca0f9a, type: 3}
       propertyPath: m_LocalRotation.w

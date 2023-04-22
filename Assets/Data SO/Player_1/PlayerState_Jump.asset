@@ -15,5 +15,5 @@ MonoBehaviour:
   stateName:
   - Jump_up
   transitionDuartion: 0
-  jumpForce: 75
+  jumpForce: 50
   moveSpeed: 120

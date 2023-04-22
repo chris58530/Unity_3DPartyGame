@@ -76,26 +76,31 @@ public class PlayerController : MonoBehaviour
     {
         transform.tag = tag;
     }
-    public void Throwing()
-    {
 
-    }
+
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("DeadZone"))
         {
             transform.position = originalTrans;
         }
-        if (other.gameObject.CompareTag("Rush"))
+        if (other.gameObject.CompareTag("Rush") && !IsStun)
         {
             //如果此物件速度大於other物件速度
-            if (moveInput.speedtime < other.gameObject.GetComponent<PlayerMoveInput>().speedtime)
+            PlayerMoveInput otherInput = other.gameObject.GetComponent<PlayerMoveInput>();
+            if (moveInput.speedtime < otherInput.speedtime)
             {
-                Vector3 output = (transform.position - other.transform.position).normalized;
-                rb.AddForce(output * 50 , ForceMode.Impulse);
-                IsStun = true;
-            }
+                //重製雙方speed time;
 
+                moveInput.speedtime = 0;
+                otherInput.speedtime = 0;
+                moveInput.ShowRushSpeed(false);
+                otherInput.ShowRushSpeed(false);
+
+                Vector3 output = (transform.position - other.transform.position).normalized;
+                rb.AddForce(output * 50, ForceMode.Impulse);
+                StartCoroutine(Strun(2));
+            }
         }
         IStrikeable hitObject = other.gameObject.GetComponent<IStrikeable>();
         if (hitObject != null && moveInput.speedtime > switchToRush)
@@ -103,6 +108,13 @@ public class PlayerController : MonoBehaviour
             hitObject.Knock(transform.position, moveInput.speedtime);
             Debug.Log("hitobject knock");
         }
+
+    }
+    IEnumerator Strun(float time)
+    {
+        IsStun = true;
+        yield return new WaitForSeconds(time);
+        IsStun = false;
 
     }
 

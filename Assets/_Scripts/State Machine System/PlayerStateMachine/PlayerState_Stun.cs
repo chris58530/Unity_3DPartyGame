@@ -12,11 +12,11 @@ public class PlayerState_Stun : PlayerState
 
     public override void LogicUpdate()
     {
-        if (IsAnimationFinish)
+        if (!controller.IsStun)
             stateMachine.SwitchState(typeof(PlayerState_WakeUp));
-        if (controller.IsStun)
+        if (!controller.IsGround)
         {
-            stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+            stateMachine.SwitchState(typeof(PlayerState_Fall));
         }
 
     }
