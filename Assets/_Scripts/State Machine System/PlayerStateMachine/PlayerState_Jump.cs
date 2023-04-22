@@ -14,22 +14,22 @@ public class PlayerState_Jump : PlayerState
     public override void Enter()
     {
         base.Enter();
-      
+
         controller.SetPlayerJump(jumpForce);
     }
     public override void LogicUpdate()
     {
-        if (controller.IsFalling||moveInput.StopJump)
+        if (controller.IsFalling || moveInput.StopJump)
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));
         }
-    
+        if (controller.IsStun)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+        }
     }
     public override void PhysicUpdate()
     {
-
-     
-
         if (moveInput.speedtime > controller.switchToRush)
         {
             controller.SetPlayerAddForce(controller.rushSpeed);

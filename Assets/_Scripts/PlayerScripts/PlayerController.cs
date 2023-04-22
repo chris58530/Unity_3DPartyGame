@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public bool IsGround => groundDetector.IsGround;
     public bool IsFalling => !IsGround && rb.velocity.y < 0f;
     public bool IsStun;
+    public bool GetKnock;
     public float walkSpeed;
     public float rushSpeed;
     public float switchToRush = 1;
@@ -91,7 +92,6 @@ public class PlayerController : MonoBehaviour
             if (moveInput.speedtime < otherInput.speedtime)
             {
                 //重製雙方speed time;
-
                 moveInput.speedtime = 0;
                 otherInput.speedtime = 0;
                 moveInput.ShowRushSpeed(false);
@@ -102,14 +102,20 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(Strun(2));
             }
         }
+        if (other.gameObject.tag == "KnockingObject")
+        {
+            rb.AddForce(-other.transform.position * 5, ForceMode.Impulse);
+            StartCoroutine(Strun(2));
+            Debug.Log("KnockingObject knock");
+        }
         IStrikeable hitObject = other.gameObject.GetComponent<IStrikeable>();
-        if (hitObject != null && moveInput.speedtime > switchToRush)
+        if (hitObject != null && moveInput.speedtime > switchToRush && other.gameObject.tag == "HitObject")
         {
             hitObject.Knock(transform.position, moveInput.speedtime);
             Debug.Log("hitobject knock");
         }
-
     }
+
     IEnumerator Strun(float time)
     {
         IsStun = true;
