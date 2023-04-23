@@ -5,7 +5,6 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
     IState currentState;
-
     protected Dictionary<System.Type, IState> stateTable;
     private void Update()
     {

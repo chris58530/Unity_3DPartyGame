@@ -1234,7 +1234,7 @@ GameObject:
   - component: {fileID: 449844008}
   m_Layer: 0
   m_Name: HeavyCube
-  m_TagString: HitObject
+  m_TagString: KnockingObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1251,7 +1251,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1345,7 +1345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f79ef87d425ab8489e690393d198669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockForce: 0.5
+  knockForce: 0
 --- !u!1 &605958331
 GameObject:
   m_ObjectHideFlags: 0

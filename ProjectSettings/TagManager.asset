@@ -12,6 +12,7 @@ TagManager:
   - Walk
   - KnockingObject
   - HitObject
+  - Untouched
   layers:
   - Default
   - TransparentFX

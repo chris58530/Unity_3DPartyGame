@@ -52,8 +52,7 @@ public class PlayerMoveInput : MonoBehaviour
             {
                 speedtime = 0;
             }
-        }
-        
+        }        
     }
     public void ShowRushSpeed(bool active)
     {

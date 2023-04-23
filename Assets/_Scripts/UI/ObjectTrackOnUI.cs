@@ -16,7 +16,7 @@ public class ObjectTrackOnUI : MonoBehaviour
     void Update()
     {
         Vector3 screenPos = Camera.main.WorldToViewportPoint(player.transform.position);
-        //playerPositionText.text = "Player Position: " + screenPos.x.ToString("F0") + ", " + screenPos.y.ToString("F0");
+       
         playerPositionText.rectTransform.anchoredPosition = screenPos + offset;
     }
 }

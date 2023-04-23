@@ -98,14 +98,13 @@ public class PlayerController : MonoBehaviour
                 otherInput.ShowRushSpeed(false);
 
                 Vector3 output = (transform.position - other.transform.position).normalized;
-                rb.AddForce(output * 50, ForceMode.Impulse);
-                StartCoroutine(Strun(2));
+                StartCoroutine(Strun(output * 50, 2));
             }
         }
         if (other.gameObject.tag == "KnockingObject")
         {
-            rb.AddForce(-other.transform.position * 5, ForceMode.Impulse);
-            StartCoroutine(Strun(2));
+            Vector3 direction = -other.transform.position.normalized;
+            StartCoroutine(Strun(direction * 5, 2));
             Debug.Log("KnockingObject knock");
         }
         IStrikeable hitObject = other.gameObject.GetComponent<IStrikeable>();
@@ -116,12 +115,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator Strun(float time)
+    public IEnumerator Strun(Vector3 direction, float time)
     {
         IsStun = true;
+        rb.AddForce(direction, ForceMode.Impulse);
         yield return new WaitForSeconds(time);
         IsStun = false;
-
     }
 
 
