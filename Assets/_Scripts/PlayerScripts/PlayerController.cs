@@ -110,7 +110,8 @@ public class PlayerController : MonoBehaviour
         IStrikeable hitObject = other.gameObject.GetComponent<IStrikeable>();
         if (hitObject != null && moveInput.speedtime > switchToRush && other.gameObject.tag == "HitObject")
         {
-            hitObject.Knock(transform.position, moveInput.speedtime);
+            Vector3 direction = (transform.position - other.gameObject.transform.position).normalized;
+            hitObject.Knock(direction, moveInput.speedtime);
             Debug.Log("hitobject knock");
         }
     }

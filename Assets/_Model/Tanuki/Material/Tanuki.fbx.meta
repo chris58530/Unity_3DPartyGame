@@ -327,7 +327,7 @@ ModelImporter:
       name: Ball_back
       takeName: Take 001
       internalID: 0
-      firstFrame: 270
+      firstFrame: 275
       lastFrame: 291
       wrapMode: 0
       orientationOffsetY: 0

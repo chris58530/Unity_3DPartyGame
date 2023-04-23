@@ -17,6 +17,7 @@ public class HeavyObject : HitObject
     {
         if (other.gameObject.CompareTag("Rush"))
         {
+            Debug.Log("rush");
             if (!other.gameObject.TryGetComponent<PlayerController>(out PlayerController otherControl))
                 return;
             Vector3 direction = (otherControl.transform.position - transform.position).normalized * 100;
