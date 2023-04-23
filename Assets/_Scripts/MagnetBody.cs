@@ -18,10 +18,12 @@ public class MagnetBody : MonoBehaviour
     MeshRenderer meshRenderer;
     Rigidbody rb;
     PlayerMoveInput moveInput;
+    PlayerController controller;
     private void Awake()
     {
         rb = GetComponentInParent<Rigidbody>();
         moveInput = GetComponentInParent<PlayerMoveInput>();
+        controller = GetComponentInParent<PlayerController>();
         meshRenderer = GetComponent<MeshRenderer>();
     }
     private void Start()
@@ -77,7 +79,7 @@ public class MagnetBody : MonoBehaviour
         {
             ScaleMagentZone("Repel", new Color(0, 0, 1, 0.3f));
         }     
-        else if (!moveInput.MagnetZone)
+        if (!moveInput.MagnetZone || controller.IsStun)
         {
             ResetMagnet();
         }
