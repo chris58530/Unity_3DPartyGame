@@ -64,7 +64,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Throw"",
+                    ""name"": ""Magnet"",
                     ""type"": ""Button"",
                     ""id"": ""d994a665-5321-48ea-b810-bae2709803c6"",
                     ""expectedControlType"": ""Button"",
@@ -169,7 +169,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Throw"",
+                    ""action"": ""Magnet"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -210,6 +210,15 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""name"": ""Negative"",
                     ""type"": ""Button"",
                     ""id"": ""f314ed40-b662-46fb-9fa5-fca06cd0e8b8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Magnet"",
+                    ""type"": ""Button"",
+                    ""id"": ""042b73af-d51a-4cf7-9bc4-136e9bee4857"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -316,13 +325,14 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_GamePlay1_Jump = m_GamePlay1.FindAction("Jump", throwIfNotFound: true);
         m_GamePlay1_Positive = m_GamePlay1.FindAction("Positive", throwIfNotFound: true);
         m_GamePlay1_Negative = m_GamePlay1.FindAction("Negative", throwIfNotFound: true);
-        m_GamePlay1_Throw = m_GamePlay1.FindAction("Throw", throwIfNotFound: true);
+        m_GamePlay1_Magnet = m_GamePlay1.FindAction("Magnet", throwIfNotFound: true);
         // GamePlay2
         m_GamePlay2 = asset.FindActionMap("GamePlay2", throwIfNotFound: true);
         m_GamePlay2_Axes = m_GamePlay2.FindAction("Axes", throwIfNotFound: true);
         m_GamePlay2_Jump = m_GamePlay2.FindAction("Jump", throwIfNotFound: true);
         m_GamePlay2_Positive = m_GamePlay2.FindAction("Positive", throwIfNotFound: true);
         m_GamePlay2_Negative = m_GamePlay2.FindAction("Negative", throwIfNotFound: true);
+        m_GamePlay2_Magnet = m_GamePlay2.FindAction("Magnet", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -386,7 +396,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay1_Jump;
     private readonly InputAction m_GamePlay1_Positive;
     private readonly InputAction m_GamePlay1_Negative;
-    private readonly InputAction m_GamePlay1_Throw;
+    private readonly InputAction m_GamePlay1_Magnet;
     public struct GamePlay1Actions
     {
         private @PlayerInputAction m_Wrapper;
@@ -395,7 +405,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_GamePlay1_Jump;
         public InputAction @Positive => m_Wrapper.m_GamePlay1_Positive;
         public InputAction @Negative => m_Wrapper.m_GamePlay1_Negative;
-        public InputAction @Throw => m_Wrapper.m_GamePlay1_Throw;
+        public InputAction @Magnet => m_Wrapper.m_GamePlay1_Magnet;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay1; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -417,9 +427,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Negative.started -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnNegative;
                 @Negative.performed -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnNegative;
                 @Negative.canceled -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnNegative;
-                @Throw.started -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnThrow;
-                @Throw.performed -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnThrow;
-                @Throw.canceled -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnThrow;
+                @Magnet.started -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnMagnet;
+                @Magnet.performed -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnMagnet;
+                @Magnet.canceled -= m_Wrapper.m_GamePlay1ActionsCallbackInterface.OnMagnet;
             }
             m_Wrapper.m_GamePlay1ActionsCallbackInterface = instance;
             if (instance != null)
@@ -436,9 +446,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Negative.started += instance.OnNegative;
                 @Negative.performed += instance.OnNegative;
                 @Negative.canceled += instance.OnNegative;
-                @Throw.started += instance.OnThrow;
-                @Throw.performed += instance.OnThrow;
-                @Throw.canceled += instance.OnThrow;
+                @Magnet.started += instance.OnMagnet;
+                @Magnet.performed += instance.OnMagnet;
+                @Magnet.canceled += instance.OnMagnet;
             }
         }
     }
@@ -451,6 +461,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay2_Jump;
     private readonly InputAction m_GamePlay2_Positive;
     private readonly InputAction m_GamePlay2_Negative;
+    private readonly InputAction m_GamePlay2_Magnet;
     public struct GamePlay2Actions
     {
         private @PlayerInputAction m_Wrapper;
@@ -459,6 +470,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_GamePlay2_Jump;
         public InputAction @Positive => m_Wrapper.m_GamePlay2_Positive;
         public InputAction @Negative => m_Wrapper.m_GamePlay2_Negative;
+        public InputAction @Magnet => m_Wrapper.m_GamePlay2_Magnet;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay2; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -480,6 +492,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Negative.started -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnNegative;
                 @Negative.performed -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnNegative;
                 @Negative.canceled -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnNegative;
+                @Magnet.started -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnMagnet;
+                @Magnet.performed -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnMagnet;
+                @Magnet.canceled -= m_Wrapper.m_GamePlay2ActionsCallbackInterface.OnMagnet;
             }
             m_Wrapper.m_GamePlay2ActionsCallbackInterface = instance;
             if (instance != null)
@@ -496,6 +511,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Negative.started += instance.OnNegative;
                 @Negative.performed += instance.OnNegative;
                 @Negative.canceled += instance.OnNegative;
+                @Magnet.started += instance.OnMagnet;
+                @Magnet.performed += instance.OnMagnet;
+                @Magnet.canceled += instance.OnMagnet;
             }
         }
     }
@@ -506,7 +524,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnPositive(InputAction.CallbackContext context);
         void OnNegative(InputAction.CallbackContext context);
-        void OnThrow(InputAction.CallbackContext context);
+        void OnMagnet(InputAction.CallbackContext context);
     }
     public interface IGamePlay2Actions
     {
@@ -514,5 +532,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnPositive(InputAction.CallbackContext context);
         void OnNegative(InputAction.CallbackContext context);
+        void OnMagnet(InputAction.CallbackContext context);
     }
 }

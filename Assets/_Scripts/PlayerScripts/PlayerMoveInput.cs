@@ -15,10 +15,9 @@ public class PlayerMoveInput : MonoBehaviour
     public bool Move => AxisX != 0 || AxisZ != 0;
     public bool Jump => map.FindAction("Jump").WasPressedThisFrame();
     public bool StopJump => map.FindAction("Jump").WasReleasedThisFrame();
-    public bool positiveArrow => map.FindAction("Positive").IsPressed();
-    public bool nagativeArrow => map.FindAction("Negative").IsPressed();
-    public bool Throw => map.FindAction("Throw").IsPressed();
-    public bool StopThrow => map.FindAction("Throw").WasReleasedThisFrame();
+   
+    public bool MagnetZone => map.FindAction("Magnet").IsPressed();
+    public bool StopThrow => map.FindAction("Magnet").WasReleasedThisFrame();
     [SerializeField]
     private TMP_Text speedText;
 

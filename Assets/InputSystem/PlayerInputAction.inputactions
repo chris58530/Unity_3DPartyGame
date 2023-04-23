@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Throw",
+                    "name": "Magnet",
                     "type": "Button",
                     "id": "d994a665-5321-48ea-b810-bae2709803c6",
                     "expectedControlType": "Button",
@@ -147,7 +147,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Throw",
+                    "action": "Magnet",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -188,6 +188,15 @@
                     "name": "Negative",
                     "type": "Button",
                     "id": "f314ed40-b662-46fb-9fa5-fca06cd0e8b8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Magnet",
+                    "type": "Button",
+                    "id": "042b73af-d51a-4cf7-9bc4-136e9bee4857",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
