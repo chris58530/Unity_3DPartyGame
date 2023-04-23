@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a4e82629f05364a9e44d7b2920c689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockForce: 1
+  knockForce: 25
 --- !u!54 &7473248
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -498,7 +498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &197928252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3919,6 +3919,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3127439858225569770, guid: 656f9fc69b3389a41af0c2cc7b29a5b6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6006873208323030036, guid: 656f9fc69b3389a41af0c2cc7b29a5b6, type: 3}
+      propertyPath: mapName
+      value: GamePlay1
+      objectReference: {fileID: 0}
     - target: {fileID: 6006873208323030036, guid: 656f9fc69b3389a41af0c2cc7b29a5b6, type: 3}
       propertyPath: speedText
       value: 
@@ -7313,7 +7321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4375496349871296744
 Transform:
   m_ObjectHideFlags: 0
