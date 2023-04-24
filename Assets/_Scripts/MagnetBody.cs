@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagnetBody : MonoBehaviour, IMagnet
+public class MagnetBody : MonoBehaviour
 {
-    public bool IsMagnetTag => this.tag == "Positive" || this.tag == "Negative" ;
-    public string LastTag;
+    public bool IsMagnetTag => this.tag == "Repel";
     [SerializeField]
     private float detectionRadius;
     [SerializeField]
@@ -19,17 +18,18 @@ public class MagnetBody : MonoBehaviour, IMagnet
     MeshRenderer meshRenderer;
     Rigidbody rb;
     PlayerMoveInput moveInput;
+    PlayerController controller;
     private void Awake()
     {
         rb = GetComponentInParent<Rigidbody>();
         moveInput = GetComponentInParent<PlayerMoveInput>();
+        controller = GetComponentInParent<PlayerController>();
         meshRenderer = GetComponent<MeshRenderer>();
     }
     private void Start()
     {
         ResetMagnet();
         isDoneMagnet = false;
-
     }
     void Update()
     {
@@ -75,20 +75,14 @@ public class MagnetBody : MonoBehaviour, IMagnet
     #endregion
     void MagentChange()
     {
-        if (moveInput.positiveArrow && !moveInput.nagativeArrow)
+        if (moveInput.MagnetZone)
         {
-            ScaleMagentZone("Positive", new Color(1, 0, 0, 0.3f));
-        }
-        else if (moveInput.nagativeArrow && !moveInput.positiveArrow)
-        {
-
-            ScaleMagentZone("Negative", new Color(0, 0, 1, 0.3f));
-        }
-        else if (!moveInput.positiveArrow && !moveInput.nagativeArrow && !isDoneMagnet)
+            ScaleMagentZone("Repel", new Color(0, 0, 1, 0.3f));
+        }     
+        if (!moveInput.MagnetZone || controller.IsStun)
         {
             ResetMagnet();
         }
-
     }
     void ResetMagnet()
     {
@@ -100,7 +94,6 @@ public class MagnetBody : MonoBehaviour, IMagnet
     }
     void ScaleMagentZone(string tag, Color color)
     {
-
         Vector3 currentScale = this.transform.localScale;
         if (currentScale.x < detectionRadius)
             this.transform.localScale += new Vector3(10, 10, 10) * Time.deltaTime;
@@ -108,10 +101,8 @@ public class MagnetBody : MonoBehaviour, IMagnet
         {
             meshRenderer.material.color = color;
             this.tag = tag;
-            LastTag = tag;
             isDoneMagnet = true;
             return;
         }
-
     }
 }
