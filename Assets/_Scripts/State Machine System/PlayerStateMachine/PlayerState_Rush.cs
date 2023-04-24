@@ -36,7 +36,6 @@ public class PlayerState_Rush : PlayerState
     public override void Exit()
     {
         controller.SwitchModel(1);
-        controller.SwitchTag("Walk");
 
     }
 

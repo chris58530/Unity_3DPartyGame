@@ -134,7 +134,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.45943126
-      value: 9.366699
+      value: 7
       inSlope: -11.55658
       outSlope: -11.55658
       tangentMode: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
       outWeight: 1
     - serializedVersion: 3
       time: 0.5
-      value: 8
+      value: 5
       inSlope: -20.080786
       outSlope: -20.080786
       tangentMode: 0
@@ -155,4 +155,5 @@ MonoBehaviour:
     m_RotationOrder: 4
   timeToGrow: 0.3
   speed: 0.4
+  magnetForce: 150
   target: {x: 0, y: 0, z: 0}

@@ -14,6 +14,13 @@ public class MagnetBody : MonoBehaviour
     [SerializeField, Header("磁力持續時間")]
     private float magnetTime;
     float currentMagnetTime;
+
+    [SerializeField, Header("能力冷卻時間")]
+    private float magnetCD;
+    float currentMagnetCD;
+
+    bool canUseMagnet;
+
     bool isDoneMagnet;
     MeshRenderer meshRenderer;
     Rigidbody rb;
@@ -37,11 +44,14 @@ public class MagnetBody : MonoBehaviour
         if (isDoneMagnet)
         {
             currentMagnetTime -= Time.deltaTime;
+            currentMagnetCD -= Time.deltaTime;
         }
         if (currentMagnetTime < 0)
         {
             ResetMagnet();
         }
+        if(currentMagnetCD <= 0)
+            canUseMagnet = false;
     }
     void OnTriggerStay(Collider other)
     {
@@ -78,7 +88,7 @@ public class MagnetBody : MonoBehaviour
         if (moveInput.MagnetZone)
         {
             ScaleMagentZone("Repel", new Color(0, 0, 1, 0.3f));
-        }     
+        }
         if (!moveInput.MagnetZone || controller.IsStun)
         {
             ResetMagnet();

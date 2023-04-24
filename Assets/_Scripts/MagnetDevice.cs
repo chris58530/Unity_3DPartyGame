@@ -33,26 +33,28 @@ public class MagnetDevice : MonoBehaviour
     }
     void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target, speed);
+       
 
         if (startTime > timeToGrow)
         {
             float scale = scaleCurve.Evaluate(startTime - timeToGrow);
             transform.localScale = new Vector3(scale, scale, scale);
+        }else  transform.position += transform.forward * 0.5f;
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "")
+        {
+
         }
+
     }
 
     void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent(out IMagnet magnet))
         {
-            if (other.tag == this.tag)
-            {
-                magnet.SetRepel(transform.position, magnetForce);
-                Debug.Log("setrepel");
-            }
-            else
-                magnet.SetAttract(transform.position, magnetForce);
+            magnet.SetAttract(transform.position, magnetForce);
         }
     }
 
