@@ -25,11 +25,19 @@ public class PlayerMagnet : MonoBehaviour
             Throw();
 
         }
+        else
+        {
+            Debug.Log(moveInput.StopThrow);
+            Debug.Log(magnetBody.IsMagnetTag);
+        }
+
     }
-    void  Throw()
+    void Throw()
     {
-            Instantiate(magnetObjectAttract, transform.position, transform.rotation);
-        
+        Debug.Log("throw");
+        magnetBody.isShoot = false;
+        Instantiate(magnetObjectAttract, transform.position, transform.rotation);
+
     }
 
 }

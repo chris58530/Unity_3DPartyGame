@@ -22,6 +22,7 @@ public class MagnetBody : MonoBehaviour
     bool canUseMagnet;
 
     bool isDoneMagnet;
+    public bool isShoot;
     MeshRenderer meshRenderer;
     Rigidbody rb;
     PlayerMoveInput moveInput;
@@ -44,14 +45,17 @@ public class MagnetBody : MonoBehaviour
         if (isDoneMagnet)
         {
             currentMagnetTime -= Time.deltaTime;
-            currentMagnetCD -= Time.deltaTime;
+            // currentMagnetCD -= Time.deltaTime;
         }
-        if (currentMagnetTime < 0)
+        if (currentMagnetTime < 0 || isShoot)
         {
+            isDoneMagnet = false;
+            currentMagnetTime = 0;
+
             ResetMagnet();
         }
-        if(currentMagnetCD <= 0)
-            canUseMagnet = false;
+        // if(currentMagnetCD <= 0)
+        //     canUseMagnet = false;
     }
     void OnTriggerStay(Collider other)
     {
@@ -96,10 +100,13 @@ public class MagnetBody : MonoBehaviour
     }
     void ResetMagnet()
     {
+        if (isDoneMagnet)
+            return;
         currentMagnetTime = magnetTime;
         isDoneMagnet = false;
+        isShoot = false;
         this.transform.localScale = new Vector3(0, 0, 0);
-        meshRenderer.material.color = new Color(0, 0, 0, 0f);
+        meshRenderer.material.color = new Color(0, 0, 0, 0.1f);
         this.tag = "None";
     }
     void ScaleMagentZone(string tag, Color color)

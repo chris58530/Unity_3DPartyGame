@@ -43,11 +43,7 @@ public class MagnetDevice : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "")
-        {
-
-        }
-
+   
     }
 
     void OnTriggerStay(Collider other)
