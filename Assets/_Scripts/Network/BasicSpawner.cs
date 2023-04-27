@@ -13,14 +13,14 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
     [SerializeField]
     private NetworkPrefabRef playerPrefabRef;
-    NetworkRigidbody rb;
 
     private Dictionary<PlayerRef, NetworkObject> playerList = new Dictionary<PlayerRef, NetworkObject>();
+
+
     void Start()
     {
         //自動適配房間，沒房間就開房，有就加入
         StartGame(GameMode.AutoHostOrClient);
-        
     }
     async void StartGame(GameMode mode)
     {
@@ -62,6 +62,24 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
+        var data = new NetworkInputData();
+        if (Input.GetKey(KeyCode.W))
+        {
+            data.AxisZ = 1;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            data.AxisZ = -1;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            data.AxisX = -1;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            data.AxisX = 1;
+        }
+        input.Set(data);
     }
 
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)

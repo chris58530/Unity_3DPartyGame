@@ -5,32 +5,21 @@ using Fusion;
 
 public class NetworkRB : NetworkBehaviour
 {
-    [Networked] private TickTimer life { get; set; }
-
-
-    private void Start()
-    {
+    Rigidbody rb;
+    private void Awake() {
+        rb = GetComponent<Rigidbody>();
     }
-
-    public void Init(Vector3 forward)
-    {
-        life = TickTimer.CreateFromSeconds(Runner, 5.0f);
-        GetComponent<Rigidbody>().velocity = forward;
-    }
-
     public override void FixedUpdateNetwork()
     {
-            GetComponent<Rigidbody>().AddForce(new Vector3(10, 0, 0));
-
-        if (life.Expired(Runner))
-            Runner.Despawn(Object);
-    }
-    public void OnInput(NetworkRunner runner, NetworkInput input)
-    {
-        var inputData = new NetworkInputData();
-
-        inputData.buttons.Set(1, Input.GetKey(KeyCode.A));
-
-        input.Set(inputData);
+        if (GetInput(out NetworkInputData inputData))
+        {
+            Vector3 moveDir = new Vector3(inputData.AxisX,0,inputData.AxisZ);
+            if (inputData.Move)
+            {
+                var rotation = Quaternion.LookRotation(moveDir);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 8);
+            }
+            rb.AddForce(moveDir * 100);
+        }
     }
 }

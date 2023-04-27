@@ -3,48 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Data/StateMachine/PlayerState/Walk", fileName = "PlayerState_Walk")]
-public class PlayerState_Walk : PlayerState
+public class PlayerState_Walk : NetworkPlayerState
 {
     public override void Enter()
     {
         base.Enter();
 
     }
-    public override void LogicUpdate()
+    public override void FixedUpdateNetwork()
     {
-        if (!moveInput.Move)
+        if (!Input.GetKey(KeyCode.S))
         {
             stateMachine.SwitchState(typeof(PlayerState_Idle));
         }
-        if (moveInput.speedtime > controller.switchToRush)
-        {
-            stateMachine.SwitchState(typeof(PlayerState_Rush));
-        }
-        if (moveInput.Jump)
-        {
-            stateMachine.SwitchState(typeof(PlayerState_Jump));
-        }
-        if (!controller.IsGround)
-        {
-            stateMachine.SwitchState(typeof(PlayerState_Fall));
-        }
-        if (controller.IsStun)
-        {
-            stateMachine.SwitchState(typeof(PlayerState_FallToGround));
-        }
+        // if (moveInput.speedtime > controller.switchToRush)
+        // {
+        //     stateMachine.SwitchState(typeof(PlayerState_Rush));
+        // }
+        // if (moveInput.Jump)
+        // {
+        //     stateMachine.SwitchState(typeof(PlayerState_Jump));
+        // }
+        // if (!controller.IsGround)
+        // {
+        //     stateMachine.SwitchState(typeof(PlayerState_Fall));
+        // }
+        // if (controller.IsStun)
+        // {
+        //     stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+        // }
 
     }
-    public override void PhysicUpdate()
-    {
-        // float v = moveInput.AxisX;
-        // float h = moveInput.AxisZ;
-        // Vector3 lookAt = new Vector3(h, 0, v);
+    // public override void PhysicUpdate()
+    // {
+    //     float v = moveInput.AxisX;
+    //     float h = moveInput.AxisZ;
+    //     Vector3 lookAt = new Vector3(h, 0, v);
 
-        controller.SetPlayerAddForce(controller.walkSpeed);
+    //     controller.SetPlayerAddForce(controller.walkSpeed);
 
-    }
-    public override void Exit()
-    {
-
-    }
+    // }
+ 
 }

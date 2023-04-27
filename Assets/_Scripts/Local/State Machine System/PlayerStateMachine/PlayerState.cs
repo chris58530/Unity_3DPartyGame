@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerState : ScriptableObject, IState
+public class PlayerState : ScriptableObject //IState
 {
     [SerializeField]
     private string[] stateName;
