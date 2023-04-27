@@ -479,7 +479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2665684681693271960
 Transform:
   m_ObjectHideFlags: 0
@@ -673,11 +673,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3749137213706096479}
   - component: {fileID: 3749137213706096478}
-  - component: {fileID: 3749137213706096465}
-  - component: {fileID: 3749137213706096464}
-  - component: {fileID: 3749137213706096467}
-  - component: {fileID: 3749137213706096466}
-  - component: {fileID: 3749137213706096469}
+  - component: {fileID: 8390513252708531225}
+  - component: {fileID: 8340990654886560388}
+  - component: {fileID: 6411453546465885877}
   m_Layer: 0
   m_Name: PlayerOriginal
   m_TagString: Walk
@@ -718,7 +716,20 @@ CapsuleCollider:
   m_Height: 0.99
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0.12}
---- !u!54 &3749137213706096465
+--- !u!114 &8390513252708531225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3749137213706096468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2cace8bc342e94fa63df1e462b8c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+--- !u!54 &8340990654886560388
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -733,8 +744,8 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 1
---- !u!114 &3749137213706096464
+  m_CollisionDetection: 0
+--- !u!114 &6411453546465885877
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -743,66 +754,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 3749137213706096468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbb997c56fe736146b002efd066eb1b3, type: 3}
+  m_Script: {fileID: 1710889294, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedtime: 0
-  speedText: {fileID: 0}
-  asset: {fileID: -944628639613478452, guid: 34d788214f803a344ab618f2fe66aa85, type: 3}
-  mapName: GamePlay1
---- !u!114 &3749137213706096467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3749137213706096468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7859cf6b113ab72439d39f637f0fc243, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsStun: 0
-  GetKnock: 0
-  walkSpeed: 100
-  rushSpeed: 150
-  switchToRush: 1
---- !u!114 &3749137213706096466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3749137213706096468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ed992d159551eb458f033dfb1338b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerStates:
-  - {fileID: 11400000, guid: 9e67d61a6bff8c14a84223e32a8c72c3, type: 2}
-  - {fileID: 11400000, guid: a2c775e3e0165d64c9a8b246b218f28f, type: 2}
-  - {fileID: 11400000, guid: 7687e4d8b3c33094eababb694f3873a3, type: 2}
-  - {fileID: 11400000, guid: 6035636f6f7f9a8418047fc48c6c2a1a, type: 2}
-  - {fileID: 11400000, guid: 4f0bf955e5727824593031d635037566, type: 2}
-  - {fileID: 11400000, guid: 8f94efd1c35afba41b529fc93e47235c, type: 2}
-  - {fileID: 11400000, guid: 2608cde914952904b9ae694072371f38, type: 2}
-  - {fileID: 11400000, guid: 8a56388a00b15a649bf7baef58899e92, type: 2}
-  - {fileID: 11400000, guid: 11bd33795c8c8a24cbfeb0f582a46372, type: 2}
-  - {fileID: 11400000, guid: 5d1f0aba4f3a5db43b778d62c4c49787, type: 2}
---- !u!114 &3749137213706096469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3749137213706096468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4fba480cf5173a4a859e807dc03c4a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magnetObjectAttract: {fileID: 4974045446007135739, guid: 29e1880b551fc9b4da706e9f377581c6, type: 3}
+  _interpolationDataSource: 2
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 3749137213706096479}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03
 --- !u!1 &4036916413137180476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,7 +991,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4666986713758929862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.51941484, z: -7.82}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1094,6 +1064,8 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 8336074941437167035}
+  - {fileID: 8390513252708531225}
+  - {fileID: 6411453546465885877}
   SimulationBehaviours: []
 --- !u!114 &8336074941437167035
 MonoBehaviour:
@@ -1203,7 +1175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5138271606588535950
 Transform:
   m_ObjectHideFlags: 0
@@ -1629,7 +1601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8158306652987066919
 Transform:
   m_ObjectHideFlags: 0

@@ -13,12 +13,14 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
     [SerializeField]
     private NetworkPrefabRef playerPrefabRef;
+    NetworkRigidbody rb;
 
     private Dictionary<PlayerRef, NetworkObject> playerList = new Dictionary<PlayerRef, NetworkObject>();
     void Start()
     {
         //自動適配房間，沒房間就開房，有就加入
         StartGame(GameMode.AutoHostOrClient);
+        
     }
     async void StartGame(GameMode mode)
     {
