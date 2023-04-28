@@ -10,7 +10,7 @@ public class NetworkStateMachine : NetworkBehaviour
     
     public override void FixedUpdateNetwork()
     {
-        currentState.FixedUpdateNetwork();
+        currentState.UpdateNetwork();
 
     }
     protected void SwitchOn(IState newState)

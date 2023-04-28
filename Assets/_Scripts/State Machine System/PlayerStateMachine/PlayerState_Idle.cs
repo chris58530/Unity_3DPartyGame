@@ -11,7 +11,7 @@ public class PlayerState_Idle : NetworkPlayerState
         base.Enter();
     }
 
-    public override void FixedUpdateNetwork()
+    public override void UpdateNetwork()
     {
        
       if(Input.GetKey(KeyCode.S)){

@@ -35,5 +35,5 @@ public class NetworkPlayerState :  ScriptableObject, IState
         }
     }
     public virtual void Exit() { }
-    public virtual void FixedUpdateNetwork() { }
+    public virtual void UpdateNetwork() { }
 }

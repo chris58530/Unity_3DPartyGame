@@ -10,7 +10,7 @@ public class PlayerState_Walk : NetworkPlayerState
         base.Enter();
 
     }
-    public override void FixedUpdateNetwork()
+    public override void UpdateNetwork()
     {
         if (!Input.GetKey(KeyCode.S))
         {
