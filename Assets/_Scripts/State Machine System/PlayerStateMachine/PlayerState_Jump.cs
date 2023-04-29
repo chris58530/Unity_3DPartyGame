@@ -5,20 +5,27 @@ using UnityEngine;
 
 public class PlayerState_Jump : NetworkPlayerState
 {
-    // [SerializeField]
-    // private float jumpForce;
+    [SerializeField]
+    private float jumpForce;
 
-    // [Header("Player Jump Speed"), SerializeField]
-    // private float moveSpeed;
+    [Header("Player Jump Speed"), SerializeField]
+    private float moveSpeed;
 
-    // public override void Enter()
-    // {
-    //     base.Enter();
+    public override void Enter()
+    {
+        base.Enter();
+        Debug.Log("jump");
 
-    //     controller.SetPlayerJump(jumpForce);
-    // }
-    // public override void LogicUpdate()
-    // {
+
+        // controller.SetPlayerJump(jumpForce);
+    }
+    public override void UpdateNetwork()
+    {
+        if(moveInput.StopJump)
+        {
+              stateMachine.SwitchState(typeof(PlayerState_Idle));
+        }
+
     //     if (controller.IsFalling || moveInput.StopJump)
     //     {
     //         stateMachine.SwitchState(typeof(PlayerState_Fall));
@@ -27,7 +34,7 @@ public class PlayerState_Jump : NetworkPlayerState
     //     {
     //         stateMachine.SwitchState(typeof(PlayerState_FallToGround));
     //     }
-    // }
+    }
     // public override void PhysicUpdate()
     // {
     //     if (moveInput.speedtime > controller.switchToRush)

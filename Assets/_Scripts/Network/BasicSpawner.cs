@@ -9,33 +9,71 @@ using UnityEngine.SceneManagement;
 public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 {
     [SerializeField]
-    private NetworkRunner networkRunner = null;
+    private NetworkPlayer playerPrefab;
+    NetworkPlayerInput playerInput;
 
-    [SerializeField]
-    private NetworkPrefabRef playerPrefabRef;
-
-    private Dictionary<PlayerRef, NetworkObject> playerList = new Dictionary<PlayerRef, NetworkObject>();
-
-
+    // private Dictionary<PlayerRef, NetworkObject> playerList = new Dictionary<PlayerRef, NetworkObject>();
     void Start()
     {
-        //¦Û°Ê¾A°t©Ğ¶¡¡A¨S©Ğ¶¡´N¶}©Ğ¡A¦³´N¥[¤J
-        StartGame(GameMode.AutoHostOrClient);
+        // //è‡ªå‹•é©é…æˆ¿é–“ï¼Œæ²’æˆ¿é–“å°±é–‹æˆ¿ï¼Œæœ‰å°±åŠ å…¥
+        // StartGame(GameMode.AutoHostOrClient);
     }
-    async void StartGame(GameMode mode)
-    {
-        //¥»¦aª±®a¥i¥H´£¨Ñinputµ¹server
-        networkRunner.ProvideInput = true;
+    // async void StartGame(GameMode mode)
+    // {
+    //     //æœ¬åœ°ç©å®¶å¯ä»¥æä¾›inputçµ¦server
+    //     networkRunner.ProvideInput = true;
 
-        //¤§«á¥i¯à±qSessionName§ó§ïRoomÅıª±®a¥[¤J¡A²{¦bÀ³¸Ó¬O³s½u´N¶]¶iFusion Room©Ğ¶¡
-        await networkRunner.StartGame(new StartGameArgs()
+    //     //ä¹‹å¾Œå¯èƒ½å¾SessionNameæ›´æ”¹Roomè®“ç©å®¶åŠ å…¥ï¼Œç¾åœ¨æ‡‰è©²æ˜¯é€£ç·šå°±è·‘é€²Fusion Roomæˆ¿é–“
+    //     await networkRunner.StartGame(new StartGameArgs()
+    //     {
+    //         GameMode = mode,
+    //         SessionName = "Fusion Room",
+    //         Scene = SceneManager.GetActiveScene().buildIndex,
+    //         SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
+    //     });
+    // }
+    public void OnInput(NetworkRunner runner, NetworkInput input)
+    {
+        if (playerInput == null && NetworkPlayer.Local != null)
         {
-            GameMode = mode,
-            SessionName = "Fusion Room",
-            Scene = SceneManager.GetActiveScene().buildIndex,
-            SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
-        });
+            playerInput = NetworkPlayer.Local.GetComponent<NetworkPlayerInput>();
+            Debug.Log("didnt get input");
+
+        }
+        if (playerInput != null)
+        {
+            Debug.Log("get input");
+            input.Set(playerInput.GetNetworkInput());
+        }
     }
+
+    public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)
+    {
+    }
+
+    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
+    {
+        // //å‡ºç”Ÿç©å®¶ä¸¦ä½¿ç”¨runner.Spawm()æ•ˆæœèˆ‡ Unity Instantiate ç›¸åŒ
+        Vector3 spawnPosition = new Vector3(0, 2, 0);
+        // NetworkObject networkObjectPlayer = runner.Spawn(playerPrefabRef, spawnPosition, Quaternion.identity, player);
+        // playerList.Add(player, networkObjectPlayer);
+
+        if (runner.IsServer)
+        {
+            runner.Spawn(playerPrefab, spawnPosition, Quaternion.identity, player);
+        }
+    }
+
+    public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
+    {
+        // if (playerList.TryGetValue(player, out NetworkObject networkObject))
+        // {
+        //     //Runner.Despawn èˆ‡ Unity Destroy ç›¸é€š
+        //     runner.Despawn(networkObject);
+        //     playerList.Remove(player);
+        // }
+    }
+
     public void OnConnectedToServer(NetworkRunner runner)
     {
     }
@@ -60,49 +98,6 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     {
     }
 
-    public void OnInput(NetworkRunner runner, NetworkInput input)
-    {
-        var data = new NetworkInputData();
-        if (Input.GetKey(KeyCode.W))
-        {
-            data.AxisZ = 1;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            data.AxisZ = -1;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            data.AxisX = -1;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            data.AxisX = 1;
-        }
-        input.Set(data);
-    }
-
-    public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)
-    {
-    }
-
-    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
-    {
-        //¥X¥Íª±®a¨Ã¨Ï¥Îrunner.Spawm()®ÄªG»P Unity Instantiate ¬Û¦P
-        Vector3 spawnPosition = new Vector3(0, 2, 0);
-        NetworkObject networkObjectPlayer = runner.Spawn(playerPrefabRef, spawnPosition, Quaternion.identity, player);
-        playerList.Add(player, networkObjectPlayer);
-    }
-
-    public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
-    {
-        if (playerList.TryGetValue(player, out NetworkObject networkObject))
-        {
-            //Runner.Despawn »P Unity Destroy ¬Û³q
-            runner.Despawn(networkObject);
-            playerList.Remove(player);
-        }
-    }
 
     public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ArraySegment<byte> data)
     {

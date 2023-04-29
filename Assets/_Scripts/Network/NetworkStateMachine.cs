@@ -9,9 +9,8 @@ public class NetworkStateMachine : NetworkBehaviour
     protected Dictionary<System.Type, IState> stateTable;
     
     public override void FixedUpdateNetwork()
-    {
+    {        
         currentState.UpdateNetwork();
-
     }
     protected void SwitchOn(IState newState)
     {

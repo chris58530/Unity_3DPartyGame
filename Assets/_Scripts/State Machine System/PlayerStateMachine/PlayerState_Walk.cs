@@ -8,14 +8,17 @@ public class PlayerState_Walk : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("walk");
 
     }
     public override void UpdateNetwork()
     {
-        if (!Input.GetKey(KeyCode.S))
+        if (!moveInput.Move)
         {
             stateMachine.SwitchState(typeof(PlayerState_Idle));
         }
+        controller.SetPlayerAddForce(100);
+        
         // if (moveInput.speedtime > controller.switchToRush)
         // {
         //     stateMachine.SwitchState(typeof(PlayerState_Rush));

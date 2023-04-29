@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
-public enum Button{
-    JUMP,
-    FIRE
-}
+
 public struct NetworkInputData : INetworkInput
 {
-    public NetworkButtons buttons;
+    public NetworkBool IsJumpPressed;
+    public NetworkBool IsFirePressed;
     public Vector3 direction;
     
     public float AxisX ;
     public float AxisZ;
-    public NetworkBool Move => AxisX != 0 || AxisZ != 0;
+    public NetworkBool Move;
 }

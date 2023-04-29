@@ -10,23 +10,30 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
     private NetworkPlayerState[] playerStates;
 
     Animator animator;
-    NetworkInputData inputData;
+    NetworkPlayerController controller;
+    NetworkPlayerInput moveInput;
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+        moveInput = GetComponent<NetworkPlayerInput>();
+        controller = GetComponent<NetworkPlayerController>();
+         playerStates[0] = new PlayerState_Idle();
+         playerStates[1] = new PlayerState_Walk();
+         playerStates[2] = new PlayerState_Jump();
+     
 
         stateTable = new Dictionary<System.Type, IState>(playerStates.Length);
         foreach (NetworkPlayerState state in playerStates)
         {
             //初始化資料加入state.Initializ()中
-            state.Initialize(animator, this,inputData);
+            state.Initialize(animator, this, controller, moveInput);
             stateTable.Add(state.GetType(), state);
-        }     
-        
+        }
+
     }
-  
-    private void Start()
+
+    public override void Spawned()
     {
         SwitchOn(stateTable[typeof(PlayerState_Idle)]);
     }
