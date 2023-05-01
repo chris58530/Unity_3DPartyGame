@@ -6,32 +6,35 @@ using Fusion.Sockets;
 using System;
 using UnityEngine.SceneManagement;
 
-public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
+public class BasicSpawner : Singleton<BasicSpawner>, INetworkRunnerCallbacks
 {
     [SerializeField]
-    private NetworkPlayer playerPrefab;
+    private NetworkRunner networkRunner;
+    [SerializeField]
+    private NetworkPrefabRef[] playerPrefab;
+    int playerCount;
     NetworkPlayerInput playerInput;
 
-    // private Dictionary<PlayerRef, NetworkObject> playerList = new Dictionary<PlayerRef, NetworkObject>();
+    public Dictionary<PlayerRef, NetworkObject> playerList = new Dictionary<PlayerRef, NetworkObject>();
     void Start()
     {
-        // //自動適配房間，沒房間就開房，有就加入
-        // StartGame(GameMode.AutoHostOrClient);
+        playerCount = 0;
+        //自動適配房間，沒房間就開房，有就加入
+        StartGame(GameMode.AutoHostOrClient);
     }
-    // async void StartGame(GameMode mode)
-    // {
-    //     //本地玩家可以提供input給server
-    //     networkRunner.ProvideInput = true;
+    async void StartGame(GameMode mode)
+    {
+        //本地玩家可以提供input給server
+        networkRunner.ProvideInput = true;
 
-    //     //之後可能從SessionName更改Room讓玩家加入，現在應該是連線就跑進Fusion Room房間
-    //     await networkRunner.StartGame(new StartGameArgs()
-    //     {
-    //         GameMode = mode,
-    //         SessionName = "Fusion Room",
-    //         Scene = SceneManager.GetActiveScene().buildIndex,
-    //         SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
-    //     });
-    // }
+        await networkRunner.StartGame(new StartGameArgs()
+        {
+            GameMode = mode,
+            SessionName = "Fusion Room",
+            Scene = SceneManager.GetActiveScene().buildIndex,
+            SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
+        });
+    }
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
         if (playerInput == null && NetworkPlayer.Local != null)
@@ -40,11 +43,12 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             Debug.Log("didnt get input");
 
         }
-        if (playerInput != null)
+        if (playerInput != null && runner.IsPlayer)
         {
             Debug.Log("get input");
             input.Set(playerInput.GetNetworkInput());
         }
+
     }
 
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)
@@ -55,31 +59,37 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     {
         // //出生玩家並使用runner.Spawm()效果與 Unity Instantiate 相同
         Vector3 spawnPosition = new Vector3(0, 2, 0);
-        // NetworkObject networkObjectPlayer = runner.Spawn(playerPrefabRef, spawnPosition, Quaternion.identity, player);
-        // playerList.Add(player, networkObjectPlayer);
+        NetworkObject networkObjectPlayer = runner.Spawn(playerPrefab[playerCount], spawnPosition, Quaternion.identity, player);
+        playerList.Add(player, networkObjectPlayer);
+        Debug.Log("playerid:" + player.PlayerId);
 
-        if (runner.IsServer)
-        {
-            runner.Spawn(playerPrefab, spawnPosition, Quaternion.identity, player);
-        }
+        // if (runner.IsServer)
+        // {
+        //     runner.Spawn(playerPrefab[playerCount], spawnPosition, Quaternion.identity, player);
+        // }
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
     {
-        // if (playerList.TryGetValue(player, out NetworkObject networkObject))
-        // {
-        //     //Runner.Despawn 與 Unity Destroy 相通
-        //     runner.Despawn(networkObject);
-        //     playerList.Remove(player);
-        // }
+        if (playerList.TryGetValue(player, out NetworkObject networkObject))
+        {
+            //Runner.Despawn 與 Unity Destroy 相通
+            runner.Despawn(networkObject);
+            playerList.Remove(player);
+        }
     }
 
     public void OnConnectedToServer(NetworkRunner runner)
     {
+        Debug.Log("OnConnectedToServer");
+
     }
 
     public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason)
     {
+
+        Debug.Log("OnConnectFailed");
+
     }
 
     public void OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request, byte[] token)

@@ -6,4 +6,6 @@ public enum SceneType{
 }
 public enum PlayerType{
     FOX,TANUKI,BAT,BRID
+}public enum MapType{
+    Map01,Map02
 }

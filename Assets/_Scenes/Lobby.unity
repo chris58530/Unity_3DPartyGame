@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 236435725}
+  - component: {fileID: 236435727}
   - component: {fileID: 236435726}
   m_Layer: 0
   m_Name: Network Runner Handler
@@ -164,10 +165,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 236435723}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93b22518dbf01a2479d21c33c3146d49, type: 3}
+  m_Script: {fileID: 11500000, guid: b1fcb3049be95c04db6584ece85ddc83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkRunnerPrefab: {fileID: 8519512510377763845, guid: 31eba56311cb8bf41bf82d4b8164bba8, type: 3}
+  networkRunner: {fileID: 236435727}
+  playerPrefab:
+  - RawGuidValue: ce377d1198e4db54083d4fefa34ffa23
+--- !u!114 &236435727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236435723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1199893898, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &337020747
 GameObject:
   m_ObjectHideFlags: 0

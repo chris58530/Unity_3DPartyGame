@@ -12,4 +12,5 @@ public struct NetworkInputData : INetworkInput
     public float AxisX ;
     public float AxisZ;
     public NetworkBool Move;
+    
 }

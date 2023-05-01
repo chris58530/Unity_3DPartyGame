@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 
-public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
+public class NetworkPlayer : NetworkBehaviour
 {
     public static NetworkPlayer Local { get; set; }
 
@@ -13,12 +13,12 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
             Local = this;
     }
 
-    public void PlayerLeft(PlayerRef player)
-    {
-        if (player == Object.InputAuthority)
-        {
-            Runner.Despawn(Object);
-        }
+    // public void PlayerLeft(PlayerRef player)
+    // {
+    //     if (player == Object.InputAuthority)
+    //     {
+    //         Runner.Despawn(Object);
+    //     }
        
-    }
+    // }
 }

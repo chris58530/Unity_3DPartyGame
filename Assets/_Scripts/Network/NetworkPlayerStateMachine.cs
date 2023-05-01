@@ -18,11 +18,7 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
         animator = GetComponentInChildren<Animator>();
         moveInput = GetComponent<NetworkPlayerInput>();
         controller = GetComponent<NetworkPlayerController>();
-         playerStates[0] = new PlayerState_Idle();
-         playerStates[1] = new PlayerState_Walk();
-         playerStates[2] = new PlayerState_Jump();
-     
-
+        
         stateTable = new Dictionary<System.Type, IState>(playerStates.Length);
         foreach (NetworkPlayerState state in playerStates)
         {
