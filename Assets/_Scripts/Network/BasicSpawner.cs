@@ -43,7 +43,7 @@ public class BasicSpawner : Singleton<BasicSpawner>, INetworkRunnerCallbacks
             Debug.Log("didnt get input");
 
         }
-        if (playerInput != null && runner.IsPlayer)
+        if (playerInput != null)
         {
             Debug.Log("get input");
             input.Set(playerInput.GetNetworkInput());
@@ -57,12 +57,13 @@ public class BasicSpawner : Singleton<BasicSpawner>, INetworkRunnerCallbacks
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
-        // //出生玩家並使用runner.Spawm()效果與 Unity Instantiate 相同
-        Vector3 spawnPosition = new Vector3(0, 2, 0);
-        NetworkObject networkObjectPlayer = runner.Spawn(playerPrefab[playerCount], spawnPosition, Quaternion.identity, player);
-        playerList.Add(player, networkObjectPlayer);
-        Debug.Log("playerid:" + player.PlayerId);
-
+        if (runner.IsServer)
+        {
+            Vector3 spawnPosition = new Vector3(0, 2, 0);
+            NetworkObject networkObjectPlayer = runner.Spawn(playerPrefab[playerCount], spawnPosition, Quaternion.identity, player);
+            playerList.Add(player, networkObjectPlayer);
+            Debug.Log("playerid:" + player.PlayerId);
+        }
         // if (runner.IsServer)
         // {
         //     runner.Spawn(playerPrefab[playerCount], spawnPosition, Quaternion.identity, player);

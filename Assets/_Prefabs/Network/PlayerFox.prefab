@@ -872,6 +872,7 @@ GameObject:
   - component: {fileID: -4278787294862280879}
   - component: {fileID: 1982020248618896620}
   - component: {fileID: 6383509305411196051}
+  - component: {fileID: 6092203951960921528}
   m_Layer: 0
   m_Name: PlayerFox
   m_TagString: Untagged
@@ -997,6 +998,7 @@ MonoBehaviour:
   - {fileID: -4278787294862280879}
   - {fileID: 1982020248618896620}
   - {fileID: 6383509305411196051}
+  - {fileID: 6092203951960921528}
   SimulationBehaviours: []
 --- !u!114 &1937045688732522104
 MonoBehaviour:
@@ -1010,8 +1012,8 @@ MonoBehaviour:
   m_Script: {fileID: 1710889294, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
-  InterpolationSpace: 1
+  _interpolationDataSource: 2
+  InterpolationSpace: 0
   InterpolationTarget: {fileID: 4666986713758929865}
   InterpolateErrorCorrection: 1
   InterpolatedErrorCorrectionSettings:
@@ -1051,7 +1053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54742126b323c2b4a86b33aa445c05bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 2
   IsStun: 0
   GetKnock: 0
   walkSpeed: 0
@@ -1069,7 +1071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508e973f5911f114cadb7e071bbd7cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 2
 --- !u!114 &6383509305411196051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1082,11 +1084,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100956af9b3707945b5a049f873db265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 2
   playerStates:
   - {fileID: 11400000, guid: 6035636f6f7f9a8418047fc48c6c2a1a, type: 2}
   - {fileID: 11400000, guid: 5d1f0aba4f3a5db43b778d62c4c49787, type: 2}
   - {fileID: 11400000, guid: b826c6bbf06496a4798899c462492c81, type: 2}
+--- !u!114 &6092203951960921528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4666986713758929862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  Animator: {fileID: 1652727830502012997}
+  TotalWords: 2
+  SyncSettings: 127
+  FloatAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: -814817977
+  TimeAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: 1061325578
+  WeightAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: -814817977
+  StateHashes: 000000008b30c5cf60f34d323270625b602a1d7285a0a4e46bc26c912b1a167c7940695559efc849ddcc1ea6e67a3208b4204d21307e46536224397a57426da414ec5ea7d4db06f83f188e05
+  TriggerHashes: 00000000
 --- !u!1 &4712240839064534844
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class PlayerState_Idle : NetworkPlayerState
 
     public override void UpdateNetwork()
     {
+    
         if (moveInput.Move)
         {
             stateMachine.SwitchState(typeof(PlayerState_Walk));

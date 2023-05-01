@@ -4,13 +4,18 @@ using UnityEngine;
 using Fusion;
 public class NetworkStateMachine : NetworkBehaviour
 {
-   
+
     IState currentState;
     protected Dictionary<System.Type, IState> stateTable;
-    
+
     public override void FixedUpdateNetwork()
-    {        
-        currentState.UpdateNetwork();
+    {
+        if(Object.HasInputAuthority)
+            currentState.UpdateNetwork();
+
+
+
+
     }
     protected void SwitchOn(IState newState)
     {
