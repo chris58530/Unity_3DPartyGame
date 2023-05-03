@@ -10,11 +10,10 @@ public class NetworkStateMachine : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        if(Object.HasInputAuthority)
+        if (Object.HasInputAuthority)
             currentState.UpdateNetwork();
 
-
-
+       
 
     }
     protected void SwitchOn(IState newState)

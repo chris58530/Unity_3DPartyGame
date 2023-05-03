@@ -35,7 +35,7 @@ public class PlayerMagnet : MonoBehaviour
     void Throw()
     {
         Debug.Log("throw");
-        magnetBody.isShoot = false;
+        magnetBody.isShoot = true;
         Instantiate(magnetObjectAttract, transform.position, transform.rotation);
 
     }

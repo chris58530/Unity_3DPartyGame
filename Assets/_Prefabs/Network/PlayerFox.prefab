@@ -868,7 +868,6 @@ GameObject:
   - component: {fileID: 6428385670780042841}
   - component: {fileID: 7776331506645995955}
   - component: {fileID: 1937045688732522104}
-  - component: {fileID: 8657721322999413986}
   - component: {fileID: -4278787294862280879}
   - component: {fileID: 1982020248618896620}
   - component: {fileID: 6383509305411196051}
@@ -994,7 +993,6 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 1937045688732522104}
-  - {fileID: 8657721322999413986}
   - {fileID: -4278787294862280879}
   - {fileID: 1982020248618896620}
   - {fileID: 6383509305411196051}
@@ -1028,19 +1026,6 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
---- !u!114 &8657721322999413986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4666986713758929862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513febb0e8ad7314aa0157125e103ce1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
 --- !u!114 &-4278787294862280879
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,68 +6,57 @@ using Fusion.Sockets;
 using System;
 using UnityEngine.SceneManagement;
 
-public class BasicSpawner : Singleton<BasicSpawner>, INetworkRunnerCallbacks
+public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 {
+    private GameManager gameManager;
+    private NetworkRunner networkRunner = null;
     [SerializeField]
-    private NetworkRunner networkRunner;
-    [SerializeField]
-    private NetworkPrefabRef[] playerPrefab;
-    int playerCount;
+    private NetworkObject playerPrefab = null;
+
+
     NetworkPlayerInput playerInput;
 
     public Dictionary<PlayerRef, NetworkObject> playerList = new Dictionary<PlayerRef, NetworkObject>();
     void Start()
     {
-        playerCount = 0;
-        //自動適配房間，沒房間就開房，有就加入
-        StartGame(GameMode.AutoHostOrClient);
+        gameManager= GameManager.Instance;
+        networkRunner = gameManager.Runner;
+        networkRunner.AddCallbacks(this);
+        SpawnAllPlayers();
     }
-    async void StartGame(GameMode mode)
+    private void SpawnAllPlayers()
     {
-        //本地玩家可以提供input給server
-        networkRunner.ProvideInput = true;
-
-        await networkRunner.StartGame(new StartGameArgs()
+        foreach (var player in gameManager.PlayerList.Keys)
         {
-            GameMode = mode,
-            SessionName = "Fusion Room",
-            Scene = SceneManager.GetActiveScene().buildIndex,
-            SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
-        });
+            Vector3 spawnPosition = Vector3.zero;
+            NetworkObject networkPlayerObject = networkRunner.Spawn(playerPrefab, spawnPosition, Quaternion.identity, player);
+
+            networkRunner.SetPlayerObject(player, networkPlayerObject);
+
+            playerList.Add(player, networkPlayerObject);
+        }
     }
+
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
-        if (playerInput == null && NetworkPlayer.Local != null)
-        {
-            playerInput = NetworkPlayer.Local.GetComponent<NetworkPlayerInput>();
-            Debug.Log("didnt get input");
+        var data = new NetworkInputData();
 
-        }
-        if (playerInput != null)
-        {
-            Debug.Log("get input");
-            input.Set(playerInput.GetNetworkInput());
-        }
-
+        float xInput = Input.GetAxisRaw("Horizontal");
+        float yInput = Input.GetAxisRaw("Vertical");
+        Debug.Log(xInput + yInput);
+        input.Set(data);
     }
 
-    public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)
-    {
-    }
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
-        if (runner.IsServer)
-        {
-            Vector3 spawnPosition = new Vector3(0, 2, 0);
-            NetworkObject networkObjectPlayer = runner.Spawn(playerPrefab[playerCount], spawnPosition, Quaternion.identity, player);
-            playerList.Add(player, networkObjectPlayer);
-            Debug.Log("playerid:" + player.PlayerId);
-        }
-        // if (runner.IsServer)
-        // {
-        //     runner.Spawn(playerPrefab[playerCount], spawnPosition, Quaternion.identity, player);
-        // }
+
+        Vector3 spawnPosition = Vector3.zero;
+        NetworkObject networkPlayerObject = runner.Spawn(playerPrefab, spawnPosition, Quaternion.identity, player);
+
+        runner.SetPlayerObject(player, networkPlayerObject);
+
+        playerList.Add(player, networkPlayerObject);
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
@@ -78,7 +67,10 @@ public class BasicSpawner : Singleton<BasicSpawner>, INetworkRunnerCallbacks
             runner.Despawn(networkObject);
             playerList.Remove(player);
         }
+
     }
+    #region unuse callbacks function
+
 
     public void OnConnectedToServer(NetworkRunner runner)
     {
@@ -86,6 +78,9 @@ public class BasicSpawner : Singleton<BasicSpawner>, INetworkRunnerCallbacks
 
     }
 
+    public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)
+    {
+    }
     public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason)
     {
 
@@ -133,4 +128,5 @@ public class BasicSpawner : Singleton<BasicSpawner>, INetworkRunnerCallbacks
     public void OnUserSimulationMessage(NetworkRunner runner, SimulationMessagePtr message)
     {
     }
+    #endregion
 }
