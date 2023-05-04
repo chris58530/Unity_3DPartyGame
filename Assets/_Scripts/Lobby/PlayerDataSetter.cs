@@ -1,3 +1,4 @@
+using Fusion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,8 @@ public class PlayerDataSetter : MonoBehaviour
             Model[i].SetActive(false);
             if(Model[i].name == obj.name){
                 Model[i].SetActive(true);
+                GameManager.Instance.PlayerCharacter = obj.name;
+                GameManager.Instance.SetPlayerNetworkData();
             }
         }
 

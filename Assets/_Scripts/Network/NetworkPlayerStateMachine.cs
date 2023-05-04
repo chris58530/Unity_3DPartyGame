@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
 
 public class NetworkPlayerStateMachine : NetworkStateMachine
 {
@@ -9,16 +10,16 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
     [SerializeField]
     private NetworkPlayerState[] playerStates;
 
-    Animator animator;
+    NetworkMecanimAnimator animator;
     NetworkPlayerController controller;
     NetworkPlayerInput moveInput;
 
     private void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponentInChildren<NetworkMecanimAnimator>();
         moveInput = GetComponent<NetworkPlayerInput>();
         controller = GetComponent<NetworkPlayerController>();
-        
+       
         stateTable = new Dictionary<System.Type, IState>(playerStates.Length);
         foreach (NetworkPlayerState state in playerStates)
         {
@@ -28,7 +29,7 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
         }
 
     }
-
+    
     public override void Spawned()
     {
         SwitchOn(stateTable[typeof(PlayerState_Idle)]);

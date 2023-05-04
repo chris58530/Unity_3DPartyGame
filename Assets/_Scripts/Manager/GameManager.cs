@@ -25,7 +25,7 @@ public class GameManager : Singleton<GameManager>
     public Color TankColor = new Color(1, 1, 1, 1);
     public Color BarrelColor = new Color(1, 1, 1, 1);
     public string PlayerName = null;
-
+    public string PlayerCharacter = null;
     public Dictionary<PlayerRef, NetworkPlayerData> PlayerList = new Dictionary<PlayerRef, NetworkPlayerData>();
 
     public event Action OnPlayerListUpdated = null;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
 
 public class NetworkPlayerState :  ScriptableObject, IState
 {
@@ -9,18 +10,18 @@ public class NetworkPlayerState :  ScriptableObject, IState
     [SerializeField, Range(0f, 1f)]
     private float transitionDuartion = 0.1f;
     int stateHash;
-    protected Animator animator;
+    protected NetworkMecanimAnimator animator;
     protected NetworkPlayerStateMachine stateMachine;
     protected NetworkPlayerController controller;
     protected NetworkPlayerInput moveInput;
 
 
-    protected bool IsAnimationFinish => StateDuration >= animator.GetCurrentAnimatorStateInfo(0).length;
+    protected bool IsAnimationFinish => StateDuration >= animator.Animator.GetCurrentAnimatorStateInfo(0).length;
 
     protected float StateDuration => Time.time - stateStartTime;
     float stateStartTime;
   
-    public void Initialize(Animator animator, NetworkPlayerStateMachine stateMachine,
+    public void Initialize(NetworkMecanimAnimator animator, NetworkPlayerStateMachine stateMachine,
     NetworkPlayerController controller,NetworkPlayerInput moveInput)
     {
         this.animator = animator;
@@ -35,7 +36,8 @@ public class NetworkPlayerState :  ScriptableObject, IState
         {
             //stateName[Random.Range(0, stateName.Length)] = 隨機抽一個動畫
             stateHash = Animator.StringToHash(stateName[Random.Range(0, stateName.Length)]);
-            animator.CrossFade(stateHash, transitionDuartion);
+            animator.Animator.CrossFade(stateHash, transitionDuartion);
+           
         }
     }
     public virtual void Exit() { }

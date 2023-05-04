@@ -39,6 +39,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
+
         var data = new NetworkInputData();
 
         float xInput = Input.GetAxisRaw("Horizontal");

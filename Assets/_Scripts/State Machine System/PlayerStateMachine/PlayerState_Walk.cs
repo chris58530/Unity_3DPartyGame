@@ -11,6 +11,7 @@ public class PlayerState_Walk : NetworkPlayerState
         Debug.Log("walk");
 
     }
+    
     public override void UpdateNetwork()
     {
         if (!moveInput.Move)

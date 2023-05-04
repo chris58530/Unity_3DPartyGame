@@ -11,9 +11,10 @@ public class NetworkStateMachine : NetworkBehaviour
     public override void FixedUpdateNetwork()
     {
         if (Object.HasInputAuthority)
+        {
             currentState.UpdateNetwork();
-
-       
+            Debug.Log($"player i:{Object.Id}");
+        }
 
     }
     protected void SwitchOn(IState newState)

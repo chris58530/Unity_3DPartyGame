@@ -866,14 +866,14 @@ GameObject:
   - component: {fileID: 8970208450935206170}
   - component: {fileID: 2289118621539939661}
   - component: {fileID: 6428385670780042841}
+  - component: {fileID: 5042843275478075575}
   - component: {fileID: 7776331506645995955}
+  - component: {fileID: 8119410609197618785}
   - component: {fileID: 1937045688732522104}
-  - component: {fileID: -4278787294862280879}
-  - component: {fileID: 1982020248618896620}
-  - component: {fileID: 6383509305411196051}
-  - component: {fileID: 6092203951960921528}
+  - component: {fileID: 1719924909180971354}
+  - component: {fileID: 2193425724439918586}
   m_Layer: 0
-  m_Name: PlayerFox
+  m_Name: Fox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -970,6 +970,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &5042843275478075575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4666986713758929862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 100956af9b3707945b5a049f873db265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  playerStates:
+  - {fileID: 11400000, guid: 6035636f6f7f9a8418047fc48c6c2a1a, type: 2}
+  - {fileID: 11400000, guid: b826c6bbf06496a4798899c462492c81, type: 2}
+  - {fileID: 11400000, guid: 5d1f0aba4f3a5db43b778d62c4c49787, type: 2}
 --- !u!114 &7776331506645995955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -992,12 +1009,25 @@ MonoBehaviour:
     RawGuidValue: ce377d1198e4db54083d4fefa34ffa23
   NestedObjects: []
   NetworkedBehaviours:
+  - {fileID: 5042843275478075575}
+  - {fileID: 8119410609197618785}
   - {fileID: 1937045688732522104}
-  - {fileID: -4278787294862280879}
-  - {fileID: 1982020248618896620}
-  - {fileID: 6383509305411196051}
-  - {fileID: 6092203951960921528}
+  - {fileID: 1719924909180971354}
+  - {fileID: 2193425724439918586}
   SimulationBehaviours: []
+--- !u!114 &8119410609197618785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4666986713758929862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508e973f5911f114cadb7e071bbd7cec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
 --- !u!114 &1937045688732522104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1012,7 +1042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 2
   InterpolationSpace: 0
-  InterpolationTarget: {fileID: 4666986713758929865}
+  InterpolationTarget: {fileID: 2135968016411206398}
   InterpolateErrorCorrection: 1
   InterpolatedErrorCorrectionSettings:
     MinRate: 3.3
@@ -1026,7 +1056,7 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
---- !u!114 &-4278787294862280879
+--- !u!114 &1719924909180971354
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1038,43 +1068,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54742126b323c2b4a86b33aa445c05bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 2
+  _interpolationDataSource: 0
   IsStun: 0
   GetKnock: 0
-  walkSpeed: 0
-  rushSpeed: 0
+  walkSpeed: 30
+  rushSpeed: 30
   switchToRush: 1
---- !u!114 &1982020248618896620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4666986713758929862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 508e973f5911f114cadb7e071bbd7cec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 2
---- !u!114 &6383509305411196051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4666986713758929862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 100956af9b3707945b5a049f873db265, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 2
-  playerStates:
-  - {fileID: 11400000, guid: 6035636f6f7f9a8418047fc48c6c2a1a, type: 2}
-  - {fileID: 11400000, guid: 5d1f0aba4f3a5db43b778d62c4c49787, type: 2}
-  - {fileID: 11400000, guid: b826c6bbf06496a4798899c462492c81, type: 2}
---- !u!114 &6092203951960921528
+--- !u!114 &2193425724439918586
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1088,8 +1088,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   Animator: {fileID: 1652727830502012997}
-  TotalWords: 2
-  SyncSettings: 127
+  TotalWords: 0
+  SyncSettings: 79
   FloatAccuracy:
     _value: 0
     _inverse: 0
