@@ -6,5 +6,5 @@ public interface IState
 {
     void Enter();
     void Exit();
-    void UpdateNetwork();
+    void UpdateNetwork(NetworkInputData inputData);
 }

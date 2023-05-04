@@ -11,41 +11,44 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private GameManager gameManager;
     private NetworkRunner networkRunner = null;
     [SerializeField]
-    private NetworkObject playerPrefab = null;
-
-
+    private NetworkObject[] playerPrefab = null;
+    int playerCount;
+    
     NetworkPlayerInput playerInput;
 
     public Dictionary<PlayerRef, NetworkObject> playerList = new Dictionary<PlayerRef, NetworkObject>();
     void Start()
     {
-        gameManager= GameManager.Instance;
+        gameManager = GameManager.Instance;
         networkRunner = gameManager.Runner;
         networkRunner.AddCallbacks(this);
         SpawnAllPlayers();
+
     }
     private void SpawnAllPlayers()
     {
         foreach (var player in gameManager.PlayerList.Keys)
         {
             Vector3 spawnPosition = Vector3.zero;
-            NetworkObject networkPlayerObject = networkRunner.Spawn(playerPrefab, spawnPosition, Quaternion.identity, player);
+            NetworkObject networkPlayerObject = networkRunner.Spawn(playerPrefab[playerCount], spawnPosition, Quaternion.identity, player);
 
             networkRunner.SetPlayerObject(player, networkPlayerObject);
 
             playerList.Add(player, networkPlayerObject);
+            playerCount++;
+            // Debug.Log(gameManager.Runner.);
         }
     }
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
-
         var data = new NetworkInputData();
-
-        float xInput = Input.GetAxisRaw("Horizontal");
-        float yInput = Input.GetAxisRaw("Vertical");
-        Debug.Log(xInput + yInput);
+        data.AxisX = Input.GetAxisRaw("Horizontal");
+        data.AxisZ = Input.GetAxisRaw("Vertical");
+        Debug.Log(data.AxisX + data.AxisZ);
         input.Set(data);
+
+
     }
 
 
@@ -53,11 +56,12 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     {
 
         Vector3 spawnPosition = Vector3.zero;
-        NetworkObject networkPlayerObject = runner.Spawn(playerPrefab, spawnPosition, Quaternion.identity, player);
+        NetworkObject networkPlayerObject = runner.Spawn(playerPrefab[playerCount], spawnPosition, Quaternion.identity, player);
 
         runner.SetPlayerObject(player, networkPlayerObject);
 
         playerList.Add(player, networkPlayerObject);
+
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)

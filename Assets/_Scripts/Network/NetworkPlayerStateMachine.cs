@@ -5,10 +5,11 @@ using Fusion;
 
 public class NetworkPlayerStateMachine : NetworkStateMachine
 {
-    //筆記
+ 
     //UTF-8 改成 (Big5) 使用中文註釋
     [SerializeField]
     private NetworkPlayerState[] playerStates;
+
 
     NetworkMecanimAnimator animator;
     NetworkPlayerController controller;

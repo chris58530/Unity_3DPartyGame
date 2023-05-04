@@ -23,18 +23,22 @@ public class NetworkPlayerController : NetworkBehaviour
     }
     public void SetPlayerAddForce(float speed)
     {
-        float x = moveInput.AxisX;
-        float z = moveInput.AxisZ;
-        Vector3 output = Vector3.zero;
-        output.x = x * Mathf.Sqrt(1 - (z * z) / 2.0f);
-        output.z = z * Mathf.Sqrt(1 - (x * x) / 2.0f);
-
-        if (moveInput.Move)
+        if (NetworkPlayer.Local)
         {
-            Vector3 dir = new Vector3(x, 0, z);
-            var rotation = Quaternion.LookRotation(dir);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 8);
+            float x = moveInput.AxisX;
+            float z = moveInput.AxisZ;
+            Vector3 output = Vector3.zero;
+            output.x = x * Mathf.Sqrt(1 - (z * z) / 2.0f);
+            output.z = z * Mathf.Sqrt(1 - (x * x) / 2.0f);
+
+            if (moveInput.Move)
+            {
+                Vector3 dir = new Vector3(x, 0, z);
+                var rotation = Quaternion.LookRotation(dir);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 8);
+            }
+            rb.AddForce(output * speed);
         }
-        rb.AddForce(output * speed);
+
     }
 }

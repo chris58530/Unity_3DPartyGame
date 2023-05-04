@@ -10,10 +10,10 @@ public class NetworkStateMachine : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        if (Object.HasInputAuthority)
+
+        if (GetInput(out NetworkInputData inputData))
         {
-            currentState.UpdateNetwork();
-            Debug.Log($"player i:{Object.Id}");
+           currentState.UpdateNetwork( inputData);
         }
 
     }

@@ -11,15 +11,16 @@ public class PlayerState_Walk : NetworkPlayerState
         Debug.Log("walk");
 
     }
-    
-    public override void UpdateNetwork()
+
+    public override void UpdateNetwork(NetworkInputData inputData)
     {
+
         if (!moveInput.Move)
         {
             stateMachine.SwitchState(typeof(PlayerState_Idle));
         }
         controller.SetPlayerAddForce(100);
-        
+
         // if (moveInput.speedtime > controller.switchToRush)
         // {
         //     stateMachine.SwitchState(typeof(PlayerState_Rush));
@@ -47,5 +48,5 @@ public class PlayerState_Walk : NetworkPlayerState
     //     controller.SetPlayerAddForce(controller.walkSpeed);
 
     // }
- 
+
 }

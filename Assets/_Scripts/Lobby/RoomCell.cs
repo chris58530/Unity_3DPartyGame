@@ -12,8 +12,7 @@ public class RoomCell : MonoBehaviour
 
     [SerializeField] 
     private TMP_Text roomNameTxt = null;
-    [SerializeField] 
-    private Button joinBtn = null;
+
 
     public void SetInfo(LobbyManager lobbyManager, string roomName)
     {

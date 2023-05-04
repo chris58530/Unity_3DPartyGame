@@ -14,16 +14,14 @@ public class GameManager : Singleton<GameManager>
             if (runner == null)
             {
                 runner = gameObject.AddComponent<NetworkRunner>();
-
                 runner.ProvideInput = true;
-            }
 
+
+            }
             return runner;
         }
     }
 
-    public Color TankColor = new Color(1, 1, 1, 1);
-    public Color BarrelColor = new Color(1, 1, 1, 1);
     public string PlayerName = null;
     public string PlayerCharacter = null;
     public Dictionary<PlayerRef, NetworkPlayerData> PlayerList = new Dictionary<PlayerRef, NetworkPlayerData>();
@@ -69,8 +67,7 @@ public class GameManager : Singleton<GameManager>
         if (PlayerList.TryGetValue(runner.LocalPlayer, out NetworkPlayerData networkPlayerData))
         {
             networkPlayerData.SetPlayerName_RPC(PlayerName);
-            networkPlayerData.SetTankColor_RPC(TankColor);
-            networkPlayerData.SetBarrelColor_RPC(BarrelColor);
+            networkPlayerData.SetCharacterName_RPC(PlayerCharacter);
         }
     }
 }

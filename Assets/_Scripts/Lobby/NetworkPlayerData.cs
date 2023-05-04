@@ -11,11 +11,11 @@ public class NetworkPlayerData : NetworkBehaviour
     [Networked(OnChanged = nameof(OnIsReadyChanged))] 
     public NetworkBool IsReady { get; set; }
 
-    [Networked] 
-    public Color TankColor { get; set; }
+    [Networked(OnChanged = nameof(OnCharaterNameChanged))] 
+    public string CharaterName { get; set; }
 
-    [Networked] 
-    public Color BarrelColor { get; set; }
+    // [Networked] 
+    // public Color BarrelColor { get; set; }
 
     public override void Spawned()
     {     
@@ -28,8 +28,7 @@ public class NetworkPlayerData : NetworkBehaviour
         if (Object.HasInputAuthority)
         {
             SetPlayerName_RPC(GameManager.Instance.PlayerName);
-            SetTankColor_RPC(GameManager.Instance.TankColor);
-            SetBarrelColor_RPC(GameManager.Instance.BarrelColor); 
+            SetCharacterName_RPC(GameManager.Instance.PlayerCharacter);
         }
     }
 
@@ -48,16 +47,16 @@ public class NetworkPlayerData : NetworkBehaviour
     }
 
     [Rpc(sources: RpcSources.InputAuthority, targets: RpcTargets.StateAuthority)]
-    public void SetTankColor_RPC(Color color)
+    public void SetCharacterName_RPC(string str)
     {
-        TankColor = color;
+        CharaterName = str;
     }
 
-    [Rpc(sources: RpcSources.InputAuthority, targets: RpcTargets.StateAuthority)]
-    public void SetBarrelColor_RPC(Color color)
-    {
-        BarrelColor = color;
-    }
+    // [Rpc(sources: RpcSources.InputAuthority, targets: RpcTargets.StateAuthority)]
+    // public void SetBarrelColor_RPC(Color color)
+    // {
+    //     BarrelColor = color;
+    // }
     #endregion
 
     #region - OnChanged Events -
@@ -68,6 +67,9 @@ public class NetworkPlayerData : NetworkBehaviour
 
     private static void OnIsReadyChanged(Changed<NetworkPlayerData> changed)
     {
+        GameManager.Instance.UpdatePlayerList();
+    }
+    private static void OnCharaterNameChanged(Changed<NetworkPlayerData> changed){
         GameManager.Instance.UpdatePlayerList();
     }
     #endregion

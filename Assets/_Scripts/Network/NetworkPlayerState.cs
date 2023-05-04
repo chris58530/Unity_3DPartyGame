@@ -31,15 +31,15 @@ public class NetworkPlayerState :  ScriptableObject, IState
     }
     public virtual void Enter()
     {
-        stateStartTime = Time.time;
-        if (animator != null && animator.transform.gameObject.activeSelf)
-        {
-            //stateName[Random.Range(0, stateName.Length)] = 隨機抽一個動畫
-            stateHash = Animator.StringToHash(stateName[Random.Range(0, stateName.Length)]);
-            animator.Animator.CrossFade(stateHash, transitionDuartion);
+        // stateStartTime = Time.time;
+        // if (animator != null && animator.transform.gameObject.activeSelf)
+        // {
+        //     //stateName[Random.Range(0, stateName.Length)] = 隨機抽一個動畫
+        //     stateHash = Animator.StringToHash(stateName[Random.Range(0, stateName.Length)]);
+        //     animator.Animator.CrossFade(stateHash, transitionDuartion);
            
-        }
+        // }
     }
     public virtual void Exit() { }
-    public virtual void UpdateNetwork() { }
+    public virtual void UpdateNetwork(NetworkInputData inputData) { }
 }

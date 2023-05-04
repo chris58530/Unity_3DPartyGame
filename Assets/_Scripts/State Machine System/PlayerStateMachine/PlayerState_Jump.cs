@@ -19,7 +19,7 @@ public class PlayerState_Jump : NetworkPlayerState
 
         // controller.SetPlayerJump(jumpForce);
     }
-    public override void UpdateNetwork()
+    public override void UpdateNetwork(NetworkInputData inputData)
     {
         if(moveInput.StopJump)
         {
