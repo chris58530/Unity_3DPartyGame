@@ -10,7 +10,9 @@ public class NetworkPlayer : NetworkBehaviour
     public override void Spawned()
     {
         if (Object.HasInputAuthority)
+        {
             Local = this;
+        }
     }
 
     // public void PlayerLeft(PlayerRef player)
@@ -19,6 +21,6 @@ public class NetworkPlayer : NetworkBehaviour
     //     {
     //         Runner.Despawn(Object);
     //     }
-       
+
     // }
 }

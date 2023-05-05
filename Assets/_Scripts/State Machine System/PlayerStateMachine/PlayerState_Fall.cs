@@ -6,15 +6,38 @@ using UnityEngine;
 public class PlayerState_Fall : NetworkPlayerState
 {
 
-    // [SerializeField]
-    // private AnimationCurve speedCurve;
-    // [Header("Player Fall Speed"), SerializeField]
-    // private float moveSpeed;
+    [SerializeField]
+    private AnimationCurve speedCurve;
 
-    // public override void Enter()
-    // {
-    //     base.Enter();
-    // }
+
+    public override void Enter()
+    {
+        base.Enter();
+    }
+
+    public override void UpdateNetwork(NetworkInputData inputData)
+    {
+        controller.SetPlayerFallDown(speedCurve.Evaluate(StateDuration));
+        // if (controller.IsGround)
+        // {
+        //     if (inputData.SpeedTime > controller.switchToRush)
+        //         stateMachine.SwitchState(typeof(PlayerState_Rush));
+        //     else
+        //         stateMachine.SwitchState(typeof(PlayerState_Land));
+        // }
+
+        if (controller.IsStun)
+            return;
+
+        if (inputData.SpeedTime > controller.switchToRush)
+        {
+            controller.SetPlayerRush(inputData);
+        }
+        else
+        {
+            controller.SetPlayerMove(inputData);
+        }
+    }
     // public override void LogicUpdate()
     // {
     //     if (controller.IsGround)
@@ -24,7 +47,7 @@ public class PlayerState_Fall : NetworkPlayerState
     //         else
     //             stateMachine.SwitchState(typeof(PlayerState_Land));
     //     }
-     
+
 
 
     // }

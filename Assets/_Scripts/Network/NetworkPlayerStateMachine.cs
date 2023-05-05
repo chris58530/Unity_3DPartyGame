@@ -11,21 +11,21 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
     private NetworkPlayerState[] playerStates;
 
 
-    NetworkMecanimAnimator animator;
+    Animator animator= null;
     NetworkPlayerController controller;
-    NetworkPlayerInput moveInput;
+
 
     private void Awake()
     {
-        animator = GetComponentInChildren<NetworkMecanimAnimator>();
-        moveInput = GetComponent<NetworkPlayerInput>();
+        // animator = GetComponentInChildren<Animator>();
+  
         controller = GetComponent<NetworkPlayerController>();
        
         stateTable = new Dictionary<System.Type, IState>(playerStates.Length);
         foreach (NetworkPlayerState state in playerStates)
         {
             //初始化資料加入state.Initializ()中
-            state.Initialize(animator, this, controller, moveInput);
+            state.Initialize(animator, this, controller);
             stateTable.Add(state.GetType(), state);
         }
 

@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class PlayerState_Jump : NetworkPlayerState
 {
-    [SerializeField]
-    private float jumpForce;
+
 
     [Header("Player Jump Speed"), SerializeField]
     private float moveSpeed;
@@ -17,19 +16,19 @@ public class PlayerState_Jump : NetworkPlayerState
         Debug.Log("jump");
 
 
-        // controller.SetPlayerJump(jumpForce);
+        controller.SetPlayerJump();
     }
     public override void UpdateNetwork(NetworkInputData inputData)
     {
-        if(moveInput.StopJump)
+        if(!inputData.IsJumpPressed)
         {
               stateMachine.SwitchState(typeof(PlayerState_Idle));
         }
 
-    //     if (controller.IsFalling || moveInput.StopJump)
-    //     {
-    //         stateMachine.SwitchState(typeof(PlayerState_Fall));
-    //     }
+        if (controller.IsFalling || !inputData.IsJumpPressed)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Fall));
+        }
     //     if (controller.IsStun)
     //     {
     //         stateMachine.SwitchState(typeof(PlayerState_FallToGround));

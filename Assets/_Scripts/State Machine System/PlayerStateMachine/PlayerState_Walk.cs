@@ -14,21 +14,21 @@ public class PlayerState_Walk : NetworkPlayerState
 
     public override void UpdateNetwork(NetworkInputData inputData)
     {
-
-        if (!moveInput.Move)
+    
+        if (!inputData.Move)
         {
             stateMachine.SwitchState(typeof(PlayerState_Idle));
         }
-        controller.SetPlayerAddForce(100);
+        controller.SetPlayerMove(inputData);
 
-        // if (moveInput.speedtime > controller.switchToRush)
-        // {
-        //     stateMachine.SwitchState(typeof(PlayerState_Rush));
-        // }
-        // if (moveInput.Jump)
-        // {
-        //     stateMachine.SwitchState(typeof(PlayerState_Jump));
-        // }
+        if (inputData.SpeedTime > controller.switchToRush)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Rush));
+        }
+        if (inputData.IsJumpPressed)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Jump));
+        }
         // if (!controller.IsGround)
         // {
         //     stateMachine.SwitchState(typeof(PlayerState_Fall));
@@ -39,14 +39,6 @@ public class PlayerState_Walk : NetworkPlayerState
         // }
 
     }
-    // public override void PhysicUpdate()
-    // {
-    //     float v = moveInput.AxisX;
-    //     float h = moveInput.AxisZ;
-    //     Vector3 lookAt = new Vector3(h, 0, v);
-
-    //     controller.SetPlayerAddForce(controller.walkSpeed);
-
-    // }
+  
 
 }

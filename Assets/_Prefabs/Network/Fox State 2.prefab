@@ -867,13 +867,13 @@ GameObject:
   - component: {fileID: 2289118621539939661}
   - component: {fileID: 6428385670780042841}
   - component: {fileID: 7776331506645995955}
-  - component: {fileID: 8119410609197618785}
   - component: {fileID: 1937045688732522104}
   - component: {fileID: 2193425724439918586}
   - component: {fileID: 5849927872912916195}
   - component: {fileID: 3335034751291165552}
   - component: {fileID: 8802895027150140161}
   - component: {fileID: 1902245925742992812}
+  - component: {fileID: -6804592815687241536}
   m_Layer: 0
   m_Name: Fox State 2
   m_TagString: Untagged
@@ -994,27 +994,14 @@ MonoBehaviour:
     RawGuidValue: b76c2b41947f0dd4aa6f998e1b3b6c56
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 8119410609197618785}
   - {fileID: 1937045688732522104}
   - {fileID: 2193425724439918586}
   - {fileID: 5849927872912916195}
   - {fileID: 3335034751291165552}
   - {fileID: 8802895027150140161}
   - {fileID: 1902245925742992812}
+  - {fileID: -6804592815687241536}
   SimulationBehaviours: []
---- !u!114 &8119410609197618785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4666986713758929862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 508e973f5911f114cadb7e071bbd7cec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
 --- !u!114 &1937045688732522104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1087,9 +1074,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   playerStates:
-  - {fileID: 11400000, guid: 43135c91dd8b50e4e94e3eb9bb877c6d, type: 2}
-  - {fileID: 11400000, guid: a72524036bbb143468702c9ab200cc42, type: 2}
-  - {fileID: 11400000, guid: b5d71190079ab934487884a97d22b8df, type: 2}
+  - {fileID: 11400000, guid: 8ab745cd30836cb449d8e3ddeb2c9c6f, type: 2}
+  - {fileID: 11400000, guid: c94a9b462976a3e42a1cddd392a75e69, type: 2}
 --- !u!114 &3335034751291165552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1167,6 +1153,19 @@ MonoBehaviour:
     MaxSlope: 60
     MaxSlopeSpeed: 5
     _gravity: {x: 0, y: -9.81, z: 0}
+--- !u!114 &-6804592815687241536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4666986713758929862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513febb0e8ad7314aa0157125e103ce1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
 --- !u!1 &4712240839064534844
 GameObject:
   m_ObjectHideFlags: 0

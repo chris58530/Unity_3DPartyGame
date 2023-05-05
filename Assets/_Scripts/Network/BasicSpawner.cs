@@ -13,7 +13,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     [SerializeField]
     private NetworkObject[] playerPrefab = null;
     int playerCount;
-    
+
     NetworkPlayerInput playerInput;
 
     public Dictionary<PlayerRef, NetworkObject> playerList = new Dictionary<PlayerRef, NetworkObject>();
@@ -42,13 +42,16 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
-        var data = new NetworkInputData();
-        data.AxisX = Input.GetAxisRaw("Horizontal");
-        data.AxisZ = Input.GetAxisRaw("Vertical");
-        Debug.Log(data.AxisX + data.AxisZ);
-        input.Set(data);
-
-
+        // var data = new NetworkInputData();
+        // data.AxisX = Input.GetAxisRaw("Horizontal");
+        // data.AxisZ = Input.GetAxisRaw("Vertical");
+        // Debug.Log(data.AxisX + data.AxisZ);
+        if(NetworkPlayer.Local!=null && playerInput == null){
+            playerInput= NetworkPlayer.Local.GetComponent<NetworkPlayerInput>();
+        }
+        if(playerInput!=null){
+            input.Set(playerInput.GetNetworkInput());
+        }
     }
 
 
