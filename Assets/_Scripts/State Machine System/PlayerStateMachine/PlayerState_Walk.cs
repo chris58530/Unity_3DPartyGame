@@ -14,7 +14,7 @@ public class PlayerState_Walk : NetworkPlayerState
 
     public override void UpdateNetwork(NetworkInputData inputData)
     {
-    
+
         if (!inputData.Move)
         {
             stateMachine.SwitchState(typeof(PlayerState_Idle));
@@ -39,6 +39,6 @@ public class PlayerState_Walk : NetworkPlayerState
         // }
 
     }
-  
+
 
 }

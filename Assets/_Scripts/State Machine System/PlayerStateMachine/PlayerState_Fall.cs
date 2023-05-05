@@ -13,18 +13,22 @@ public class PlayerState_Fall : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("Fall");
     }
 
     public override void UpdateNetwork(NetworkInputData inputData)
     {
         controller.SetPlayerFallDown(speedCurve.Evaluate(StateDuration));
-        // if (controller.IsGround)
-        // {
-        //     if (inputData.SpeedTime > controller.switchToRush)
-        //         stateMachine.SwitchState(typeof(PlayerState_Rush));
-        //     else
-        //         stateMachine.SwitchState(typeof(PlayerState_Land));
-        // }
+        if (controller.IsGround)
+        {
+            Debug.Log($"{this.name}:isground");
+            if (inputData.SpeedTime > controller.switchToRush)
+                stateMachine.SwitchState(typeof(PlayerState_Rush));
+            else
+                stateMachine.SwitchState(typeof(PlayerState_Walk));
+
+                // stateMachine.SwitchState(typeof(PlayerState_Land));
+        }
 
         if (controller.IsStun)
             return;

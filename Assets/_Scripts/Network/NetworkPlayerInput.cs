@@ -16,9 +16,9 @@ public class NetworkPlayerInput : NetworkBehaviour
     public bool Move;
     public bool Jump;
     public bool StopJump;
-
     public bool Fire;
     public bool StopFire;
+    public bool IsGround;
     public void Update()
     {
         AxisX = Input.GetAxisRaw("Horizontal");
@@ -28,6 +28,10 @@ public class NetworkPlayerInput : NetworkBehaviour
         StopJump = !Input.GetButton("Jump");
         Fire = Input.GetButtonDown("Fire1");
         StopFire = !Input.GetButtonDown("Fire1");
+        if (Move)
+            SpeedTime += Runner.DeltaTime;
+        else
+            SpeedTime = 0;
     }
 
     public NetworkInputData GetNetworkInput()

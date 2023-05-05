@@ -479,7 +479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2665684681693271960
 Transform:
   m_ObjectHideFlags: 0
@@ -868,11 +868,9 @@ GameObject:
   - component: {fileID: 6428385670780042841}
   - component: {fileID: 7776331506645995955}
   - component: {fileID: 1937045688732522104}
-  - component: {fileID: 2193425724439918586}
   - component: {fileID: 5849927872912916195}
   - component: {fileID: 3335034751291165552}
   - component: {fileID: 8802895027150140161}
-  - component: {fileID: 1902245925742992812}
   - component: {fileID: -6804592815687241536}
   m_Layer: 0
   m_Name: Fox State 2
@@ -965,13 +963,13 @@ Rigidbody:
   m_GameObject: {fileID: 4666986713758929862}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 1
-  m_AngularDrag: 0.05
+  m_Drag: 10
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &7776331506645995955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -995,11 +993,9 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 1937045688732522104}
-  - {fileID: 2193425724439918586}
   - {fileID: 5849927872912916195}
   - {fileID: 3335034751291165552}
   - {fileID: 8802895027150140161}
-  - {fileID: 1902245925742992812}
   - {fileID: -6804592815687241536}
   SimulationBehaviours: []
 --- !u!114 &1937045688732522104
@@ -1030,36 +1026,6 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
---- !u!114 &2193425724439918586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4666986713758929862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
-  Animator: {fileID: 1652727830502012997}
-  TotalWords: 0
-  SyncSettings: 79
-  FloatAccuracy:
-    _value: 0
-    _inverse: 0
-    _hash: -814817977
-  TimeAccuracy:
-    _value: 0
-    _inverse: 0
-    _hash: 1061325578
-  WeightAccuracy:
-    _value: 0
-    _inverse: 0
-    _hash: -814817977
-  StateHashes: 000000008b30c5cf60f34d323270625b602a1d7285a0a4e46bc26c912b1a167c7940695559efc849ddcc1ea6e67a3208b4204d21307e46536224397a57426da414ec5ea7d4db06f83f188e05
-  TriggerHashes: 00000000
 --- !u!114 &5849927872912916195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1074,8 +1040,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   playerStates:
-  - {fileID: 11400000, guid: 8ab745cd30836cb449d8e3ddeb2c9c6f, type: 2}
-  - {fileID: 11400000, guid: c94a9b462976a3e42a1cddd392a75e69, type: 2}
+  - {fileID: 11400000, guid: 9ce1eebfea613684ea0bef51f64d47f2, type: 2}
+  - {fileID: 11400000, guid: 18774f656cdafa645b6431a302d41448, type: 2}
+  - {fileID: 11400000, guid: 66cb15b092640984aa60c5c263831e91, type: 2}
+  - {fileID: 11400000, guid: eaff384d8c4fd9543bb91dc08cc06d90, type: 2}
+  - {fileID: 11400000, guid: 3022b5d9cf8e07e498e75e46d3d14756, type: 2}
 --- !u!114 &3335034751291165552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1089,11 +1058,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  _IsGround: 0
+  _IsFalling: 0
   IsStun: 0
   GetKnock: 0
-  walkSpeed: 20
-  rushSpeed: 20
-  switchToRush: 1
+  walkSpeed: 50
+  rushSpeed: 200
+  switchToRush: 2
+  jumpForce: 1000
 --- !u!114 &8802895027150140161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1107,52 +1079,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
---- !u!114 &1902245925742992812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4666986713758929862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1101589486, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
-  _interpolationTarget: {fileID: 0}
-  DetachInterpTarget: 0
-  SyncParent: 1
-  InterpolateErrorCorrection: 1
-  InterpolatedErrorCorrectionSettings:
-    MinRate: 3.3
-    MaxRate: 10
-    PosBlendStart: 0.25
-    PosBlendEnd: 1
-    PosMinCorrection: 0.025
-    PosTeleportDistance: 2
-    RotBlendStart: 0.1
-    RotBlendEnd: 0.5
-    RotTeleportRadians: 1.5
-  SyncScale: 0
-  Space: 1
-  _collider: {fileID: 2289118621539939661}
-  Config:
-    AllowedPenetration: 0.1
-    PenetrationCorrection: 0.5
-    BumpBehavior: 1
-    LayerMask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    TriggerInteraction: 0
-    AirControl: 0
-    Acceleration: 10
-    Braking: 10
-    BaseJumpImpulse: 5
-    MaxSpeed: 4
-    MaxSlope: 60
-    MaxSlopeSpeed: 5
-    _gravity: {x: 0, y: -9.81, z: 0}
+  AxisX: 0
+  AxisZ: 0
+  SpeedTime: 0
+  Move: 0
+  Jump: 0
+  StopJump: 0
+  Fire: 0
+  StopFire: 0
+  IsGround: 0
 --- !u!114 &-6804592815687241536
 MonoBehaviour:
   m_ObjectHideFlags: 0

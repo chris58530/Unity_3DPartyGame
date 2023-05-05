@@ -8,8 +8,10 @@ public class NetworkPlayerController : NetworkBehaviour
 {
     Rigidbody rb;
     PlayerGroundDetector groundDetector;
-    public bool IsGround => groundDetector.IsGround;
-    public bool IsFalling => !IsGround && rb.velocity.y < 0f;
+    [Networked]
+    public bool IsGround{get;set;}
+    [Networked]
+    public bool IsFalling{get;set;}
     public bool IsStun;
     public bool GetKnock;
     public float walkSpeed;
@@ -20,6 +22,12 @@ public class NetworkPlayerController : NetworkBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        groundDetector = GetComponentInChildren<PlayerGroundDetector>();
+    }
+    void Update()
+    {
+        IsGround = groundDetector.IsGround;
+        IsFalling = !IsGround && rb.velocity.y < 0f;
     }
     public void SetPlayerMove(NetworkInputData input)
     {
@@ -58,6 +66,10 @@ public class NetworkPlayerController : NetworkBehaviour
     public void SetPlayerFallDown(float speed)
     {
         rb.AddForce(Vector3.up * speed);
+    }
+    public void SwitchTag(string tag)
+    {
+        rb.transform.tag = tag;
     }
     #region SetPlayerLookAtForward       
     private void SetPlayerLookAtForward(Vector3 lookAt)

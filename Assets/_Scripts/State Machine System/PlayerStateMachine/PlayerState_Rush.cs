@@ -6,13 +6,41 @@ using UnityEngine;
 
 public class PlayerState_Rush : NetworkPlayerState
 {
-    // public override void Enter()
-    // {
-    //     // base.Enter();
-    //     // controller.SwitchTag("Rush");
-    //     // controller.SwitchModel(2);
-    // }
+    public override void Enter()
+    {
+        base.Enter();
+        Debug.Log("Rush");
+        controller.SwitchTag("Rush");
+        // controller.SwitchModel(2);
+    }
+    public override void UpdateNetwork(NetworkInputData inputData)
+    {
+        controller.SetPlayerRush(inputData);
 
+        if (!inputData.Move)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Idle));
+        }
+
+        if (inputData.SpeedTime <= controller.switchToRush)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Walk));
+        }
+        if (inputData.IsJumpPressed)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Jump));
+        }
+
+        // if (!controller.IsGround)
+        // {
+        //     stateMachine.SwitchState(typeof(PlayerState_Fall));
+        // }
+        // if (controller.IsStun)
+        // {
+        //     stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+        // }
+
+    }
     // public override void LogicUpdate()
     // {
     //     if (moveInput.speedtime <= controller.switchToRush)

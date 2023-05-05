@@ -479,7 +479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2665684681693271960
 Transform:
   m_ObjectHideFlags: 0
@@ -488,7 +488,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2665684681693271959}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.384, z: 0.099}
+  m_LocalPosition: {x: 0, y: 0.387, z: 0.099}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cea385fbb1644a4b8cdb593192b19e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 0.451
+  detectionRadius: 0.536
   layer:
     serializedVersion: 2
     m_Bits: 8
@@ -1058,12 +1058,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  _IsGround: 0
+  _IsFalling: 0
   IsStun: 0
   GetKnock: 0
-  walkSpeed: 100
-  rushSpeed: 100
-  switchToRush: 1
-  jumpForce: 500
+  walkSpeed: 50
+  rushSpeed: 200
+  switchToRush: 2
+  jumpForce: 1000
 --- !u!114 &8802895027150140161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1085,6 +1087,7 @@ MonoBehaviour:
   StopJump: 0
   Fire: 0
   StopFire: 0
+  IsGround: 0
 --- !u!114 &-3563485347890817855
 MonoBehaviour:
   m_ObjectHideFlags: 0
