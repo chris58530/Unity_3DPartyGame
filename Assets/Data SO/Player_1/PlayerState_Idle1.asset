@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36ae9e01d40fcbe459c57b37344e337e, type: 3}
   m_Name: PlayerState_Idle1
   m_EditorClassIdentifier: 
-  stateName: []
+  stateName:
+  - Idle
   transitionDuartion: 0.1

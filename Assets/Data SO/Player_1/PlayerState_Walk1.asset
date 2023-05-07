@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a25d83933caac44e959c589767e891c, type: 3}
   m_Name: PlayerState_Walk1
   m_EditorClassIdentifier: 
-  stateName: []
+  stateName:
+  - Walk_loop
   transitionDuartion: 0.1

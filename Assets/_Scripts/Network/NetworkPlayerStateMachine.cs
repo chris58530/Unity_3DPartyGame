@@ -10,13 +10,14 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
     [SerializeField]
     private NetworkPlayerState[] playerStates;
 
-
-    Animator animator= null;
+[SerializeField]
+    private Animator animator;
     NetworkPlayerController controller;
 
 
     private void Awake()
     {
+        //這裡會出錯，我才想說不是get本地端的animator
         // animator = GetComponentInChildren<Animator>();
   
         controller = GetComponent<NetworkPlayerController>();

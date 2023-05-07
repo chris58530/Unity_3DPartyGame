@@ -11,7 +11,9 @@ public class PlayerState_Idle : NetworkPlayerState
     {
         base.Enter();
         Debug.Log("idle");
+    
     }
+    
 
     public override void UpdateNetwork(NetworkInputData inputData)
     {
