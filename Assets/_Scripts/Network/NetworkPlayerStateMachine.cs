@@ -11,7 +11,7 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
     private NetworkPlayerState[] playerStates;
 
 [SerializeField]
-    private Animator animator;
+    public  Animator animator;
     NetworkPlayerController controller;
 
 
