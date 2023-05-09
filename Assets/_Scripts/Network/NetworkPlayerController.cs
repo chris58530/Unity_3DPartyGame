@@ -4,14 +4,14 @@ using UnityEngine;
 
 [RequireComponent(typeof(NetworkRigidbody))]
 // ReSharper disable once CheckNamespace
-public class NetworkPlayerController : NetworkBehaviour
+public class NetworkPlayerController : NetworkBehaviour, IMagnet
 {
     Rigidbody rb;
     PlayerGroundDetector groundDetector;
     [Networked]
-    public bool IsGround{get;set;}
+    public bool IsGround { get; set; }
     [Networked]
-    public bool IsFalling{get;set;}
+    public bool IsFalling { get; set; }
     public bool IsStun;
     public bool GetKnock;
     public float walkSpeed;
@@ -79,4 +79,19 @@ public class NetworkPlayerController : NetworkBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 16);
     }
     #endregion
+    #region SetPlayerMagentBody
+
+    void IMagnet.SetRepel(Vector3 direction, float force)
+    {
+        rb.AddForce((transform.position - direction).normalized * force);
+
+    }
+
+    void IMagnet.SetAttract(Vector3 direction, float force)
+    {
+        rb.AddForce((direction - transform.position).normalized * force);
+    }
+    #endregion
+
+
 }

@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class PlayerState_FallToGround : NetworkPlayerState
 {
-    // public override void Enter()
-    // {
-    //     base.Enter();
-    // }
+    public override void Enter()
+    {
+        base.Enter();
+    }
 
     // public override void LogicUpdate()
     // {

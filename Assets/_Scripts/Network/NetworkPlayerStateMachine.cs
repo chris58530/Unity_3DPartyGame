@@ -5,33 +5,30 @@ using Fusion;
 
 public class NetworkPlayerStateMachine : NetworkStateMachine
 {
- 
+
     //UTF-8 改成 (Big5) 使用中文註釋
     [SerializeField]
     private NetworkPlayerState[] playerStates;
-
-[SerializeField]
-    public  Animator animator;
+    public Animator animator;
     NetworkPlayerController controller;
 
-
+    NetworkMagnetShooter shooter;
     private void Awake()
     {
-        //這裡會出錯，我才想說不是get本地端的animator
-        // animator = GetComponentInChildren<Animator>();
-  
         controller = GetComponent<NetworkPlayerController>();
-       
+
+        animator = GetComponentInChildren<Animator>();
+        shooter = GetComponentInChildren<NetworkMagnetShooter>();
         stateTable = new Dictionary<System.Type, IState>(playerStates.Length);
         foreach (NetworkPlayerState state in playerStates)
         {
             //初始化資料加入state.Initializ()中
-            state.Initialize(animator, this, controller);
+            state.Initialize(this, animator, controller,shooter);
             stateTable.Add(state.GetType(), state);
         }
 
     }
-    
+
     public override void Spawned()
     {
         SwitchOn(stateTable[typeof(PlayerState_Idle)]);

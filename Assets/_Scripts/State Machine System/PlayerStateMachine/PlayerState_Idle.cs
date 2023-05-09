@@ -30,6 +30,15 @@ public class PlayerState_Idle : NetworkPlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_Jump));
         }
+        if(inputData.IsFirePressed)
+        {
+            shooter.OpenMagnet();
+        }
+        if(!inputData.IsFirePressed){
+            shooter.ShootMagnet();
+        }
+
+      
     }
 
     public override void Exit()

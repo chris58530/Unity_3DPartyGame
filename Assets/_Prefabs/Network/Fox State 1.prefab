@@ -964,7 +964,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 10
-  m_AngularDrag: 0
+  m_AngularDrag: 0.01
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -997,6 +997,7 @@ MonoBehaviour:
   - {fileID: 3335034751291165552}
   - {fileID: 8802895027150140161}
   - {fileID: -3563485347890817855}
+  - {fileID: 6957494910417815336}
   SimulationBehaviours: []
 --- !u!114 &1937045688732522104
 MonoBehaviour:
@@ -1040,12 +1041,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   playerStates:
-  - {fileID: 11400000, guid: 6035636f6f7f9a8418047fc48c6c2a1a, type: 2}
-  - {fileID: 11400000, guid: ac833fcb0609dde46bd21ae23b522fe5, type: 2}
   - {fileID: 11400000, guid: 61600a5f4317d324996296d77fadb42f, type: 2}
+  - {fileID: 11400000, guid: 53130151def7d1f4da5216784da7386e, type: 2}
+  - {fileID: 11400000, guid: 37581fb9a1180974f9b7f49d4447fdb7, type: 2}
+  - {fileID: 11400000, guid: 6035636f6f7f9a8418047fc48c6c2a1a, type: 2}
   - {fileID: 11400000, guid: fe9940e16767d1145ab0656c838f4263, type: 2}
+  - {fileID: 11400000, guid: 3bac321c5126ef04aaf434e2d8ab6f78, type: 2}
   - {fileID: 11400000, guid: c5bfbfa9abd4001408d2aa1e690e2515, type: 2}
-  animator: {fileID: 1652727830502012997}
+  - {fileID: 11400000, guid: 097e55c65d9f6e945a8f6af21c29ac9d, type: 2}
+  - {fileID: 11400000, guid: e97b930d6d6eb39479c33dc220e1c454, type: 2}
+  - {fileID: 11400000, guid: ac833fcb0609dde46bd21ae23b522fe5, type: 2}
+  animator: {fileID: 0}
 --- !u!114 &3335034751291165552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1598,17 +1604,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8158306652987066919}
-  - component: {fileID: 90473456463498976}
   - component: {fileID: 5902431416493672570}
   - component: {fileID: 5902431416493672571}
   - component: {fileID: 277659088563328282}
+  - component: {fileID: 6957494910417815336}
   m_Layer: 0
-  m_Name: Magnet Body
+  m_Name: MagnetShooter
   m_TagString: Negative
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8158306652987066919
 Transform:
   m_ObjectHideFlags: 0
@@ -1624,29 +1630,6 @@ Transform:
   m_Father: {fileID: 4666986713758929865}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &90473456463498976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8158306652987066916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e5ca8ff8bc9bb948bba57502940dfff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionRadius: 5
-  magneticForce: 5
-  magnetForceCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  magnetTime: 5
-  magnetCD: 0
-  isShoot: 0
 --- !u!23 &5902431416493672570
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1710,6 +1693,23 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6957494910417815336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8158306652987066916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f2e5ca539a5d5c4899fa9cbe5198f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  magnetPrefab: {fileID: -2057441826570595257, guid: 29e1880b551fc9b4da706e9f377581c6, type: 3}
+  keepTime: 3
+  detectionRadius: 6
+  CD: 5
 --- !u!1 &8524159777220310082
 GameObject:
   m_ObjectHideFlags: 0
