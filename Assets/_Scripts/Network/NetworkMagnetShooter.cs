@@ -21,21 +21,30 @@ public class NetworkMagnetShooter : NetworkBehaviour
     private TickTimer CDTimer { get; set; }
     [Networked]
     private TickTimer keepTimer { get; set; }
+    private void Awake()
+    {
+        mesh = GetComponent<MeshRenderer>();
+    }
 
     public override void Spawned()
     {
         //初始化CD
         CanOpen = true;
+        CanShoot = false;
     }
     public override void FixedUpdateNetwork()
     {
         if (CDTimer.Expired(Runner))
         {
             CanOpen = true;
+
         }
-        if (keepTimer.Expired(Runner) && CanShoot)
+        if (keepTimer.Expired(Runner))
         {
-            ShootMagnet();
+            if (CanShoot)
+                ShootMagnet();
+            else
+                StopMagnet();
         }
 
     }
@@ -43,31 +52,41 @@ public class NetworkMagnetShooter : NetworkBehaviour
     {
         if (!CanOpen)
             return;
+
         Vector3 currentScale = this.transform.localScale;
         if (currentScale.x < detectionRadius)
+        {
+            OpenMagneColor_RPC(new Color(0, 0, 0, 0.1f));
             this.transform.localScale += new Vector3(10, 10, 10) * Runner.DeltaTime;
+            Debug.Log($"magent:{currentScale} opening....");
+        }
         else
         {
             OpenMagneColor_RPC(new Color(0, 0, 1, 0.3f));
             this.tag = "Repel";
             keepTimer = TickTimer.CreateFromSeconds(Runner, keepTime);
+            CanShoot = true;
+
             return;
         }
     }
     public void StopMagnet()//停止蓄力
     {
         transform.localScale = Vector3.zero;
-        OpenMagneColor_RPC(new Color(0, 0, 0, 0));
+        OpenMagneColor_RPC(new Color(0, 0, 0, 0.1f));
         this.tag = "None";
     }
     public void ShootMagnet()
     {
         if (!CanShoot)
             return;
+        keepTimer = TickTimer.CreateFromSeconds(Runner, keepTime);
         CanOpen = false;
+        CanShoot = false;
         Runner.Spawn(magnetPrefab, transform.position, transform.rotation, Object.InputAuthority);
         CDTimer = TickTimer.CreateFromSeconds(Runner, CD);
-        CanShoot = false;
+        StopMagnet();
+        Debug.Log($"shoot magnet");
 
     }
     [Rpc(RpcSources.InputAuthority, RpcTargets.All)]

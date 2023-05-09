@@ -1709,7 +1709,7 @@ MonoBehaviour:
   magnetPrefab: {fileID: -2057441826570595257, guid: 29e1880b551fc9b4da706e9f377581c6, type: 3}
   keepTime: 3
   detectionRadius: 6
-  CD: 5
+  CD: 1
 --- !u!1 &8524159777220310082
 GameObject:
   m_ObjectHideFlags: 0

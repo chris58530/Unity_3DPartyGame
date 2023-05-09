@@ -7,6 +7,9 @@ public struct NetworkInputData : INetworkInput
 {
     public NetworkBool IsJumpPressed;
     public NetworkBool IsFirePressed;
+    public NetworkBool StopJump;
+
+    public NetworkBool StopFire;
     public Vector3 direction;
     
     public float AxisX ;

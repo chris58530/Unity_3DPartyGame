@@ -34,7 +34,7 @@ public class PlayerState_Idle : NetworkPlayerState
         {
             shooter.OpenMagnet();
         }
-        if(!inputData.IsFirePressed){
+        if(inputData.StopFire){
             shooter.ShootMagnet();
         }
 
