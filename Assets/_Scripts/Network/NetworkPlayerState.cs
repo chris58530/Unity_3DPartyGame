@@ -10,7 +10,7 @@ public class NetworkPlayerState : ScriptableObject, IState
     [SerializeField, Range(0f, 1f)]
     private float transitionDuartion = 0.1f;
     int stateHash;
-    protected Animator animator;
+    protected NetworkMecanimAnimator animator;
     protected NetworkPlayerStateMachine stateMachine;
     protected NetworkPlayerController controller;
     protected NetworkMagnetShooter shooter;
@@ -22,7 +22,7 @@ public class NetworkPlayerState : ScriptableObject, IState
     protected float StateDuration => Time.time - stateStartTime;
     float stateStartTime;
 
-    public void Initialize(NetworkPlayerStateMachine stateMachine, Animator animator,
+    public void Initialize(NetworkPlayerStateMachine stateMachine, NetworkMecanimAnimator animator,
     NetworkPlayerController controller, NetworkMagnetShooter shooter)
     {
         this.animator = animator;
@@ -37,7 +37,7 @@ public class NetworkPlayerState : ScriptableObject, IState
         {
             //stateName[Random.Range(0, stateName.Length)] = 隨機抽一個動畫
             stateHash = Animator.StringToHash(stateName);
-            animator.CrossFade(stateHash, transitionDuartion);
+            animator.Animator.CrossFade(stateHash, transitionDuartion);
 
         }
 

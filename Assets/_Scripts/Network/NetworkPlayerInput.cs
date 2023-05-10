@@ -12,7 +12,8 @@ public class NetworkPlayerInput : NetworkBehaviour
     // public bool Move => AxisX != 0 || AxisZ != 0;
     public float AxisX;
     public float AxisZ;
-    public float SpeedTime;
+    [Networked]
+    public float SpeedTime{get;set;}
     public bool Move;
     public bool Jump;
     public bool StopJump;

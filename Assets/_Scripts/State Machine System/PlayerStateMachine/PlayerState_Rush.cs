@@ -11,7 +11,8 @@ public class PlayerState_Rush : NetworkPlayerState
         base.Enter();
         Debug.Log("Rush");
         controller.SwitchTag("Rush");
-        // controller.SwitchModel(2);
+
+        controller.SwitchModel(2);
     }
     public override void UpdateNetwork(NetworkInputData inputData)
     {

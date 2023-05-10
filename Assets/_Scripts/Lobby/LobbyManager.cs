@@ -11,14 +11,14 @@ public class LobbyManager : MonoBehaviour, INetworkRunnerCallbacks
 {
     private PairState pairState = PairState.Lobby;
 
-    [SerializeField] 
+    [SerializeField]
     private NetworkPlayerData playerNetworkDataPrefab = null;
 
-    [SerializeField] 
+    [SerializeField]
     private RoomListPanel roomListPanel = null;
-    [SerializeField] 
+    [SerializeField]
     private CreateRoomPanel createRoomPanel = null;
-    [SerializeField] 
+    [SerializeField]
     private InRoomPanel inRoomPanel = null;
 
     private async void Start()
@@ -87,7 +87,9 @@ public class LobbyManager : MonoBehaviour, INetworkRunnerCallbacks
                 SetPanel(roomListPanel);
                 break;
             case PairState.CreatingRoom:
-                SetPanel(createRoomPanel);
+                createRoomPanel.DisplayPanel(true);
+                roomListPanel.DisplayPanel(true); ;
+
                 break;
             case PairState.InRoom:
                 SetPanel(inRoomPanel);

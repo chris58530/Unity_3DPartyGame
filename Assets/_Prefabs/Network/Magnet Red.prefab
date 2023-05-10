@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1615321073962248512}
   - component: {fileID: 2639022822368405611}
   - component: {fileID: 1832907729937748826}
+  - component: {fileID: 4256304999308242617}
   - component: {fileID: -2966529976993851380}
   - component: {fileID: 6651068147730929007}
   - component: {fileID: -2057441826570595257}
@@ -86,6 +87,34 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4974045446007135739}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &4256304999308242617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4974045446007135739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 3
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 0}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03
 --- !u!114 &-2966529976993851380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +137,7 @@ MonoBehaviour:
     RawGuidValue: 29e1880b551fc9b4da706e9f377581c6
   NestedObjects: []
   NetworkedBehaviours:
+  - {fileID: 4256304999308242617}
   - {fileID: -2057441826570595257}
   SimulationBehaviours: []
 --- !u!135 &6651068147730929007

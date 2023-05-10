@@ -13,7 +13,7 @@ public class NetworkStateMachine : NetworkBehaviour
 
         if (GetInput(out NetworkInputData inputData))
         {
-           currentState.UpdateNetwork( inputData);
+            currentState.UpdateNetwork(inputData);
         }
 
     }

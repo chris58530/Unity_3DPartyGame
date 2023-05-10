@@ -14,8 +14,11 @@ public class NetworkMagnetShooter : NetworkBehaviour
 
     [SerializeField, Header("能力冷卻時間")]
     private float CD;
-    private bool CanShoot;
-    private bool CanOpen;
+    [Networked]
+    private bool CanShoot { get; set; }
+    [Networked]
+
+    private bool CanOpen { get; set; }
     private MeshRenderer mesh;
     [Networked]
     private TickTimer CDTimer { get; set; }
@@ -23,7 +26,6 @@ public class NetworkMagnetShooter : NetworkBehaviour
     private TickTimer keepTimer { get; set; }
     private void Awake()
     {
-        mesh = GetComponent<MeshRenderer>();
     }
 
     public override void Spawned()
@@ -31,6 +33,8 @@ public class NetworkMagnetShooter : NetworkBehaviour
         //初始化CD
         CanOpen = true;
         CanShoot = false;
+        mesh = GetComponent<MeshRenderer>();
+
     }
     public override void FixedUpdateNetwork()
     {

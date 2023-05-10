@@ -12,7 +12,8 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private NetworkRunner networkRunner = null;
     [SerializeField]
     private NetworkObject[] playerPrefab = null;
-    int playerCount;
+    [Networked]
+    int playerCount{get;set;}
 
     NetworkPlayerInput playerInput;
 
@@ -36,7 +37,6 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
             playerList.Add(player, networkPlayerObject);
             playerCount++;
-            // Debug.Log(gameManager.Runner.);
         }
     }
 
@@ -62,7 +62,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         NetworkObject networkPlayerObject = runner.Spawn(playerPrefab[playerCount], spawnPosition, Quaternion.identity, player);
 
         runner.SetPlayerObject(player, networkPlayerObject);
-
+       
         playerList.Add(player, networkPlayerObject);
 
     }

@@ -11,6 +11,7 @@ public class PlayerState_Idle : NetworkPlayerState
     {
         base.Enter();
         Debug.Log("idle");
+        controller.SwitchModel(1);
     
     }
     

@@ -31,7 +31,8 @@ public class CreateRoomPanel : MonoBehaviour, IPanel
     public async void OnCreateBtnClicked()
     {
         string roomName = roomNameInputField.text;
-        int maxPlayer = int.Parse(maxPlayerInputField.text);
+        // int maxPlayer = int.Parse(maxPlayerInputField.text);
+        int maxPlayer = 10;
 
         await lobbyManager.CreateRoom(roomName, maxPlayer);
     }
