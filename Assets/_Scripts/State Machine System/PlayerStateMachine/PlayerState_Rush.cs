@@ -12,7 +12,7 @@ public class PlayerState_Rush : NetworkPlayerState
         Debug.Log("Rush");
         controller.SwitchTag("Rush");
 
-        controller.SwitchModel(2);
+        controller.IsDefualtModel=1;
     }
     public override void UpdateNetwork(NetworkInputData inputData)
     {
@@ -62,10 +62,10 @@ public class PlayerState_Rush : NetworkPlayerState
     //     float addItionSpeed = moveInput.speedtime;
     //     controller.SetPlayerAddForce(controller.rushSpeed + addItionSpeed);
     // }
-    // public override void Exit()
-    // {
-    //     controller.SwitchModel(1);
+    public override void Exit()
+    {
+               controller.IsDefualtModel=0;
 
-    // }
+    }
 
 }

@@ -1156,6 +1156,8 @@ MonoBehaviour:
   _IsGround: 0
   _IsFalling: 0
   _IsStun: 0
+  _IsDefualtModel:
+    _value: 0
   DefualtModel: {fileID: 357835875983192544}
   RushModel: {fileID: 6343970255355296002}
   GetKnock: 0
@@ -1281,7 +1283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5138271606588535950
 Transform:
   m_ObjectHideFlags: 0
@@ -1336,7 +1338,7 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 3073
+  Flags: 134145
   NetworkGuid:
     RawGuidValue: 00000000000000000000000000000000
   NestedObjects: []
