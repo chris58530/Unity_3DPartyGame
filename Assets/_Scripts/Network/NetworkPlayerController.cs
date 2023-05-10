@@ -15,6 +15,8 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     public bool IsFalling { get; set; }
     [Networked]
     public bool IsStun{get;set;}
+    [Networked]
+    public int ModelCount{get;set;}
 
     [SerializeField]
     private NetworkObject DefualtModel;
@@ -103,6 +105,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             DefualtModel.gameObject.SetActive(false);
         }
     }
+    private static void OnModelChanged(Changed<NetworkPlayerController>)
     void OnCollisionEnter(Collision other)
     {
         // if (other.gameObject.CompareTag("DeadZone"))

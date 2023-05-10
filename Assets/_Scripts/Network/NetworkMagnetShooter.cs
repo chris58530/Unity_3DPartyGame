@@ -19,76 +19,72 @@ public class NetworkMagnetShooter : NetworkBehaviour
     [Networked]
 
     private bool CanOpen { get; set; }
+    [Networked]
+    private float CDTimer { get; set; }
     private MeshRenderer mesh;
-    [Networked]
-    private TickTimer CDTimer { get; set; }
-    [Networked]
-    private TickTimer keepTimer { get; set; }
-    private void Awake()
-    {
-    }
 
     public override void Spawned()
     {
+        mesh = GetComponent<MeshRenderer>();
+
         //初始化CD
         CanOpen = true;
         CanShoot = false;
-        mesh = GetComponent<MeshRenderer>();
-
+        CDTimer = 0;
     }
     public override void FixedUpdateNetwork()
     {
-        if (CDTimer.Expired(Runner))
+        if (Object.HasStateAuthority)
         {
-            CanOpen = true;
-
-        }
-        if (keepTimer.Expired(Runner))
-        {
-            if (CanShoot)
-                ShootMagnet();
+            if (CDTimer > 0)
+            {
+                CDTimer -= Runner.DeltaTime;
+            }
             else
-                StopMagnet();
+                CanOpen = true;
         }
 
     }
     public void OpenMagnet()//蓄力
     {
+
         if (!CanOpen)
             return;
 
-        Vector3 currentScale = this.transform.localScale;
+        Vector3 currentScale = transform.localScale;
         if (currentScale.x < detectionRadius)
         {
             OpenMagneColor_RPC(new Color(0, 0, 0, 0.1f));
-            this.transform.localScale += new Vector3(10, 10, 10) * Runner.DeltaTime;
+            transform.localScale += new Vector3(10, 10, 10) * Runner.DeltaTime;
             Debug.Log($"magent:{currentScale} opening....");
         }
         else
         {
             OpenMagneColor_RPC(new Color(0, 0, 1, 0.3f));
             this.tag = "Repel";
-            keepTimer = TickTimer.CreateFromSeconds(Runner, keepTime);
             CanShoot = true;
+            CDTimer = CD;
 
-            return;
         }
     }
     public void StopMagnet()//停止蓄力
     {
+
         transform.localScale = Vector3.zero;
-        OpenMagneColor_RPC(new Color(0, 0, 0, 0.1f));
+        OpenMagneColor_RPC(new Color(0, 0, 0, 0));
         this.tag = "None";
     }
     public void ShootMagnet()
     {
+
         if (!CanShoot)
+        {
+            StopMagnet();
             return;
-        keepTimer = TickTimer.CreateFromSeconds(Runner, keepTime);
+        }
         CanOpen = false;
         CanShoot = false;
         Runner.Spawn(magnetPrefab, transform.position, transform.rotation, Object.InputAuthority);
-        CDTimer = TickTimer.CreateFromSeconds(Runner, CD);
         StopMagnet();
         Debug.Log($"shoot magnet");
 
