@@ -63,6 +63,22 @@ public class NetworkMagnet : NetworkBehaviour
             //用distance判斷距離，越靠近力量越大，之後magnetForce*算出來的數值
             magnet.SetAttract(transform.position, magnetForce);
         }
-    }
+     }
+    // private void DetectCollision()
+    // {
+    //     if (Object == null) return;
+    //     if (!Object.HasStateAuthority) return;
+
+    //     Collider[] colliders = Physics.OverlapSphere(transform.position, 6);
+    //     foreach (var collider in colliders)
+    //     {
+    //         if (collider.TryGetComponent(out IMagnet magnet))
+    //         {
+
+    //             //用distance判斷距離，越靠近力量越大，之後magnetForce*算出來的數值
+    //             magnet.SetAttract(transform.position, magnetForce);
+    //         }
+    //     }
+    // }
 
 }

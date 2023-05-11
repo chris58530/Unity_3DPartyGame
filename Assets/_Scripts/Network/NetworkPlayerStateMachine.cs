@@ -10,7 +10,7 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
     [SerializeField]
     private NetworkPlayerState[] playerStates;
 
-    public NetworkMecanimAnimator animator;
+    Animator animator;
     NetworkPlayerController controller;
 
     NetworkMagnetShooter shooter;
@@ -18,20 +18,23 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
     {
         controller = GetComponent<NetworkPlayerController>();
 
-        animator = GetComponentInChildren<NetworkMecanimAnimator>();
         shooter = GetComponentInChildren<NetworkMagnetShooter>();
-        stateTable = new Dictionary<System.Type, IState>(playerStates.Length);
-        foreach (NetworkPlayerState state in playerStates)
-        {
-            //初始化資料加入state.Initializ()中
-            state.Initialize(this, animator, controller,shooter);
-            stateTable.Add(state.GetType(), state);
-        }
 
     }
 
     public override void Spawned()
     {
+
+        animator = GetComponentInChildren<Animator>();
+
+        stateTable = new Dictionary<System.Type, IState>(playerStates.Length);
+        foreach (NetworkPlayerState state in playerStates)
+        {
+            //初始化資料加入state.Initializ()中
+            state.Initialize(this, animator, controller, shooter);
+            stateTable.Add(state.GetType(), state);
+        }
+
         SwitchOn(stateTable[typeof(PlayerState_Idle)]);
     }
 }

@@ -52,9 +52,8 @@ public class NetworkMagnetShooter : NetworkBehaviour
     }
     public void OpenMagnet()//蓄力
     {
-
-        if (!CanOpen)
-            return;
+        if (!CanOpen)return;
+        if(!Object.HasStateAuthority)return;
 
         Vector3 currentScale = transform.localScale;
         if (currentScale.x < detectionRadius)

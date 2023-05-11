@@ -8,7 +8,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 {
     Rigidbody rb;
     PlayerGroundDetector groundDetector;
-    NetworkPlayerInput moveInput;
+
     [Networked]
     public bool IsGround { get; set; }
     [Networked]
@@ -17,11 +17,15 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     public bool IsStun { get; set; }
     [Networked(OnChanged = nameof(OnModelChanged))]
     public int modelCount { get; set; }
+    // [Networked(OnChanged = nameof(OnAnimationPlay))]
+    // public int playerIntroAni { get; set; }
+    [Networked]
+    public float SpeedTime { get; set; }
 
     [SerializeField]
-    private NetworkObject DefualtModel;
+    private GameObject DefualtModel;
     [SerializeField]
-    private NetworkObject RushModel;
+    private GameObject RushModel;
     [Networked]
     private TickTimer StunTimer { get; set; }
 
@@ -47,6 +51,14 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         {
             IsStun = false;
         }
+        if (GetInput(out NetworkInputData inputData))
+        {
+            if (inputData.Move)
+                SpeedTime += Runner.DeltaTime;
+            else
+                SpeedTime = 0;
+        }
+
     }
     public void SetPlayerMove(NetworkInputData input)
     {
@@ -107,7 +119,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     }
     private static void OnModelChanged(Changed<NetworkPlayerController> changed)
     {
-        if (changed.Behaviour.DefualtModel.gameObject.activeSelf)
+        if (changed.Behaviour.modelCount == 1)
         {
             changed.Behaviour.DefualtModel.gameObject.SetActive(false);
             changed.Behaviour.RushModel.gameObject.SetActive(true);
@@ -117,8 +129,9 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             changed.Behaviour.DefualtModel.gameObject.SetActive(true);
             changed.Behaviour.RushModel.gameObject.SetActive(false);
         }
-
-
+    }
+    private static void OnAnimationPlay(Changed<NetworkPlayerController> changed)
+    {
 
     }
     void OnCollisionEnter(Collision other)
@@ -130,11 +143,11 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         if (other.gameObject.CompareTag("Rush") && !IsStun)
         {
             //如果此物件速度大於other物件速度
-            NetworkPlayerInput otherInput = other.gameObject.GetComponent<NetworkPlayerInput>();
-            if (moveInput.SpeedTime < otherInput.SpeedTime)
+            NetworkPlayerController otherInput = other.gameObject.GetComponent<NetworkPlayerController>();
+            if (SpeedTime < otherInput.SpeedTime)
             {
                 //重製雙方speed time;
-                moveInput.SpeedTime = 0;
+                SpeedTime = 0;
                 otherInput.SpeedTime = 0;
                 // moveInput.ShowRushSpeed(false);
                 // otherInput.ShowRushSpeed(false);

@@ -13,8 +13,8 @@ public class CreateRoomPanel : MonoBehaviour, IPanel
 
     [SerializeField] 
     private TMP_InputField roomNameInputField = null;
-    [SerializeField] 
-    private TMP_InputField maxPlayerInputField = null;
+    // [SerializeField] 
+    // private TMP_InputField maxPlayerInputField = null;
 
     public void DisplayPanel(bool value)
     {

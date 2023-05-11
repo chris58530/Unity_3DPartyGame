@@ -354,9 +354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2135968016411206398}
   - component: {fileID: 1652727830502012997}
-  - component: {fileID: 357835875983192544}
-  - component: {fileID: 945178953858296921}
-  - component: {fileID: 6414256469787943860}
+  - component: {fileID: 6909705989458352258}
   m_Layer: 0
   m_Name: Fox
   m_TagString: Untagged
@@ -404,7 +402,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &357835875983192544
+--- !u!114 &6909705989458352258
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -425,68 +423,8 @@ MonoBehaviour:
   NetworkGuid:
     RawGuidValue: 00000000000000000000000000000000
   NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 945178953858296921}
-  - {fileID: 6414256469787943860}
+  NetworkedBehaviours: []
   SimulationBehaviours: []
---- !u!114 &945178953858296921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652727830502012996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
-  Animator: {fileID: 1652727830502012997}
-  TotalWords: 0
-  SyncSettings: 79
-  FloatAccuracy:
-    _value: 0
-    _inverse: 0
-    _hash: -814817977
-  TimeAccuracy:
-    _value: 0
-    _inverse: 0
-    _hash: 1061325578
-  WeightAccuracy:
-    _value: 0
-    _inverse: 0
-    _hash: -814817977
-  StateHashes: 000000008b30c5cf60f34d323270625b602a1d7285a0a4e46bc26c912b1a167c7940695559efc849ddcc1ea6e67a3208b4204d21307e46536224397a57426da414ec5ea7d4db06f83f188e05
-  TriggerHashes: 00000000
---- !u!114 &6414256469787943860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652727830502012996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
-  InterpolationSpace: 0
-  InterpolationTarget: {fileID: 0}
-  InterpolateErrorCorrection: 1
-  InterpolatedErrorCorrectionSettings:
-    MinRate: 3.3
-    MaxRate: 10
-    PosBlendStart: 0.25
-    PosBlendEnd: 1
-    PosMinCorrection: 0.025
-    PosTeleportDistance: 2
-    RotBlendStart: 0.1
-    RotBlendEnd: 0.5
-    RotTeleportRadians: 1.5
-  UseLegacySharedModeInterpolation: 0
-  TargetInterpolationDelay: 0.03
 --- !u!1 &1812627277144681846
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,6 +687,89 @@ Transform:
   m_Father: {fileID: 2092987857574558491}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3824170267645920711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4222285441406908920}
+  - component: {fileID: 2818745279994708924}
+  - component: {fileID: 2887838940589872564}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4222285441406908920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3824170267645920711}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.034, z: 0}
+  m_LocalScale: {x: 0.28818265, y: 0.28818265, z: 0.28818265}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4666986713758929865}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &2818745279994708924
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3824170267645920711}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2887838940589872564
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3824170267645920711}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4036916413137180476
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,6 +979,7 @@ GameObject:
   - component: {fileID: 3335034751291165552}
   - component: {fileID: 8802895027150140161}
   - component: {fileID: -3563485347890817855}
+  - component: {fileID: 8421796678770936230}
   m_Layer: 0
   m_Name: Fox State 2
   m_TagString: Untagged
@@ -981,6 +1003,7 @@ Transform:
   - {fileID: 5138271606588535950}
   - {fileID: 8158306652987066919}
   - {fileID: 2665684681693271960}
+  - {fileID: 4222285441406908920}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1077,8 +1100,7 @@ MonoBehaviour:
   NetworkGuid:
     RawGuidValue: fa6da77ca2d5e471a8af1556a4a5a113
   NestedObjects:
-  - {fileID: 357835875983192544}
-  - {fileID: 6343970255355296002}
+  - {fileID: 6909705989458352258}
   - {fileID: 4371783761964251096}
   NetworkedBehaviours:
   - {fileID: 1937045688732522104}
@@ -1086,6 +1108,8 @@ MonoBehaviour:
   - {fileID: 3335034751291165552}
   - {fileID: 8802895027150140161}
   - {fileID: -3563485347890817855}
+  - {fileID: 8421796678770936230}
+  - {fileID: 7428976091817918635}
   SimulationBehaviours: []
 --- !u!114 &1937045688732522104
 MonoBehaviour:
@@ -1139,7 +1163,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2927209533c064f4fac7d59a914ca3d3, type: 2}
   - {fileID: 11400000, guid: 8a060fc9aa03d7246bfbaf86a7360af9, type: 2}
   - {fileID: 11400000, guid: 7c4bbce6aa6d70e40be84cf44861862b, type: 2}
-  animator: {fileID: 0}
 --- !u!114 &3335034751291165552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1157,8 +1180,10 @@ MonoBehaviour:
   _IsFalling: 0
   _IsStun: 0
   _modelCount: 0
-  DefualtModel: {fileID: 357835875983192544}
-  RushModel: {fileID: 6343970255355296002}
+  _playerIntroAni: 0
+  _SpeedTime: 0
+  DefualtModel: {fileID: 1652727830502012996}
+  RushModel: {fileID: 5477817927830810164}
   GetKnock: 0
   walkSpeed: 50
   rushSpeed: 100
@@ -1179,7 +1204,6 @@ MonoBehaviour:
   _interpolationDataSource: 0
   AxisX: 0
   AxisZ: 0
-  _SpeedTime: 0
   Move: 0
   Jump: 0
   StopJump: 0
@@ -1199,6 +1223,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 3
+--- !u!114 &8421796678770936230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4666986713758929862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  Animator: {fileID: 1652727830502012997}
+  TotalWords: 0
+  SyncSettings: 79
+  FloatAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: -814817977
+  TimeAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: 1061325578
+  WeightAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: -814817977
+  StateHashes: 000000008b30c5cf60f34d323270625b602a1d7285a0a4e46bc26c912b1a167c7940695559efc849ddcc1ea6e67a3208b4204d21307e46536224397a57426da414ec5ea7d4db06f83f188e05
+  TriggerHashes: 00000000
 --- !u!1 &4712240839064534844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,9 +1327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5138271606588535950}
   - component: {fileID: 83362998298145248}
-  - component: {fileID: 6343970255355296002}
   - component: {fileID: 7428976091817918635}
-  - component: {fileID: 8837975330583196657}
   m_Layer: 0
   m_Name: FoxBall
   m_TagString: Untagged
@@ -1320,31 +1372,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6343970255355296002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5477817927830810164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjectInterest: 1
-  DefaultInterestGroups: []
-  DestroyWhenStateAuthorityLeaves: 0
-  AllowStateAuthorityOverride: 1
-  AoiPositionSource: {fileID: 0}
-  Flags: 134145
-  NetworkGuid:
-    RawGuidValue: 00000000000000000000000000000000
-  NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 7428976091817918635}
-  - {fileID: 8837975330583196657}
-  SimulationBehaviours: []
 --- !u!114 &7428976091817918635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1375,34 +1402,6 @@ MonoBehaviour:
     _hash: -814817977
   StateHashes: 00000000f09d878ea2c7f8a7
   TriggerHashes: 00000000
---- !u!114 &8837975330583196657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5477817927830810164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
-  InterpolationSpace: 0
-  InterpolationTarget: {fileID: 0}
-  InterpolateErrorCorrection: 1
-  InterpolatedErrorCorrectionSettings:
-    MinRate: 3.3
-    MaxRate: 10
-    PosBlendStart: 0.25
-    PosBlendEnd: 1
-    PosMinCorrection: 0.025
-    PosTeleportDistance: 2
-    RotBlendStart: 0.1
-    RotBlendEnd: 0.5
-    RotTeleportRadians: 1.5
-  UseLegacySharedModeInterpolation: 0
-  TargetInterpolationDelay: 0.03
 --- !u!1 &5835054411496967000
 GameObject:
   m_ObjectHideFlags: 0

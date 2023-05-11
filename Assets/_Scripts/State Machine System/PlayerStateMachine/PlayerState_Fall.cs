@@ -22,7 +22,7 @@ public class PlayerState_Fall : NetworkPlayerState
         if (controller.IsGround)
         {
             Debug.Log($"{this.name}:isground");
-            if (inputData.SpeedTime > controller.switchToRush)
+            if (controller.SpeedTime > controller.switchToRush)
                 stateMachine.SwitchState(typeof(PlayerState_Rush));
             else
                 stateMachine.SwitchState(typeof(PlayerState_Walk));
@@ -33,7 +33,7 @@ public class PlayerState_Fall : NetworkPlayerState
         if (controller.IsStun)
             return;
 
-        if (inputData.SpeedTime > controller.switchToRush)
+        if (controller.SpeedTime > controller.switchToRush)
         {
             controller.SetPlayerRush(inputData);
         }

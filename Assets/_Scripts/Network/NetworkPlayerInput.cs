@@ -12,8 +12,7 @@ public class NetworkPlayerInput : NetworkBehaviour
     // public bool Move => AxisX != 0 || AxisZ != 0;
     public float AxisX;
     public float AxisZ;
-    [Networked]
-    public float SpeedTime{get;set;}
+
     public bool Move;
     public bool Jump;
     public bool StopJump;
@@ -29,10 +28,7 @@ public class NetworkPlayerInput : NetworkBehaviour
         StopJump = !Input.GetButton("Jump");
         Fire = Input.GetButton("Fire1");
         StopFire = Input.GetButtonUp("Fire1");
-        if (Move)
-            SpeedTime += Runner.DeltaTime;
-        else
-            SpeedTime = 0;
+    
     }
 
     public NetworkInputData GetNetworkInput()
@@ -41,7 +37,7 @@ public class NetworkPlayerInput : NetworkBehaviour
         inputData.AxisX = AxisX;
         inputData.AxisZ = AxisZ;
         inputData.Move = Move;
-        inputData.SpeedTime = SpeedTime;
+
         inputData.IsFirePressed = Fire;
         inputData.IsJumpPressed = Jump;
         inputData.StopFire = StopFire;

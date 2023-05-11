@@ -12,7 +12,7 @@ public class NetworkPlayerData : NetworkBehaviour
     public NetworkBool IsReady { get; set; }
 
     [Networked(OnChanged = nameof(OnCharaterNameChanged))] 
-    public string CharaterName { get; set; }
+    public int CharaterCount { get; set; }
 
     // [Networked] 
     // public Color BarrelColor { get; set; }
@@ -27,8 +27,9 @@ public class NetworkPlayerData : NetworkBehaviour
 
         if (Object.HasInputAuthority)
         {
+            Debug.Log($"{this} send data");
             SetPlayerName_RPC(GameManager.Instance.PlayerName);
-            SetCharacterName_RPC(GameManager.Instance.PlayerCharacter);
+            SetCharacterCount_RPC(GameManager.Instance.PlayerCharacter);
         }
     }
 
@@ -47,9 +48,9 @@ public class NetworkPlayerData : NetworkBehaviour
     }
 
     [Rpc(sources: RpcSources.InputAuthority, targets: RpcTargets.StateAuthority)]
-    public void SetCharacterName_RPC(string str)
+    public void SetCharacterCount_RPC(int obj)
     {
-        CharaterName = str;
+        CharaterCount = obj;
     }
 
     // [Rpc(sources: RpcSources.InputAuthority, targets: RpcTargets.StateAuthority)]

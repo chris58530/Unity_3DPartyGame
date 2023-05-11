@@ -21,7 +21,7 @@ public class PlayerState_Walk : NetworkPlayerState
         }
         controller.SetPlayerMove(inputData);
 
-        if (inputData.SpeedTime > controller.switchToRush)
+        if (controller.SpeedTime > controller.switchToRush)
         {
             stateMachine.SwitchState(typeof(PlayerState_Rush));
         }

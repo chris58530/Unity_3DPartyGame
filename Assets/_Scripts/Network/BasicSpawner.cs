@@ -11,9 +11,8 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private GameManager gameManager;
     private NetworkRunner networkRunner = null;
     [SerializeField]
-    private NetworkObject[] playerPrefab = null;
-    [Networked]
-    int playerCount{get;set;}
+    private NetworkPrefabRef[] playerPrefab = null;
+
 
     NetworkPlayerInput playerInput;
 
@@ -28,15 +27,14 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     }
     private void SpawnAllPlayers()
     {
-        foreach (var player in gameManager.PlayerList.Keys)
+        foreach (PlayerRef player in gameManager.PlayerList.Keys)
         {
             Vector3 spawnPosition = Vector3.zero;
-            NetworkObject networkPlayerObject = networkRunner.Spawn(playerPrefab[playerCount], spawnPosition, Quaternion.identity, player);
+            NetworkObject networkPlayerObject = networkRunner.Spawn(playerPrefab[gameManager.PlayerCharacter], spawnPosition, Quaternion.identity, player);
 
             networkRunner.SetPlayerObject(player, networkPlayerObject);
 
             playerList.Add(player, networkPlayerObject);
-            playerCount++;
         }
     }
 
@@ -46,12 +44,22 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         // data.AxisX = Input.GetAxisRaw("Horizontal");
         // data.AxisZ = Input.GetAxisRaw("Vertical");
         // Debug.Log(data.AxisX + data.AxisZ);
-        if(NetworkPlayer.Local!=null && playerInput == null){
-            playerInput= NetworkPlayer.Local.GetComponent<NetworkPlayerInput>();
+
+        if (NetworkPlayer.Local != null && playerInput == null)
+        {
+            playerInput = NetworkPlayer.Local.gameObject.GetComponent<NetworkPlayerInput>();
         }
-        if(playerInput!=null){
+        if (playerInput != null)
+        {
             input.Set(playerInput.GetNetworkInput());
         }
+
+        // if (playerList.TryGetValue(runner.LocalPlayer, out NetworkObject networkObject))
+        // {
+        //     NetworkPlayerInput data = networkObject.gameObject.GetComponent<NetworkPlayerInput>();
+        //     input.Set(data.GetNetworkInput());
+        // }
+        // else Debug.Log("cant find playerinput");
     }
 
 
@@ -59,10 +67,10 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     {
 
         Vector3 spawnPosition = Vector3.zero;
-        NetworkObject networkPlayerObject = runner.Spawn(playerPrefab[playerCount], spawnPosition, Quaternion.identity, player);
+        NetworkObject networkPlayerObject = runner.Spawn(playerPrefab[gameManager.PlayerCharacter], spawnPosition, Quaternion.identity, player);
 
         runner.SetPlayerObject(player, networkPlayerObject);
-       
+
         playerList.Add(player, networkPlayerObject);
 
     }

@@ -23,7 +23,7 @@ public class PlayerState_Rush : NetworkPlayerState
             stateMachine.SwitchState(typeof(PlayerState_Idle));
         }
 
-        if (inputData.SpeedTime <= controller.switchToRush)
+        if (controller.SpeedTime <= controller.switchToRush)
         {
             stateMachine.SwitchState(typeof(PlayerState_Walk));
         }

@@ -7,12 +7,12 @@ public class PlayerDataSetter : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] Model = null;
+    [SerializeField]
+    private int modelCount = 0;
 
 
     private void Start()
     {
-
-
         // tankSpriteRenderer.color = GameManager.Instance.TankColor;
         // barrelSpriteRenderer.color = GameManager.Instance.BarrelColor;
     }
@@ -26,13 +26,38 @@ public class PlayerDataSetter : MonoBehaviour
         for (int i = 0; i < Model.Length; i++)
         {
             Model[i].SetActive(false);
-            if(Model[i].name == obj.name){
+            if (Model[i].name == obj.name)
+            {
                 Model[i].SetActive(true);
-                GameManager.Instance.PlayerCharacter = obj.name;
+                GameManager.Instance.PlayerCharacter = modelCount;
                 GameManager.Instance.SetPlayerNetworkData();
             }
         }
+    }
+    public void OnSelectLeft()
+    {
+        if (modelCount == 0)
+        {
+            modelCount = Model.Length;
+        }
+        else
+            modelCount -= 1;
+        Debug.Log($"{modelCount}");
+        GameManager.Instance.PlayerCharacter =modelCount;
+        GameManager.Instance.SetPlayerNetworkData();
+    }
+    public void OnSelectRight()
+    {
+        if (modelCount == Model.Length-1)
+        {
+            modelCount = 0;
+        }
+        else
+            modelCount += 1;
+        Debug.Log($"{modelCount}");
 
+        GameManager.Instance.PlayerCharacter = modelCount;
+        GameManager.Instance.SetPlayerNetworkData();
     }
 
 
