@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerCell : MonoBehaviour
@@ -8,7 +9,9 @@ public class PlayerCell : MonoBehaviour
     [SerializeField] 
     private TMP_Text playerNameTxt = null;
     [SerializeField] 
-    private TMP_Text isReadyTxt = null;
+    private Image isReadyImg = null;
+    [SerializeField] 
+    private Image notReadyImg = null;
 
     private string playerName = null;
     private bool isReady = false;
@@ -19,6 +22,15 @@ public class PlayerCell : MonoBehaviour
         this.isReady = isReady;
 
         playerNameTxt.text = this.playerName;
-        isReadyTxt.text = this.isReady ? "Ready" : "";
+        if (this.isReady)
+        {
+            isReadyImg.enabled = true;
+            notReadyImg.enabled = false;
+        }
+        else
+        {
+            isReadyImg.enabled = false;
+            notReadyImg.enabled = true;
+        }
     }
 }

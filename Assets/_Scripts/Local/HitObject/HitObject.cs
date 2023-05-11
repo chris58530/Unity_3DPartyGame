@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Fusion;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
-public class HitObject : MonoBehaviour
+public class HitObject : NetworkBehaviour
 {
     protected Rigidbody rb;
     [SerializeField]

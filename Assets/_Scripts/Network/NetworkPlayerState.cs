@@ -10,7 +10,8 @@ public class NetworkPlayerState : ScriptableObject, IState
     [SerializeField, Range(0f, 1f)]
     private float transitionDuartion = 0.1f;
     int stateHash;
-    protected NetworkMecanimAnimator animator;
+    [Networked]
+    protected NetworkMecanimAnimator animator { get; set; }
     protected NetworkPlayerStateMachine stateMachine;
     protected NetworkPlayerController controller;
     protected NetworkMagnetShooter shooter;
@@ -36,9 +37,9 @@ public class NetworkPlayerState : ScriptableObject, IState
         if (animator != null && animator.transform.gameObject.activeSelf)
         {
             //stateName[Random.Range(0, stateName.Length)] = 隨機抽一個動畫
-            stateHash = Animator.StringToHash(stateName);
-            animator.Animator.CrossFade(stateHash, transitionDuartion);
-
+            // stateHash = Animator.StringToHash(stateName);
+            //animator.Animator.CrossFade(stateHash, transitionDuartion);
+            animator.Animator.Play(stateName);
         }
 
     }

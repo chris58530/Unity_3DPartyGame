@@ -21,6 +21,9 @@ public class NetworkMagnetShooter : NetworkBehaviour
     private bool CanOpen { get; set; }
     [Networked]
     private float CDTimer { get; set; }
+
+    [Networked]
+    private TickTimer timer { get; set; }
     private MeshRenderer mesh;
 
     public override void Spawned()
@@ -43,6 +46,8 @@ public class NetworkMagnetShooter : NetworkBehaviour
             else
                 CanOpen = true;
         }
+        if (timer.ExpiredOrNotRunning(Runner)) { }
+
 
     }
     public void OpenMagnet()//蓄力

@@ -12,7 +12,7 @@ public class PlayerState_Rush : NetworkPlayerState
         Debug.Log("Rush");
         controller.SwitchTag("Rush");
 
-        controller.IsDefualtModel=1;
+        controller.modelCount = 1;
     }
     public override void UpdateNetwork(NetworkInputData inputData)
     {
@@ -64,7 +64,7 @@ public class PlayerState_Rush : NetworkPlayerState
     // }
     public override void Exit()
     {
-               controller.IsDefualtModel=0;
+               controller.modelCount = 0;
 
     }
 

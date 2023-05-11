@@ -16,7 +16,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     [Networked]
     public bool IsStun { get; set; }
     [Networked(OnChanged = nameof(OnModelChanged))]
-    public int IsDefualtModel { get; set; }
+    public int modelCount { get; set; }
 
     [SerializeField]
     private NetworkObject DefualtModel;

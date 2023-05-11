@@ -33,6 +33,7 @@ public class InRoomPanel : MonoBehaviour, IPanel
         foreach (var cell in playerCells)
         {
             Destroy(cell.gameObject);
+        
         }
 
         playerCells.Clear();

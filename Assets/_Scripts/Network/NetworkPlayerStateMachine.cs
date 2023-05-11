@@ -9,6 +9,7 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
     //UTF-8 改成 (Big5) 使用中文註釋
     [SerializeField]
     private NetworkPlayerState[] playerStates;
+
     public NetworkMecanimAnimator animator;
     NetworkPlayerController controller;
 
