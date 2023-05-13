@@ -66,7 +66,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         }
         if (GetInput(out NetworkInputData inputData))
         {
-            if (inputData.Move)
+            if (inputData.Move && !IsStun)
                 SpeedTime += Runner.DeltaTime;
             else
                 SpeedTime = 0;
@@ -143,7 +143,6 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             changed.Behaviour.RushModel.gameObject.SetActive(false);
         }
     }
-
     private static void OnSpeedTimeChanged(Changed<NetworkPlayerController> changed)
     {
         changed.Behaviour.speedText.speedText.text = Mathf.Round(changed.Behaviour.SpeedTime).ToString();
