@@ -149,10 +149,10 @@ TextureImporter:
       name: Gaming_point_2
       rect:
         serializedVersion: 2
-        x: 2
-        y: 1004
-        width: 287
-        height: 107
+        x: 4
+        y: 1012
+        width: 276
+        height: 93
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
