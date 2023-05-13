@@ -5,26 +5,20 @@ using UnityEngine;
 
 public class PlayerState_WakeUp : NetworkPlayerState
 {
-    // public override void Enter()
-    // {
-    //     base.Enter();
-    // }
+    public override void Enter()
+    {
+        base.Enter();
+    }
 
-    // public override void LogicUpdate()
-    // {
-    //     if (IsAnimationFinish)
-    //         stateMachine.SwitchState(typeof(PlayerState_Idle));
-    //     if (!controller.IsGround)
-    //     {
-    //         stateMachine.SwitchState(typeof(PlayerState_Fall));
-    //     }
-    // }
-    // public override void PhysicUpdate()
-    // {
-
-    // }
-    // public override void Exit()
-    // {
-
-    // }
+    public override void UpdateNetwork(NetworkInputData inputData)
+    {
+        base.UpdateNetwork(inputData);
+        if (IsAnimationFinish)
+            stateMachine.SwitchState(typeof(PlayerState_Idle));
+        if (!controller.IsGround)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Fall));
+        }
+    }
+   
 }

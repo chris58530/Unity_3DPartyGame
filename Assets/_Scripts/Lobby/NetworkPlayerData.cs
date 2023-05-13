@@ -14,9 +14,6 @@ public class NetworkPlayerData : NetworkBehaviour
     [Networked(OnChanged = nameof(OnCharaterNameChanged))] 
     public int CharaterCount { get; set; }
 
-    // [Networked] 
-    // public Color BarrelColor { get; set; }
-
     public override void Spawned()
     {     
 

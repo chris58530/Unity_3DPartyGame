@@ -11,19 +11,17 @@ public class NetworkPlayerState : ScriptableObject, IState
     private float transitionDuartion = 0.1f;
     int stateHash;
 
-    protected Animator animator;
+    protected NetworkAnimator animator;
     protected NetworkPlayerStateMachine stateMachine;
     protected NetworkPlayerController controller;
     protected NetworkMagnetShooter shooter;
+    protected float StateDuration;
 
+    protected bool IsAnimationFinish;
 
+    protected float stateStartTime;
 
-    // protected bool IsAnimationFinish => StateDuration >= animator.GetCurrentAnimatorStateInfo(0).length;
-
-    protected float StateDuration => Time.time - stateStartTime;
-    float stateStartTime;
-
-    public void Initialize(NetworkPlayerStateMachine stateMachine, Animator animator,
+    public void Initialize(NetworkPlayerStateMachine stateMachine, NetworkAnimator animator,
     NetworkPlayerController controller, NetworkMagnetShooter shooter)
     {
         this.animator = animator;
@@ -39,10 +37,15 @@ public class NetworkPlayerState : ScriptableObject, IState
             //stateName[Random.Range(0, stateName.Length)] = 隨機抽一個動畫
             // stateHash = Animator.StringToHash(stateName);
             // animator.Animator.CrossFade(stateHash, transitionDuartion);
+            animator.PlayAnimationString = stateName;
         }
-            animator.Play(stateName);
 
     }
     public virtual void Exit() { }
-    public virtual void UpdateNetwork(NetworkInputData inputData) { }
+    public virtual void UpdateNetwork(NetworkInputData inputData)
+    {
+        StateDuration = Time.time - stateStartTime;
+        IsAnimationFinish = animator.IsFinish(stateStartTime);
+
+    }
 }

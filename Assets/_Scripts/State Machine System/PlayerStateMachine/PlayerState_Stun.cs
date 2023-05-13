@@ -10,22 +10,16 @@ public class PlayerState_Stun : NetworkPlayerState
         base.Enter();
     }
 
-    // public override void LogicUpdate()
-    // {
-    //     if (!controller.IsStun)
-    //         stateMachine.SwitchState(typeof(PlayerState_WakeUp));
-    //     if (!controller.IsGround)
-    //     {
-    //         stateMachine.SwitchState(typeof(PlayerState_Fall));
-    //     }
+    public override void UpdateNetwork(NetworkInputData inputData)
+    {
+        base.UpdateNetwork(inputData);
+        if (!controller.IsStun)
+            stateMachine.SwitchState(typeof(PlayerState_WakeUp));
+        if (!controller.IsGround)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Fall));
+        }
 
-    // }
-    // public override void PhysicUpdate()
-    // {
-
-    // }
-    // public override void Exit()
-    // {
-
-    // }
+    }
+  
 }

@@ -6,21 +6,22 @@ using UnityEngine;
 
 public class PlayerCell : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     private TMP_Text playerNameTxt = null;
-    [SerializeField] 
+    [SerializeField]
     private Image isReadyImg = null;
-    [SerializeField] 
+    [SerializeField]
     private Image notReadyImg = null;
 
     private string playerName = null;
+    private int CharaterCount = 0;
     private bool isReady = false;
 
-    public void SetInfo(string playerName, bool isReady)
+    public void SetInfo(string playerName, bool isReady, int CharaterCount)
     {
         this.playerName = playerName;
         this.isReady = isReady;
-
+        this.CharaterCount = CharaterCount;
         playerNameTxt.text = this.playerName;
         if (this.isReady)
         {

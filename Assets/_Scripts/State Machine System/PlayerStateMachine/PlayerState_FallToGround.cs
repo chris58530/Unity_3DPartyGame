@@ -10,17 +10,11 @@ public class PlayerState_FallToGround : NetworkPlayerState
         base.Enter();
     }
 
-    // public override void LogicUpdate()
-    // {
-    //     if (IsAnimationFinish)
-    //         stateMachine.SwitchState(typeof(PlayerState_Stun));
-    // }
-    // public override void PhysicUpdate()
-    // {
-        
-    // }
-    // public override void Exit()
-    // {
+    public override void UpdateNetwork(NetworkInputData inputData)
+    {
+        base.UpdateNetwork(inputData);
+        if (IsAnimationFinish)
+            stateMachine.SwitchState(typeof(PlayerState_Stun));
+    }
 
-    // }
 }

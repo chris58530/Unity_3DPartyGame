@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2d4686b34943b4893e623a754ab8e5, type: 3}
   m_Name: PlayerState_FinsihRush 1
   m_EditorClassIdentifier: 
-  stateName: []
+  stateName: Ball_back
   transitionDuartion: 0.1
-  animator: {fileID: 0}

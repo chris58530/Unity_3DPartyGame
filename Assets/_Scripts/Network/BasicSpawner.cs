@@ -30,11 +30,15 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         foreach (PlayerRef player in gameManager.PlayerList.Keys)
         {
             Vector3 spawnPosition = Vector3.zero;
-            NetworkObject networkPlayerObject = networkRunner.Spawn(playerPrefab[gameManager.PlayerCharacter], spawnPosition, Quaternion.identity, player);
+            if (gameManager.PlayerList.TryGetValue(player, out NetworkPlayerData data))
+            {
+                NetworkObject networkPlayerObject = networkRunner.Spawn(playerPrefab[data.CharaterCount], spawnPosition, Quaternion.identity, player);
 
-            networkRunner.SetPlayerObject(player, networkPlayerObject);
+                networkRunner.SetPlayerObject(player, networkPlayerObject);
 
-            playerList.Add(player, networkPlayerObject);
+                playerList.Add(player, networkPlayerObject);
+            }
+
         }
     }
 

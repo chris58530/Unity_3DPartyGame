@@ -10,18 +10,13 @@ public class PlayerState_Idle : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("idle");
-    
+
     }
-    
+
 
     public override void UpdateNetwork(NetworkInputData inputData)
     {
-
-        // if (moveInput.Move)//host會控制所有人 其他人不能動
-        // {
-        //     stateMachine.SwitchState(typeof(PlayerState_Walk));
-        // }
+        base.UpdateNetwork(inputData);
         if (inputData.Move)//host可以控制自己 其他人不能動
         {
             stateMachine.SwitchState(typeof(PlayerState_Walk));
@@ -30,19 +25,22 @@ public class PlayerState_Idle : NetworkPlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_Jump));
         }
-        if(inputData.IsFirePressed)
+        if (inputData.IsFirePressed)
         {
             shooter.OpenMagnet();
         }
-        if(inputData.StopFire){
+        if (inputData.StopFire)
+        {
             shooter.ShootMagnet();
         }
-
-      
-    }
-
-    public override void Exit()
-    {
+        if (!controller.IsGround)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Fall));
+        }
+        if (controller.IsStun)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+        }
 
     }
 }

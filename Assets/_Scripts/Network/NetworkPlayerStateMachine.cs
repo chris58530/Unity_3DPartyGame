@@ -9,23 +9,14 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
     //UTF-8 改成 (Big5) 使用中文註釋
     [SerializeField]
     private NetworkPlayerState[] playerStates;
-
-    Animator animator;
+    NetworkAnimator animator;
     NetworkPlayerController controller;
-
     NetworkMagnetShooter shooter;
     private void Awake()
     {
         controller = GetComponent<NetworkPlayerController>();
-
         shooter = GetComponentInChildren<NetworkMagnetShooter>();
-
-    }
-
-    public override void Spawned()
-    {
-
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponentInChildren<NetworkAnimator>();
 
         stateTable = new Dictionary<System.Type, IState>(playerStates.Length);
         foreach (NetworkPlayerState state in playerStates)
@@ -35,6 +26,10 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
             stateTable.Add(state.GetType(), state);
         }
 
+    }
+
+    public override void Spawned()
+    {
         SwitchOn(stateTable[typeof(PlayerState_Idle)]);
     }
 }

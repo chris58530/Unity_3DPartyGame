@@ -1,12 +1,14 @@
 using System;
 using Fusion;
 using UnityEngine;
+using TMPro;
+
 
 [RequireComponent(typeof(NetworkRigidbody))]
 // ReSharper disable once CheckNamespace
 public class NetworkPlayerController : NetworkBehaviour, IMagnet
 {
-    Rigidbody rb;
+    NetworkRigidbody rb;
     PlayerGroundDetector groundDetector;
 
     [Networked]
@@ -17,9 +19,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     public bool IsStun { get; set; }
     [Networked(OnChanged = nameof(OnModelChanged))]
     public int modelCount { get; set; }
-    // [Networked(OnChanged = nameof(OnAnimationPlay))]
-    // public int playerIntroAni { get; set; }
-    [Networked]
+    [Networked(OnChanged = nameof(OnSpeedTimeChanged))]
     public float SpeedTime { get; set; }
 
     [SerializeField]
@@ -28,6 +28,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     private GameObject RushModel;
     [Networked]
     private TickTimer StunTimer { get; set; }
+    private NetworkSpeedText speedText;
 
     public bool GetKnock;
     public float walkSpeed;
@@ -36,18 +37,30 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     public float jumpForce;
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
         groundDetector = GetComponentInChildren<PlayerGroundDetector>();
-
+        speedText = GetComponentInChildren<NetworkSpeedText>();
     }
-    void Update()
+    public override void Spawned()
+    {
+        rb = GetComponent<NetworkRigidbody>();
+
+        if (Object.HasInputAuthority)
+        {
+            rb.InterpolationDataSource = InterpolationDataSources.Predicted;
+        }
+        else
+        {
+            rb.InterpolationDataSource = InterpolationDataSources.Snapshots;
+        }
+    }
+    private void Update()
     {
         IsGround = groundDetector.IsGround;
-        IsFalling = !IsGround && rb.velocity.y < 0f;
+        IsFalling = !IsGround && rb.Rigidbody.velocity.y < 0f;
     }
     public override void FixedUpdateNetwork()
     {
-        if (StunTimer.Expired(Runner))
+        if (StunTimer.ExpiredOrNotRunning(Runner))
         {
             IsStun = false;
         }
@@ -71,7 +84,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             output.z = z * Mathf.Sqrt(1 - (x * x) / 2.0f);
             if (input.Move)
                 SetPlayerLookAtForward(output);
-            rb.AddForce(output * walkSpeed);
+            rb.Rigidbody.AddForce(output * walkSpeed);
         }
     }
     public void SetPlayerRush(NetworkInputData input)
@@ -84,7 +97,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             output.x = x * Mathf.Sqrt(1 - (z * z) / 2.0f);
             output.z = z * Mathf.Sqrt(1 - (x * x) / 2.0f);
 
-            rb.AddForce(output * rushSpeed);
+            rb.Rigidbody.AddForce(output * rushSpeed);
 
             if (input.Move)
                 SetPlayerLookAtForward(output);
@@ -92,11 +105,11 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     }
     public void SetPlayerJump()
     {
-        rb.AddForce(Vector3.up * jumpForce);
+        rb.Rigidbody.AddForce(Vector3.up * jumpForce);
     }
     public void SetPlayerFallDown(float speed)
     {
-        rb.AddForce(Vector3.up * speed);
+        rb.Rigidbody.AddForce(Vector3.up * speed);
     }
     public void SwitchTag(string tag)
     {
@@ -130,8 +143,10 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             changed.Behaviour.RushModel.gameObject.SetActive(false);
         }
     }
-    private static void OnAnimationPlay(Changed<NetworkPlayerController> changed)
+
+    private static void OnSpeedTimeChanged(Changed<NetworkPlayerController> changed)
     {
+        changed.Behaviour.speedText.speedText.text = Mathf.Round(changed.Behaviour.SpeedTime).ToString();
 
     }
     void OnCollisionEnter(Collision other)
@@ -154,7 +169,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 
                 //擊飛
                 Vector3 output = (transform.position - other.transform.position).normalized;
-                rb.AddForce(output, ForceMode.Impulse);
+                rb.Rigidbody.AddForce(output * 50, ForceMode.Impulse);
 
                 //暈兩秒開始計時
                 StunTimer = TickTimer.CreateFromSeconds(Runner, 2);
@@ -191,13 +206,13 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 
     void IMagnet.SetRepel(Vector3 direction, float force)
     {
-        rb.AddForce((transform.position - direction).normalized * force);
+        rb.Rigidbody.AddForce((transform.position - direction).normalized * force);
 
     }
 
     void IMagnet.SetAttract(Vector3 direction, float force)
     {
-        rb.AddForce((direction - transform.position).normalized * force);
+        rb.Rigidbody.AddForce((direction - transform.position).normalized * force);
     }
     #endregion
 

@@ -9,37 +9,35 @@ public class PlayerState_Rush : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Rush");
         controller.SwitchTag("Rush");
 
         controller.modelCount = 1;
     }
     public override void UpdateNetwork(NetworkInputData inputData)
     {
+        base.UpdateNetwork(inputData);
         controller.SetPlayerRush(inputData);
 
-        if (!inputData.Move)
-        {
-            stateMachine.SwitchState(typeof(PlayerState_Idle));
-        }
 
         if (controller.SpeedTime <= controller.switchToRush)
         {
-            stateMachine.SwitchState(typeof(PlayerState_Walk));
+            stateMachine.SwitchState(typeof(PlayerState_FinsihRush));
+
         }
         if (inputData.IsJumpPressed)
         {
             stateMachine.SwitchState(typeof(PlayerState_Jump));
         }
 
-        // if (!controller.IsGround)
-        // {
-        //     stateMachine.SwitchState(typeof(PlayerState_Fall));
-        // }
-        // if (controller.IsStun)
-        // {
-        //     stateMachine.SwitchState(typeof(PlayerState_FallToGround));
-        // }
+        if (!controller.IsGround)
+        {
+                        stateMachine.SwitchState(typeof(PlayerState_FinsihRush));
+
+        }
+        if (controller.IsStun)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+        }
 
     }
     // public override void LogicUpdate()
@@ -64,8 +62,8 @@ public class PlayerState_Rush : NetworkPlayerState
     // }
     public override void Exit()
     {
-               controller.modelCount = 0;
-
+        controller.SwitchTag("Walk");
+        controller.modelCount = 0;
     }
 
 }

@@ -9,30 +9,29 @@ public class PlayerState_Fall : NetworkPlayerState
     [SerializeField]
     private AnimationCurve speedCurve;
 
-
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Fall");
     }
 
     public override void UpdateNetwork(NetworkInputData inputData)
     {
+        base.UpdateNetwork(inputData);
         controller.SetPlayerFallDown(speedCurve.Evaluate(StateDuration));
+
         if (controller.IsGround)
         {
             Debug.Log($"{this.name}:isground");
+            if(controller.IsStun)
+                stateMachine.SwitchState(typeof(PlayerState_Stun));
             if (controller.SpeedTime > controller.switchToRush)
                 stateMachine.SwitchState(typeof(PlayerState_Rush));
             else
                 stateMachine.SwitchState(typeof(PlayerState_Walk));
-
                 // stateMachine.SwitchState(typeof(PlayerState_Land));
         }
-
         if (controller.IsStun)
             return;
-
         if (controller.SpeedTime > controller.switchToRush)
         {
             controller.SetPlayerRush(inputData);
@@ -42,34 +41,4 @@ public class PlayerState_Fall : NetworkPlayerState
             controller.SetPlayerMove(inputData);
         }
     }
-    // public override void LogicUpdate()
-    // {
-    //     if (controller.IsGround)
-    //     {
-    //         if (moveInput.speedtime > controller.switchToRush)
-    //             stateMachine.SwitchState(typeof(PlayerState_Rush));
-    //         else
-    //             stateMachine.SwitchState(typeof(PlayerState_Land));
-    //     }
-
-
-
-    // }
-    // public override void PhysicUpdate()
-    // {
-
-    //     controller.SetPlayerFallDown(speedCurve.Evaluate(StateDuration));
-    //     if (controller.IsStun)
-    //         return;
-
-    //     if (moveInput.speedtime > controller.switchToRush)
-    //     {
-    //         controller.SetPlayerAddForce(controller.rushSpeed);
-    //     }
-    //     else
-    //     {
-    //         controller.SetPlayerAddForce(controller.walkSpeed);
-    //     }
-
-    // }
 }

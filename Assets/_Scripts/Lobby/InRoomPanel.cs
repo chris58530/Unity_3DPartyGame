@@ -44,7 +44,7 @@ public class InRoomPanel : MonoBehaviour, IPanel
 
             var playerData = player.Value;
 
-            cell.SetInfo(playerData.PlayerName, playerData.IsReady);
+            cell.SetInfo(playerData.PlayerName, playerData.IsReady,playerData.CharaterCount);
 
             playerCells.Add(cell);
         }

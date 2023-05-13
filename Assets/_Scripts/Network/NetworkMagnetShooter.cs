@@ -52,8 +52,8 @@ public class NetworkMagnetShooter : NetworkBehaviour
     }
     public void OpenMagnet()//蓄力
     {
-        if (!CanOpen)return;
-        if(!Object.HasStateAuthority)return;
+        if (!CanOpen) return;
+        if (!Object.HasStateAuthority) return;
 
         Vector3 currentScale = transform.localScale;
         if (currentScale.x < detectionRadius)
@@ -80,7 +80,6 @@ public class NetworkMagnetShooter : NetworkBehaviour
     }
     public void ShootMagnet()
     {
-
         if (!CanShoot)
         {
             StopMagnet();
@@ -93,9 +92,9 @@ public class NetworkMagnetShooter : NetworkBehaviour
         Debug.Log($"shoot magnet");
 
     }
-    [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
+    [Rpc(sources:RpcSources.InputAuthority, targets:RpcTargets.All)]
     private void OpenMagneColor_RPC(Color color)
     {
-        mesh.material.color = color;
+            mesh.material.color = color;
     }
 }

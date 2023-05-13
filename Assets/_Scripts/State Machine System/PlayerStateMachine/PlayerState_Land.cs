@@ -9,42 +9,41 @@ public class PlayerState_Land : NetworkPlayerState
     {
         base.Enter();
     }
-    // public override void LogicUpdate()
-    // {
-    //     if (moveInput.Jump)
-    //     {
-    //         stateMachine.SwitchState(typeof(PlayerState_Jump));
-    //     }
-    //     if (IsAnimationFinish)
-    //     {
-    //         if (moveInput.Move)
-    //         {
-    //             if (moveInput.speedtime > controller.switchToRush)
-    //                 stateMachine.SwitchState(typeof(PlayerState_Rush));
-    //             else
-    //                 stateMachine.SwitchState(typeof(PlayerState_Walk));
+    public override void UpdateNetwork(NetworkInputData inputData)
+    {
+        base.UpdateNetwork(inputData);
+        if (inputData.IsJumpPressed)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Jump));
+        }
+        if (IsAnimationFinish)
+        {
+            if (inputData.Move)
+            {
+                if (controller.SpeedTime > controller.switchToRush)
+                    stateMachine.SwitchState(typeof(PlayerState_Rush));
+                else
+                    stateMachine.SwitchState(typeof(PlayerState_Walk));
 
-    //         }
-    //         if (!moveInput.Move)
-    //         {
-    //             stateMachine.SwitchState(typeof(PlayerState_Idle));
-    //         }
-    //     }
-    //     if (controller.IsStun)
-    //     {
-    //         stateMachine.SwitchState(typeof(PlayerState_FallToGround));
-    //     }
-    // }
-    // public override void PhysicUpdate()
-    // {
-    //     if (moveInput.speedtime > controller.switchToRush)
-    //     {
-    //         controller.SetPlayerAddForce(controller.rushSpeed);
-    //     }
-    //     else
-    //     {
-    //         controller.SetPlayerAddForce(controller.walkSpeed);
-    //     }
-    // }
+            }
+            if (!inputData.Move)
+            {
+                stateMachine.SwitchState(typeof(PlayerState_Idle));
+            }
+        }
+        if (controller.IsStun)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+        }
 
+        if (controller.SpeedTime > controller.switchToRush)
+        {
+            controller.SetPlayerRush(inputData);
+        }
+        else
+        {
+            controller.SetPlayerMove(inputData);
+        }
+    }
+  
 }

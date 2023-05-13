@@ -8,18 +8,18 @@ public class PlayerState_Walk : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("walk");
 
     }
 
     public override void UpdateNetwork(NetworkInputData inputData)
     {
+        base.UpdateNetwork(inputData);
+        controller.SetPlayerMove(inputData);
 
         if (!inputData.Move)
         {
             stateMachine.SwitchState(typeof(PlayerState_Idle));
         }
-        controller.SetPlayerMove(inputData);
 
         if (controller.SpeedTime > controller.switchToRush)
         {
@@ -29,14 +29,14 @@ public class PlayerState_Walk : NetworkPlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_Jump));
         }
-        // if (!controller.IsGround)
-        // {
-        //     stateMachine.SwitchState(typeof(PlayerState_Fall));
-        // }
-        // if (controller.IsStun)
-        // {
-        //     stateMachine.SwitchState(typeof(PlayerState_FallToGround));
-        // }
+        if (!controller.IsGround)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Fall));
+        }
+        if (controller.IsStun)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+        }
 
     }
 

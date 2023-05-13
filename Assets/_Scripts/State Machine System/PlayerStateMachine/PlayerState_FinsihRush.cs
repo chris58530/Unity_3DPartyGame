@@ -9,32 +9,30 @@ public class PlayerState_FinsihRush : NetworkPlayerState
     {
         base.Enter();
     }
+    public override void UpdateNetwork(NetworkInputData inputData)
+    {
+        base.UpdateNetwork(inputData);
+        if (IsAnimationFinish)
+            stateMachine.SwitchState(typeof(PlayerState_Walk));
 
-    // public override void LogicUpdate()
-    // {
-    //     if (IsAnimationFinish)
-    //         stateMachine.SwitchState(typeof(PlayerState_Walk));
+        if (inputData.IsJumpPressed)
+            stateMachine.SwitchState(typeof(PlayerState_Jump));
 
-    //     if (moveInput.Jump)
-    //         stateMachine.SwitchState(typeof(PlayerState_Jump));
+        if (!controller.IsGround)
+            stateMachine.SwitchState(typeof(PlayerState_Fall));
+        if (controller.IsStun)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+        }
+        controller.SetPlayerRush(inputData);
+    }
+  
+    public override void Exit()
+    {
+        base.Exit();
+        // controller.SwitchTag("Walk");
+        // moveInput.ShowRushSpeed(false);//關閉 speed 文字
 
-    //     if (!controller.IsGround)
-    //         stateMachine.SwitchState(typeof(PlayerState_Fall));
-    //     if (controller.IsStun)
-    //     {
-    //         stateMachine.SwitchState(typeof(PlayerState_FallToGround));
-    //     }
-    // }
-    // public override void PhysicUpdate()
-    // {
-    //     controller.SetPlayerAddForce(controller.rushSpeed);
-    // }
-    // public override void Exit()
-    // {
-    //     base.Exit();
-    //     controller.SwitchTag("Walk");
-    //     moveInput.ShowRushSpeed(false);//關閉 speed 文字
-
-    // }
+    }
 
 }
