@@ -35,6 +35,15 @@ public class PlayerState_Jump : NetworkPlayerState
         {
             controller.SetPlayerMove(inputData);
         }
+        if (inputData.IsOpenPressed)
+        {
+            shooter.OpenTrigger += 1;
+
+        }
+        if (inputData.StopOpen)
+        {
+            shooter.CloseTrigger += 1;
+        }
     }
- 
+
 }

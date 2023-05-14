@@ -44,6 +44,15 @@ public class PlayerState_Land : NetworkPlayerState
         {
             controller.SetPlayerMove(inputData);
         }
+        if (inputData.IsOpenPressed)
+        {
+            shooter.OpenTrigger += 1;
+
+        }
+        if (inputData.StopOpen)
+        {
+            shooter.CloseTrigger += 1;
+        }
     }
-  
+
 }

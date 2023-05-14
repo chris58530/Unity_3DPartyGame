@@ -31,12 +31,21 @@ public class PlayerState_Rush : NetworkPlayerState
 
         if (!controller.IsGround)
         {
-                        stateMachine.SwitchState(typeof(PlayerState_FinsihRush));
+            stateMachine.SwitchState(typeof(PlayerState_FinsihRush));
 
         }
         if (controller.IsStun)
         {
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+        }
+        if (inputData.IsOpenPressed)
+        {
+            shooter.OpenTrigger += 1;
+
+        }
+        if (inputData.StopOpen)
+        {
+            shooter.CloseTrigger += 1;
         }
 
     }

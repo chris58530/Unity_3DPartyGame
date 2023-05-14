@@ -25,8 +25,17 @@ public class PlayerState_FinsihRush : NetworkPlayerState
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
         controller.SetPlayerRush(inputData);
+        if (inputData.IsOpenPressed)
+        {
+            shooter.OpenTrigger += 1;
+
+        }
+        if (inputData.StopOpen)
+        {
+            shooter.CloseTrigger += 1;
+        }
     }
-  
+
     public override void Exit()
     {
         base.Exit();

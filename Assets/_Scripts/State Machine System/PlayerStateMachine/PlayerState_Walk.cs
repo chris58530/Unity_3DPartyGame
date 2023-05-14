@@ -37,7 +37,15 @@ public class PlayerState_Walk : NetworkPlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
+        if (inputData.IsOpenPressed)
+        {
+            shooter.OpenTrigger += 1;
 
+        }
+        if (inputData.StopOpen)
+        {
+            shooter.CloseTrigger += 1;
+        }
     }
 
 

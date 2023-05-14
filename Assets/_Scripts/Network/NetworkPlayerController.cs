@@ -32,7 +32,6 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     private TickTimer StunTimer { get; set; }
     private NetworkPlayerCanvas playerCanvas;
 
-    public bool GetKnock;
     public float walkSpeed;
     public float rushSpeed;
     public float switchToRush = 1;
@@ -75,7 +74,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
                 SpeedTime = 0;
         }
         if (AngryValue > 0)
-            AngryValue -= Runner.DeltaTime;
+            AngryValue -= Runner.DeltaTime * 2;
         if (AngryValue >= 100)
             AngryValue = 100;
 

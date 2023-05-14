@@ -202,4 +202,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   speed: 20
-  magnetForce: 150
+  magnetForce: 70

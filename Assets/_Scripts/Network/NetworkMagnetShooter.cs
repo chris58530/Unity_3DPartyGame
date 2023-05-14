@@ -71,7 +71,7 @@ public class NetworkMagnetShooter : NetworkBehaviour
         if (currentScale.x < changed.Behaviour.detectionRadius)
         {
             changed.Behaviour.MagnetColor = new Color(0, 0, 0, 0.1f);
-            changed.Behaviour.transform.localScale += new Vector3(10, 10, 10) * changed.Behaviour.Runner.DeltaTime;
+            changed.Behaviour.transform.localScale += new Vector3(20, 20, 20) * changed.Behaviour.Runner.DeltaTime;
             // Debug.Log($"magent:{currentScale} opening....");
 
         }
@@ -87,6 +87,7 @@ public class NetworkMagnetShooter : NetworkBehaviour
     void Close(Changed<NetworkMagnetShooter> changed)
     {
         if (changed.Behaviour.IsOpenMagnet) return;
+        changed.Behaviour.IsOpenMagnet = false;
         changed.Behaviour.transform.localScale = Vector3.zero;
         changed.Behaviour.MagnetColor = (new Color(0, 0, 0, 0));
         changed.Behaviour.tag = "None";
@@ -106,7 +107,7 @@ public class NetworkMagnetShooter : NetworkBehaviour
         {
             controller.SpeedTime = 0;
             Vector3 output = (transform.parent.position - other.transform.parent.position).normalized;
-            controller.SetRepel(output,20);
+            controller.SetRepel(output, 20);
         }
     }
 

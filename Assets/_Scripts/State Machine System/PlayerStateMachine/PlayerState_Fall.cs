@@ -21,14 +21,14 @@ public class PlayerState_Fall : NetworkPlayerState
 
         if (controller.IsGround)
         {
-    
-            if(controller.IsStun)
+
+            if (controller.IsStun)
                 stateMachine.SwitchState(typeof(PlayerState_Stun));
             if (controller.SpeedTime > controller.switchToRush)
                 stateMachine.SwitchState(typeof(PlayerState_Rush));
             else
                 stateMachine.SwitchState(typeof(PlayerState_Walk));
-                // stateMachine.SwitchState(typeof(PlayerState_Land));
+            // stateMachine.SwitchState(typeof(PlayerState_Land));
         }
         if (controller.IsStun)
             return;
@@ -39,6 +39,15 @@ public class PlayerState_Fall : NetworkPlayerState
         else
         {
             controller.SetPlayerMove(inputData);
+        }
+        if (inputData.IsOpenPressed)
+        {
+            shooter.OpenTrigger += 1;
+
+        }
+        if (inputData.StopOpen)
+        {
+            shooter.CloseTrigger += 1;
         }
     }
 }
