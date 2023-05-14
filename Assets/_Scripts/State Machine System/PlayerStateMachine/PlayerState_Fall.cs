@@ -21,7 +21,7 @@ public class PlayerState_Fall : NetworkPlayerState
 
         if (controller.IsGround)
         {
-            Debug.Log($"{this.name}:isground");
+    
             if(controller.IsStun)
                 stateMachine.SwitchState(typeof(PlayerState_Stun));
             if (controller.SpeedTime > controller.switchToRush)

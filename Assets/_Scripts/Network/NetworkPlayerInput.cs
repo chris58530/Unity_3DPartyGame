@@ -16,8 +16,9 @@ public class NetworkPlayerInput : NetworkBehaviour
     public bool Move;
     public bool Jump;
     public bool StopJump;
-    public bool Fire;
-    public bool StopFire;
+    public bool Open;
+    public bool StopOpen;
+    public bool Shoot;
     public bool IsGround;
     public void Update()
     {
@@ -26,9 +27,9 @@ public class NetworkPlayerInput : NetworkBehaviour
         Move = AxisX != 0 || AxisZ != 0;
         Jump = Input.GetButton("Jump");
         StopJump = !Input.GetButton("Jump");
-        Fire = Input.GetButton("Fire1");
-        StopFire = Input.GetButtonUp("Fire1");
-    
+        Open = Input.GetButton("Fire1");
+        StopOpen = !Input.GetButton("Fire1");
+        Shoot =Input.GetButtonDown("Fire2");
     }
 
     public NetworkInputData GetNetworkInput()
@@ -38,9 +39,10 @@ public class NetworkPlayerInput : NetworkBehaviour
         inputData.AxisZ = AxisZ;
         inputData.Move = Move;
 
-        inputData.IsFirePressed = Fire;
+        inputData.IsOpenPressed = Open;
         inputData.IsJumpPressed = Jump;
-        inputData.StopFire = StopFire;
+        inputData.IsShootPressed = Shoot;
+        inputData.StopOpen = StopOpen;
         return inputData;
     }
 }

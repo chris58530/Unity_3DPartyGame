@@ -21,6 +21,8 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     public int modelCount { get; set; }
     [Networked(OnChanged = nameof(OnSpeedTimeChanged))]
     public float SpeedTime { get; set; }
+    [Networked(OnChanged = nameof(OnAngryValueChanged))]
+    public float AngryValue { get; set; }
 
     [SerializeField]
     private GameObject DefualtModel;
@@ -28,7 +30,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     private GameObject RushModel;
     [Networked]
     private TickTimer StunTimer { get; set; }
-    private NetworkSpeedText speedText;
+    private NetworkPlayerCanvas playerCanvas;
 
     public bool GetKnock;
     public float walkSpeed;
@@ -38,7 +40,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     private void Awake()
     {
         groundDetector = GetComponentInChildren<PlayerGroundDetector>();
-        speedText = GetComponentInChildren<NetworkSpeedText>();
+        playerCanvas = GetComponentInChildren<NetworkPlayerCanvas>();
     }
     public override void Spawned()
     {
@@ -52,6 +54,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         {
             rb.InterpolationDataSource = InterpolationDataSources.Snapshots;
         }
+        AngryValue = 10;
     }
     private void Update()
     {
@@ -71,6 +74,10 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             else
                 SpeedTime = 0;
         }
+        if (AngryValue > 0)
+            AngryValue -= Runner.DeltaTime;
+        if (AngryValue >= 100)
+            AngryValue = 100;
 
     }
     public void SetPlayerMove(NetworkInputData input)
@@ -115,40 +122,32 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     {
         rb.transform.tag = tag;
     }
-    public void SwitchModel(int num)
-    {
-        if (num == 1)
-        {
-            if (!DefualtModel.gameObject.activeSelf)
-                DefualtModel.gameObject.SetActive(true);
-            RushModel.gameObject.SetActive(false);
-        }
-        else
-        {
-            if (!RushModel.gameObject.activeSelf)
-                RushModel.gameObject.SetActive(true);
-            DefualtModel.gameObject.SetActive(false);
-        }
-    }
     private static void OnModelChanged(Changed<NetworkPlayerController> changed)
     {
         if (changed.Behaviour.modelCount == 1)
         {
             changed.Behaviour.DefualtModel.gameObject.SetActive(false);
             changed.Behaviour.RushModel.gameObject.SetActive(true);
+            changed.Behaviour.rb.InterpolationTarget = changed.Behaviour.RushModel.gameObject.transform;
         }
         else
         {
             changed.Behaviour.DefualtModel.gameObject.SetActive(true);
             changed.Behaviour.RushModel.gameObject.SetActive(false);
+            changed.Behaviour.rb.InterpolationTarget = changed.Behaviour.DefualtModel.gameObject.transform;
+
         }
     }
     private static void OnSpeedTimeChanged(Changed<NetworkPlayerController> changed)
     {
-        changed.Behaviour.speedText.speedText.text = Mathf.Round(changed.Behaviour.SpeedTime).ToString();
-
+        changed.Behaviour.playerCanvas.speedText.text = Mathf.Round(changed.Behaviour.SpeedTime).ToString();
     }
-    void OnCollisionEnter(Collision other)
+    private static void OnAngryValueChanged(Changed<NetworkPlayerController> changed)
+    {
+        changed.Behaviour.playerCanvas.AngryBar.fillAmount = changed.Behaviour.AngryValue / 100;
+    }
+
+    void OnCollisionStay(Collision other)
     {
         // if (other.gameObject.CompareTag("DeadZone"))
         // {
@@ -166,14 +165,18 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
                 // moveInput.ShowRushSpeed(false);
                 // otherInput.ShowRushSpeed(false);
 
-                //擊飛
+                //擊飛自己
                 Vector3 output = (transform.position - other.transform.position).normalized;
-                rb.Rigidbody.AddForce(output * 50, ForceMode.Impulse);
+                SetRepel(output, 50);
 
                 //暈兩秒開始計時
                 StunTimer = TickTimer.CreateFromSeconds(Runner, 2);
                 IsStun = true;
             }
+        }
+        if (other.gameObject.CompareTag("Repel"))
+        {
+            SpeedTime = 0;
         }
         //撞擊普通物件場景物件
 
@@ -203,13 +206,12 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     #endregion
     #region SetPlayerMagentBody
 
-    void IMagnet.SetRepel(Vector3 direction, float force)
+    public void SetRepel(Vector3 direction, float force)
     {
-        rb.Rigidbody.AddForce((transform.position - direction).normalized * force);
-
+        rb.Rigidbody.AddForce(direction * force, ForceMode.Impulse);
     }
 
-    void IMagnet.SetAttract(Vector3 direction, float force)
+    public void SetAttract(Vector3 direction, float force)
     {
         rb.Rigidbody.AddForce((direction - transform.position).normalized * force);
     }

@@ -15,86 +15,99 @@ public class NetworkMagnetShooter : NetworkBehaviour
     [SerializeField, Header("能力冷卻時間")]
     private float CD;
     [Networked]
-    private bool CanShoot { get; set; }
+    public NetworkBool IsOpenMagnet { get; set; }
+    [Networked(OnChanged = nameof(OnMagnetOpenChanged))]
+    public int OpenTrigger { get; set; }
+    [Networked(OnChanged = nameof(OnMagnetCloseChanged))]
+    public int CloseTrigger { get; set; }
     [Networked]
+    public Color MagnetColor { get; set; }
 
-    private bool CanOpen { get; set; }
-    [Networked]
-    private float CDTimer { get; set; }
 
     [Networked]
-    private TickTimer timer { get; set; }
-    private MeshRenderer mesh;
+    public int MagnetCount { get; set; }
+    private TickTimer CDTimer { get; set; }
+    [Networked]
+    private TickTimer keepTimer { get; set; }
+    private Material material;
+    public NetworkObject magnet;
+    NetworkPlayerController controller;
+    void Awake()
+    {
+        controller = GetComponentInParent<NetworkPlayerController>();
+    }
 
     public override void Spawned()
     {
-        mesh = GetComponent<MeshRenderer>();
-
-        //初始化CD
-        CanOpen = true;
-        CanShoot = false;
-        CDTimer = 0;
+        material = magnet.GetComponent<MeshRenderer>().material;
+    }
+    public override void Render()
+    {
+        material.color = MagnetColor;
     }
     public override void FixedUpdateNetwork()
     {
-        if (Object.HasStateAuthority)
+        // if (CDTimer.ExpiredOrNotRunning(Runner))
+        // {
+        // }
+        if (keepTimer.Expired(Runner))
         {
-            if (CDTimer > 0)
-            {
-                CDTimer -= Runner.DeltaTime;
-            }
-            else
-                CanOpen = true;
-        }
-        if (timer.ExpiredOrNotRunning(Runner)) { }
+            IsOpenMagnet = false;
 
+            keepTimer = TickTimer.None;
+        }
+        Debug.Log($"{keepTimer.Expired(Runner)}");
 
     }
-    public void OpenMagnet()//蓄力
-    {
-        if (!CanOpen) return;
-        if (!Object.HasStateAuthority) return;
 
-        Vector3 currentScale = transform.localScale;
-        if (currentScale.x < detectionRadius)
+    public void ShootMagnet(NetworkInputData input)
+    {
+        Runner.Spawn(magnetPrefab, transform.position, transform.rotation, Object.InputAuthority);
+    }
+    void Open(Changed<NetworkMagnetShooter> changed)
+    {
+        if (changed.Behaviour.IsOpenMagnet) return;
+        Vector3 currentScale = changed.Behaviour.transform.localScale;
+        if (currentScale.x < changed.Behaviour.detectionRadius)
         {
-            OpenMagneColor_RPC(new Color(0, 0, 0, 0.1f));
-            transform.localScale += new Vector3(10, 10, 10) * Runner.DeltaTime;
-            Debug.Log($"magent:{currentScale} opening....");
+            changed.Behaviour.MagnetColor = new Color(0, 0, 0, 0.1f);
+            changed.Behaviour.transform.localScale += new Vector3(10, 10, 10) * changed.Behaviour.Runner.DeltaTime;
+            // Debug.Log($"magent:{currentScale} opening....");
+
         }
         else
         {
-            OpenMagneColor_RPC(new Color(0, 0, 1, 0.3f));
-            this.tag = "Repel";
-            CanShoot = true;
-            CDTimer = CD;
-
+            changed.Behaviour.IsOpenMagnet = true;
+            changed.Behaviour.MagnetColor = new Color(0, 0, 1, 0.2f);
+            changed.Behaviour.tag = "Repel";
+            changed.Behaviour.keepTimer = TickTimer.CreateFromSeconds(changed.Behaviour.Runner, changed.Behaviour.keepTime);
+            Debug.Log($"magentLife:{changed.Behaviour.keepTime} ");
         }
     }
-    public void StopMagnet()//停止蓄力
+    void Close(Changed<NetworkMagnetShooter> changed)
     {
-
-        transform.localScale = Vector3.zero;
-        OpenMagneColor_RPC(new Color(0, 0, 0, 0));
-        this.tag = "None";
+        if (changed.Behaviour.IsOpenMagnet) return;
+        changed.Behaviour.transform.localScale = Vector3.zero;
+        changed.Behaviour.MagnetColor = (new Color(0, 0, 0, 0));
+        changed.Behaviour.tag = "None";
     }
-    public void ShootMagnet()
+
+    private static void OnMagnetOpenChanged(Changed<NetworkMagnetShooter> changed)
     {
-        if (!CanShoot)
+        changed.Behaviour.Open(changed);
+    }
+    private static void OnMagnetCloseChanged(Changed<NetworkMagnetShooter> changed)
+    {
+        changed.Behaviour.Close(changed);
+    }
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Repel"))
         {
-            StopMagnet();
-            return;
+            controller.SpeedTime = 0;
+            Vector3 output = (transform.parent.position - other.transform.parent.position).normalized;
+            controller.SetRepel(output,20);
         }
-        CanOpen = false;
-        CanShoot = false;
-        Runner.Spawn(magnetPrefab, transform.position, transform.rotation, Object.InputAuthority);
-        StopMagnet();
-        Debug.Log($"shoot magnet");
+    }
 
-    }
-    [Rpc(sources:RpcSources.InputAuthority, targets:RpcTargets.All)]
-    private void OpenMagneColor_RPC(Color color)
-    {
-            mesh.material.color = color;
-    }
 }

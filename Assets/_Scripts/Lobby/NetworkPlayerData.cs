@@ -24,7 +24,6 @@ public class NetworkPlayerData : NetworkBehaviour
 
         if (Object.HasInputAuthority)
         {
-            Debug.Log($"{this} send data");
             SetPlayerName_RPC(GameManager.Instance.PlayerName);
             SetCharacterCount_RPC(GameManager.Instance.PlayerCharacter);
         }

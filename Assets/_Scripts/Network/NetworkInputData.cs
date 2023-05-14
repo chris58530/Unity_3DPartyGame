@@ -6,10 +6,11 @@ using Fusion;
 public struct NetworkInputData : INetworkInput
 {
     public NetworkBool IsJumpPressed;
-    public NetworkBool IsFirePressed;
+    public NetworkBool IsShootPressed;
+    public NetworkBool IsOpenPressed;
     public NetworkBool StopJump;
 
-    public NetworkBool StopFire;
+    public NetworkBool StopOpen;
     public Vector3 direction;
     
     public float AxisX ;

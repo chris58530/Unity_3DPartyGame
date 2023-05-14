@@ -25,13 +25,11 @@ public class PlayerState_Idle : NetworkPlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_Jump));
         }
-        if (inputData.IsFirePressed)
+
+        if (inputData.IsShootPressed)
+
         {
-            shooter.OpenMagnet();
-        }
-        if (inputData.StopFire)
-        {
-            shooter.ShootMagnet();
+            shooter.ShootMagnet(inputData);
         }
         if (!controller.IsGround)
         {
@@ -40,6 +38,17 @@ public class PlayerState_Idle : NetworkPlayerState
         if (controller.IsStun)
         {
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+        }
+        // shooter.OpenMagnet(inputData);
+        if (inputData.IsOpenPressed)
+        {
+            shooter.OpenTrigger += 1;
+            controller.AngryValue += 10;
+
+        }
+        if (inputData.StopOpen)
+        {
+            shooter.CloseTrigger += 1;
         }
 
     }

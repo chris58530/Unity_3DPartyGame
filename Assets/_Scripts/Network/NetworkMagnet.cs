@@ -27,6 +27,7 @@ public class NetworkMagnet : NetworkBehaviour
 
     private float startTime => Time.time - timer;
     float timer;
+    Material material;
 
     void Start()
     {
@@ -37,6 +38,8 @@ public class NetworkMagnet : NetworkBehaviour
     {
         lifeTimer = TickTimer.CreateFromSeconds(Runner, lifeTime);
         flyTimer = TickTimer.CreateFromSeconds(Runner, flyTime);
+
+        material = GetComponent<MeshRenderer>().material;
     }
 
     public override void FixedUpdateNetwork()
@@ -46,6 +49,9 @@ public class NetworkMagnet : NetworkBehaviour
             float scale = scaleCurve.Evaluate(startTime - flyTime);
 
             transform.localScale = new Vector3(scale, scale, scale);
+            this.tag = "Positive";
+            material.color = new Color(1, 0, 0, 0.2f);
+
         }
         else transform.position += transform.forward * speed * Runner.DeltaTime;
         if (lifeTimer.Expired(Runner))
@@ -63,7 +69,7 @@ public class NetworkMagnet : NetworkBehaviour
             //用distance判斷距離，越靠近力量越大，之後magnetForce*算出來的數值
             magnet.SetAttract(transform.position, magnetForce);
         }
-     }
+    }
     // private void DetectCollision()
     // {
     //     if (Object == null) return;

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -2057441826570595257}
   m_Layer: 0
   m_Name: Magnet Red
-  m_TagString: Positive
+  m_TagString: None
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f5def857da4393246ac970f2db62dfbf, type: 2}
+  - {fileID: 2100000, guid: c54bf3b1e9209814ca0d0862c4ead05f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.5
       inSlope: -0
       outSlope: -0
       tangentMode: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 8
+      value: 6
       inSlope: 0
       outSlope: 0
       tangentMode: 0
