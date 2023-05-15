@@ -13,7 +13,6 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     [SerializeField]
     private NetworkPrefabRef[] playerPrefab = null;
 
-
     NetworkPlayerInput playerInput;
 
     public Dictionary<PlayerRef, NetworkObject> playerList = new Dictionary<PlayerRef, NetworkObject>();
@@ -33,7 +32,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             if (gameManager.PlayerList.TryGetValue(player, out NetworkPlayerData data))
             {
                 NetworkObject networkPlayerObject = networkRunner.Spawn(playerPrefab[data.CharaterCount], spawnPosition, Quaternion.identity, player);
-
+               
                 networkRunner.SetPlayerObject(player, networkPlayerObject);
 
                 playerList.Add(player, networkPlayerObject);

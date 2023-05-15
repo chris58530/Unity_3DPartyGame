@@ -18,3 +18,6 @@ public enum PairState
 {
     Lobby, CreatingRoom, InRoom
 }
+public enum GameState{
+    Starting,Running,Ending
+}
