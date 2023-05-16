@@ -1386,6 +1386,7 @@ GameObject:
   - component: {fileID: 865140480}
   - component: {fileID: 865140479}
   - component: {fileID: 865140478}
+  - component: {fileID: 865140482}
   m_Layer: 5
   m_Name: BattleCanvas
   m_TagString: Untagged
@@ -1477,6 +1478,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &865140482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865140477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c872dcb88ff0dd4a9f1a0e6d1636263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  battlerTime: 0
 --- !u!1 &896072090
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,16 +22,16 @@ public class NetworkPlayerCanvas : NetworkBehaviour
 
     public override void Spawned()
     {
-        // foreach (NetworkPlayerData data in GameManager.Instance.PlayerList.Values)
-        // {
-        //     if (Object.HasInputAuthority)
-        //     {
-        //         PlayerName = data.PlayerName;
-        //     }
-        // }
+        if (!Object.HasStateAuthority) return;
+        foreach (NetworkPlayerData data in GameManager.Instance.PlayerList.Values)
+        {
+            PlayerName = data.PlayerName;
+
+        }
     }
     private static void OnPlayerNameChanged(Changed<NetworkPlayerCanvas> changed)
     {
+        if(!changed.Behaviour.Object.HasInputAuthority)return;
         changed.Behaviour.playerName.text = changed.Behaviour.PlayerName;
     }
 
