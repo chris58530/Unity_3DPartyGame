@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8329358197118615092}
   - component: {fileID: 3840356457141783803}
   - component: {fileID: 798185950972733740}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: woodenChair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
