@@ -9,6 +9,8 @@ public class PlayerState_Stun : NetworkPlayerState
     {
         base.Enter();
         controller.AngryValue += 10;
+
+        
     }
 
     public override void UpdateNetwork(NetworkInputData inputData)
