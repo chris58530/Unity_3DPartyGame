@@ -32,10 +32,11 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             if (gameManager.PlayerList.TryGetValue(player, out NetworkPlayerData data))
             {
                 NetworkObject networkPlayerObject = networkRunner.Spawn(playerPrefab[data.CharaterCount], spawnPosition, Quaternion.identity, player);
-               
+      
                 networkRunner.SetPlayerObject(player, networkPlayerObject);
 
                 playerList.Add(player, networkPlayerObject);
+
             }
 
         }
@@ -82,7 +83,6 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     {
         if (playerList.TryGetValue(player, out NetworkObject networkObject))
         {
-            //Runner.Despawn 與 Unity Destroy 相通
             runner.Despawn(networkObject);
             playerList.Remove(player);
         }

@@ -9,7 +9,7 @@ public class NetworkPlayerCanvas : NetworkBehaviour
     [SerializeField]
     public TMP_Text speedText;
     [SerializeField]
-    public TMP_Text playerName;
+    private TMP_Text playerName;
     [Networked(OnChanged = nameof(OnPlayerNameChanged))]
     public string PlayerName { get; set; }
     [SerializeField]
@@ -24,8 +24,11 @@ public class NetworkPlayerCanvas : NetworkBehaviour
 
     public override void Spawned()
     {
-
-        PlayerName = GameManager.Instance.PlayerName;
+        /*if (!Runner.IsServer) return;
+        foreach (NetworkPlayerData data in GameManager.Instance.PlayerList.Values)
+        {
+            NetworkPlayer.Local.gameObject.GetComponent<NetworkPlayerCanvas>().PlayerName = data.PlayerName;
+        }*/
     }
     private static void OnPlayerNameChanged(Changed<NetworkPlayerCanvas> changed)
     {
