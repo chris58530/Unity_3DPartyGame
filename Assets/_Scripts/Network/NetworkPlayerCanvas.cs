@@ -24,9 +24,8 @@ public class NetworkPlayerCanvas : NetworkBehaviour
 
     public override void Spawned()
     {
-        data = FindObjectOfType<NetworkPlayerData>();
 
-        PlayerName = data.PlayerName;
+        PlayerName = GameManager.Instance.PlayerName;
     }
     private static void OnPlayerNameChanged(Changed<NetworkPlayerCanvas> changed)
     {
