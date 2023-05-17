@@ -1324,11 +1324,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 822733770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c13b35ca159e97848bfc7da3031f3ab9, type: 3}
+  m_Script: {fileID: 11500000, guid: 125b5cb3b5e7d4ed0b46ccb8e5168540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  battleTime: 10
+  battleTime: 120
   _BattleTime: 0
 --- !u!4 &822733772
 Transform:
@@ -1565,6 +1565,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   timeText: {fileID: 896072092}
+  PlayerValue: []
+  _Score: 0
 --- !u!114 &865140483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1647,7 +1649,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 120
+  m_text: 999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c74d8a7c0734b9c4f97354a65d334e63, type: 2}
   m_sharedMaterial: {fileID: -1082201351687862030, guid: c74d8a7c0734b9c4f97354a65d334e63, type: 2}

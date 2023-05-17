@@ -56,7 +56,6 @@ public class NetworkMagnetShooter : NetworkBehaviour
 
             keepTimer = TickTimer.None;
         }
-        Debug.Log($"{keepTimer.Expired(Runner)}");
 
     }
 

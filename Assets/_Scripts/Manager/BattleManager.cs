@@ -27,7 +27,7 @@ public class BattleManager : NetworkBehaviour
     }
     public override void FixedUpdateNetwork()
     {
-        if(!Object.HasStateAuthority)return;
+      
         if(BattleTime>0)
         BattleTime -= Runner.DeltaTime;
     }
