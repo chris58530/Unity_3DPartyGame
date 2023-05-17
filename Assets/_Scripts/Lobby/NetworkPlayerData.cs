@@ -8,12 +8,15 @@ public class NetworkPlayerData : NetworkBehaviour
 
     [Networked(OnChanged = nameof(OnPlayerNameChanged))] 
     public string PlayerName { get; set; }
+
     [Networked(OnChanged = nameof(OnIsReadyChanged))] 
     public NetworkBool IsReady { get; set; }
 
     [Networked(OnChanged = nameof(OnCharaterNameChanged))] 
     public int CharaterCount { get; set; }
 
+    [Networked(OnChanged =nameof(OnPlayerScoreChanged))]
+    public int PlayerScore { get; set; }
     public override void Spawned()
     {     
 
@@ -48,12 +51,12 @@ public class NetworkPlayerData : NetworkBehaviour
     {
         CharaterCount = obj;
     }
+    [Rpc(sources: RpcSources.InputAuthority, targets: RpcTargets.StateAuthority)]
+    public void SetPlayerScore_RPC(int value)
+    {
+        PlayerScore = value;
+    }
 
-    // [Rpc(sources: RpcSources.InputAuthority, targets: RpcTargets.StateAuthority)]
-    // public void SetBarrelColor_RPC(Color color)
-    // {
-    //     BarrelColor = color;
-    // }
     #endregion
 
     #region - OnChanged Events -
@@ -67,6 +70,10 @@ public class NetworkPlayerData : NetworkBehaviour
         GameManager.Instance.UpdatePlayerList();
     }
     private static void OnCharaterNameChanged(Changed<NetworkPlayerData> changed){
+        GameManager.Instance.UpdatePlayerList();
+    }
+    private static void OnPlayerScoreChanged(Changed<NetworkPlayerData> changed)
+    {
         GameManager.Instance.UpdatePlayerList();
     }
     #endregion

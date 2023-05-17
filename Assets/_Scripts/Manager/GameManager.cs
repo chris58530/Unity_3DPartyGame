@@ -24,6 +24,7 @@ public class GameManager : Singleton<GameManager>
 
     public string PlayerName = null;
     public int PlayerCharacter = 0;
+    public int PlayerScore = 0;
     public Dictionary<PlayerRef, NetworkPlayerData> PlayerList = new Dictionary<PlayerRef, NetworkPlayerData>();
 
     public event Action OnPlayerListUpdated = null;

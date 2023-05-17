@@ -14,6 +14,8 @@ public class NetworkPlayerCanvas : NetworkBehaviour
     public string PlayerName { get; set; }
     [SerializeField]
     public Image AngryBar;
+
+    NetworkPlayerData data;
     void Update()
     {
         transform.LookAt(Camera.main.transform);
@@ -22,16 +24,12 @@ public class NetworkPlayerCanvas : NetworkBehaviour
 
     public override void Spawned()
     {
-        if (!Object.HasStateAuthority) return;
-        foreach (NetworkPlayerData data in GameManager.Instance.PlayerList.Values)
-        {
-            PlayerName = data.PlayerName;
+        data = FindObjectOfType<NetworkPlayerData>();
 
-        }
+        PlayerName = data.PlayerName;
     }
     private static void OnPlayerNameChanged(Changed<NetworkPlayerCanvas> changed)
     {
-        if(!changed.Behaviour.Object.HasInputAuthority)return;
         changed.Behaviour.playerName.text = changed.Behaviour.PlayerName;
     }
 
