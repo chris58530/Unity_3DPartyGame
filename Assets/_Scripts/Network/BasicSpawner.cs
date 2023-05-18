@@ -32,7 +32,6 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             if (gameManager.PlayerList.TryGetValue(player, out NetworkPlayerData data))
             {
                 NetworkObject networkPlayerObject = networkRunner.Spawn(playerPrefab[data.CharaterCount], spawnPosition, Quaternion.identity, player);
-                GameManager.Instance.PlayerCount += 1;
 
 
                 networkRunner.SetPlayerObject(player, networkPlayerObject);

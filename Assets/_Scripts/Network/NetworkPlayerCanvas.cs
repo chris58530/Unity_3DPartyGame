@@ -29,6 +29,7 @@ public class NetworkPlayerCanvas : NetworkBehaviour
             playerName.text = data.PlayerName;
             data.PlayerScore = (float)PlayerScore.Score1;
             Debug.Log($"玩家 : {data.PlayerName} 目前分數 : {data.PlayerScore}");
+            data.IsDead = false;
         }
     }
     public override void FixedUpdateNetwork()

@@ -158,12 +158,17 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     {
         if (other.gameObject.CompareTag("DeadZone"))
         {
-            // transform.position = Vector3.zero;
-            BattleManager.instance.currentPlayerCount -= 1;
-            Debug.Log("controller" + BattleManager.instance.currentPlayerCount);
-            Debug.Log("dead");
-            Runner.Despawn(Object);
-
+            if (GameManager.Instance.PlayerList.TryGetValue(Object.InputAuthority, out var data))
+            {
+                if (!data.IsDead)
+                {
+                    data.IsDead = true;
+                    BattleManager.instance.currentPlayerCount -= 1;
+                    Debug.Log("Controller" + BattleManager.instance.currentPlayerCount);
+                    Debug.Log("Dead");
+                }
+                else Runner.Despawn(Object);
+            }
         }
         if (other.gameObject.CompareTag("Rush") && !IsStun)
         {

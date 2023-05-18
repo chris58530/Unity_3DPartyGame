@@ -15,8 +15,6 @@ public class GameManager : Singleton<GameManager>
             {
                 runner = gameObject.AddComponent<NetworkRunner>();
                 runner.ProvideInput = true;
-
-
             }
             return runner;
         }
