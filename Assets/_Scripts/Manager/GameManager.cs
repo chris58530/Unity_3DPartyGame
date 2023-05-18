@@ -25,6 +25,7 @@ public class GameManager : Singleton<GameManager>
     public string PlayerName = null;
     public int PlayerCharacter = 0;
     public int PlayerScore = 0;
+    public int PlayerCount { get; set; }
     public Dictionary<PlayerRef, NetworkPlayerData> PlayerList = new Dictionary<PlayerRef, NetworkPlayerData>();
 
     public event Action OnPlayerListUpdated = null;
@@ -69,8 +70,11 @@ public class GameManager : Singleton<GameManager>
         {
             networkPlayerData.SetPlayerName_RPC(PlayerName);
             networkPlayerData.SetCharacterCount_RPC(PlayerCharacter);
+            networkPlayerData.SetPlayerScore_RPC(PlayerScore);
         }
     }
+
+
 }
 
 

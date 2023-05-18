@@ -89,9 +89,16 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             output.x = x * Mathf.Sqrt(1 - (z * z) / 2.0f);
             output.z = z * Mathf.Sqrt(1 - (x * x) / 2.0f);
             if (input.Move)
+            {
                 SetPlayerLookAtForward(output);
+                GameManager.Instance.PlayerScore += 10;
+            }
+
+
             rb.Rigidbody.AddForce(output * walkSpeed);
+
         }
+
     }
     public void SetPlayerRush(NetworkInputData input)
     {
@@ -144,14 +151,20 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     private static void OnAngryValueChanged(Changed<NetworkPlayerController> changed)
     {
         changed.Behaviour.playerCanvas.AngryBar.fillAmount = changed.Behaviour.AngryValue / 100;
+
     }
 
     void OnCollisionStay(Collision other)
     {
-        // if (other.gameObject.CompareTag("DeadZone"))
-        // {
-        //     transform.position = originalTrans;
-        // }
+        if (other.gameObject.CompareTag("DeadZone"))
+        {
+            // transform.position = Vector3.zero;
+            BattleManager.instance.currentPlayerCount -= 1;
+            Debug.Log("controller" + BattleManager.instance.currentPlayerCount);
+            Debug.Log("dead");
+            Runner.Despawn(Object);
+
+        }
         if (other.gameObject.CompareTag("Rush") && !IsStun)
         {
             //如果此物件速度大於other物件速度

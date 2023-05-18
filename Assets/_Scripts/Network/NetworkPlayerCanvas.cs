@@ -6,15 +6,15 @@ using TMPro;
 using UnityEngine.UI;
 public class NetworkPlayerCanvas : NetworkBehaviour
 {
+
     [SerializeField]
     public TMP_Text speedText;
     [SerializeField]
     private TMP_Text playerName;
-    [Networked(OnChanged = nameof(OnPlayerNameChanged))]
-    public string PlayerName { get; set; }
+
     [SerializeField]
     public Image AngryBar;
-
+    BattleManager battleManager;
     NetworkPlayerData data;
     void Update()
     {
@@ -24,16 +24,29 @@ public class NetworkPlayerCanvas : NetworkBehaviour
 
     public override void Spawned()
     {
-        /*if (!Runner.IsServer) return;
-        foreach (NetworkPlayerData data in GameManager.Instance.PlayerList.Values)
+        if (GameManager.Instance.PlayerList.TryGetValue(Object.InputAuthority, out var data))
         {
-            NetworkPlayer.Local.gameObject.GetComponent<NetworkPlayerCanvas>().PlayerName = data.PlayerName;
-        }*/
+            playerName.text = data.PlayerName;
+            data.PlayerScore = (float)PlayerScore.Score1;
+            Debug.Log($"玩家 : {data.PlayerName} 目前分數 : {data.PlayerScore}");
+        }
     }
-    private static void OnPlayerNameChanged(Changed<NetworkPlayerCanvas> changed)
+    public override void FixedUpdateNetwork()
     {
-        changed.Behaviour.playerName.text = changed.Behaviour.PlayerName;
+        if (battleManager != null)
+        {
+            if (GameManager.Instance.PlayerList.TryGetValue(Object.InputAuthority, out var data))
+            {
+                battleManager.PlayerValue[data.CharaterCount].fillAmount = data.PlayerScore / 100;
+            }
+        }
+        else
+        {
+            battleManager = FindObjectOfType<BattleManager>();
+        }
     }
+
+
 
 
 

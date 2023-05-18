@@ -45,7 +45,6 @@ public class PlayerDataSetter : MonoBehaviour
         Model[modelCount].SetActive(true);
         GameManager.Instance.PlayerCharacter = modelCount;
         GameManager.Instance.SetPlayerNetworkData();
-        Debug.Log($"目前所選角色 : {modelCount}");
     }
     public void OnPlayerNameInputFieldChange(string value)
     {

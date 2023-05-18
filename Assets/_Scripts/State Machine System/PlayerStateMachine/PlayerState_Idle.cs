@@ -43,6 +43,7 @@ public class PlayerState_Idle : NetworkPlayerState
         if (inputData.IsOpenPressed)
         {
             shooter.OpenTrigger += 1;
+            controller.AngryValue += 10;
 
         }
         if (inputData.StopOpen)

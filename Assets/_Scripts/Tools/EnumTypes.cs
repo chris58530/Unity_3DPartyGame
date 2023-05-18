@@ -2,10 +2,10 @@ public enum MagnetType
 {
     ATTARCT, REPEL
 }
-public enum SceneType
-{
-    INTRO, BEGINNER, CONNECT, LOBBY, GAME, SETTLE
-}
+// public enum SceneType
+// {
+//     INTRO, BEGINNER, CONNECT, LOBBY, GAME, SETTLE
+// }
 public enum PlayerType
 {
     FOX, TANUKI, BAT, BRID
@@ -18,6 +18,11 @@ public enum PairState
 {
     Lobby, CreatingRoom, InRoom
 }
-public enum GameState{
-    Starting,Running,Ending
+public enum BattleState
+{
+    Starting, Running, Ending
+}
+public enum PlayerScore
+{
+ Score1 = 55, Score2 = 73, Score3 = 100
 }

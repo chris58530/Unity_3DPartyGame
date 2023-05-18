@@ -16,7 +16,7 @@ public class NetworkPlayerData : NetworkBehaviour
     public int CharaterCount { get; set; }
 
     [Networked(OnChanged =nameof(OnPlayerScoreChanged))]
-    public int PlayerScore { get; set; }
+    public float PlayerScore { get; set; }
     public override void Spawned()
     {     
 
@@ -29,6 +29,7 @@ public class NetworkPlayerData : NetworkBehaviour
         {
             SetPlayerName_RPC(GameManager.Instance.PlayerName);
             SetCharacterCount_RPC(GameManager.Instance.PlayerCharacter);
+            SetPlayerScore_RPC(GameManager.Instance.PlayerScore);
         }
     }
 

@@ -15,6 +15,7 @@ public class PlayerState_FallToGround : NetworkPlayerState
         base.UpdateNetwork(inputData);
         if (IsAnimationFinish)
             stateMachine.SwitchState(typeof(PlayerState_Stun));
+            
     }
 
 }
