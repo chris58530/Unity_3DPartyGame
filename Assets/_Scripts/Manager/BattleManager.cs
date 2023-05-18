@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 using TMPro;
+using Cinemachine;
 using UnityEngine.UI;
 public class BattleManager : NetworkBehaviour
 {
     public static BattleManager instance;
+
 
     [SerializeField]
     private float battleTime;
@@ -27,8 +29,12 @@ public class BattleManager : NetworkBehaviour
     [Networked]
     public int currentPlayerCount { get; set; }
 
-    [Networked(OnChanged =nameof(OnEndGame))]
-    public NetworkBool IsEndGame{ get; set; }
+    [Networked(OnChanged = nameof(OnEndGame))]
+    public NetworkBool IsEndGame { get; set; }
+    void Start()
+    {
+
+    }
 
     public override void Spawned()
     {
@@ -49,6 +55,7 @@ public class BattleManager : NetworkBehaviour
                 Debug.Log($"當前人數 : {currentPlayerCount}");
             }
         }
+      
 
     }
     public override void FixedUpdateNetwork()
@@ -64,7 +71,7 @@ public class BattleManager : NetworkBehaviour
             }
         }*/
 
-        if(currentPlayerCount <= 1)
+        if (currentPlayerCount <= 0)
         {
             IsEndGame = true;
         }
@@ -86,13 +93,13 @@ public class BattleManager : NetworkBehaviour
                     if (!data.IsDead)
                     {
                         Debug.Log($"本局贏家 : {data.PlayerName}");
-                        data.PlayerScore += 100;
+                        data.PlayerScore += 1;
                         Debug.Log($"分數 : {data.PlayerScore}");
 
                     }
                 }
             }
-            changed.Behaviour.Runner.SetActiveScene("GamePlay");
+            changed.Behaviour.Runner.SetActiveScene("GamePlay1");
         }
     }
 }

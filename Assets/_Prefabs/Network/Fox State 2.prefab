@@ -1274,7 +1274,7 @@ GameObject:
   - component: {fileID: 4353369342636751102}
   m_Layer: 0
   m_Name: Fox State 2
-  m_TagString: Walk
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

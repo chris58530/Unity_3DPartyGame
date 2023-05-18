@@ -32,9 +32,10 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
         Runner.ProvideInput = true;
+        // Debug.Log("Gamemanager awake");
         DontDestroyOnLoad(gameObject);
     }
-
+ 
     private bool CheckAllPlayerIsReady()
     {
         if (!Runner.IsServer) return false;

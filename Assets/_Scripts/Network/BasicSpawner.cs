@@ -5,6 +5,7 @@ using Fusion;
 using Fusion.Sockets;
 using System;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 {
@@ -12,6 +13,8 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private NetworkRunner networkRunner = null;
     [SerializeField]
     private NetworkPrefabRef[] playerPrefab = null;
+    [SerializeField]
+    private CinemachineTargetGroup camGroup;
 
     NetworkPlayerInput playerInput;
 
@@ -37,8 +40,18 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
                 networkRunner.SetPlayerObject(player, networkPlayerObject);
 
                 playerList.Add(player, networkPlayerObject);
+
             }
         }
+
+        NetworkPlayer[] players = FindObjectsOfType<NetworkPlayer>();
+        foreach (NetworkPlayer player in players)
+        {
+            camGroup.AddMember(player.gameObject.transform, 1, 1);
+
+        }
+
+
     }
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
