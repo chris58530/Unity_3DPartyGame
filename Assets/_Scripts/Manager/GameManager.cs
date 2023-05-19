@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -19,11 +20,9 @@ public class GameManager : Singleton<GameManager>
             return runner;
         }
     }
-
     public string PlayerName = null;
     public int PlayerCharacter = 0;
     public int PlayerScore = 0;
-    public int PlayerCount { get; set; }
     public Dictionary<PlayerRef, NetworkPlayerData> PlayerList = new Dictionary<PlayerRef, NetworkPlayerData>();
 
     public event Action OnPlayerListUpdated = null;
@@ -32,10 +31,9 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
         Runner.ProvideInput = true;
-        // Debug.Log("Gamemanager awake");
         DontDestroyOnLoad(gameObject);
+        // SceneManager.MoveGameObjectToScene(this.gameObject, SceneManager.GetSceneByName("GameEnd"));
     }
- 
     private bool CheckAllPlayerIsReady()
     {
         if (!Runner.IsServer) return false;
@@ -44,7 +42,6 @@ public class GameManager : Singleton<GameManager>
         {
             if (!playerData.IsReady) return false;
         }
-
         foreach (var playerData in PlayerList.Values)
         {
             playerData.IsReady = false;
@@ -52,17 +49,15 @@ public class GameManager : Singleton<GameManager>
 
         return true;
     }
-
     public void UpdatePlayerList()
     {
         OnPlayerListUpdated?.Invoke();
 
         if (CheckAllPlayerIsReady())
         {
-            Runner.SetActiveScene("GamePlay");
+            NextScene();
         }
     }
-
     public void SetPlayerNetworkData()
     {
         if (PlayerList.TryGetValue(runner.LocalPlayer, out NetworkPlayerData networkPlayerData))
@@ -71,6 +66,34 @@ public class GameManager : Singleton<GameManager>
             networkPlayerData.SetCharacterCount_RPC(PlayerCharacter);
             networkPlayerData.SetPlayerScore_RPC(PlayerScore);
         }
+    }
+    public void NextScene()
+    {
+        //自動判定場景切換
+        if (SceneManager.GetActiveScene().name == "Lobby")
+        {
+            Runner.SetActiveScene("ReadyScene");
+            Debug.Log($"Switch to Scene nameof ReadyScene");
+            return;
+        }
+        else if (SceneManager.GetActiveScene().name == "GameEnd")
+        {
+            Runner.SetActiveScene("Lobby");
+            Debug.Log($"Switch to Scene nameof Lobby");
+            return;
+        }
+        else
+        {
+            foreach (PlayerRef player in GameManager.Instance.PlayerList.Keys)
+            {
+                if (GameManager.Instance.PlayerList.TryGetValue(player, out NetworkPlayerData data))
+                {
+
+                }
+            }
+        }
+
+
     }
 
 

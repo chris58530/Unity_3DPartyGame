@@ -14,7 +14,7 @@ public class NetworkPlayerCanvas : NetworkBehaviour
 
     [SerializeField]
     public Image AngryBar;
-    BattleManager battleManager;
+    BattleCanvas battleCanvas;
     NetworkPlayerData data;
     void Update()
     {
@@ -34,17 +34,16 @@ public class NetworkPlayerCanvas : NetworkBehaviour
     }
     public override void FixedUpdateNetwork()
     {
-        if (battleManager != null)
+        if (battleCanvas != null)
         {
             if (GameManager.Instance.PlayerList.TryGetValue(Object.InputAuthority, out var data))
             {
-                battleManager.PlayerValue[data.CharaterCount].fillAmount = data.PlayerScore / 3;
-                Debug.Log($"玩家 : {data.PlayerName}");
+                battleCanvas.SetPlayerData(data.CharaterCount,data.PlayerScore);
             }
         }
         else
         {
-            battleManager = FindObjectOfType<BattleManager>();
+            battleCanvas = FindObjectOfType<BattleCanvas>();
         }
     }
 

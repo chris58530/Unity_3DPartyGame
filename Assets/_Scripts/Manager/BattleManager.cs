@@ -2,49 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
-using TMPro;
-using Cinemachine;
 using UnityEngine.UI;
-public class BattleManager : NetworkBehaviour
+public class BattleManager : Singleton<BattleManager>
 {
-    public static BattleManager instance;
-
-
+    public int currentPlayerCount;
     [SerializeField]
-    private float battleTime;
-
-    [Networked(OnChanged = nameof(OnBattleTimeChange)), HideInInspector]
-    public float BattleTime { get; set; }
-
-
-    [SerializeField]
-    private TMP_Text timeText;
-
-    [SerializeField]
-    public Image[] PlayerValue;
-
-    [Networked, HideInInspector]
-    public int PlayerScore { get; set; }
-
-    [Networked]
-    public int currentPlayerCount { get; set; }
-
-    [Networked(OnChanged = nameof(OnEndGame))]
-    public NetworkBool IsEndGame { get; set; }
-    void Start()
+    private BattleCanvas battleCanvas;
+    protected override void Awake()
     {
-
+        base.Awake();
+        DontDestroyOnLoad(this);
+    
     }
-
-    public override void Spawned()
+    private void Start()
     {
-        instance = this;
-
-        BattleTime = battleTime;
-        currentPlayerCount = GameManager.Instance.PlayerCount;
-
-        IsEndGame = false;
-
         foreach (PlayerRef player in GameManager.Instance.PlayerList.Keys)
         {
             if (GameManager.Instance.PlayerList.TryGetValue(player, out NetworkPlayerData data))
@@ -55,51 +26,14 @@ public class BattleManager : NetworkBehaviour
                 Debug.Log($"當前人數 : {currentPlayerCount}");
             }
         }
-      
-
     }
-    public override void FixedUpdateNetwork()
+    private void Update()
     {
-        if (BattleTime > 0)
-            BattleTime -= Runner.DeltaTime;
-
-        /*foreach (PlayerRef player in GameManager.Instance.PlayerList.Keys)
-        {
-            if (GameManager.Instance.PlayerList.TryGetValue(player, out NetworkPlayerData data))
-            {
-                data.IsDead = false;
-            }
-        }*/
-
         if (currentPlayerCount <= 1)
         {
-            IsEndGame = true;
+            //當前人數剩餘1人時
+        
         }
     }
-    private static void OnBattleTimeChange(Changed<BattleManager> changed)
-    {
-        changed.Behaviour.timeText.text = Mathf.RoundToInt(changed.Behaviour.BattleTime).ToString();
-    }
-    private static void OnEndGame(Changed<BattleManager> changed)
-    {
-        if (changed.Behaviour.IsEndGame)
-        {
-            Debug.Log($"轉換場景");
 
-            foreach (PlayerRef player in GameManager.Instance.PlayerList.Keys)
-            {
-                if (GameManager.Instance.PlayerList.TryGetValue(player, out NetworkPlayerData data))
-                {
-                    if (!data.IsDead)
-                    {
-                        Debug.Log($"本局贏家 : {data.PlayerName}");
-                        data.PlayerScore += 1;
-                        Debug.Log($"分數 : {data.PlayerScore}");
-
-                    }
-                }
-            }
-            changed.Behaviour.Runner.SetActiveScene("GamePlay1");
-        }
-    }
 }
