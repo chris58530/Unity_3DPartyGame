@@ -71,7 +71,7 @@ public class BattleManager : NetworkBehaviour
             }
         }*/
 
-        if (currentPlayerCount <= 0)
+        if (currentPlayerCount <= 1)
         {
             IsEndGame = true;
         }
