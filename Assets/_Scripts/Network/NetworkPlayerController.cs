@@ -91,7 +91,6 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             if (input.Move)
             {
                 SetPlayerLookAtForward(output);
-                GameManager.Instance.PlayerScore += 10;
             }
 
 

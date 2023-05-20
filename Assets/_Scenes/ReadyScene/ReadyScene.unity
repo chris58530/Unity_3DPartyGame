@@ -625,14 +625,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625723973}
-  m_LocalRotation: {x: 0.09303525, y: 0.5013611, z: -0.85999745, w: -0.019648284}
+  m_LocalRotation: {x: -0.0052930345, y: 0.51303005, z: -0.85502344, w: -0.07554579}
   m_LocalPosition: {x: -0.9, y: 3, z: 0}
   m_LocalScale: {x: -1.3, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 120.83099, y: 159.472, z: -14.356995}
+  m_LocalEulerAnglesHint: {x: 118.58499, y: 171.773, z: -14.98999}
 --- !u!114 &625723976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1072,7 +1072,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPlayerCount: 0
-  battleCanvas: {fileID: 0}
 --- !u!4 &1309740316
 Transform:
   m_ObjectHideFlags: 0

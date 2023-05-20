@@ -4,9 +4,13 @@ using UnityEngine;
 using Fusion;
 using UnityEngine.UI;
 using TMPro;
+using Cinemachine;
 public class BattleCanvas : NetworkBehaviour
 {
-
+    [Header("本局遊戲結束聚焦剩餘玩家時間")]
+    private float focusTime = 4;
+    [Networked]
+    private TickTimer focusTimer { get; set; }
     [Networked(OnChanged = nameof(OnEndGame))]
     public NetworkBool IsEndGame { get; set; }
     [SerializeField]
@@ -26,22 +30,30 @@ public class BattleCanvas : NetworkBehaviour
     [Networked(OnChanged = nameof(OnBattleTimeChange)), HideInInspector]
     public float BattleTime { get; set; }
 
+    private CinemachineVirtualCamera[] virtualCamera;
+
+
     public override void Spawned()
     {
         IsEndGame = false;
 
         BattleTime = battleTime;
+
+        focusTimer = TickTimer.None;
     }
     public override void FixedUpdateNetwork()
     {
-        if (BattleManager.Instance.currentPlayerCount <= 0)
+        if (BattleManager.Instance.currentPlayerCount <= 1)
         {
             IsEndGame = true;
         }
         if (BattleTime > 0)
             BattleTime -= Runner.DeltaTime;
 
-
+        if (focusTimer.Expired(Runner))//本回合結束時，倒數計時後切換場景
+        {
+            GameManager.Instance.NextScene();
+        }
     }
     public void SetPlayerData(int playerCount, float score)
     {
@@ -69,7 +81,12 @@ public class BattleCanvas : NetworkBehaviour
                     }
                 }
             }
-            GameManager.Instance.NextScene();
+            changed.Behaviour.virtualCamera = FindObjectsOfType<CinemachineVirtualCamera>();
+            foreach (CinemachineVirtualCamera cam in changed.Behaviour.virtualCamera)
+            {
+                cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = 2;
+            }
+            changed.Behaviour.focusTimer = TickTimer.CreateFromSeconds(changed.Behaviour.Runner, changed.Behaviour.focusTime);
         }
     }
 

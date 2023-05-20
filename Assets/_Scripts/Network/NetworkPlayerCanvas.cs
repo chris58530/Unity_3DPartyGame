@@ -27,9 +27,10 @@ public class NetworkPlayerCanvas : NetworkBehaviour
         if (GameManager.Instance.PlayerList.TryGetValue(Object.InputAuthority, out var data))
         {
             playerName.text = data.PlayerName;
-            // data.PlayerScore = (float)PlayerScore.Score1;
-            Debug.Log($"玩家 : {data.PlayerName} 目前分數 : {data.PlayerScore}");
             data.IsDead = false;
+            Debug.Log($"玩家 : {data.PlayerName} 目前分數 : {data.PlayerScore}");
+            BattleManager.Instance.currentPlayerCount += 1;
+            Debug.Log($"目前玩家 : {BattleManager.Instance.currentPlayerCount}");
         }
     }
     public override void FixedUpdateNetwork()

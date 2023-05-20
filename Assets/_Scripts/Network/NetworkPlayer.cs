@@ -8,7 +8,7 @@ using Cinemachine;
 public class NetworkPlayer : NetworkBehaviour
 {
     public static NetworkPlayer Local { get; set; }
-    private CinemachineTargetGroup camGroup;
+    private CinemachineTargetGroup camGroup; 
 
     public override void Spawned()
     {

@@ -1,35 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Fusion;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class BattleManager : Singleton<BattleManager>
 {
     [Header("目前玩家人數")]
-    public int currentPlayerCount;
-    [SerializeField]
-    private BattleCanvas battleCanvas;
+    public int currentPlayerCount; 
+
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(this);
-
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
-    private void Start()
+   
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        foreach (PlayerRef player in GameManager.Instance.PlayerList.Keys)
-        {
-            if (GameManager.Instance.PlayerList.TryGetValue(player, out NetworkPlayerData data))
-            {
-                data.IsDead = false;
-                currentPlayerCount += 1;
-                Debug.Log($"{this} 初始化...");
-                Debug.Log($"當前遊戲人數 : {currentPlayerCount}");
-            }
-        }
+        Debug.Log($"BattleManager 初始化");
+        currentPlayerCount = 0;
     }
-  
-    public void CheckAllReadyButton()
+    
+    public void CheckAllReadyButton()//Ready大廳
     {
         int currentReayBt = 0;
         ReadyButton[] ready = FindObjectsOfType<ReadyButton>();
@@ -45,5 +36,10 @@ public class BattleManager : Singleton<BattleManager>
                 }
             }
         }
+    }
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

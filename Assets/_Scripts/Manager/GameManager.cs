@@ -72,6 +72,17 @@ public class GameManager : Singleton<GameManager>
         //自動判定場景切換
         string activeSceneName = SceneManager.GetActiveScene().name;
 
+        foreach (PlayerRef player in PlayerList.Keys)
+        {
+            if (PlayerList.TryGetValue(player, out NetworkPlayerData data))
+            {
+                if (data.PlayerScore >= 3)
+                {
+                    Runner.SetActiveScene("GameEnd");
+                    return;
+                }
+            }
+        }
         switch (activeSceneName)
         {
             case "Lobby":

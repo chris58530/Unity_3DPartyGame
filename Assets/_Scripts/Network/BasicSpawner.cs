@@ -12,7 +12,8 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private NetworkRunner networkRunner = null;
     [SerializeField]
     private NetworkPrefabRef[] playerPrefab = null;
-    
+    [SerializeField]
+    private Transform[] spawnPoints;
     NetworkPlayerInput playerInput;
 
     public Dictionary<PlayerRef, NetworkObject> playerList = new Dictionary<PlayerRef, NetworkObject>();
@@ -28,23 +29,13 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     {
         foreach (PlayerRef player in gameManager.PlayerList.Keys)
         {
-            Vector3 spawnPosition = Vector3.zero;
             if (gameManager.PlayerList.TryGetValue(player, out NetworkPlayerData data))
             {
-                NetworkObject networkPlayerObject = networkRunner.Spawn(playerPrefab[data.CharaterCount], spawnPosition, Quaternion.identity, player);
-
-
+                NetworkObject networkPlayerObject = networkRunner.Spawn(playerPrefab[data.CharaterCount], Vector3.zero, Quaternion.identity, player);
                 networkRunner.SetPlayerObject(player, networkPlayerObject);
-
                 playerList.Add(player, networkPlayerObject);
-
             }
         }
-
-   
-       
-
-
     }
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
