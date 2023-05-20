@@ -2,57 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
-using TMPro;
 using UnityEngine.UI;
-public class BattleManager : NetworkBehaviour
+public class BattleManager : Singleton<BattleManager>
 {
-    public static BattleManager instance;
-
+    [Header("目前玩家人數")]
+    public int currentPlayerCount;
     [SerializeField]
-    private float battleTime;
-
-    [Networked(OnChanged = nameof(OnBattleTimeChange)), HideInInspector]
-    public float BattleTime { get; set; }
-
-
-    [SerializeField]
-    private TMP_Text timeText;
-    [SerializeField]
-    public Image[] PlayerValue;
-
-    [Networked, HideInInspector]
-    public int PlayerScore { get; set; }
-    [Networked(OnChanged = nameof(OnPlayerCountChange))]
-    public int currentPlayerCount { get; set; }
-    public override void Spawned()
+    private BattleCanvas battleCanvas;
+    protected override void Awake()
     {
-        instance = this;
-
-        BattleTime = battleTime;
-        currentPlayerCount = GameManager.Instance.PlayerCount;
-        Debug.Log(currentPlayerCount);
-    }
-    public override void FixedUpdateNetwork()
-    {
-        if (BattleTime > 0)
-            BattleTime -= Runner.DeltaTime;
+        base.Awake();
+        DontDestroyOnLoad(this);
 
     }
-    private static void OnBattleTimeChange(Changed<BattleManager> changed)
+    private void Start()
     {
-        changed.Behaviour.timeText.text = Mathf.RoundToInt(changed.Behaviour.BattleTime).ToString();
-    }
-    private static void OnPlayerCountChange(Changed<BattleManager> changed)
-    {
-        // if(!changed.Behaviour.Runner.IsServer)return;
-        if (changed.Behaviour.currentPlayerCount <= 0)
+        foreach (PlayerRef player in GameManager.Instance.PlayerList.Keys)
         {
-            Debug.Log(changed.Behaviour.currentPlayerCount + "changed scene");
-
-            changed.Behaviour.Runner.SetActiveScene("GamePlay");
+            if (GameManager.Instance.PlayerList.TryGetValue(player, out NetworkPlayerData data))
+            {
+                data.IsDead = false;
+                currentPlayerCount += 1;
+                Debug.Log($"{this} 初始化...");
+                Debug.Log($"當前遊戲人數 : {currentPlayerCount}");
+            }
         }
     }
-
-
-
+  
+    public void CheckAllReadyButton()
+    {
+        int currentReayBt = 0;
+        ReadyButton[] ready = FindObjectsOfType<ReadyButton>();
+        foreach (ReadyButton readyButton in ready)
+        {
+            if (readyButton.isReady)
+            {
+                currentReayBt += 1;
+                if (currentReayBt == currentPlayerCount)
+                {
+                    GameManager.Instance.NextScene();
+                    break;
+                }
+            }
+        }
+    }
 }

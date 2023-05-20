@@ -80,7 +80,6 @@ public class NetworkMagnetShooter : NetworkBehaviour
             changed.Behaviour.MagnetColor = new Color(0, 0, 1, 0.2f);
             changed.Behaviour.tag = "Repel";
             changed.Behaviour.keepTimer = TickTimer.CreateFromSeconds(changed.Behaviour.Runner, changed.Behaviour.keepTime);
-            Debug.Log($"magentLife:{changed.Behaviour.keepTime} ");
         }
     }
     void Close(Changed<NetworkMagnetShooter> changed)

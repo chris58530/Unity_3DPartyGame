@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Fusion;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -15,17 +16,13 @@ public class GameManager : Singleton<GameManager>
             {
                 runner = gameObject.AddComponent<NetworkRunner>();
                 runner.ProvideInput = true;
-
-
             }
             return runner;
         }
     }
-
     public string PlayerName = null;
     public int PlayerCharacter = 0;
     public int PlayerScore = 0;
-    public int PlayerCount { get; set; }
     public Dictionary<PlayerRef, NetworkPlayerData> PlayerList = new Dictionary<PlayerRef, NetworkPlayerData>();
 
     public event Action OnPlayerListUpdated = null;
@@ -35,8 +32,8 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
         Runner.ProvideInput = true;
         DontDestroyOnLoad(gameObject);
+        // SceneManager.MoveGameObjectToScene(this.gameObject, SceneManager.GetSceneByName("GameEnd"));
     }
-
     private bool CheckAllPlayerIsReady()
     {
         if (!Runner.IsServer) return false;
@@ -45,7 +42,6 @@ public class GameManager : Singleton<GameManager>
         {
             if (!playerData.IsReady) return false;
         }
-
         foreach (var playerData in PlayerList.Values)
         {
             playerData.IsReady = false;
@@ -53,17 +49,15 @@ public class GameManager : Singleton<GameManager>
 
         return true;
     }
-
     public void UpdatePlayerList()
     {
         OnPlayerListUpdated?.Invoke();
 
         if (CheckAllPlayerIsReady())
         {
-            Runner.SetActiveScene("GamePlay");
+            NextScene();
         }
     }
-
     public void SetPlayerNetworkData()
     {
         if (PlayerList.TryGetValue(runner.LocalPlayer, out NetworkPlayerData networkPlayerData))
@@ -73,8 +67,51 @@ public class GameManager : Singleton<GameManager>
             networkPlayerData.SetPlayerScore_RPC(PlayerScore);
         }
     }
+    public void NextScene()
+    {
+        //自動判定場景切換
+        string activeSceneName = SceneManager.GetActiveScene().name;
 
+        switch (activeSceneName)
+        {
+            case "Lobby":
+                Runner.SetActiveScene("ReadyScene");
+                Debug.Log("Switch to Scene 'ReadyScene'");
+                break;
 
+            case "ReadyScene":
+                Runner.SetActiveScene("GamePlay");
+                Debug.Log("Switch to Scene 'GamePlay'");
+                break;
+
+            case "GamePlay":
+                Runner.SetActiveScene("GamePlay1");
+                Debug.Log("Switch to Scene 'GamePlay1'");
+                break;
+
+            case "GamePlay1":
+                Runner.SetActiveScene("GamePlay2");
+                Debug.Log("Switch to Scene 'GamePlay2'");
+                break;
+
+            case "GamePlay2":
+                Runner.SetActiveScene("GamePlay");
+                Debug.Log("Switch to Scene 'GamePlay'");
+                break;
+
+            case "GameEnd":
+                Runner.SetActiveScene("ReadyScene");
+                Debug.Log("Switch to Scene 'ReadyScene'");
+                break;
+        }
+        // foreach (PlayerRef player in GameManager.Instance.PlayerList.Keys)
+        // {
+        //     if (GameManager.Instance.PlayerList.TryGetValue(player, out NetworkPlayerData data))
+        //     {
+
+        //     }
+        // }
+    }
 }
 
 

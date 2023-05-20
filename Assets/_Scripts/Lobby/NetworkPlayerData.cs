@@ -17,6 +17,9 @@ public class NetworkPlayerData : NetworkBehaviour
 
     [Networked(OnChanged =nameof(OnPlayerScoreChanged))]
     public float PlayerScore { get; set; }
+
+    [Networked]
+    public NetworkBool IsDead { get; set; }
     public override void Spawned()
     {     
 
