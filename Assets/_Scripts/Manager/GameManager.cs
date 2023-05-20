@@ -70,33 +70,48 @@ public class GameManager : Singleton<GameManager>
     public void NextScene()
     {
         //自動判定場景切換
-        if (SceneManager.GetActiveScene().name == "Lobby")
-        {
-            Runner.SetActiveScene("ReadyScene");
-            Debug.Log($"Switch to Scene nameof ReadyScene");
-            return;
-        }
-        else if (SceneManager.GetActiveScene().name == "GameEnd")
-        {
-            Runner.SetActiveScene("Lobby");
-            Debug.Log($"Switch to Scene nameof Lobby");
-            return;
-        }
-        else
-        {
-            foreach (PlayerRef player in GameManager.Instance.PlayerList.Keys)
-            {
-                if (GameManager.Instance.PlayerList.TryGetValue(player, out NetworkPlayerData data))
-                {
+        string activeSceneName = SceneManager.GetActiveScene().name;
 
-                }
-            }
+        switch (activeSceneName)
+        {
+            case "Lobby":
+                Runner.SetActiveScene("ReadyScene");
+                Debug.Log("Switch to Scene 'ReadyScene'");
+                break;
+
+            case "ReadyScene":
+                Runner.SetActiveScene("GamePlay");
+                Debug.Log("Switch to Scene 'GamePlay'");
+                break;
+
+            case "GamePlay":
+                Runner.SetActiveScene("GamePlay1");
+                Debug.Log("Switch to Scene 'GamePlay1'");
+                break;
+
+            case "GamePlay1":
+                Runner.SetActiveScene("GamePlay2");
+                Debug.Log("Switch to Scene 'GamePlay2'");
+                break;
+
+            case "GamePlay2":
+                Runner.SetActiveScene("GamePlay");
+                Debug.Log("Switch to Scene 'GamePlay'");
+                break;
+
+            case "GameEnd":
+                Runner.SetActiveScene("ReadyScene");
+                Debug.Log("Switch to Scene 'ReadyScene'");
+                break;
         }
+        // foreach (PlayerRef player in GameManager.Instance.PlayerList.Keys)
+        // {
+        //     if (GameManager.Instance.PlayerList.TryGetValue(player, out NetworkPlayerData data))
+        //     {
 
-
+        //     }
+        // }
     }
-
-
 }
 
 

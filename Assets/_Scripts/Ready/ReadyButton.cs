@@ -4,6 +4,7 @@ using UnityEngine;
 using Fusion;
 public class ReadyButton : NetworkBehaviour
 {
+    public NetworkBool isReady;
     public NetworkBool isDown;
     private float originalPos;
     private float minY = 0.2f;
@@ -12,29 +13,16 @@ public class ReadyButton : NetworkBehaviour
     {
         originalPos = transform.position.y;
         isDown = false;
+        isReady = false;
     }
     public override void FixedUpdateNetwork()
     {
         DetectCollision();
     }
-    // private void OnCollisionStay(Collision other)
-    // {
-    //     if (other.gameObject.GetComponent<Rigidbody>())
-    //     {
-    //         Down();
-    //         isDown = true;
-    //     }
-    // }
-    // private void OnCollisionExit(Collision other)
-    // {
-    //     if (other.gameObject.GetComponent<Rigidbody>())
-    //     {
-    //         isDown = false;
-    //     }
-    // }
+
     public void Down()
     {
-        if (transform.position.y >= minY)
+        if (transform.position.y >= originalPos - minY)
             transform.position += Vector3.down * Runner.DeltaTime * 2;
     }
     public void Up()
@@ -46,23 +34,26 @@ public class ReadyButton : NetworkBehaviour
     private void DetectCollision()
     {
         if (Object == null) return;
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 1f);
-        foreach (var Collider in colliders)
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 0.8f);
+        bool isColliderFound = false;
+
+        foreach (var collider in colliders)
         {
-            if (Collider.GetComponent<NetworkObject>())
+            if (collider.GetComponent<Rigidbody>())
             {
                 Down();
-                Debug.Log("down");
-            }
-            else
-            {
-                Up();
-                Debug.Log("up");
+                Debug.Log(collider.name);
+                isColliderFound = true;
+                isReady = true;
+                BattleManager.Instance.CheckAllReadyButton();
+                break;
             }
         }
-        if (colliders == null)
+        if (!isColliderFound)
         {
-
+            Up();
+            isReady = false;
         }
+
     }
 }

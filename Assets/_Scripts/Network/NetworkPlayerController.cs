@@ -164,8 +164,8 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
                 {
                     data.IsDead = true;
                     BattleManager.Instance.currentPlayerCount -= 1;
-                    Debug.Log("Controller" + BattleManager.Instance.currentPlayerCount);
-                    Debug.Log("Dead");
+                    Debug.Log($"(PlayerController)目前人數 : {BattleManager.Instance.currentPlayerCount}");
+                    Debug.Log($"死亡玩家 : {data.PlayerName}");
                 }
                 else Runner.Despawn(Object);
             }

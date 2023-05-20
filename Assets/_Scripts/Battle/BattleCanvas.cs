@@ -6,14 +6,13 @@ using UnityEngine.UI;
 using TMPro;
 public class BattleCanvas : NetworkBehaviour
 {
-    CanvasGroup canvasGroup;
 
     [Networked(OnChanged = nameof(OnEndGame))]
     public NetworkBool IsEndGame { get; set; }
     [SerializeField]
     public Image[] PlayerValue;
-    [SerializeField]
-    public Image[] PlayerIcon;
+    // [SerializeField]
+    // public Image[] PlayerIcon;
 
     [SerializeField]
     private float battleTime;
@@ -26,31 +25,27 @@ public class BattleCanvas : NetworkBehaviour
 
     [Networked(OnChanged = nameof(OnBattleTimeChange)), HideInInspector]
     public float BattleTime { get; set; }
-    private void Awake()
-    {
-        canvasGroup = GetComponent<CanvasGroup>();
-    }
-    private void Start()
-    {
-        canvasGroup.alpha = 0;
-    }
+
     public override void Spawned()
     {
+        IsEndGame = false;
+
         BattleTime = battleTime;
     }
     public override void FixedUpdateNetwork()
     {
+        if (BattleManager.Instance.currentPlayerCount <= 0)
+        {
+            IsEndGame = true;
+        }
         if (BattleTime > 0)
             BattleTime -= Runner.DeltaTime;
-        if (IsEndGame)
-            canvasGroup.alpha = 0;
 
 
     }
     public void SetPlayerData(int playerCount, float score)
     {
         PlayerValue[playerCount].fillAmount = score / 3;
-
     }
     private static void OnBattleTimeChange(Changed<BattleCanvas> changed)
     {
@@ -60,7 +55,8 @@ public class BattleCanvas : NetworkBehaviour
     {
         if (changed.Behaviour.IsEndGame)
         {
-            Debug.Log($"轉換場景");
+            Debug.Log("OnEndGame");
+
             foreach (PlayerRef player in GameManager.Instance.PlayerList.Keys)
             {
                 if (GameManager.Instance.PlayerList.TryGetValue(player, out NetworkPlayerData data))

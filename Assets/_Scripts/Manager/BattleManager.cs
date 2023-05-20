@@ -5,6 +5,7 @@ using Fusion;
 using UnityEngine.UI;
 public class BattleManager : Singleton<BattleManager>
 {
+    [Header("目前玩家人數")]
     public int currentPlayerCount;
     [SerializeField]
     private BattleCanvas battleCanvas;
@@ -12,7 +13,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         base.Awake();
         DontDestroyOnLoad(this);
-    
+
     }
     private void Start()
     {
@@ -23,17 +24,26 @@ public class BattleManager : Singleton<BattleManager>
                 data.IsDead = false;
                 currentPlayerCount += 1;
                 Debug.Log($"{this} 初始化...");
-                Debug.Log($"當前人數 : {currentPlayerCount}");
+                Debug.Log($"當前遊戲人數 : {currentPlayerCount}");
             }
         }
     }
-    private void Update()
+  
+    public void CheckAllReadyButton()
     {
-        if (currentPlayerCount <= 1)
+        int currentReayBt = 0;
+        ReadyButton[] ready = FindObjectsOfType<ReadyButton>();
+        foreach (ReadyButton readyButton in ready)
         {
-            //當前人數剩餘1人時
-        
+            if (readyButton.isReady)
+            {
+                currentReayBt += 1;
+                if (currentReayBt == currentPlayerCount)
+                {
+                    GameManager.Instance.NextScene();
+                    break;
+                }
+            }
         }
     }
-
 }
