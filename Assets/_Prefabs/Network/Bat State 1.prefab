@@ -610,6 +610,39 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.07850074, y: -0.0051986873, z: -0.050820872}
     m_Extent: {x: 0.035498127, y: 0.3826507, z: 0.19547705}
   m_DirtyAABB: 0
+--- !u!1 &1534489985260936545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 190147420833164309}
+  m_Layer: 0
+  m_Name: DIRC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &190147420833164309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534489985260936545}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1527656092440874334}
+  - {fileID: 2745445183813594318}
+  m_Father: {fileID: 5023645622037789472}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1816586102336504431
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,10 +844,12 @@ MonoBehaviour:
   CD: 3
   _IsOpenMagnet:
     _value: 0
+  _CanOpenMagnet:
+    _value: 0
+  _CanShootMagnet:
+    _value: 0
   _PowerTrigger: 0
-  _ClosePowerTrigger: 0
   _MagnetColor: {r: 0, g: 0, b: 0, a: 0}
-  _MagnetCount: 0
   magnet: {fileID: 1816586102336504431}
 --- !u!1 &1942280637607493197
 GameObject:
@@ -1070,7 +1105,7 @@ Transform:
   m_Children:
   - {fileID: 6342966220349333841}
   - {fileID: 4621330335455779864}
-  m_Father: {fileID: 5023645622037789472}
+  m_Father: {fileID: 190147420833164309}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4786378558640563630
@@ -1863,7 +1898,7 @@ Transform:
   - {fileID: 5073980774115431544}
   - {fileID: 3543220827823701976}
   - {fileID: 8289112275859963272}
-  m_Father: {fileID: 5023645622037789472}
+  m_Father: {fileID: 190147420833164309}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &314909554517215168
@@ -3076,8 +3111,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1527656092440874334}
-  - {fileID: 2745445183813594318}
+  - {fileID: 190147420833164309}
   m_Father: {fileID: 3168284781599211349}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
