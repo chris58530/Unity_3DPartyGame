@@ -39,7 +39,6 @@ public class BattleCanvas : NetworkBehaviour
         IsEndGame = false;
 
         BattleTime = battleTime;
-
         focusTimer = TickTimer.None;
     }
     public override void FixedUpdateNetwork()

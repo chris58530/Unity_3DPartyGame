@@ -30,7 +30,7 @@ public class NetworkMagnetShooter : NetworkBehaviour
     [Networked]
     private TickTimer keepTimer { get; set; }
     private Material material;
-    public NetworkObject magnet;
+    public GameObject magnet;
     NetworkPlayerController controller;
     void Awake()
     {

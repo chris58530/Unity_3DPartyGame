@@ -215,6 +215,39 @@ Transform:
   m_Father: {fileID: 2224844065048865014}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &571338000080380759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3354027901647099836}
+  m_Layer: 0
+  m_Name: Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3354027901647099836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571338000080380759}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2135968016411206398}
+  - {fileID: 5138271606588535950}
+  m_Father: {fileID: 4666986713758929865}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &808321550506448321
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +380,7 @@ RectTransform:
   - {fileID: 2999156462535869774}
   - {fileID: 2482417669354985229}
   m_Father: {fileID: 4666986713758929865}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -611,7 +644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2135968016411206398}
   - component: {fileID: 1652727830502012997}
-  - component: {fileID: 3369061986790726964}
+  - component: {fileID: 1288535910503196966}
   m_Layer: 0
   m_Name: Fox
   m_TagString: Untagged
@@ -636,7 +669,7 @@ Transform:
   - {fileID: 1589475329428504586}
   - {fileID: 8594709290695158566}
   - {fileID: 5055065067404013441}
-  m_Father: {fileID: 4666986713758929865}
+  m_Father: {fileID: 3354027901647099836}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1652727830502012997
@@ -659,7 +692,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3369061986790726964
+--- !u!114 &1288535910503196966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -668,20 +701,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1652727830502012996}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectInterest: 1
-  DefaultInterestGroups: []
-  DestroyWhenStateAuthorityLeaves: 0
-  AllowStateAuthorityOverride: 1
-  AoiPositionSource: {fileID: 0}
-  Flags: 3073
-  NetworkGuid:
-    RawGuidValue: 00000000000000000000000000000000
-  NestedObjects: []
-  NetworkedBehaviours: []
-  SimulationBehaviours: []
+  _interpolationDataSource: 0
+  Animator: {fileID: 1652727830502012997}
+  TotalWords: 0
+  SyncSettings: 79
+  FloatAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: -814817977
+  TimeAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: 1061325578
+  WeightAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: -814817977
+  StateHashes: 000000008b30c5cf60f34d323270625b602a1d7285a0a4e46bc26c912b1a167c7940695559efc849ddcc1ea6e67a3208b4204d21307e46536224397a57426da414ec5ea7d4db06f83f188e05
+  TriggerHashes: 00000000
 --- !u!1 &1812627277144681846
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,7 +931,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2665684681693271960}
   - component: {fileID: 2868214853979111877}
-  - component: {fileID: 1748608086523445946}
   m_Layer: 0
   m_Name: Ground Detector
   m_TagString: Untagged
@@ -912,7 +951,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4666986713758929865}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2868214853979111877
 MonoBehaviour:
@@ -930,29 +969,6 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 8
---- !u!114 &1748608086523445946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2665684681693271959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjectInterest: 1
-  DefaultInterestGroups: []
-  DestroyWhenStateAuthorityLeaves: 0
-  AllowStateAuthorityOverride: 1
-  AoiPositionSource: {fileID: 0}
-  Flags: 3073
-  NetworkGuid:
-    RawGuidValue: 00000000000000000000000000000000
-  NestedObjects: []
-  NetworkedBehaviours: []
-  SimulationBehaviours: []
 --- !u!1 &2907510537011971606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,8 +1427,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 2135968016411206398}
-  - {fileID: 5138271606588535950}
+  - {fileID: 3354027901647099836}
   - {fileID: 8158306652987066919}
   - {fileID: 2665684681693271960}
   - {fileID: 785383548112624227}
@@ -1511,11 +1526,7 @@ MonoBehaviour:
   Flags: 2305
   NetworkGuid:
     RawGuidValue: a7b3c1ded21621545ab51619fa580c20
-  NestedObjects:
-  - {fileID: 3369061986790726964}
-  - {fileID: 6945331249193423219}
-  - {fileID: 5196717348191950515}
-  - {fileID: 1748608086523445946}
+  NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 1937045688732522104}
   - {fileID: 5849927872912916195}
@@ -1523,7 +1534,9 @@ MonoBehaviour:
   - {fileID: 8802895027150140161}
   - {fileID: -3563485347890817855}
   - {fileID: 4353369342636751102}
+  - {fileID: 1288535910503196966}
   - {fileID: 7428976091817918635}
+  - {fileID: 6957494910417815336}
   - {fileID: 71662000194794774}
   SimulationBehaviours: []
 --- !u!114 &1937045688732522104
@@ -1540,7 +1553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   InterpolationSpace: 1
-  InterpolationTarget: {fileID: 2135968016411206398}
+  InterpolationTarget: {fileID: 3354027901647099836}
   InterpolateErrorCorrection: 1
   InterpolatedErrorCorrectionSettings:
     MinRate: 3.3
@@ -1748,7 +1761,7 @@ Transform:
   m_Children:
   - {fileID: 339301140876250099}
   - {fileID: 755236918709475457}
-  m_Father: {fileID: 4666986713758929865}
+  m_Father: {fileID: 3354027901647099836}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &83362998298145248
@@ -2259,7 +2272,6 @@ GameObject:
   - component: {fileID: 3432382512898135870}
   - component: {fileID: 277659088563328282}
   - component: {fileID: 6957494910417815336}
-  - component: {fileID: 6945331249193423219}
   m_Layer: 0
   m_Name: MagnetShooter
   m_TagString: Negative
@@ -2281,7 +2293,7 @@ Transform:
   m_Children:
   - {fileID: 7076738961804907508}
   m_Father: {fileID: 4666986713758929865}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5902431416493672571
 MeshFilter:
@@ -2369,32 +2381,7 @@ MonoBehaviour:
   _CloseTrigger: 0
   _MagnetColor: {r: 0, g: 0, b: 0, a: 0}
   _MagnetCount: 0
-  magnet: {fileID: 5196717348191950515}
---- !u!114 &6945331249193423219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8158306652987066916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjectInterest: 1
-  DefaultInterestGroups: []
-  DestroyWhenStateAuthorityLeaves: 0
-  AllowStateAuthorityOverride: 1
-  AoiPositionSource: {fileID: 0}
-  Flags: 3073
-  NetworkGuid:
-    RawGuidValue: 00000000000000000000000000000000
-  NestedObjects:
-  - {fileID: 5196717348191950515}
-  NetworkedBehaviours:
-  - {fileID: 6957494910417815336}
-  SimulationBehaviours: []
+  magnet: {fileID: 8217304500487286515}
 --- !u!1 &8217304500487286515
 GameObject:
   m_ObjectHideFlags: 0
@@ -2406,7 +2393,6 @@ GameObject:
   - component: {fileID: 7076738961804907508}
   - component: {fileID: 5615146235161762424}
   - component: {fileID: 7732248872953416207}
-  - component: {fileID: 5196717348191950515}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -2479,29 +2465,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5196717348191950515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8217304500487286515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjectInterest: 1
-  DefaultInterestGroups: []
-  DestroyWhenStateAuthorityLeaves: 0
-  AllowStateAuthorityOverride: 1
-  AoiPositionSource: {fileID: 0}
-  Flags: 3073
-  NetworkGuid:
-    RawGuidValue: 00000000000000000000000000000000
-  NestedObjects: []
-  NetworkedBehaviours: []
-  SimulationBehaviours: []
 --- !u!1 &8524159777220310082
 GameObject:
   m_ObjectHideFlags: 0
