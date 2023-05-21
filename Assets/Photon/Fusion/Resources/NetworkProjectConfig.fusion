@@ -31,7 +31,7 @@
             "a": 0.5
         }
     },
-    "SceneLoadSpawnMode": 2,
+    "SceneLoadSpawnMode": 1,
     "DeltaCompressor": 0,
     "InvokeRenderInBatchMode": true,
     "MaxNetworkedObjectCount": 8192,
@@ -66,7 +66,7 @@
         "ConnectionPingInterval": 1.0,
         "ConnectionShutdownTime": 1.0,
         "MtuDefault": 1136,
-        "ReliableDataTransferModes": 3
+        "ReliableDataTransferModes": -1
     },
     "NetworkConditions": {
         "Enabled": false,
