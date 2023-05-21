@@ -43,11 +43,7 @@ public class PlayerState_Rush : NetworkPlayerState
         {
             shooter.PowerTrigger += 1;
 
-        }
-        if (inputData.StopOpen)
-        {
-            shooter.ClosePowerTrigger += 1;
-        }
+        }    
 
     }
     // public override void LogicUpdate()

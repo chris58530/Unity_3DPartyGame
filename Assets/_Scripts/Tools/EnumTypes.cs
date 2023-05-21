@@ -6,6 +6,9 @@ public enum MagnetType
 // {
 //     INTRO, BEGINNER, CONNECT, LOBBY, GAME, SETTLE
 // }
+public enum PowerValue{
+    Power1 = 20,Power2 = 50,Power3=85
+}
 public enum PlayerType
 {
     FOX, TANUKI, BAT, BRID

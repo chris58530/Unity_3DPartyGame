@@ -19,8 +19,7 @@ public class NetworkMagnetShooter : NetworkBehaviour
 
     [Networked(OnChanged = nameof(OnMagnetPowerChanged))]
     public float PowerTrigger { get; set; }
-    [Networked(OnChanged = nameof(OnMagnetCloseChanged))]
-    public int ClosePowerTrigger { get; set; }
+
 
     [Networked]
     public Color MagnetColor { get; set; }
@@ -47,13 +46,13 @@ public class NetworkMagnetShooter : NetworkBehaviour
     }
     public override void FixedUpdateNetwork()
     {
-
         if (keepTimer.Expired(Runner))
         {
-
             keepTimer = TickTimer.None;
+            Close();
         }
-
+        Power2();
+        Debug.Log(controller.AngryValue);
     }
 
     public void ShootMagnet()
@@ -62,28 +61,9 @@ public class NetworkMagnetShooter : NetworkBehaviour
     }
     void Power2()
     {
-        // if (changed.Behaviour.IsOpenMagnet) return;
-        // Vector3 currentScale = changed.Behaviour.transform.localScale;
-        // float targetScale = changed.Behaviour.detectionRadius;
-        // Debug.Log("power 2");
-
-        // if (currentScale.x < targetScale)
-        // {
-        //     changed.Behaviour.MagnetColor = new Color(0, 0, 0, 0.1f);
-        //     changed.Behaviour.transform.localScale += new Vector3(10, 10, 10) * changed.Behaviour.Runner.DeltaTime;
-        //     Debug.Log($"magnet: opening....");
-        // }
-        // else
-        // {
-        //     changed.Behaviour.IsOpenMagnet = true;
-        //     changed.Behaviour.MagnetColor = new Color(0, 0, 1, 0.2f);
-        //     changed.Behaviour.tag = "Repel";
-        //     changed.Behaviour.keepTimer = TickTimer.CreateFromSeconds(changed.Behaviour.Runner, changed.Behaviour.keepTime);
-        // }
         if (!IsOpenMagnet) return;
         Vector3 currentScale = transform.localScale;
         Debug.Log("power 2");
-
         if (currentScale.x < detectionRadius)
         {
             MagnetColor = new Color(0, 0, 0, 0.1f);
@@ -98,13 +78,13 @@ public class NetworkMagnetShooter : NetworkBehaviour
             keepTimer = TickTimer.CreateFromSeconds(Runner, keepTime);
         }
     }
-    void Close(Changed<NetworkMagnetShooter> changed)
+    void Close()
     {
-        if (changed.Behaviour.IsOpenMagnet) return;
-        changed.Behaviour.IsOpenMagnet = false;
-        changed.Behaviour.transform.localScale = Vector3.zero;
-        changed.Behaviour.MagnetColor = (new Color(0, 0, 0, 0));
-        changed.Behaviour.tag = "None";
+        if (IsOpenMagnet) return;
+        IsOpenMagnet = false;
+        transform.localScale = Vector3.zero;
+        MagnetColor = (new Color(0, 0, 0, 0));
+        tag = "None";
     }
     void Power1(Changed<NetworkMagnetShooter> changed)
     {
@@ -115,41 +95,57 @@ public class NetworkMagnetShooter : NetworkBehaviour
     }
     void Power3(Changed<NetworkMagnetShooter> changed)
     {
-        // changed.Behaviour.Power2(changed);
-        changed.Behaviour.ShootMagnet();
-        Debug.Log("power 3");
+        IsOpenMagnet = true;
+        if (!IsOpenMagnet) return;
+        Vector3 currentScale = transform.localScale;
+        Debug.Log("power 2");
+        if (currentScale.x < detectionRadius)
+        {
+            MagnetColor = new Color(0, 0, 0, 0.1f);
+            transform.localScale += new Vector3(10, 10, 10) * Runner.DeltaTime;
+            Debug.Log($"magnet: opening....");
+        }
+        else
+        {
+            IsOpenMagnet = false;
+            MagnetColor = new Color(0, 0, 1, 0.2f);
+            tag = "Repel";
+            keepTimer = TickTimer.CreateFromSeconds(Runner, keepTime);
+            changed.Behaviour.ShootMagnet();
+            Debug.Log("power 3");
+        }
+
+
     }
 
 
 
     private static void OnMagnetPowerChanged(Changed<NetworkMagnetShooter> changed)
     {
-        if (changed.Behaviour.PowerTrigger >= 33 && changed.Behaviour.PowerTrigger <= 66)
+        if (changed.Behaviour.PowerTrigger >= (float)PowerValue.Power1 && changed.Behaviour.PowerTrigger <= (float)PowerValue.Power2)
         {
             //Power level 1
             changed.Behaviour.Power1(changed);
             changed.Behaviour.controller.AngryValue = 0;
 
         }
-        else if (changed.Behaviour.PowerTrigger > 66 && changed.Behaviour.PowerTrigger < 99)
+        else if (changed.Behaviour.PowerTrigger > (float)PowerValue.Power2 && changed.Behaviour.PowerTrigger < (float)PowerValue.Power3)
         {
             //Power level 2
             changed.Behaviour.IsOpenMagnet = true;
             changed.Behaviour.controller.AngryValue = 0;
+            Debug.Log("power 2");
+
 
 
         }
-        else if (changed.Behaviour.PowerTrigger >= 99)
+        else if (changed.Behaviour.PowerTrigger >= (float)PowerValue.Power3)
         {
             //Power level 3
             changed.Behaviour.Power3(changed);
             changed.Behaviour.controller.AngryValue = 0;
 
         }
-    }
-    private static void OnMagnetCloseChanged(Changed<NetworkMagnetShooter> changed)
-    {
-        changed.Behaviour.Close(changed);
     }
     void OnTriggerStay(Collider other)
     {

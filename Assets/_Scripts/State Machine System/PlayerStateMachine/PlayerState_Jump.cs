@@ -40,10 +40,7 @@ public class PlayerState_Jump : NetworkPlayerState
             shooter.PowerTrigger += 1;
 
         }
-        if (inputData.StopOpen)
-        {
-            shooter.ClosePowerTrigger += 1;
-        }
+     
     }
 
 }

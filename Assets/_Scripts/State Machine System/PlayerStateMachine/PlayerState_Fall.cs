@@ -45,9 +45,6 @@ public class PlayerState_Fall : NetworkPlayerState
             shooter.PowerTrigger += 1;
 
         }
-        if (inputData.StopOpen)
-        {
-            shooter.ClosePowerTrigger += 1;
-        }
+       
     }
 }

@@ -42,10 +42,7 @@ public class PlayerState_Idle : NetworkPlayerState
             shooter.PowerTrigger = value;
 
         }
-        if (inputData.StopOpen)
-        {
-            shooter.ClosePowerTrigger += 1;
-        }
+     
 
     }
 }

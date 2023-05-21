@@ -41,10 +41,7 @@ public class PlayerState_Walk : NetworkPlayerState
             shooter.PowerTrigger += 1;
 
         }
-        if (inputData.StopOpen)
-        {
-            shooter.ClosePowerTrigger += 1;
-        }
+   
     }
 
 

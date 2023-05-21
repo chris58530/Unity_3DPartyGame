@@ -49,10 +49,7 @@ public class PlayerState_Land : NetworkPlayerState
             shooter.PowerTrigger += 1;
 
         }
-        if (inputData.StopOpen)
-        {
-            shooter.ClosePowerTrigger += 1;
-        }
+      
     }
 
 }

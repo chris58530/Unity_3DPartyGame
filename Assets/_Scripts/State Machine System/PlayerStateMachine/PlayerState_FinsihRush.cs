@@ -30,10 +30,7 @@ public class PlayerState_FinsihRush : NetworkPlayerState
             shooter.PowerTrigger += 1;
 
         }
-        if (inputData.StopOpen)
-        {
-            shooter.ClosePowerTrigger += 1;
-        }
+      
     }
 
     public override void Exit()
