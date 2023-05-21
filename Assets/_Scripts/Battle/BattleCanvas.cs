@@ -14,6 +14,7 @@ public class BattleCanvas : NetworkBehaviour
     [Networked(OnChanged = nameof(OnEndGame))]
     public NetworkBool IsEndGame { get; set; }
     [SerializeField]
+    
     public Image[] PlayerValue;
     // [SerializeField]
     // public Image[] PlayerIcon;
