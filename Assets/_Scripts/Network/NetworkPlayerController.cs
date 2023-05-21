@@ -53,6 +53,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         {
             rb.InterpolationDataSource = InterpolationDataSources.Snapshots;
         }
+        
         AngryValue = 10;
     }
     private void Update()
