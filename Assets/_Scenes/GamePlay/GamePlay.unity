@@ -1404,8 +1404,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab:
-  - RawGuidValue: a7b3c1ded21621545ab51619fa580c20
-  - RawGuidValue: ca3bee508ef53d3448861eb0664ec6e2
+  - RawGuidValue: c317221bcc0129941be373fd2b6a87f4
+  - RawGuidValue: 31dc8461d17b6dc4dbae04d6f032df9e
   spawnPoints: []
 --- !u!4 &557037319
 Transform:

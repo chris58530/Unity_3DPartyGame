@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: 6e6fa7bd3bcef754e85cd0f6fa5cbc13
+guid: 3689012c21684fb41828ea8ccc82f661
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
+    second: idle
+  - first:
+      74: -3100369314251171874
     second: Idle
   - first:
-      74: 2667949614841947897
+      74: -945436022992802792
     second: Walk_loop
   - first:
       74: 9060002271864667994
@@ -16,8 +19,8 @@ ModelImporter:
       74: 5917537482288442099
     second: Fall
   - first:
-      74: -5207543154922391511
-    second: Fall_to_Ground
+      74: -6198814910979178712
+    second: Fall_to_ground
   - first:
       74: 5071076526327935608
     second: Wakeup
@@ -150,15 +153,15 @@ ModelImporter:
       name: Fall
       takeName: Take 001
       internalID: 0
-      firstFrame: 115
-      lastFrame: 125
+      firstFrame: 102
+      lastFrame: 104
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -176,7 +179,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Fall_to_Ground
+      name: Fall_to_ground
       takeName: Take 001
       internalID: 0
       firstFrame: 145
@@ -295,7 +298,7 @@ ModelImporter:
       name: Land
       takeName: Take 001
       internalID: 0
-      firstFrame: 126
+      firstFrame: 128
       lastFrame: 135
       wrapMode: 0
       orientationOffsetY: 0
