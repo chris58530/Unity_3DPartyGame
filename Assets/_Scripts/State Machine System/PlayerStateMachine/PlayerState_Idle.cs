@@ -26,11 +26,6 @@ public class PlayerState_Idle : NetworkPlayerState
             stateMachine.SwitchState(typeof(PlayerState_Jump));
         }
 
-        if (inputData.IsShootPressed)
-
-        {
-            shooter.ShootMagnet(inputData);
-        }
         if (!controller.IsGround)
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));
@@ -42,13 +37,14 @@ public class PlayerState_Idle : NetworkPlayerState
         // shooter.OpenMagnet(inputData);
         if (inputData.IsOpenPressed)
         {
-            shooter.OpenTrigger += 1;
-            controller.AngryValue += 10;
+            float value = controller.AngryValue;
+
+            shooter.PowerTrigger = value;
 
         }
         if (inputData.StopOpen)
         {
-            shooter.CloseTrigger += 1;
+            shooter.ClosePowerTrigger += 1;
         }
 
     }

@@ -27,12 +27,12 @@ public class PlayerState_FinsihRush : NetworkPlayerState
         controller.SetPlayerRush(inputData);
         if (inputData.IsOpenPressed)
         {
-            shooter.OpenTrigger += 1;
+            shooter.PowerTrigger += 1;
 
         }
         if (inputData.StopOpen)
         {
-            shooter.CloseTrigger += 1;
+            shooter.ClosePowerTrigger += 1;
         }
     }
 

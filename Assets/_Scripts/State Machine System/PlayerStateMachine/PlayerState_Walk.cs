@@ -15,7 +15,6 @@ public class PlayerState_Walk : NetworkPlayerState
     {
         base.UpdateNetwork(inputData);
         controller.SetPlayerMove(inputData);
-
         if (!inputData.Move)
         {
             stateMachine.SwitchState(typeof(PlayerState_Idle));
@@ -39,12 +38,12 @@ public class PlayerState_Walk : NetworkPlayerState
         }
         if (inputData.IsOpenPressed)
         {
-            shooter.OpenTrigger += 1;
+            shooter.PowerTrigger += 1;
 
         }
         if (inputData.StopOpen)
         {
-            shooter.CloseTrigger += 1;
+            shooter.ClosePowerTrigger += 1;
         }
     }
 

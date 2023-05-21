@@ -811,8 +811,8 @@ MonoBehaviour:
   CD: 3
   _IsOpenMagnet:
     _value: 0
-  _OpenTrigger: 0
-  _CloseTrigger: 0
+  _PowerTrigger: 0
+  _ClosePowerTrigger: 0
   _MagnetColor: {r: 0, g: 0, b: 0, a: 0}
   _MagnetCount: 0
   magnet: {fileID: 1816586102336504431}
@@ -1625,7 +1625,7 @@ MonoBehaviour:
   _interpolationDataSource: 0
   playerStates:
   - {fileID: 11400000, guid: 8402db915dc7b7549af12885703cff05, type: 2}
-  - {fileID: 11400000, guid: 45543f7b2fccd6a478b0f1079816e411, type: 2}
+  - {fileID: 11400000, guid: c87f65a13ec74ae47a4d2cf9b827bf53, type: 2}
   - {fileID: 11400000, guid: 80280d9b10cee944f9460c2a770fa641, type: 2}
   - {fileID: 11400000, guid: b8fdb9f280a13dc4e8c5de7587cd6bf5, type: 2}
   - {fileID: 11400000, guid: 81d81edd9e730e248a178a59ac170ce8, type: 2}

@@ -8,7 +8,7 @@ public class PlayerState_Stun : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
-        controller.AngryValue += 10;
+        controller.AngryValue += 50;
 
         
     }

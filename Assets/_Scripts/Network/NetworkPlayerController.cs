@@ -53,8 +53,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         {
             rb.InterpolationDataSource = InterpolationDataSources.Snapshots;
         }
-        
-        AngryValue = 10;
+
     }
     private void Update()
     {
@@ -134,14 +133,11 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         {
             changed.Behaviour.DefualtModel.gameObject.SetActive(false);
             changed.Behaviour.RushModel.gameObject.SetActive(true);
-            changed.Behaviour.rb.InterpolationTarget = changed.Behaviour.RushModel.gameObject.transform;
         }
         else
         {
             changed.Behaviour.DefualtModel.gameObject.SetActive(true);
             changed.Behaviour.RushModel.gameObject.SetActive(false);
-            changed.Behaviour.rb.InterpolationTarget = changed.Behaviour.DefualtModel.gameObject.transform;
-
         }
     }
     private static void OnSpeedTimeChanged(Changed<NetworkPlayerController> changed)

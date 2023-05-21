@@ -46,12 +46,12 @@ public class PlayerState_Land : NetworkPlayerState
         }
         if (inputData.IsOpenPressed)
         {
-            shooter.OpenTrigger += 1;
+            shooter.PowerTrigger += 1;
 
         }
         if (inputData.StopOpen)
         {
-            shooter.CloseTrigger += 1;
+            shooter.ClosePowerTrigger += 1;
         }
     }
 

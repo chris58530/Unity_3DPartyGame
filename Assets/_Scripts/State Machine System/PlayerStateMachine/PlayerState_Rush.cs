@@ -17,6 +17,7 @@ public class PlayerState_Rush : NetworkPlayerState
     {
         base.UpdateNetwork(inputData);
         controller.SetPlayerRush(inputData);
+        controller.AngryValue+= 1;
 
 
         if (controller.SpeedTime <= controller.switchToRush)
@@ -40,12 +41,12 @@ public class PlayerState_Rush : NetworkPlayerState
         }
         if (inputData.IsOpenPressed)
         {
-            shooter.OpenTrigger += 1;
+            shooter.PowerTrigger += 1;
 
         }
         if (inputData.StopOpen)
         {
-            shooter.CloseTrigger += 1;
+            shooter.ClosePowerTrigger += 1;
         }
 
     }
