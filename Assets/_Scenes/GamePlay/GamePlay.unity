@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 430.0891, g: 404.1264, b: 391.8754, a: 1}
+  m_IndirectSpecularColor: {r: 237.88635, g: 223.58096, b: 217.04541, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1404,8 +1404,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab:
+  - RawGuidValue: a7b3c1ded21621545ab51619fa580c20
   - RawGuidValue: c317221bcc0129941be373fd2b6a87f4
   - RawGuidValue: 31dc8461d17b6dc4dbae04d6f032df9e
+  - RawGuidValue: c6e7b5cafd795834b9afc913e4b57051
   spawnPoints: []
 --- !u!4 &557037319
 Transform:
@@ -5228,7 +5230,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2059502556, guid: 851a0b94d5dc38a459bff065bceb2172, type: 3}
+  m_Sprite: {fileID: 1111081747, guid: 851a0b94d5dc38a459bff065bceb2172, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5342,7 +5344,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2059502556, guid: 851a0b94d5dc38a459bff065bceb2172, type: 3}
+  m_Sprite: {fileID: 1649522994, guid: 851a0b94d5dc38a459bff065bceb2172, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5555,7 +5557,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2059502556, guid: 851a0b94d5dc38a459bff065bceb2172, type: 3}
+  m_Sprite: {fileID: 1483189453, guid: 851a0b94d5dc38a459bff065bceb2172, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
