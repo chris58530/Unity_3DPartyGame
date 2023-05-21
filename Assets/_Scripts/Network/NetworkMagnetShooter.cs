@@ -16,6 +16,10 @@ public class NetworkMagnetShooter : NetworkBehaviour
     private float CD;
     [Networked]
     public NetworkBool IsOpenMagnet { get; set; }
+    [Networked]
+    public NetworkBool CanOpenMagnet { get; set; }
+    [Networked]
+    public NetworkBool CanShootMagnet { get; set; }
 
     [Networked(OnChanged = nameof(OnMagnetPowerChanged))]
     public float PowerTrigger { get; set; }
@@ -51,52 +55,31 @@ public class NetworkMagnetShooter : NetworkBehaviour
             keepTimer = TickTimer.None;
             Close();
         }
-        Power2();
+        if (CanOpenMagnet)
+            OpenMagnet();
         Debug.Log(controller.AngryValue);
     }
 
     public void ShootMagnet()
     {
         Runner.Spawn(magnetPrefab, transform.position, transform.rotation, Object.InputAuthority);
+        CanShootMagnet = false;
     }
-    void Power2()
-    {
-        if (!IsOpenMagnet) return;
-        Vector3 currentScale = transform.localScale;
-        Debug.Log("power 2");
-        if (currentScale.x < detectionRadius)
-        {
-            MagnetColor = new Color(0, 0, 0, 0.1f);
-            transform.localScale += new Vector3(10, 10, 10) * Runner.DeltaTime;
-            Debug.Log($"magnet: opening....");
-        }
-        else
-        {
-            IsOpenMagnet = false;
-            MagnetColor = new Color(0, 0, 1, 0.2f);
-            tag = "Repel";
-            keepTimer = TickTimer.CreateFromSeconds(Runner, keepTime);
-        }
-    }
+
     void Close()
     {
-        if (IsOpenMagnet) return;
         IsOpenMagnet = false;
         transform.localScale = Vector3.zero;
         MagnetColor = (new Color(0, 0, 0, 0));
         tag = "None";
     }
-    void Power1(Changed<NetworkMagnetShooter> changed)
+    void AddSpeeTime(Changed<NetworkMagnetShooter> changed)
     {
         changed.Behaviour.controller.SpeedTime += 5;
         Debug.Log("power 1");
-
-
     }
-    void Power3(Changed<NetworkMagnetShooter> changed)
+    void OpenMagnet()
     {
-        IsOpenMagnet = true;
-        if (!IsOpenMagnet) return;
         Vector3 currentScale = transform.localScale;
         Debug.Log("power 2");
         if (currentScale.x < detectionRadius)
@@ -107,15 +90,14 @@ public class NetworkMagnetShooter : NetworkBehaviour
         }
         else
         {
-            IsOpenMagnet = false;
+            IsOpenMagnet = true;
+            CanOpenMagnet=false;
             MagnetColor = new Color(0, 0, 1, 0.2f);
             tag = "Repel";
             keepTimer = TickTimer.CreateFromSeconds(Runner, keepTime);
-            changed.Behaviour.ShootMagnet();
-            Debug.Log("power 3");
+            if (!CanShootMagnet) return; //如果可以射出Magnet為真
+            ShootMagnet();
         }
-
-
     }
 
 
@@ -125,26 +107,24 @@ public class NetworkMagnetShooter : NetworkBehaviour
         if (changed.Behaviour.PowerTrigger >= (float)PowerValue.Power1 && changed.Behaviour.PowerTrigger <= (float)PowerValue.Power2)
         {
             //Power level 1
-            changed.Behaviour.Power1(changed);
+            changed.Behaviour.AddSpeeTime(changed);
             changed.Behaviour.controller.AngryValue = 0;
-
+            return;
         }
         else if (changed.Behaviour.PowerTrigger > (float)PowerValue.Power2 && changed.Behaviour.PowerTrigger < (float)PowerValue.Power3)
         {
             //Power level 2
-            changed.Behaviour.IsOpenMagnet = true;
+            changed.Behaviour.CanOpenMagnet = true;
             changed.Behaviour.controller.AngryValue = 0;
-            Debug.Log("power 2");
-
-
-
+            return;
         }
         else if (changed.Behaviour.PowerTrigger >= (float)PowerValue.Power3)
         {
             //Power level 3
-            changed.Behaviour.Power3(changed);
+            changed.Behaviour.CanOpenMagnet = true;
+            changed.Behaviour.CanShootMagnet = true;
             changed.Behaviour.controller.AngryValue = 0;
-
+            return;
         }
     }
     void OnTriggerStay(Collider other)
