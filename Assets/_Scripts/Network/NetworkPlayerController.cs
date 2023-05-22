@@ -45,14 +45,14 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     {
         rb = GetComponent<NetworkRigidbody>();
 
-        if (Object.HasInputAuthority)
-        {
-            rb.InterpolationDataSource = InterpolationDataSources.Predicted;
-        }
-        else
-        {
-            rb.InterpolationDataSource = InterpolationDataSources.Snapshots;
-        }
+        // if (Object.HasInputAuthority)
+        // {
+        //     rb.InterpolationDataSource = InterpolationDataSources.Predicted;
+        // }
+        // else
+        // {
+        //     rb.InterpolationDataSource = InterpolationDataSources.Snapshots;
+        // }
 
     }
     private void Update()
@@ -193,12 +193,16 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         }
         //撞擊普通物件場景物件
 
-        // if (other.gameObject.tag == "KnockingObject")
-        // {
-        //     Vector3 direction = -other.transform.position.normalized;
-        //     StartCoroutine(Strun(direction * 5, 2));
-        //     Debug.Log("KnockingObject knock");
-        // }
+        if (other.gameObject.tag == "Untouched")
+        {
+            HeavyObject obj = other.gameObject.GetComponent<HeavyObject>();
+            Vector3 output = (transform.position - other.transform.position).normalized;
+            SetRepel(output, obj.KnockForce);
+            //暈兩秒開始計時
+            StunTimer = TickTimer.CreateFromSeconds(Runner, 2);
+            IsStun = true;
+
+        }
         // IStrikeable hitObject = other.gameObject.GetComponent<IStrikeable>();
         // if (hitObject != null && moveInput.SpeedTime > switchToRush && other.gameObject.tag == "HitObject")
         // {

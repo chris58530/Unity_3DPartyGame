@@ -2761,7 +2761,7 @@ MonoBehaviour:
     RotBlendEnd: 0.5
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
-  TargetInterpolationDelay: 0.03
+  TargetInterpolationDelay: 0
 --- !u!114 &5258233845599583224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3391,10 +3391,12 @@ MonoBehaviour:
   CD: 3
   _IsOpenMagnet:
     _value: 0
-  _OpenTrigger: 0
-  _CloseTrigger: 0
+  _CanOpenMagnet:
+    _value: 0
+  _CanShootMagnet:
+    _value: 0
+  _PowerTrigger: 0
   _MagnetColor: {r: 0, g: 0, b: 0, a: 0}
-  _MagnetCount: 0
   magnet: {fileID: 7772750417997605864}
 --- !u!1 &7772750417997605864
 GameObject:

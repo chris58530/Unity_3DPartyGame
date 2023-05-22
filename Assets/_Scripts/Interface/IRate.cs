@@ -5,5 +5,4 @@ using UnityEngine;
 public interface IRate 
 {
     void IncreaseRate();
-    IEnumerator Dizzy() ;
 }

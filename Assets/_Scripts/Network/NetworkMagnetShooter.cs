@@ -20,6 +20,8 @@ public class NetworkMagnetShooter : NetworkBehaviour
     public NetworkBool CanOpenMagnet { get; set; }
     [Networked]
     public NetworkBool CanShootMagnet { get; set; }
+    [Networked(OnChanged = nameof(OnOpenMagnet))]
+    private int OpenMagnetTrigger { get; set; }
 
     [Networked(OnChanged = nameof(OnMagnetPowerChanged))]
     public float PowerTrigger { get; set; }
@@ -55,8 +57,10 @@ public class NetworkMagnetShooter : NetworkBehaviour
             keepTimer = TickTimer.None;
             Close();
         }
+        // if (CanOpenMagnet)
+        //     OpenMagnet();
         if (CanOpenMagnet)
-            OpenMagnet();
+            OpenMagnetTrigger += 1;
         Debug.Log(controller.AngryValue);
     }
 
@@ -65,7 +69,6 @@ public class NetworkMagnetShooter : NetworkBehaviour
         Runner.Spawn(magnetPrefab, transform.position, transform.rotation, Object.InputAuthority);
         CanShootMagnet = false;
     }
-
     void Close()
     {
         IsOpenMagnet = false;
@@ -78,25 +81,48 @@ public class NetworkMagnetShooter : NetworkBehaviour
         changed.Behaviour.controller.SpeedTime += 5;
         Debug.Log("power 1");
     }
-    void OpenMagnet()
+    // void OpenMagnet()
+    // {
+    //     Vector3 currentScale = magnet.transform.localScale;
+    //     if (currentScale.x < detectionRadius)
+    //         if (currentScale.x < detectionRadius)
+    //         {
+    //             MagnetColor = new Color(0, 0, 0, 0.1f);
+    //             magnet.transform.localScale += new Vector3(10, 10, 10) * Runner.DeltaTime;
+    //             Debug.Log($"magnet: opening....");
+    //         }
+    //         else
+    //         {
+    //             IsOpenMagnet = true;
+    //             CanOpenMagnet = false;
+    //             MagnetColor = new Color(0, 0, 1, 0.2f);
+    //             tag = "Repel";
+    //             keepTimer = TickTimer.CreateFromSeconds(Runner, keepTime);
+    //             if (!CanShootMagnet) return; //如果可以射出Magnet為真
+    //             ShootMagnet();
+    //         }
+    // }
+    private static void OnOpenMagnet(Changed<NetworkMagnetShooter> changed)
     {
-        Vector3 currentScale = transform.localScale;
+        if (!changed.Behaviour.CanOpenMagnet) return;
+
+        Vector3 currentScale = changed.Behaviour.transform.localScale;
         Debug.Log("power 2");
-        if (currentScale.x < detectionRadius)
+        if (currentScale.x < changed.Behaviour.detectionRadius)
         {
-            MagnetColor = new Color(0, 0, 0, 0.1f);
-            transform.localScale += new Vector3(10, 10, 10) * Runner.DeltaTime;
+            changed.Behaviour.MagnetColor = new Color(0, 0, 0, 0.1f);
+            changed.Behaviour.transform.localScale += new Vector3(10, 10, 10) * changed.Behaviour.Runner.DeltaTime;
             Debug.Log($"magnet: opening....");
         }
         else
         {
-            IsOpenMagnet = true;
-            CanOpenMagnet=false;
-            MagnetColor = new Color(0, 0, 1, 0.2f);
-            tag = "Repel";
-            keepTimer = TickTimer.CreateFromSeconds(Runner, keepTime);
-            if (!CanShootMagnet) return; //如果可以射出Magnet為真
-            ShootMagnet();
+            changed.Behaviour.IsOpenMagnet = true;
+            changed.Behaviour.CanOpenMagnet = false;
+            changed.Behaviour.MagnetColor = new Color(0, 0, 1, 0.2f);
+            changed.Behaviour.tag = "Repel";
+            changed.Behaviour.keepTimer = TickTimer.CreateFromSeconds(changed.Behaviour.Runner, changed.Behaviour.keepTime);
+            if (!changed.Behaviour.CanShootMagnet) return; //如果可以射出Magnet為真
+            changed.Behaviour.ShootMagnet();
         }
     }
 
