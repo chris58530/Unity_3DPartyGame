@@ -46,7 +46,7 @@
         "DefaultPlayers": 10,
         "ReplicationMode": 0,
         "ObjectInterest": false,
-        "ServerPacketInterval": 1,
+        "ServerPacketInterval": 8,
         "ClientPacketInterval": 1
     },
     "Interpolation": {
