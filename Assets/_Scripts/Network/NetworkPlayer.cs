@@ -8,7 +8,7 @@ using Cinemachine;
 public class NetworkPlayer : NetworkBehaviour
 {
     public static NetworkPlayer Local { get; set; }
-    private CinemachineTargetGroup camGroup; 
+    private CinemachineTargetGroup camGroup;
     [SerializeField]
     private GameObject rushModel;
 
@@ -17,8 +17,8 @@ public class NetworkPlayer : NetworkBehaviour
         if (Object.HasInputAuthority)
         {
             Local = this;
-            rushModel.SetActive(false);
         }
+        rushModel.SetActive(false);
 
         camGroup = FindObjectOfType<CinemachineTargetGroup>();
         if (camGroup == null) return;

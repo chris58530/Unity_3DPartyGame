@@ -31,9 +31,12 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         {
             if (gameManager.PlayerList.TryGetValue(player, out NetworkPlayerData data))
             {
-                NetworkObject networkPlayerObject = networkRunner.Spawn(playerPrefab[data.CharaterCount], Vector3.zero, Quaternion.identity, player);
+                int num = UnityEngine.Random.Range(0, spawnPoints.Length);
+
+                NetworkObject networkPlayerObject = networkRunner.Spawn(playerPrefab[data.CharaterCount], spawnPoints[num].position, Quaternion.identity, player);
                 networkRunner.SetPlayerObject(player, networkPlayerObject);
                 playerList.Add(player, networkPlayerObject);
+
             }
         }
     }
