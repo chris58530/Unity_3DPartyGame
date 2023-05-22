@@ -2361,7 +2361,7 @@ MonoBehaviour:
     RotBlendEnd: 0.5
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
-  TargetInterpolationDelay: 0.03
+  TargetInterpolationDelay: 0
 --- !u!114 &8725502261037474951
 MonoBehaviour:
   m_ObjectHideFlags: 0
