@@ -45,14 +45,14 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     {
         rb = GetComponent<NetworkRigidbody>();
 
-        if (Object.HasInputAuthority)
-        {
-            rb.InterpolationDataSource = InterpolationDataSources.Predicted;
-        }
-        else
-        {
-            rb.InterpolationDataSource = InterpolationDataSources.Snapshots;
-        }
+        // if (Object.HasInputAuthority)
+        // {
+        //     rb.InterpolationDataSource = InterpolationDataSources.Predicted;
+        // }
+        // else
+        // {
+        //     rb.InterpolationDataSource = InterpolationDataSources.Snapshots;
+        // }
 
     }
     private void Update()

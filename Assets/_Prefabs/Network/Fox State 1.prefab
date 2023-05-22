@@ -2377,10 +2377,12 @@ MonoBehaviour:
   CD: 3
   _IsOpenMagnet:
     _value: 0
-  _OpenTrigger: 0
-  _CloseTrigger: 0
+  _CanOpenMagnet:
+    _value: 0
+  _CanShootMagnet:
+    _value: 0
+  _PowerTrigger: 0
   _MagnetColor: {r: 0, g: 0, b: 0, a: 0}
-  _MagnetCount: 0
   magnet: {fileID: 8217304500487286515}
 --- !u!1 &8217304500487286515
 GameObject:
