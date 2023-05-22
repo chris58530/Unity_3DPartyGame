@@ -45,6 +45,8 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     {
         rb = GetComponent<NetworkRigidbody>();
 
+
+
         // if (Object.HasInputAuthority)
         // {
         //     rb.InterpolationDataSource = InterpolationDataSources.Predicted;
@@ -129,6 +131,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     }
     private static void OnModelChanged(Changed<NetworkPlayerController> changed)
     {
+        
         if (changed.Behaviour.modelCount == 1)
         {
             changed.Behaviour.DefualtModel.gameObject.SetActive(false);
@@ -201,7 +204,6 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             //暈兩秒開始計時
             StunTimer = TickTimer.CreateFromSeconds(Runner, 2);
             IsStun = true;
-
         }
         // IStrikeable hitObject = other.gameObject.GetComponent<IStrikeable>();
         // if (hitObject != null && moveInput.SpeedTime > switchToRush && other.gameObject.tag == "HitObject")

@@ -61,7 +61,6 @@ public class NetworkMagnetShooter : NetworkBehaviour
         //     OpenMagnet();
         if (CanOpenMagnet)
             OpenMagnetTrigger += 1;
-        Debug.Log(controller.AngryValue);
     }
 
     public void ShootMagnet()

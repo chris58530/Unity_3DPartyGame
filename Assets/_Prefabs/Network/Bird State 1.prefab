@@ -2324,7 +2324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6569559309736727858
 Transform:
   m_ObjectHideFlags: 0
@@ -2846,6 +2846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 3
+  rushModel: {fileID: 5791650896299921288}
 --- !u!114 &2719514395506327013
 MonoBehaviour:
   m_ObjectHideFlags: 0

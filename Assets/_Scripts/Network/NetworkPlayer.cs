@@ -9,12 +9,15 @@ public class NetworkPlayer : NetworkBehaviour
 {
     public static NetworkPlayer Local { get; set; }
     private CinemachineTargetGroup camGroup; 
+    [SerializeField]
+    private GameObject rushModel;
 
     public override void Spawned()
     {
         if (Object.HasInputAuthority)
         {
             Local = this;
+            rushModel.SetActive(false);
         }
 
         camGroup = FindObjectOfType<CinemachineTargetGroup>();

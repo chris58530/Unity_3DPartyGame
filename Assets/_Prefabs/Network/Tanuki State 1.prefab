@@ -2446,6 +2446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 3
+  rushModel: {fileID: 5297203371799291776}
 --- !u!114 &1464353973859295898
 MonoBehaviour:
   m_ObjectHideFlags: 0

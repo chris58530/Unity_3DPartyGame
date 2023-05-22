@@ -11,12 +11,14 @@ public class PlayerState_Idle : NetworkPlayerState
     {
         base.Enter();
 
+
     }
 
 
     public override void UpdateNetwork(NetworkInputData inputData)
     {
         base.UpdateNetwork(inputData);
+
         if (inputData.Move)//host可以控制自己 其他人不能動
         {
             stateMachine.SwitchState(typeof(PlayerState_Walk));
@@ -42,7 +44,7 @@ public class PlayerState_Idle : NetworkPlayerState
             shooter.PowerTrigger = value;
 
         }
-     
+
 
     }
 }
