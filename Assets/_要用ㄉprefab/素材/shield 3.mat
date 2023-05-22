@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: shield 2
+  m_Name: shield 3
   m_Shader: {fileID: -6465566751694194690, guid: 13d1b65cba824074b800295f8e1dea9f, type: 3}
   m_ValidKeywords:
   - _ENABLE_FOG_ON_TRANSPARENT
@@ -104,7 +104,7 @@ Material:
     - _frenspower: 3
     - _offset: 0.6
     m_Colors:
-    - _Color: {r: 9.532174, g: 0.16009936, b: 11.313708, a: 0}
+    - _Color: {r: 1.6169662, g: 7.1523633, b: 0.86127937, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

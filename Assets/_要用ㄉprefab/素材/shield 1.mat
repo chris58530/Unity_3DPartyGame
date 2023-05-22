@@ -104,7 +104,7 @@ Material:
     - _frenspower: 3
     - _offset: 0.6
     m_Colors:
-    - _Color: {r: 0.84343886, g: 7.152363, b: 6.706915, a: 0}
+    - _Color: {r: 11.313707, g: 0.17770189, b: 7.6020803, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
