@@ -1612,6 +1612,7 @@ MonoBehaviour:
   _AngryValue: 0
   DefualtModel: {fileID: 1652727830502012996}
   RushModel: {fileID: 5477817927830810164}
+  dragValue: 10
   walkSpeed: 50
   rushSpeed: 100
   switchToRush: 2
@@ -2373,7 +2374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   magnetPrefab: {fileID: -2057441826570595257, guid: 29e1880b551fc9b4da706e9f377581c6, type: 3}
-  keepTime: 3
+  keepTime: 6
   detectionRadius: 6
   CD: 3
   _IsOpenMagnet:

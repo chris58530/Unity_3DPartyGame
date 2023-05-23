@@ -31,6 +31,8 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     [Networked]
     private TickTimer StunTimer { get; set; }
     private NetworkPlayerCanvas playerCanvas;
+    [SerializeField]
+    private int dragValue = 10;
 
     public float walkSpeed;
     public float rushSpeed;
@@ -80,6 +82,8 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         if (AngryValue >= 100)
             AngryValue = 100;
         // DetectCollision();
+        float newDragValue = dragValue - (SpeedTime * 0.2f);
+        rb.Rigidbody.drag = newDragValue < 0f ? 0f : newDragValue;
 
     }
     public void SetPlayerMove(NetworkInputData input)
@@ -112,7 +116,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             output.x = x * Mathf.Sqrt(1 - (z * z) / 2.0f);
             output.z = z * Mathf.Sqrt(1 - (x * x) / 2.0f);
 
-            rb.Rigidbody.AddForce(output * rushSpeed);
+            rb.Rigidbody.AddForce(output * (rushSpeed + (SpeedTime * 0.1f)));
 
             if (input.Move)
                 SetPlayerLookAtForward(output);
@@ -176,24 +180,31 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             NetworkPlayerController otherInput = other.gameObject.GetComponent<NetworkPlayerController>();
             if (SpeedTime < otherInput.SpeedTime)
             {
-                //重製雙方speed time;
+                //重製己方speed time;
                 SpeedTime = 0;
-                otherInput.SpeedTime = 0;
+                // otherInput.SpeedTime = 0;
                 // moveInput.ShowRushSpeed(false);
                 // otherInput.ShowRushSpeed(false);
 
                 //擊飛自己
                 Vector3 output = (transform.position - other.transform.position).normalized;
-                SetRepel(output, 50);
+                SetRepel(output, 150);
 
                 //暈兩秒開始計時
-                StunTimer = TickTimer.CreateFromSeconds(Runner, 2);
+                StunTimer = TickTimer.CreateFromSeconds(Runner, 2.5f);
                 IsStun = true;
             }
         }
         if (other.gameObject.CompareTag("Repel"))
         {
             SpeedTime = 0;
+            //擊飛自己
+            Vector3 output = (transform.position - other.transform.position).normalized;
+            SetRepel(output, 150);
+
+            //暈兩秒開始計時
+            StunTimer = TickTimer.CreateFromSeconds(Runner, 2.5f);
+            IsStun = true;
         }
         //撞擊普通物件場景物件
 
@@ -202,9 +213,9 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             if (other.gameObject.TryGetComponent<HeavyObject>(out HeavyObject obj))
             {
                 Vector3 output = (transform.position - other.transform.position).normalized;
-                SetRepel(output, obj.KnockForce);
+                SetRepel(output, obj.KnockForce);//擊飛數值在對方身上
                 //暈兩秒開始計時
-                StunTimer = TickTimer.CreateFromSeconds(Runner, 2);
+                StunTimer = TickTimer.CreateFromSeconds(Runner, 2.5f);
                 IsStun = true;
             }
 

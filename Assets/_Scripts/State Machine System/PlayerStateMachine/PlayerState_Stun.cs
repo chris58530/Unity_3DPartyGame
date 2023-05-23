@@ -10,7 +10,7 @@ public class PlayerState_Stun : NetworkPlayerState
         base.Enter();
         controller.AngryValue += 50;
 
-        
+
     }
 
     public override void UpdateNetwork(NetworkInputData inputData)
@@ -22,14 +22,15 @@ public class PlayerState_Stun : NetworkPlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));
         }
-         if (inputData.IsOpenPressed)
+        if (inputData.IsOpenPressed)
         {
             float value = controller.AngryValue;
+            if (value <= (float)PowerValue.Power2)return;
 
-            shooter.PowerTrigger = value;
+                shooter.PowerTrigger = value;
 
         }
 
     }
-  
+
 }
