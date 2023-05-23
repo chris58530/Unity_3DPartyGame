@@ -12175,7 +12175,7 @@ MonoBehaviour:
   _SpeedTime: 0
   _AngryValue: 0
   DefualtModel: {fileID: 3514871223655757858}
-  RushModel: {fileID: 6016338239094667529}
+  RushModel: {fileID: 5297203371799291776}
   walkSpeed: 50
   rushSpeed: 100
   switchToRush: 2

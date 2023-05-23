@@ -86,12 +86,14 @@ public class GameManager : Singleton<GameManager>
         switch (activeSceneName)
         {
             case "Lobby":
+                // Runner.SetActiveScene("GamePlay1");//test
                 Runner.SetActiveScene("ReadyScene");
                 Debug.Log("Switch to Scene 'ReadyScene'");
                 break;
 
             case "ReadyScene":
-                Runner.SetActiveScene("GamePlay0");
+                Runner.SetActiveScene("GamePlay1");//test
+                // Runner.SetActiveScene("GamePlay0");
                 Debug.Log("Switch to Scene 'GamePlay0'");
                 break;
 

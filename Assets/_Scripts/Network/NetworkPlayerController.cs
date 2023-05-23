@@ -79,6 +79,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             AngryValue -= Runner.DeltaTime * 2;
         if (AngryValue >= 100)
             AngryValue = 100;
+            DetectCollision();
 
     }
     public void SetPlayerMove(NetworkInputData input)
@@ -238,6 +239,27 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         rb.Rigidbody.AddForce((direction - transform.position).normalized * force);
     }
     #endregion
+    private void DetectCollision()
+    {
+        if (Object == null) return;
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 0.8f);
+        bool isColliderFound = false;
 
+        foreach (var collider in colliders)
+        {
+            if (collider.GetComponent<Truck>())
+            {
+                isColliderFound=true;
+                transform.parent = collider.transform;
+                Debug.Log(collider.name);
+                break;
+            }
+        }
+        if (!isColliderFound)
+        {
+              transform.parent = null;
+        }
+
+    }
 
 }
