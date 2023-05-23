@@ -18,6 +18,6 @@ public class RoadMapLoop : NetworkBehaviour
     
     public  void Update()
     {
-      material.mainTextureOffset += new Vector2(1, 0) * Time.deltaTime * roadSpeed;
+      material.mainTextureOffset += new Vector2(0, 1) * Time.deltaTime * roadSpeed;
     }
 }

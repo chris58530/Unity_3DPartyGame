@@ -46,10 +46,10 @@ public class BattleCanvas : NetworkBehaviour
     public override void FixedUpdateNetwork()
     {
         
-        if (BattleManager.Instance.currentPlayerCount <= 1)
-        {
-            IsEndGame = true;
-        }
+        // if (BattleManager.Instance.currentPlayerCount <= 0)
+        // {
+        //     IsEndGame = true;
+        // }
         if (BattleTime > 0)
             BattleTime -= Runner.DeltaTime;
 
