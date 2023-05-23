@@ -79,7 +79,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             AngryValue -= Runner.DeltaTime * 2;
         if (AngryValue >= 100)
             AngryValue = 100;
-            DetectCollision();
+        // DetectCollision();
 
     }
     public void SetPlayerMove(NetworkInputData input)
@@ -249,7 +249,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         {
             if (collider.GetComponent<Truck>())
             {
-                isColliderFound=true;
+                isColliderFound = true;
                 transform.parent = collider.transform;
                 Debug.Log(collider.name);
                 break;
@@ -257,7 +257,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         }
         if (!isColliderFound)
         {
-              transform.parent = null;
+            transform.parent = null;
         }
 
     }
