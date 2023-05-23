@@ -81,13 +81,14 @@ public class BattleCanvas : NetworkBehaviour
                         data.PlayerScore += 1;
                         Debug.Log($"本局贏家 : {data.PlayerName}");
                         Debug.Log($"分數 : {data.PlayerScore}");
+
                     }
                 }
             }
             changed.Behaviour.virtualCamera = FindObjectsOfType<CinemachineVirtualCamera>();
             foreach (CinemachineVirtualCamera cam in changed.Behaviour.virtualCamera)
             {
-                cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = 2;
+                cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = 10;
             }
             changed.Behaviour.focusTimer = TickTimer.CreateFromSeconds(changed.Behaviour.Runner, changed.Behaviour.focusTime);
         }

@@ -36,9 +36,11 @@ public class PlayerState_Walk : NetworkPlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
-        if (inputData.IsOpenPressed)
+     if (inputData.IsOpenPressed)
         {
-            shooter.PowerTrigger += 1;
+            float value = controller.AngryValue;
+
+            shooter.PowerTrigger = value;
 
         }
    

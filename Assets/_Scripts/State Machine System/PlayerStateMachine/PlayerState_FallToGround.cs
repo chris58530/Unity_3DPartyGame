@@ -15,7 +15,14 @@ public class PlayerState_FallToGround : NetworkPlayerState
         base.UpdateNetwork(inputData);
         if (IsAnimationFinish)
             stateMachine.SwitchState(typeof(PlayerState_Stun));
-            
+        if (inputData.IsOpenPressed)
+        {
+            float value = controller.AngryValue;
+
+            shooter.PowerTrigger = value;
+
+        }
+
     }
 
 }

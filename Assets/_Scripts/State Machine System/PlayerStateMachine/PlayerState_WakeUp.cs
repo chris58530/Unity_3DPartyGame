@@ -19,6 +19,13 @@ public class PlayerState_WakeUp : NetworkPlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));
         }
+         if (inputData.IsOpenPressed)
+        {
+            float value = controller.AngryValue;
+
+            shooter.PowerTrigger = value;
+
+        }
     }
    
 }

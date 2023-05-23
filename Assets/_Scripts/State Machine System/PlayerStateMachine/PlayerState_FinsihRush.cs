@@ -25,9 +25,11 @@ public class PlayerState_FinsihRush : NetworkPlayerState
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
         controller.SetPlayerRush(inputData);
-        if (inputData.IsOpenPressed)
+   if (inputData.IsOpenPressed)
         {
-            shooter.PowerTrigger += 1;
+            float value = controller.AngryValue;
+
+            shooter.PowerTrigger = value;
 
         }
       

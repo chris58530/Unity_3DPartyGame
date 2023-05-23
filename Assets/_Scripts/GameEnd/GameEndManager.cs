@@ -6,7 +6,7 @@ using Fusion;
 public class GameEndManager : NetworkBehaviour
 {
     [SerializeField]
-    private float EndTime = 2;
+    private float EndTime = 5;
     [Networked]
     private TickTimer GameEndTimer { get; set; }
 

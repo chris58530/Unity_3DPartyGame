@@ -38,11 +38,13 @@ public class PlayerState_Rush : NetworkPlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
-        if (inputData.IsOpenPressed)
+    if (inputData.IsOpenPressed)
         {
-            shooter.PowerTrigger += 1;
+            float value = controller.AngryValue;
 
-        }    
+            shooter.PowerTrigger = value;
+
+        }
 
     }
     // public override void LogicUpdate()
