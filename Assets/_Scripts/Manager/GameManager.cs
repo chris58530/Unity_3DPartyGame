@@ -92,12 +92,12 @@ public class GameManager : Singleton<GameManager>
                 break;
 
             case "ReadyScene":
-                Runner.SetActiveScene("GamePlay1");//test
+                Runner.SetActiveScene("GamePlay0");//test
                 // Runner.SetActiveScene("GamePlay0");
                 Debug.Log("Switch to Scene 'GamePlay0'");
                 break;
 
-            case "GamePlay":
+            case "GamePlay0":
                 Runner.SetActiveScene("GamePlay1");
                 Debug.Log("Switch to Scene 'GamePlay1'");
                 break;

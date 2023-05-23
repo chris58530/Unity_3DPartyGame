@@ -17,7 +17,6 @@ public class PlayerState_Rush : NetworkPlayerState
     {
         base.UpdateNetwork(inputData);
         controller.SetPlayerRush(inputData);
-        controller.AngryValue+= 1;
 
 
         if (controller.SpeedTime <= controller.switchToRush)
