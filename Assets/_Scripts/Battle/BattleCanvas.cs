@@ -46,7 +46,7 @@ public class BattleCanvas : NetworkBehaviour
     public override void FixedUpdateNetwork()
     {
         
-        if (BattleManager.Instance.currentPlayerCount <= 0)
+        if (BattleManager.Instance.currentPlayerCount <= 1)
         {
             IsEndGame = true;
         }
@@ -88,7 +88,7 @@ public class BattleCanvas : NetworkBehaviour
             changed.Behaviour.virtualCamera = FindObjectsOfType<CinemachineVirtualCamera>();
             foreach (CinemachineVirtualCamera cam in changed.Behaviour.virtualCamera)
             {
-                cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = 10;
+                cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = 15;
             }
             changed.Behaviour.focusTimer = TickTimer.CreateFromSeconds(changed.Behaviour.Runner, changed.Behaviour.focusTime);
         }

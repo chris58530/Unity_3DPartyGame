@@ -24,6 +24,9 @@ public class GameManager : Singleton<GameManager>
     public int PlayerCharacter = 0;
     public int PlayerScore = 0;
     public Dictionary<PlayerRef, NetworkPlayerData> PlayerList = new Dictionary<PlayerRef, NetworkPlayerData>();
+    [SerializeField]
+    private GameObject loadingCanvas;
+    public bool ReadyScene = false;
 
     public event Action OnPlayerListUpdated = null;
 
@@ -33,6 +36,10 @@ public class GameManager : Singleton<GameManager>
         Runner.ProvideInput = true;
         DontDestroyOnLoad(gameObject);
         // SceneManager.MoveGameObjectToScene(this.gameObject, SceneManager.GetSceneByName("GameEnd"));
+    }
+    private void Update(){
+        if(ReadyScene)
+            loadingCanvas.SetActive(false);
     }
     private bool CheckAllPlayerIsReady()
     {

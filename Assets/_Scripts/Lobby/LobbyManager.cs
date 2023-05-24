@@ -35,6 +35,8 @@ public class LobbyManager : MonoBehaviour, INetworkRunnerCallbacks
     public async Task JoinLobby(NetworkRunner runner)
     {
         var result = await runner.JoinSessionLobby(SessionLobby.ClientServer);
+        if (result.Ok)
+            GameManager.Instance.ReadyScene = true;
 
         if (!result.Ok)
             Debug.LogError($"Failed to Start: {result.ShutdownReason}");

@@ -188,7 +188,8 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 
                 //擊飛自己
                 Vector3 output = (transform.position - other.transform.position).normalized;
-                SetRepel(output, 150);
+                float addForce = otherInput.SpeedTime;
+                SetRepel(output, 150 + addForce);
 
                 //暈兩秒開始計時
                 StunTimer = TickTimer.CreateFromSeconds(Runner, 2.5f);
