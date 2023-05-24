@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
 
-public class PlayerGroundDetector : MonoBehaviour
+public class PlayerGroundDetector : NetworkBehaviour
 {
     [SerializeField,Range(0.1f,1f)]
     private float detectionRadius = 0.1f;
     [SerializeField]
     private LayerMask layer;
     Collider[] colliders = new Collider[1];
-    public bool IsGround
+    public NetworkBool IsGround;
+    
+    public override void FixedUpdateNetwork()
     {
-        get
+        if (Physics.OverlapSphereNonAlloc(transform.position, detectionRadius, colliders, layer) != 0)
         {
-            return Physics.OverlapSphereNonAlloc(transform.position, detectionRadius, colliders, layer) != 0;
-
+            IsGround = true;
         }
+        else IsGround = false;
     }
     void OnDrawGizmosSelected()
     {

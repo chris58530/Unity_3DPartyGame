@@ -1712,10 +1712,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cea385fbb1644a4b8cdb593192b19e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   detectionRadius: 0.671
   layer:
     serializedVersion: 2
     m_Bits: 8
+  IsGround:
+    _value: 0
 --- !u!1 &4587016664467285080
 GameObject:
   m_ObjectHideFlags: 0
@@ -2746,7 +2749,7 @@ MonoBehaviour:
   m_Script: {fileID: 1710889294, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 2
+  _interpolationDataSource: 0
   InterpolationSpace: 1
   InterpolationTarget: {fileID: 3989071264465277607}
   InterpolateErrorCorrection: 1
@@ -2799,8 +2802,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  _IsGround: 0
-  _IsFalling: 0
+  _IsGround:
+    _value: 0
+  _IsFalling:
+    _value: 0
   _IsStun: 0
   _modelCount: 0
   _SpeedTime: 0
@@ -2891,6 +2896,7 @@ MonoBehaviour:
   - {fileID: 6294929752217080282}
   - {fileID: 2719514395506327013}
   - {fileID: 8744334023637959219}
+  - {fileID: 4474910636004590814}
   - {fileID: 1813113918269583373}
   SimulationBehaviours: []
 --- !u!1 &6572054923400354615

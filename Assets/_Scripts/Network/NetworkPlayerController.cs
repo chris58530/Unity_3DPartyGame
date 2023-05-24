@@ -12,9 +12,9 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     PlayerGroundDetector groundDetector;
 
     [Networked]
-    public bool IsGround { get; set; }
+    public NetworkBool IsGround { get; set; }
     [Networked]
-    public bool IsFalling { get; set; }
+    public NetworkBool IsFalling { get; set; }
     [Networked]
     public bool IsStun { get; set; }
     [Networked(OnChanged = nameof(OnModelChanged))]
@@ -61,11 +61,14 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     }
     private void Update()
     {
-        IsGround = groundDetector.IsGround;
-        IsFalling = !IsGround && rb.Rigidbody.velocity.y < 0f;
+       
     }
     public override void FixedUpdateNetwork()
     {
+        DetectCollision();
+        IsGround = groundDetector.IsGround;
+        IsFalling = !IsGround && rb.Rigidbody.velocity.y < 0f;
+
         if (StunTimer.ExpiredOrNotRunning(Runner))
         {
             IsStun = false;

@@ -15,7 +15,7 @@ public class PlayerState_Jump : NetworkPlayerState
         base.UpdateNetwork(inputData);
         if (!inputData.IsJumpPressed)
         {
-            stateMachine.SwitchState(typeof(PlayerState_Idle));
+            stateMachine.SwitchState(typeof(PlayerState_Fall));
         }
 
         if (controller.IsFalling || !inputData.IsJumpPressed)
