@@ -9,7 +9,13 @@ using TMPro;
 public class NetworkPlayerController : NetworkBehaviour, IMagnet
 {
     NetworkRigidbody rb;
-    PlayerGroundDetector groundDetector;
+    //PlayerGroundDetector groundDetector;
+
+    [SerializeField, Range(0.1f, 1f)]
+    private float detectionRadius = 0.1f;
+    [SerializeField]
+    private LayerMask layer;
+    Collider[] colliders = new Collider[1];
 
     [Networked]
     public NetworkBool IsGround { get; set; }
@@ -40,7 +46,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     public float jumpForce;
     private void Awake()
     {
-        groundDetector = GetComponentInChildren<PlayerGroundDetector>();
+      //  groundDetector = GetComponentInChildren<PlayerGroundDetector>();
         playerCanvas = GetComponentInChildren<NetworkPlayerCanvas>();
     }
     public override void Spawned()
@@ -66,7 +72,8 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     public override void FixedUpdateNetwork()
     {
         DetectCollision();
-        IsGround = groundDetector.IsGround;
+        GroundDetect();
+        //IsGround = groundDetector.IsGround;
         IsFalling = !IsGround && rb.Rigidbody.velocity.y < 0f;
 
         if (StunTimer.ExpiredOrNotRunning(Runner))
@@ -253,6 +260,14 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     {
         rb.Rigidbody.AddForce((direction - transform.position).normalized * force);
     }
+    private void GroundDetect()
+    {
+        if (Physics.OverlapSphereNonAlloc(transform.position - new Vector3(0, -0.5f, 0),detectionRadius, colliders, layer) != 0)
+        {
+            IsGround = true;
+        }
+        else IsGround = false;
+    }
     #endregion
     private void DetectCollision()
     {
@@ -275,6 +290,11 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             transform.parent = null;
         }
 
+    }
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position - new Vector3(0, -0.5f, 0), detectionRadius);
     }
 
 }
