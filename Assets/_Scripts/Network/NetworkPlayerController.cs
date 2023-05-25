@@ -44,15 +44,20 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     public float rushSpeed;
     public float switchToRush = 1;
     public float jumpForce;
+    private Vector3 defualtScale;
+    private Vector3 rushScale;
     private void Awake()
     {
-      //  groundDetector = GetComponentInChildren<PlayerGroundDetector>();
+        //  groundDetector = GetComponentInChildren<PlayerGroundDetector>();
         playerCanvas = GetComponentInChildren<NetworkPlayerCanvas>();
     }
     public override void Spawned()
     {
         rb = GetComponent<NetworkRigidbody>();
 
+        defualtScale = DefualtModel.transform.localScale;
+        rushScale = RushModel.transform.localScale;
+        RushModel.gameObject.transform.localScale = Vector3.zero;
 
 
         // if (Object.HasInputAuthority)
@@ -67,14 +72,16 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     }
     private void Update()
     {
-       
+
     }
     public override void FixedUpdateNetwork()
     {
         DetectCollision();
         GroundDetect();
         //IsGround = groundDetector.IsGround;
-        IsFalling = !IsGround && rb.Rigidbody.velocity.y < 0f;
+        if (Object.HasStateAuthority)
+            IsFalling = !IsGround && rb.Rigidbody.velocity.y < 1f;
+
 
         if (StunTimer.ExpiredOrNotRunning(Runner))
         {
@@ -149,13 +156,17 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 
         if (changed.Behaviour.modelCount == 1)
         {
-            changed.Behaviour.DefualtModel.gameObject.SetActive(false);
-            changed.Behaviour.RushModel.gameObject.SetActive(true);
+            changed.Behaviour.DefualtModel.gameObject.transform.localScale = Vector3.zero;
+            changed.Behaviour.RushModel.gameObject.transform.localScale = changed.Behaviour.rushScale;
+            // changed.Behaviour.DefualtModel.gameObject.SetActive(false);
+            // changed.Behaviour.RushModel.gameObject.SetActive(true);
         }
         else
         {
-            changed.Behaviour.DefualtModel.gameObject.SetActive(true);
-            changed.Behaviour.RushModel.gameObject.SetActive(false);
+            changed.Behaviour.DefualtModel.gameObject.transform.localScale = changed.Behaviour.defualtScale;
+            changed.Behaviour.RushModel.gameObject.transform.localScale = Vector3.zero;
+            // changed.Behaviour.DefualtModel.gameObject.SetActive(true);
+            // changed.Behaviour.RushModel.gameObject.SetActive(false);
         }
     }
     private static void OnSpeedTimeChanged(Changed<NetworkPlayerController> changed)
@@ -262,7 +273,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     }
     private void GroundDetect()
     {
-        if (Physics.OverlapSphereNonAlloc(transform.position - new Vector3(0, -0.5f, 0),detectionRadius, colliders, layer) != 0)
+        if (Physics.OverlapSphereNonAlloc(transform.position - new Vector3(0, -0.5f, 0), detectionRadius, colliders, layer) != 0)
         {
             IsGround = true;
         }

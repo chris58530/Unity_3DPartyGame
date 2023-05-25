@@ -9,8 +9,8 @@ public class NetworkPlayer : NetworkBehaviour
 {
     public static NetworkPlayer Local { get; set; }
     private CinemachineTargetGroup camGroup;
-    [SerializeField]
-    private GameObject rushModel;
+    // [SerializeField]
+    // private GameObject rushModel;
 
     public override void Spawned()
     {
@@ -18,7 +18,7 @@ public class NetworkPlayer : NetworkBehaviour
         {
             Local = this;
         }
-        rushModel.SetActive(false);
+        // rushModel.SetActive(false);
 
         camGroup = FindObjectOfType<CinemachineTargetGroup>();
         if (camGroup == null) return;

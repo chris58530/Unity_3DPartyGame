@@ -460,7 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d044788aaf6e3ab40820cc8a1cb29ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 3
   speedText: {fileID: 1271977601928227157}
   playerName: {fileID: 8528048441610478511}
   AngryBar: {fileID: 1195798712794484548}
@@ -1608,7 +1608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  detectionRadius: 0.866
+  detectionRadius: 0.9
   layer:
     serializedVersion: 2
     m_Bits: 8
@@ -1662,7 +1662,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 3
-  rushModel: {fileID: 5477817927830810164}
 --- !u!114 &4353369342636751102
 MonoBehaviour:
   m_ObjectHideFlags: 0

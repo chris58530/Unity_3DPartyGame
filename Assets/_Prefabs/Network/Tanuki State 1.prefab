@@ -10619,7 +10619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d044788aaf6e3ab40820cc8a1cb29ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 3
   speedText: {fileID: 4151985256050701105}
   playerName: {fileID: 6800891372185647563}
   AngryBar: {fileID: 4080398579554637088}
@@ -12172,6 +12172,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  detectionRadius: 0.9
+  layer:
+    serializedVersion: 2
+    m_Bits: 8
   _IsGround:
     _value: 0
   _IsFalling:
@@ -12222,7 +12226,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 3
-  rushModel: {fileID: 5297203371799291776}
 --- !u!114 &1464353973859295898
 MonoBehaviour:
   m_ObjectHideFlags: 0

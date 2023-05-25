@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d044788aaf6e3ab40820cc8a1cb29ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 3
   speedText: {fileID: 608295286114626638}
   playerName: {fileID: 8038458501972059828}
   AngryBar: {fileID: 670954030368508511}
@@ -1684,7 +1684,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4407207285735051907
 Transform:
   m_ObjectHideFlags: 0
@@ -2802,6 +2802,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  detectionRadius: 0.9
+  layer:
+    serializedVersion: 2
+    m_Bits: 8
   _IsGround:
     _value: 0
   _IsFalling:
@@ -2852,7 +2856,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 3
-  rushModel: {fileID: 5791650896299921288}
 --- !u!114 &2719514395506327013
 MonoBehaviour:
   m_ObjectHideFlags: 0
