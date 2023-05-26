@@ -11343,7 +11343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100956af9b3707945b5a049f873db265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 3
   playerStates:
   - {fileID: 11400000, guid: 8402db915dc7b7549af12885703cff05, type: 2}
   - {fileID: 11400000, guid: c87f65a13ec74ae47a4d2cf9b827bf53, type: 2}
@@ -11399,7 +11399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508e973f5911f114cadb7e071bbd7cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 3
   AxisX: 0
   AxisZ: 0
   Move: 0
@@ -11434,7 +11434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e15bcbe0a8ad2b14fb5bb139e41b4d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 3
   _PlayAnimationString: 
 --- !u!114 &903202408082328879
 MonoBehaviour:

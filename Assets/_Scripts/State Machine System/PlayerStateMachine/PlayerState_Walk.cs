@@ -8,7 +8,7 @@ public class PlayerState_Walk : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
-
+        animator.ani.SetBool("Walk",true);
     }
 
     public override void UpdateNetwork(NetworkInputData inputData)
@@ -36,14 +36,17 @@ public class PlayerState_Walk : NetworkPlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
-     if (inputData.IsOpenPressed)
+        if (inputData.IsOpenPressed)
         {
             float value = controller.AngryValue;
 
             shooter.PowerTrigger = value;
 
         }
-   
+
+    }
+    public override void Exit()
+    {
     }
 
 

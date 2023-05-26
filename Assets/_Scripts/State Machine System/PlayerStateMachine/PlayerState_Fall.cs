@@ -27,7 +27,7 @@ public class PlayerState_Fall : NetworkPlayerState
             if (controller.SpeedTime > controller.switchToRush)
                 stateMachine.SwitchState(typeof(PlayerState_Rush));
             else
-                stateMachine.SwitchState(typeof(PlayerState_Walk));
+                stateMachine.SwitchState(typeof(PlayerState_Idle));
             // stateMachine.SwitchState(typeof(PlayerState_Land));
         }
         if (controller.IsStun)
