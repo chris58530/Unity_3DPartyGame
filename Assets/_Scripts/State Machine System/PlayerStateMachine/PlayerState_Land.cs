@@ -8,29 +8,31 @@ public class PlayerState_Land : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
+
     }
+
     public override void UpdateNetwork(NetworkInputData inputData)
     {
         base.UpdateNetwork(inputData);
-        if (inputData.IsJumpPressed)
-        {
-            stateMachine.SwitchState(typeof(PlayerState_Jump));
-        }
-        if (IsAnimationFinish)
-        {
-            if (inputData.Move)
-            {
-                if (controller.SpeedTime > controller.switchToRush)
-                    stateMachine.SwitchState(typeof(PlayerState_Rush));
-                else
-                    stateMachine.SwitchState(typeof(PlayerState_Walk));
+        // if (StateDuration < animator.ani.GetCurrentAnimatorStateInfo(0).length) return;
+        // if (inputData.IsJumpPressed)
+        // {
+        //     stateMachine.SwitchState(typeof(PlayerState_Jump));
+        // }
 
-            }
-            if (!inputData.Move)
-            {
-                stateMachine.SwitchState(typeof(PlayerState_Idle));
-            }
+        // if (inputData.Move)
+        // {
+        //     // if (controller.SpeedTime > controller.switchToRush)
+        //     //     stateMachine.SwitchState(typeof(PlayerState_Rush));
+        //     // else
+        //     stateMachine.SwitchState(typeof(PlayerState_Walk));
+        // }
+
+        if (animator.IsFinish)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Idle));
         }
+        
         if (controller.IsStun)
         {
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
@@ -44,14 +46,14 @@ public class PlayerState_Land : NetworkPlayerState
         {
             controller.SetPlayerMove(inputData);
         }
-     if (inputData.IsOpenPressed)
+        if (inputData.IsOpenPressed)
         {
             float value = controller.AngryValue;
 
             shooter.PowerTrigger = value;
 
         }
-      
+
     }
 
 }

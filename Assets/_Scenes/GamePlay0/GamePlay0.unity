@@ -2209,6 +2209,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Train_PostProcessing
       objectReference: {fileID: 0}
+    - target: {fileID: 2455154799721639138, guid: 35ff227ea08e1ed4dbad073358b5ab0c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2455154799721639148, guid: 35ff227ea08e1ed4dbad073358b5ab0c, type: 3}
       propertyPath: m_RootOrder
       value: 3

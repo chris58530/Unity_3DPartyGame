@@ -13,13 +13,13 @@ public class PlayerState_WakeUp : NetworkPlayerState
     public override void UpdateNetwork(NetworkInputData inputData)
     {
         base.UpdateNetwork(inputData);
-        if (IsAnimationFinish)
+        if (animator.IsFinish)
             stateMachine.SwitchState(typeof(PlayerState_Idle));
         if (!controller.IsGround)
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));
         }
-         if (inputData.IsOpenPressed)
+        if (inputData.IsOpenPressed)
         {
             float value = controller.AngryValue;
 
@@ -27,5 +27,5 @@ public class PlayerState_WakeUp : NetworkPlayerState
 
         }
     }
-   
+
 }

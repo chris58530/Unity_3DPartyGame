@@ -8,7 +8,6 @@ public class PlayerState_Walk : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
-        animator.ani.SetBool("Walk",true);
     }
 
     public override void UpdateNetwork(NetworkInputData inputData)

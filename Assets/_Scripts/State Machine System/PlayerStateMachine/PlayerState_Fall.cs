@@ -22,13 +22,12 @@ public class PlayerState_Fall : NetworkPlayerState
         if (controller.IsGround)
         {
 
-            if (controller.IsStun)
-                stateMachine.SwitchState(typeof(PlayerState_Stun));
-            if (controller.SpeedTime > controller.switchToRush)
-                stateMachine.SwitchState(typeof(PlayerState_Rush));
-            else
-                stateMachine.SwitchState(typeof(PlayerState_Idle));
-            // stateMachine.SwitchState(typeof(PlayerState_Land));
+            // if (controller.IsStun)
+            //     stateMachine.SwitchState(typeof(PlayerState_Stun));
+            // if (controller.SpeedTime > controller.switchToRush)
+            //     stateMachine.SwitchState(typeof(PlayerState_Rush));
+            // else
+                stateMachine.SwitchState(typeof(PlayerState_Land));
         }
         if (controller.IsStun)
             return;

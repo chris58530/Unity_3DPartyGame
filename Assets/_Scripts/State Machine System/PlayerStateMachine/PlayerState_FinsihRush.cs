@@ -12,7 +12,7 @@ public class PlayerState_FinsihRush : NetworkPlayerState
     public override void UpdateNetwork(NetworkInputData inputData)
     {
         base.UpdateNetwork(inputData);
-        if (IsAnimationFinish)
+        if (animator.IsFinish)
             stateMachine.SwitchState(typeof(PlayerState_Walk));
 
         if (inputData.IsJumpPressed)
@@ -25,14 +25,14 @@ public class PlayerState_FinsihRush : NetworkPlayerState
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
         controller.SetPlayerRush(inputData);
-   if (inputData.IsOpenPressed)
+        if (inputData.IsOpenPressed)
         {
             float value = controller.AngryValue;
 
             shooter.PowerTrigger = value;
 
         }
-      
+
     }
 
     public override void Exit()

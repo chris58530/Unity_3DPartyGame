@@ -13,7 +13,7 @@ public class PlayerState_FallToGround : NetworkPlayerState
     public override void UpdateNetwork(NetworkInputData inputData)
     {
         base.UpdateNetwork(inputData);
-        if (IsAnimationFinish)
+        if (animator.IsFinish)
             stateMachine.SwitchState(typeof(PlayerState_Stun));
         if (inputData.IsOpenPressed)
         {

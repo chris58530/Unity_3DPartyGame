@@ -9,10 +9,8 @@ public class PlayerState_Idle : NetworkPlayerState
 
     public override void Enter()
     {
-        base.Enter();
-        
-          animator.ani.SetBool("Walk",false);
-
+        base.Enter();       
+         Debug.Log("Idel State");
     }
 
 

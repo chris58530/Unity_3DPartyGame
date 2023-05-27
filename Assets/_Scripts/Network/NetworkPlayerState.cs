@@ -17,7 +17,7 @@ public class NetworkPlayerState : ScriptableObject, IState
     protected NetworkMagnetShooter shooter;
     protected float StateDuration;
 
-    protected bool IsAnimationFinish;
+
 
     protected float stateStartTime;
 
@@ -32,20 +32,22 @@ public class NetworkPlayerState : ScriptableObject, IState
     public virtual void Enter()
     {
         stateStartTime = Time.time;
-        if (animator != null && animator.transform.gameObject.activeSelf)
+        if (animator != null)
         {
+
             //stateName[Random.Range(0, stateName.Length)] = 隨機抽一個動畫
             // stateHash = Animator.StringToHash(stateName);
             // animator.Animator.CrossFade(stateHash, transitionDuartion);
-            animator.PlayAnimationString = stateName;
+            if (GameManager.Instance.Runner.IsServer)
+            {
+                animator.PlayAnimationString = stateName;
+            }
         }
-
     }
     public virtual void Exit() { }
     public virtual void UpdateNetwork(NetworkInputData inputData)
     {
         StateDuration = Time.time - stateStartTime;
-        IsAnimationFinish = animator.IsFinish(stateStartTime);
 
     }
 }

@@ -245,6 +245,7 @@ Transform:
   m_Children:
   - {fileID: 2135968016411206398}
   - {fileID: 5138271606588535950}
+  - {fileID: 785383548112624227}
   m_Father: {fileID: 4666986713758929865}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -379,8 +380,8 @@ RectTransform:
   - {fileID: 121037446869659212}
   - {fileID: 2999156462535869774}
   - {fileID: 2482417669354985229}
-  m_Father: {fileID: 4666986713758929865}
-  m_RootOrder: 3
+  m_Father: {fileID: 3354027901647099836}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -644,7 +645,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2135968016411206398}
   - component: {fileID: 1652727830502012997}
-  - component: {fileID: 1288535910503196966}
+  - component: {fileID: 3061437126908396234}
   m_Layer: 0
   m_Name: Fox
   m_TagString: Untagged
@@ -692,7 +693,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1288535910503196966
+--- !u!114 &3061437126908396234
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -704,7 +705,7 @@ MonoBehaviour:
   m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 3
   Animator: {fileID: 1652727830502012997}
   TotalWords: 0
   SyncSettings: 79
@@ -1433,7 +1434,6 @@ Transform:
   - {fileID: 3354027901647099836}
   - {fileID: 8158306652987066919}
   - {fileID: 2665684681693271960}
-  - {fileID: 785383548112624227}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1537,11 +1537,10 @@ MonoBehaviour:
   - {fileID: 8802895027150140161}
   - {fileID: -3563485347890817855}
   - {fileID: 4353369342636751102}
-  - {fileID: 1288535910503196966}
-  - {fileID: 7428976091817918635}
+  - {fileID: 3061437126908396234}
+  - {fileID: 71662000194794774}
   - {fileID: 6957494910417815336}
   - {fileID: 2868214853979111877}
-  - {fileID: 71662000194794774}
   SimulationBehaviours: []
 --- !u!114 &1937045688732522104
 MonoBehaviour:
@@ -1555,17 +1554,17 @@ MonoBehaviour:
   m_Script: {fileID: 1710889294, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 2
   InterpolationSpace: 1
-  InterpolationTarget: {fileID: 3354027901647099836}
+  InterpolationTarget: {fileID: 2135968016411206398}
   InterpolateErrorCorrection: 1
   InterpolatedErrorCorrectionSettings:
     MinRate: 3.3
-    MaxRate: 10
-    PosBlendStart: 0.25
+    MaxRate: 20
+    PosBlendStart: 0.3
     PosBlendEnd: 1
-    PosMinCorrection: 0.025
-    PosTeleportDistance: 2
+    PosMinCorrection: 0.001
+    PosTeleportDistance: 10
     RotBlendStart: 0.1
     RotBlendEnd: 0.5
     RotTeleportRadians: 1.5
@@ -1612,10 +1611,8 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 8
-  _IsGround:
-    _value: 0
-  _IsFalling:
-    _value: 0
+  IsGround: 0
+  IsFalling: 0
   _IsStun: 0
   _modelCount: 0
   _SpeedTime: 0
@@ -1676,6 +1673,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   _PlayAnimationString: 
+  IsFinish:
+    _value: 0
 --- !u!1 &4712240839064534844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,7 +1749,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5138271606588535950}
   - component: {fileID: 83362998298145248}
-  - component: {fileID: 7428976091817918635}
   m_Layer: 0
   m_Name: FoxBall
   m_TagString: Untagged
@@ -1795,36 +1793,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7428976091817918635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5477817927830810164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
-  Animator: {fileID: 83362998298145248}
-  TotalWords: 0
-  SyncSettings: 79
-  FloatAccuracy:
-    _value: 0
-    _inverse: 0
-    _hash: -814817977
-  TimeAccuracy:
-    _value: 0
-    _inverse: 0
-    _hash: 1061325578
-  WeightAccuracy:
-    _value: 0
-    _inverse: 0
-    _hash: -814817977
-  StateHashes: 00000000f09d878ea2c7f8a7
-  TriggerHashes: 00000000
 --- !u!1 &5835054411496967000
 GameObject:
   m_ObjectHideFlags: 0

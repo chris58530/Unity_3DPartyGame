@@ -17,10 +17,8 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     private LayerMask layer;
     Collider[] colliders = new Collider[1];
 
-    [Networked]
-    public NetworkBool IsGround { get; set; }
-    [Networked]
-    public NetworkBool IsFalling { get; set; }
+    public bool IsGround;
+    public bool IsFalling;
     [Networked]
     public bool IsStun { get; set; }
     [Networked(OnChanged = nameof(OnModelChanged))]
@@ -72,15 +70,14 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     }
     private void Update()
     {
-
+        GroundDetect();
+        IsFalling = !IsGround && rb.Rigidbody.velocity.y < 1f;
     }
     public override void FixedUpdateNetwork()
     {
         DetectCollision();
-        GroundDetect();
         //IsGround = groundDetector.IsGround;
-        if (Object.HasStateAuthority)
-            IsFalling = !IsGround && rb.Rigidbody.velocity.y < 1f;
+
 
 
         if (StunTimer.ExpiredOrNotRunning(Runner))
