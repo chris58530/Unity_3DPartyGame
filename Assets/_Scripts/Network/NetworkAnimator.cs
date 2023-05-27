@@ -10,8 +10,10 @@ public class NetworkAnimator : NetworkBehaviour
 
 
     public NetworkBool IsFinish;
-    Animator ani;
+    public Animator ani;
 
+    [Networked(OnChanged = nameof(OnAnimationTime))]
+    public float aniTime { get; set; }
     [Networked]
     private TickTimer aniTimer { get; set; }
     public override void Spawned()
@@ -22,27 +24,28 @@ public class NetworkAnimator : NetworkBehaviour
     }
     public override void FixedUpdateNetwork()
     {
-        if (aniTimer.ExpiredOrNotRunning(Runner))
-        {
-            IsFinish = true;
-        }
-        else IsFinish = false;
+        // if (aniTimer.Expired(Runner))
+        // {
+        //     aniTimer = TickTimer.None;
+
+        //     IsFinish = true;
+
+        // }
         Debug.Log(IsFinish);
     }
 
     private static void OnAnimationChanged(Changed<NetworkAnimator> changed)
     {
-        if (changed.Behaviour.ani != null)
-            changed.Behaviour.ani.Play(changed.Behaviour.PlayAnimationString);
-        changed.Behaviour.aniTimer = TickTimer.CreateFromSeconds(changed.Behaviour.Runner,
-        changed.Behaviour.ani.GetCurrentAnimatorStateInfo(0).length);
-        Debug.Log(changed.Behaviour.ani.GetCurrentAnimatorStateInfo(0).length);
-        changed.Behaviour.IsFinish = false;
+        changed.Behaviour.ani.Play(changed.Behaviour.PlayAnimationString);
+        // changed.Behaviour.aniTimer = TickTimer.CreateFromSeconds(changed.Behaviour.Runner,
+        // changed.Behaviour.ani.GetCurrentAnimatorStateInfo(0).length);
+        // Debug.Log(changed.Behaviour.ani.GetCurrentAnimatorStateInfo(0).length);
+        // changed.Behaviour.IsFinish = false;
     }
     private static void OnAnimationTime(Changed<NetworkAnimator> changed)
     {
-        // changed.Behaviour.IsFinish = changed.Behaviour.aniTime >=
-        // changed.Behaviour.ani.GetCurrentAnimatorStateInfo(0).length ? true : false;
+        changed.Behaviour.IsFinish = changed.Behaviour.aniTime >=
+        changed.Behaviour.ani.GetCurrentAnimatorStateInfo(0).length ? true : false;
 
 
     }

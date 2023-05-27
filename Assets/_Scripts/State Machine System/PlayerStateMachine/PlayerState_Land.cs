@@ -14,7 +14,8 @@ public class PlayerState_Land : NetworkPlayerState
     public override void UpdateNetwork(NetworkInputData inputData)
     {
         base.UpdateNetwork(inputData);
-        // if (StateDuration < animator.ani.GetCurrentAnimatorStateInfo(0).length) return;
+        Debug.Log("stateduration"+StateDuration);
+        Debug.Log("GetCurrentAnimatorStateInfo"+animator.ani.GetCurrentAnimatorStateInfo(0).length);
         // if (inputData.IsJumpPressed)
         // {
         //     stateMachine.SwitchState(typeof(PlayerState_Jump));
@@ -28,24 +29,24 @@ public class PlayerState_Land : NetworkPlayerState
         //     stateMachine.SwitchState(typeof(PlayerState_Walk));
         // }
 
-        if (animator.IsFinish)
+        if (StateDuration>animator.ani.GetCurrentAnimatorStateInfo(0).length)
         {
             stateMachine.SwitchState(typeof(PlayerState_Idle));
         }
-        
+
         if (controller.IsStun)
         {
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
 
-        if (controller.SpeedTime > controller.switchToRush)
-        {
-            controller.SetPlayerRush(inputData);
-        }
-        else
-        {
-            controller.SetPlayerMove(inputData);
-        }
+        // if (controller.SpeedTime > controller.switchToRush)
+        // {
+        //     controller.SetPlayerRush(inputData);
+        // }
+        // else
+        // {
+        //     controller.SetPlayerMove(inputData);
+        // }
         if (inputData.IsOpenPressed)
         {
             float value = controller.AngryValue;

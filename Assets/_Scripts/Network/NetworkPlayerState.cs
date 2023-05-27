@@ -48,6 +48,7 @@ public class NetworkPlayerState : ScriptableObject, IState
     public virtual void UpdateNetwork(NetworkInputData inputData)
     {
         StateDuration = Time.time - stateStartTime;
+        animator.aniTime = StateDuration;
 
     }
 }

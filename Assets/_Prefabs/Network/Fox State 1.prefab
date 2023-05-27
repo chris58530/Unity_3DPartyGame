@@ -1675,6 +1675,8 @@ MonoBehaviour:
   _PlayAnimationString: 
   IsFinish:
     _value: 0
+  ani: {fileID: 0}
+  _aniTime: 0
 --- !u!1 &4712240839064534844
 GameObject:
   m_ObjectHideFlags: 0
