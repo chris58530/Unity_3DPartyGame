@@ -10239,6 +10239,7 @@ Transform:
   m_Children:
   - {fileID: 4290950152011522712}
   - {fileID: 8207030080532118295}
+  - {fileID: 2512470215155023879}
   m_Father: {fileID: 7565026770092640685}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10538,8 +10539,8 @@ RectTransform:
   - {fileID: 2996629464308216872}
   - {fileID: 119077786985193258}
   - {fileID: 741820444619722089}
-  m_Father: {fileID: 7565026770092640685}
-  m_RootOrder: 3
+  m_Father: {fileID: 482957112877272536}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11999,7 +12000,6 @@ Transform:
   - {fileID: 482957112877272536}
   - {fileID: 6413135599533871171}
   - {fileID: 920496207231962620}
-  - {fileID: 2512470215155023879}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12103,9 +12103,9 @@ MonoBehaviour:
   - {fileID: 5913791560360061285}
   - {fileID: 7400501057463799461}
   - {fileID: 1464353973859295898}
+  - {fileID: 2938229604405604210}
   - {fileID: 5239327621420555596}
   - {fileID: 1150065260226173857}
-  - {fileID: 2938229604405604210}
   SimulationBehaviours: []
 --- !u!114 &3664220073171242012
 MonoBehaviour:
@@ -12129,7 +12129,7 @@ MonoBehaviour:
     PosBlendStart: 0.25
     PosBlendEnd: 1
     PosMinCorrection: 0.025
-    PosTeleportDistance: 2
+    PosTeleportDistance: 10
     RotBlendStart: 0.1
     RotBlendEnd: 0.5
     RotTeleportRadians: 1.5
@@ -12176,10 +12176,8 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 8
-  _IsGround:
-    _value: 0
-  _IsFalling:
-    _value: 0
+  IsGround: 0
+  IsFalling: 0
   _IsStun: 0
   _modelCount: 0
   _SpeedTime: 0
@@ -12240,6 +12238,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   _PlayAnimationString: 
+  IsFinish:
+    _value: 0
+  ani: {fileID: 0}
+  _aniTime: 0
 --- !u!1 &7577512063367938855
 GameObject:
   m_ObjectHideFlags: 0

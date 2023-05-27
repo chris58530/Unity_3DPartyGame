@@ -16,6 +16,7 @@ public class PlayerState_Land : NetworkPlayerState
         base.UpdateNetwork(inputData);
         Debug.Log("stateduration"+StateDuration);
         Debug.Log("GetCurrentAnimatorStateInfo"+animator.ani.GetCurrentAnimatorStateInfo(0).length);
+
         // if (inputData.IsJumpPressed)
         // {
         //     stateMachine.SwitchState(typeof(PlayerState_Jump));
@@ -39,14 +40,14 @@ public class PlayerState_Land : NetworkPlayerState
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
 
-        // if (controller.SpeedTime > controller.switchToRush)
-        // {
-        //     controller.SetPlayerRush(inputData);
-        // }
-        // else
-        // {
-        //     controller.SetPlayerMove(inputData);
-        // }
+        if (controller.SpeedTime > controller.switchToRush)
+        {
+            controller.SetPlayerRush(inputData);
+        }
+        else
+        {
+            controller.SetPlayerMove(inputData);
+        }
         if (inputData.IsOpenPressed)
         {
             float value = controller.AngryValue;

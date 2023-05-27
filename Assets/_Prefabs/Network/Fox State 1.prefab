@@ -1556,11 +1556,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 2
   InterpolationSpace: 1
-  InterpolationTarget: {fileID: 2135968016411206398}
+  InterpolationTarget: {fileID: 3354027901647099836}
   InterpolateErrorCorrection: 1
   InterpolatedErrorCorrectionSettings:
     MinRate: 3.3
-    MaxRate: 20
+    MaxRate: 10
     PosBlendStart: 0.3
     PosBlendEnd: 1
     PosMinCorrection: 0.001
