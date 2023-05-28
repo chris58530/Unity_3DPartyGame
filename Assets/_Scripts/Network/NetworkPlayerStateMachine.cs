@@ -15,7 +15,8 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
     private void Awake()
     {
         controller = GetComponent<NetworkPlayerController>();
-        shooter = GetComponentInChildren<NetworkMagnetShooter>();
+        // shooter = GetComponentInChildren<NetworkMagnetShooter>();
+        shooter = null;
         animator = GetComponentInChildren<NetworkAnimator>();
 
         stateTable = new Dictionary<System.Type, IState>(playerStates.Length);

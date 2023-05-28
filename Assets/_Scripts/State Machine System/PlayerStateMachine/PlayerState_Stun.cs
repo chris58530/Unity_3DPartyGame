@@ -24,6 +24,7 @@ public class PlayerState_Stun : NetworkPlayerState
         }
         if (inputData.IsOpenPressed)
         {
+            if (shooter == null) return;
             float value = controller.AngryValue;
             if (value <= (float)PowerValue.Power2)return;
 

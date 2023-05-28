@@ -22,17 +22,6 @@ public class NetworkAnimator : NetworkBehaviour
         IsFinish = false;
 
     }
-    public override void FixedUpdateNetwork()
-    {
-        // if (aniTimer.Expired(Runner))
-        // {
-        //     aniTimer = TickTimer.None;
-
-        //     IsFinish = true;
-
-        // }
-        Debug.Log(IsFinish);
-    }
 
     private static void OnAnimationChanged(Changed<NetworkAnimator> changed)
     {

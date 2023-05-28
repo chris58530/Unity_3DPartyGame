@@ -27,10 +27,9 @@ public class PlayerState_Fall : NetworkPlayerState
             // if (controller.SpeedTime > controller.switchToRush)
             //     stateMachine.SwitchState(typeof(PlayerState_Rush));
             // else
-                stateMachine.SwitchState(typeof(PlayerState_Land));
+            stateMachine.SwitchState(typeof(PlayerState_Land));
         }
-        if (controller.IsStun)
-            return;
+        if (controller.IsStun) return;
         if (controller.SpeedTime > controller.switchToRush)
         {
             controller.SetPlayerRush(inputData);
@@ -39,13 +38,14 @@ public class PlayerState_Fall : NetworkPlayerState
         {
             controller.SetPlayerMove(inputData);
         }
-     if (inputData.IsOpenPressed)
+        if (inputData.IsOpenPressed)
         {
+            if (shooter == null) return;
             float value = controller.AngryValue;
 
             shooter.PowerTrigger = value;
 
         }
-       
+
     }
 }

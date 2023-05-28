@@ -37,6 +37,7 @@ public class PlayerState_Jump : NetworkPlayerState
         }
         if (inputData.IsOpenPressed)
         {
+            if (shooter == null) return;
             float value = controller.AngryValue;
 
             shooter.PowerTrigger = value;

@@ -17,6 +17,7 @@ public class PlayerState_FallToGround : NetworkPlayerState
             stateMachine.SwitchState(typeof(PlayerState_Stun));
         if (inputData.IsOpenPressed)
         {
+            if (shooter == null) return;
             float value = controller.AngryValue;
 
             shooter.PowerTrigger = value;

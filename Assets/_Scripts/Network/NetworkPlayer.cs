@@ -9,8 +9,7 @@ public class NetworkPlayer : NetworkBehaviour
 {
     public static NetworkPlayer Local { get; set; }
     private CinemachineTargetGroup camGroup;
-    // [SerializeField]
-    // private GameObject rushModel;
+
 
     public override void Spawned()
     {
@@ -18,19 +17,11 @@ public class NetworkPlayer : NetworkBehaviour
         {
             Local = this;
         }
-        // rushModel.SetActive(false);
 
         camGroup = FindObjectOfType<CinemachineTargetGroup>();
         if (camGroup == null) return;
         camGroup.AddMember(this.gameObject.transform, 1, 1);
     }
 
-    // public void PlayerLeft(PlayerRef player)
-    // {
-    //     if (player == Object.InputAuthority)
-    //     {
-    //         Runner.Despawn(Object);
-    //     }
-
-    // }
+  
 }

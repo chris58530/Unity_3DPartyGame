@@ -9,8 +9,8 @@ public class PlayerState_Idle : NetworkPlayerState
 
     public override void Enter()
     {
-        base.Enter();       
-         Debug.Log("Idel State");
+        base.Enter();
+        Debug.Log("Idel State");
     }
 
 
@@ -18,9 +18,10 @@ public class PlayerState_Idle : NetworkPlayerState
     {
         base.UpdateNetwork(inputData);
 
-        if (inputData.Move)//host可以控制自己 其他人不能動
+        if (inputData.IsOpenPressed)
         {
-            stateMachine.SwitchState(typeof(PlayerState_Walk));
+            // controller.IsBall = true;
+            stateMachine.SwitchState(typeof(PlayerState_Rush));
         }
         if (inputData.IsJumpPressed)
         {
@@ -38,8 +39,8 @@ public class PlayerState_Idle : NetworkPlayerState
         // shooter.OpenMagnet(inputData);
         if (inputData.IsOpenPressed)
         {
+            if (shooter == null) return;
             float value = controller.AngryValue;
-
             shooter.PowerTrigger = value;
 
         }

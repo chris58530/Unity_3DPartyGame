@@ -9,8 +9,7 @@ using TMPro;
 public class NetworkPlayerController : NetworkBehaviour, IMagnet
 {
     NetworkRigidbody rb;
-    //PlayerGroundDetector groundDetector;
-
+    #region Ground detect
     [SerializeField, Range(0.1f, 1f)]
     private float detectionRadius = 0.1f;
     [SerializeField]
@@ -19,8 +18,11 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 
     public bool IsGround;
     public bool IsFalling;
+    #endregion
     [Networked]
     public bool IsStun { get; set; }
+    [Networked]
+    public bool IsBall{get;set;}
     [Networked(OnChanged = nameof(OnModelChanged))]
     public int modelCount { get; set; }
     [Networked(OnChanged = nameof(OnSpeedTimeChanged))]
@@ -113,8 +115,6 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             {
                 SetPlayerLookAtForward(output);
             }
-
-
             rb.Rigidbody.AddForce(output * walkSpeed);
 
         }
@@ -122,19 +122,22 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     }
     public void SetPlayerRush(NetworkInputData input)
     {
-        if (NetworkPlayer.Local)
+        if (!NetworkPlayer.Local) return;
+
+        float x = input.AxisX;
+        float z = input.AxisZ;
+        Vector3 output = Vector3.zero;
+        output.x = x * Mathf.Sqrt(1 - (z * z) / 2.0f);
+        output.z = z * Mathf.Sqrt(1 - (x * x) / 2.0f);
+
+        if (input.Move)
         {
-            float x = input.AxisX;
-            float z = input.AxisZ;
-            Vector3 output = Vector3.zero;
-            output.x = x * Mathf.Sqrt(1 - (z * z) / 2.0f);
-            output.z = z * Mathf.Sqrt(1 - (x * x) / 2.0f);
-
+            SetPlayerLookAtForward(output);
             rb.Rigidbody.AddForce(output * (rushSpeed + (SpeedTime * 0.1f)));
-
-            if (input.Move)
-                SetPlayerLookAtForward(output);
         }
+        else
+            rb.Rigidbody.AddForce(transform.forward * (rushSpeed + (SpeedTime * 0.1f)));
+
     }
     public void SetPlayerJump()
     {

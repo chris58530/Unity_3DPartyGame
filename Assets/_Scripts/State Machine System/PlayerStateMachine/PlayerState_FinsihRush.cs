@@ -13,7 +13,7 @@ public class PlayerState_FinsihRush : NetworkPlayerState
     {
         base.UpdateNetwork(inputData);
         if (StateDuration > animator.ani.GetCurrentAnimatorStateInfo(0).length)
-            stateMachine.SwitchState(typeof(PlayerState_Walk));
+            stateMachine.SwitchState(typeof(PlayerState_Idle));
 
         if (inputData.IsJumpPressed)
             stateMachine.SwitchState(typeof(PlayerState_Jump));
@@ -28,6 +28,7 @@ public class PlayerState_FinsihRush : NetworkPlayerState
         controller.SetPlayerRush(inputData);
         if (inputData.IsOpenPressed)
         {
+            if (shooter == null) return;
             float value = controller.AngryValue;
 
             shooter.PowerTrigger = value;

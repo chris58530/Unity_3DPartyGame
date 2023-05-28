@@ -21,6 +21,7 @@ public class PlayerState_WakeUp : NetworkPlayerState
         }
         if (inputData.IsOpenPressed)
         {
+            if (shooter == null) return;
             float value = controller.AngryValue;
 
             shooter.PowerTrigger = value;

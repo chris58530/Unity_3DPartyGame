@@ -14,8 +14,8 @@ public class PlayerState_Land : NetworkPlayerState
     public override void UpdateNetwork(NetworkInputData inputData)
     {
         base.UpdateNetwork(inputData);
-        Debug.Log("stateduration"+StateDuration);
-        Debug.Log("GetCurrentAnimatorStateInfo"+animator.ani.GetCurrentAnimatorStateInfo(0).length);
+        // Debug.Log("stateduration"+StateDuration);
+        // Debug.Log("GetCurrentAnimatorStateInfo"+animator.ani.GetCurrentAnimatorStateInfo(0).length);
 
         // if (inputData.IsJumpPressed)
         // {
@@ -50,6 +50,7 @@ public class PlayerState_Land : NetworkPlayerState
         }
         if (inputData.IsOpenPressed)
         {
+            if (shooter == null) return;
             float value = controller.AngryValue;
 
             shooter.PowerTrigger = value;
