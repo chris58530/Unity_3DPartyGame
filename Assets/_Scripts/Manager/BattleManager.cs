@@ -43,6 +43,7 @@ public class BattleManager : Singleton<BattleManager>
 
     public void CheckAllReadyButton()//Ready大廳
     {
+        if(canSwitch)return;
         int currentReayBt = 0;
         ReadyButton[] ready = FindObjectsOfType<ReadyButton>();
         foreach (ReadyButton readyButton in ready)
@@ -54,7 +55,7 @@ public class BattleManager : Singleton<BattleManager>
                 {
                     Actions.GameOverUI?.Invoke();
                     canSwitch = true;
-                    break;
+                    return;
                 }
             }
         }

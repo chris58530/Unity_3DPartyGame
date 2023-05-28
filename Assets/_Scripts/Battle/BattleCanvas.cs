@@ -44,13 +44,12 @@ public class BattleCanvas : NetworkBehaviour
     }
     public override void FixedUpdateNetwork()
     {
-        if (BattleManager.Instance.currentPlayerCount <= 0)
+        if (BattleManager.Instance.currentPlayerCount <= 1)
         {
             IsEndGame = true;
         }
         if (BattleTime > 0)
             BattleTime -= Runner.DeltaTime;
-
         if (focusTimer.Expired(Runner))//本回合結束時，倒數計時後切換場景
         {
             GameManager.Instance.NextScene();
