@@ -18,37 +18,37 @@ public class PlayerState_Rush : NetworkPlayerState
     public override void UpdateNetwork(NetworkInputData inputData)
     {
         base.UpdateNetwork(inputData);
-        // controller.SetPlayerRush(inputData);
+        controller.SetPlayerRush(inputData);
 
 
-        if (inputData.IsOpenPressed)
+        if (inputData.IsShootPressed)
         {
-            // controller.IsBall = false;
+            controller.IsBall = false;
             stateMachine.SwitchState(typeof(PlayerState_FinsihRush));
 
         }
-        // if (inputData.IsJumpPressed)
-        // {
-        //     stateMachine.SwitchState(typeof(PlayerState_Jump));
-        // }
+        if (inputData.IsJumpPressed)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Jump));
+        }
 
-        // if (!controller.IsGround)
-        // {
-        //     stateMachine.SwitchState(typeof(PlayerState_FinsihRush));
+        if (!controller.IsGround)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_FinsihRush));
 
-        // }
-        // if (controller.IsStun)
-        // {
-        //     stateMachine.SwitchState(typeof(PlayerState_FallToGround));
-        // }
-        // if (inputData.IsOpenPressed)
-        // {
-        //     if (shooter == null) return;
-        //     float value = controller.AngryValue;
+        }
+        if (controller.IsStun)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_FallToGround));
+        }
+        if (inputData.IsOpenPressed)
+        {
+            if (shooter == null) return;
+            float value = controller.AngryValue;
 
-        //     shooter.PowerTrigger = value;
+            shooter.PowerTrigger = value;
 
-        // }
+        }
 
     }
     // public override void LogicUpdate()

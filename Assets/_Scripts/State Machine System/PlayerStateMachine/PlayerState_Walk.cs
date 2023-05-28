@@ -22,6 +22,7 @@ public class PlayerState_Walk : NetworkPlayerState
         // 如果IsOpenPressed被按下，切換到Rush
         if (inputData.IsOpenPressed)
         {
+            controller.IsBall = true;
             stateMachine.SwitchState(typeof(PlayerState_Rush));
         }
         // 如果跳躍按鈕被按下，切換到Jump

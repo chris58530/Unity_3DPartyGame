@@ -29,7 +29,8 @@ public class NetworkPlayerInput : NetworkBehaviour
         StopJump = !Input.GetButton("Jump");
         Open = Input.GetButton("Fire1")||Input.GetKey(KeyCode.K);
         StopOpen = !Input.GetButton("Fire1");
-        Shoot =Input.GetButtonDown("Fire2");
+        Shoot =Input.GetButton("Fire2");
+    
     }
 
     public NetworkInputData GetNetworkInput()

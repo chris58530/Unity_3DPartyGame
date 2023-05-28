@@ -29,8 +29,9 @@ public class PlayerState_Land : NetworkPlayerState
         //     // else
         //     stateMachine.SwitchState(typeof(PlayerState_Walk));
         // }
-
-        if (StateDuration>animator.ani.GetCurrentAnimatorStateInfo(0).length)
+        if (controller.IsBall)
+            stateMachine.SwitchState(typeof(PlayerState_Rush));
+        if (StateDuration > animator.ani.GetCurrentAnimatorStateInfo(0).length)
         {
             stateMachine.SwitchState(typeof(PlayerState_Idle));
         }
@@ -56,7 +57,12 @@ public class PlayerState_Land : NetworkPlayerState
             shooter.PowerTrigger = value;
 
         }
+        if (inputData.IsOpenPressed)
+        {
+            controller.IsBall = true;
 
+            stateMachine.SwitchState(typeof(PlayerState_Rush));
+        }
     }
 
 }

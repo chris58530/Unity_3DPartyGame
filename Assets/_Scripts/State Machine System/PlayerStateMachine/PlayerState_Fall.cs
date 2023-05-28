@@ -46,6 +46,10 @@ public class PlayerState_Fall : NetworkPlayerState
             shooter.PowerTrigger = value;
 
         }
-
+    if (inputData.IsOpenPressed)
+        {
+            controller.IsBall = true;
+            stateMachine.SwitchState(typeof(PlayerState_Rush));
+        }
     }
 }

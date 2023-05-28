@@ -43,7 +43,12 @@ public class PlayerState_Jump : NetworkPlayerState
             shooter.PowerTrigger = value;
 
         }
-     
+         if (inputData.IsOpenPressed)
+        {
+                       controller.IsBall = true;
+
+            stateMachine.SwitchState(typeof(PlayerState_Rush));
+        }
     }
 
 }

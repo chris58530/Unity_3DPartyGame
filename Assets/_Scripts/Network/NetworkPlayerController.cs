@@ -22,7 +22,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     [Networked]
     public bool IsStun { get; set; }
     [Networked]
-    public bool IsBall{get;set;}
+    public bool IsBall { get; set; }
     [Networked(OnChanged = nameof(OnModelChanged))]
     public int modelCount { get; set; }
     [Networked(OnChanged = nameof(OnSpeedTimeChanged))]
@@ -78,27 +78,30 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     public override void FixedUpdateNetwork()
     {
         DetectCollision();
-        //IsGround = groundDetector.IsGround;
-
-
 
         if (StunTimer.ExpiredOrNotRunning(Runner))
         {
             IsStun = false;
         }
-        if (GetInput(out NetworkInputData inputData))
+        // if (GetInput(out NetworkInputData inputData))
+        // {
+        //     if (inputData.Move && !IsStun)
+        //         SpeedTime += Runner.DeltaTime;
+        //     else
+        //         SpeedTime = 0;
+        // }
+        if (modelCount == 1)
         {
-            if (inputData.Move && !IsStun)
-                SpeedTime += Runner.DeltaTime;
-            else
-                SpeedTime = 0;
+            SpeedTime += Runner.DeltaTime;
         }
+        else SpeedTime = 0;
+
         if (AngryValue > 0)
             AngryValue -= Runner.DeltaTime * 2;
         if (AngryValue >= 100)
             AngryValue = 100;
-        // DetectCollision();
-        float newDragValue = dragValue - (SpeedTime * 0.2f);
+
+        float newDragValue = dragValue - (SpeedTime * 1f);
         rb.Rigidbody.drag = newDragValue < 0f ? 0f : newDragValue;
 
     }
@@ -133,10 +136,10 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         if (input.Move)
         {
             SetPlayerLookAtForward(output);
-            rb.Rigidbody.AddForce(output * (rushSpeed + (SpeedTime * 0.1f)));
+            rb.Rigidbody.AddForce(output * (rushSpeed + (SpeedTime * 0.01f)));
         }
         else
-            rb.Rigidbody.AddForce(transform.forward * (rushSpeed + (SpeedTime * 0.1f)));
+            rb.Rigidbody.AddForce(transform.forward * (rushSpeed + (SpeedTime * 0.01f)));
 
     }
     public void SetPlayerJump()

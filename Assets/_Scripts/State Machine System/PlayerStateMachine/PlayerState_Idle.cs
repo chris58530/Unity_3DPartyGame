@@ -17,10 +17,13 @@ public class PlayerState_Idle : NetworkPlayerState
     public override void UpdateNetwork(NetworkInputData inputData)
     {
         base.UpdateNetwork(inputData);
-
+        if (inputData.Move)
+        {
+            stateMachine.SwitchState(typeof(PlayerState_Walk));
+        }
         if (inputData.IsOpenPressed)
         {
-            // controller.IsBall = true;
+            controller.IsBall = true;
             stateMachine.SwitchState(typeof(PlayerState_Rush));
         }
         if (inputData.IsJumpPressed)
