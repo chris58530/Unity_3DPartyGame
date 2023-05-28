@@ -184,17 +184,15 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 
     void OnCollisionStay(Collision other)
     {
+        var data = GameManager.Instance.PlayerList.TryGetValue(Object.InputAuthority, out var playerData) ? playerData : null;
+        if (data.IsDead) return;
         if (other.gameObject.CompareTag("DeadZone"))
         {
-            if (GameManager.Instance.PlayerList.TryGetValue(Object.InputAuthority, out var data))
-            {
-                data.IsDead = true;
-                BattleManager.Instance.currentPlayerCount -= 1;
-                Debug.Log($"(PlayerController)目前人數 : {BattleManager.Instance.currentPlayerCount}");
-                Debug.Log($"死亡玩家 : {data.PlayerName}");
-                GameManager.Instance.Runner.Despawn(Object);
-            }
-            else return;
+            data.IsDead = true;
+            BattleManager.Instance.currentPlayerCount -= 1;
+            Debug.Log($"(PlayerController)目前人數 : {BattleManager.Instance.currentPlayerCount}");
+            Debug.Log($"死亡玩家 : {data.PlayerName}");
+            return;
         }
         if (other.gameObject.CompareTag("Rush") && !IsStun)
         {

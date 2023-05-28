@@ -6,22 +6,22 @@ using UnityEngine;
 public class NetworkPlayerData : NetworkBehaviour
 {
 
-    [Networked(OnChanged = nameof(OnPlayerNameChanged))] 
+    [Networked(OnChanged = nameof(OnPlayerNameChanged))]
     public string PlayerName { get; set; }
 
-    [Networked(OnChanged = nameof(OnIsReadyChanged))] 
+    [Networked(OnChanged = nameof(OnIsReadyChanged))]
     public NetworkBool IsReady { get; set; }
 
-    [Networked(OnChanged = nameof(OnCharaterNameChanged))] 
+    [Networked(OnChanged = nameof(OnCharaterNameChanged))]
     public int CharaterCount { get; set; }
 
-    [Networked(OnChanged =nameof(OnPlayerScoreChanged))]
+    [Networked(OnChanged = nameof(OnPlayerScoreChanged))]
     public float PlayerScore { get; set; }
 
-    [Networked]
+    [Networked(OnChanged = nameof(OnPlayerDead))]
     public NetworkBool IsDead { get; set; }
     public override void Spawned()
-    {     
+    {
 
         transform.SetParent(GameManager.Instance.transform);
 
@@ -34,6 +34,23 @@ public class NetworkPlayerData : NetworkBehaviour
             SetCharacterCount_RPC(GameManager.Instance.PlayerCharacter);
             SetPlayerScore_RPC(GameManager.Instance.PlayerScore);
         }
+    }
+    public static void OnPlayerDead(Changed<NetworkPlayerData> changed)
+    {
+        if (!changed.Behaviour.Object.HasInputAuthority) return;
+        
+        if (changed.Behaviour.IsDead)
+        {
+            changed.Behaviour.Runner.ProvideInput = false;
+
+        }
+        else if (!changed.Behaviour.IsDead)
+        {
+            changed.Behaviour.Runner.ProvideInput = true;
+
+        }
+
+
     }
 
     #region - RPCs -
@@ -73,7 +90,8 @@ public class NetworkPlayerData : NetworkBehaviour
     {
         GameManager.Instance.UpdatePlayerList();
     }
-    private static void OnCharaterNameChanged(Changed<NetworkPlayerData> changed){
+    private static void OnCharaterNameChanged(Changed<NetworkPlayerData> changed)
+    {
         GameManager.Instance.UpdatePlayerList();
     }
     private static void OnPlayerScoreChanged(Changed<NetworkPlayerData> changed)

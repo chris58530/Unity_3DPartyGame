@@ -44,9 +44,8 @@ public class BattleCanvas : NetworkBehaviour
     
     }
     public override void FixedUpdateNetwork()
-    {
-        
-        if (BattleManager.Instance.currentPlayerCount <= 0)
+    {        
+        if (BattleManager.Instance.currentPlayerCount <= 1)
         {
             IsEndGame = true;
         }
