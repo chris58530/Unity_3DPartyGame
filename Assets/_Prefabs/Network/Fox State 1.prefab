@@ -1567,7 +1567,7 @@ MonoBehaviour:
     PosTeleportDistance: 10
     RotBlendStart: 0.1
     RotBlendEnd: 0.5
-    RotTeleportRadians: 1.5
+    RotTeleportRadians: 5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0
 --- !u!114 &5849927872912916195

@@ -12132,7 +12132,7 @@ MonoBehaviour:
     PosTeleportDistance: 10
     RotBlendStart: 0.1
     RotBlendEnd: 0.5
-    RotTeleportRadians: 1.5
+    RotTeleportRadians: 5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0
 --- !u!114 &8725502261037474951
@@ -12179,6 +12179,7 @@ MonoBehaviour:
   IsGround: 0
   IsFalling: 0
   _IsStun: 0
+  _IsBall: 0
   _modelCount: 0
   _SpeedTime: 0
   _AngryValue: 0
