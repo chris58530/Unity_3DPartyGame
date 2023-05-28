@@ -6,7 +6,7 @@ using Fusion;
 public class NetworkRB : NetworkBehaviour
 {
     Rigidbody rb;
-    
+    //5j4ur
     private void Awake() {
         rb = GetComponent<Rigidbody>();
     }
