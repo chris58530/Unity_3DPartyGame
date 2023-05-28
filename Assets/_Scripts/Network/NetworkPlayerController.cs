@@ -36,6 +36,9 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     private GameObject RushModel;
     [Networked]
     private TickTimer StunTimer { get; set; }
+    private float repelTime;
+
+
     private NetworkPlayerCanvas playerCanvas;
     [SerializeField]
     private int dragValue = 10;
@@ -186,6 +189,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     {
         var data = GameManager.Instance.PlayerList.TryGetValue(Object.InputAuthority, out var playerData) ? playerData : null;
         if (data.IsDead) return;
+        
         if (other.gameObject.CompareTag("DeadZone"))
         {
             data.IsDead = true;
@@ -265,7 +269,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     {
         rb.Rigidbody.AddForce(direction * force, ForceMode.Impulse);
     }
-
+    
     public void SetAttract(Vector3 direction, float force)
     {
         rb.Rigidbody.AddForce((direction - transform.position).normalized * force);

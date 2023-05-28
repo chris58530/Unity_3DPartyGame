@@ -6,12 +6,28 @@ public class BattleManager : Singleton<BattleManager>
 {
     [Header("目前玩家人數")]
     public int currentPlayerCount;
-
+    float time;
+    bool canSwitch = false;
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void FixedUpdate()
+    {
+        if (canSwitch)
+        {
+            time += Time.deltaTime;
+            if (time > 2)
+            {
+                GameManager.Instance.NextScene();
+                canSwitch = false;
+                time = 0;
+                return;
+            }
+
+        }
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -19,6 +35,10 @@ public class BattleManager : Singleton<BattleManager>
         Debug.Log($"BattleManager.OnSceneLoaded 初始化");
         currentPlayerCount = 0;
         GameManager.Instance.Runner.ProvideInput = true;
+        if (SceneManager.GetActiveScene().name != "ReadyScene")
+        {
+            Actions.GameStartUI?.Invoke();
+        }
     }
 
     public void CheckAllReadyButton()//Ready大廳
@@ -32,12 +52,14 @@ public class BattleManager : Singleton<BattleManager>
                 currentReayBt += 1;
                 if (currentReayBt == currentPlayerCount)
                 {
-                    GameManager.Instance.NextScene();
+                    Actions.GameOverUI?.Invoke();
+                    canSwitch = true;
                     break;
                 }
             }
         }
     }
+
     protected override void OnDestroy()
     {
         base.OnDestroy();

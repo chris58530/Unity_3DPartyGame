@@ -19,7 +19,6 @@ public class NetworkPlayerCanvas : NetworkBehaviour
     void Update()
     {
         transform.LookAt(Camera.main.transform);
-
     }
 
     public override void Spawned()

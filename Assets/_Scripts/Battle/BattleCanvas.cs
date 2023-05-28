@@ -40,11 +40,11 @@ public class BattleCanvas : NetworkBehaviour
         BattleTime = battleTime;
         focusTimer = TickTimer.None;
 
-    
+
     }
     public override void FixedUpdateNetwork()
-    {        
-        if (BattleManager.Instance.currentPlayerCount <= 1)
+    {
+        if (BattleManager.Instance.currentPlayerCount <= 0)
         {
             IsEndGame = true;
         }
@@ -76,6 +76,7 @@ public class BattleCanvas : NetworkBehaviour
                 {
                     if (!data.IsDead)
                     {
+
                         data.PlayerScore += 1;
                         Debug.Log($"本局贏家 : {data.PlayerName}");
                         Debug.Log($"分數 : {data.PlayerScore}");
@@ -88,6 +89,8 @@ public class BattleCanvas : NetworkBehaviour
             {
                 cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = 15;
             }
+            Actions.GameOverUI?.Invoke();
+
             changed.Behaviour.focusTimer = TickTimer.CreateFromSeconds(changed.Behaviour.Runner, changed.Behaviour.focusTime);
         }
     }
