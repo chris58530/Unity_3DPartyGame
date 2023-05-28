@@ -30,7 +30,7 @@ public class PlayerState_Fall : NetworkPlayerState
             stateMachine.SwitchState(typeof(PlayerState_Land));
         }
         if (controller.IsStun) return;
-        if (controller.SpeedTime > controller.switchToRush)
+        if (controller.IsBall)
         {
             controller.SetPlayerRush(inputData);
         }

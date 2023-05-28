@@ -188,15 +188,13 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         {
             if (GameManager.Instance.PlayerList.TryGetValue(Object.InputAuthority, out var data))
             {
-                if (!data.IsDead)
-                {
-                    data.IsDead = true;
-                    BattleManager.Instance.currentPlayerCount -= 1;
-                    Debug.Log($"(PlayerController)目前人數 : {BattleManager.Instance.currentPlayerCount}");
-                    Debug.Log($"死亡玩家 : {data.PlayerName}");
-                }
-                else Runner.Despawn(Object);
+                data.IsDead = true;
+                BattleManager.Instance.currentPlayerCount -= 1;
+                Debug.Log($"(PlayerController)目前人數 : {BattleManager.Instance.currentPlayerCount}");
+                Debug.Log($"死亡玩家 : {data.PlayerName}");
+                GameManager.Instance.Runner.Despawn(Object);
             }
+            else return;
         }
         if (other.gameObject.CompareTag("Rush") && !IsStun)
         {
@@ -291,6 +289,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 
         foreach (var collider in colliders)
         {
+
             if (collider.GetComponent<Truck>())
             {
                 isColliderFound = true;
@@ -298,6 +297,19 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
                 Debug.Log(collider.name);
                 break;
             }
+            // if (collider.gameObject.CompareTag("DeadZone"))
+            // {
+            //     if (GameManager.Instance.PlayerList.TryGetValue(Object.InputAuthority, out var data))
+            //     {
+            //         data.IsDead = true;
+            //         BattleManager.Instance.currentPlayerCount -= 1;
+            //         Debug.Log($"(PlayerController)目前人數 : {BattleManager.Instance.currentPlayerCount}");
+            //         Debug.Log($"死亡玩家 : {data.PlayerName}");
+            //         Runner.Despawn(Object);
+            //         break;
+            //     }
+            // }
+
         }
         if (!isColliderFound)
         {

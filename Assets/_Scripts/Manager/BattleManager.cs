@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class BattleManager : Singleton<BattleManager>
 {
     [Header("目前玩家人數")]
-    public int currentPlayerCount; 
+    public int currentPlayerCount;
 
     protected override void Awake()
     {
@@ -13,13 +13,14 @@ public class BattleManager : Singleton<BattleManager>
         DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
-   
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log($"BattleManager 初始化");
         currentPlayerCount = 0;
+        GameManager.Instance.Runner.ProvideInput = true;
     }
-    
+
     public void CheckAllReadyButton()//Ready大廳
     {
         int currentReayBt = 0;

@@ -158,7 +158,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ball_back
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -271,7 +271,7 @@ AnimatorStateMachine:
     m_Position: {x: -450, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5942137435283853584}
-    m_Position: {x: -150, y: 60, z: 0}
+    m_Position: {x: -170, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2870483636852347724}
     m_Position: {x: -460, y: 170, z: 0}
@@ -280,16 +280,16 @@ AnimatorStateMachine:
     m_Position: {x: 110, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1159152779380666595}
-    m_Position: {x: -110, y: 180, z: 0}
+    m_Position: {x: -170, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -538929999644386841}
     m_Position: {x: -430, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2738399267374682583}
-    m_Position: {x: -280, y: 390, z: 0}
+    m_Position: {x: -150, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4356370384126076309}
-    m_Position: {x: 220, y: 230, z: 0}
+    m_Position: {x: 110, y: 130, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

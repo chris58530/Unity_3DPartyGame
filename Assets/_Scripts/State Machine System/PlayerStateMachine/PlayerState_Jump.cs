@@ -27,7 +27,7 @@ public class PlayerState_Jump : NetworkPlayerState
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
 
-        if (controller.SpeedTime > controller.switchToRush)
+        if (controller.IsBall)
         {
             controller.SetPlayerRush(inputData);
         }
@@ -39,14 +39,11 @@ public class PlayerState_Jump : NetworkPlayerState
         {
             if (shooter == null) return;
             float value = controller.AngryValue;
-
             shooter.PowerTrigger = value;
-
         }
-         if (inputData.IsOpenPressed)
+        if (inputData.IsOpenPressed)
         {
-                       controller.IsBall = true;
-
+            controller.IsBall = true;
             stateMachine.SwitchState(typeof(PlayerState_Rush));
         }
     }

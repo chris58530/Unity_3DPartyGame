@@ -25,7 +25,6 @@ public class PlayerState_Rush : NetworkPlayerState
         {
             controller.IsBall = false;
             stateMachine.SwitchState(typeof(PlayerState_FinsihRush));
-
         }
         if (inputData.IsJumpPressed)
         {
@@ -35,7 +34,6 @@ public class PlayerState_Rush : NetworkPlayerState
         if (!controller.IsGround)
         {
             stateMachine.SwitchState(typeof(PlayerState_FinsihRush));
-
         }
         if (controller.IsStun)
         {
@@ -45,9 +43,7 @@ public class PlayerState_Rush : NetworkPlayerState
         {
             if (shooter == null) return;
             float value = controller.AngryValue;
-
             shooter.PowerTrigger = value;
-
         }
 
     }
