@@ -8,12 +8,13 @@ public class PlayerState_FallToGround : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
+        controller.IsBall = false;
     }
 
     public override void UpdateNetwork(NetworkInputData inputData)
     {
         base.UpdateNetwork(inputData);
-          if (StateDuration>animator.ani.GetCurrentAnimatorStateInfo(0).length)
+        if (StateDuration > animator.ani.GetCurrentAnimatorStateInfo(0).length)
             stateMachine.SwitchState(typeof(PlayerState_Stun));
         if (inputData.IsOpenPressed)
         {
