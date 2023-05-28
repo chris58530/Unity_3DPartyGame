@@ -7,10 +7,7 @@ public class NetworkRB : NetworkBehaviour
 {
     Rigidbody rb;
     
-    private void Awake() {
-        rb = GetComponent<Rigidbody>();
-    }
-    public override void FixedUpdateNetwork()
+     public override void FixedUpdateNetwork()
     {
         if (GetInput(out NetworkInputData inputData))
         {
