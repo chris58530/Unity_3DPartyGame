@@ -32,7 +32,6 @@ public class BattleCanvas : NetworkBehaviour
     public float BattleTime { get; set; }
 
     private CinemachineVirtualCamera[] virtualCamera;
-    CinemachineExtension d;
 
     public override void Spawned()
     {

@@ -616,7 +616,7 @@ Transform:
   m_Children:
   - {fileID: 4625537528668525721}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &139939494
 GameObject:
@@ -831,7 +831,7 @@ Transform:
   - {fileID: 280017725}
   - {fileID: 852386078}
   m_Father: {fileID: 1999570603}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &257375673
 PrefabInstance:
@@ -1629,7 +1629,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718016906}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.07, y: -12.87, z: 20.25}
+  m_LocalPosition: {x: 0.24, y: -13.98, z: 6.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1671,7 +1671,7 @@ Transform:
   m_Children:
   - {fileID: 149565051}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &732414477
 PrefabInstance:
@@ -1870,7 +1870,7 @@ Transform:
   m_Children:
   - {fileID: 521868597}
   m_Father: {fileID: 1999570603}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1018808834
 GameObject:
@@ -2215,7 +2215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2455154799721639148, guid: 35ff227ea08e1ed4dbad073358b5ab0c, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2455154799721639148, guid: 35ff227ea08e1ed4dbad073358b5ab0c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3257,7 +3257,7 @@ Transform:
   - {fileID: 139939496}
   - {fileID: 1661310165}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1867052920
 GameObject:
@@ -3427,7 +3427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1397827100360945953, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1397827100360945953, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3574,6 +3574,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3378852733967825216}
   - {fileID: 231384136}
   - {fileID: 288518737949446710}
   - {fileID: 1986861097}
@@ -3798,7 +3799,6 @@ GameObject:
   - component: {fileID: 283227257335940104}
   - component: {fileID: 283227257335940341}
   - component: {fileID: 283227257335940106}
-  - component: {fileID: 283227257335940107}
   m_Layer: 5
   m_Name: UImask_F
   m_TagString: Untagged
@@ -3836,26 +3836,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &283227257335940107
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 283227257335940105}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d4281515ad024c54a9a367a07e3d31a2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!222 &283227257335940341
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3905,7 +3885,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 999
   m_TargetDisplay: 0
 --- !u!1 &283227257818478440
 GameObject:
@@ -3920,6 +3900,7 @@ GameObject:
   - component: {fileID: 283227257818478442}
   - component: {fileID: 283227257818478443}
   - component: {fileID: 283227257818478444}
+  - component: {fileID: 283227257818478445}
   m_Layer: 5
   m_Name: FadeOutCanvas
   m_TagString: Untagged
@@ -3975,10 +3956,30 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283227257818478440}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!95 &283227257818478445
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283227257818478440}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4281515ad024c54a9a367a07e3d31a2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!224 &283227258046838196
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4137,7 +4138,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1999570603}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &288518737949446711
 BoxCollider:
@@ -4218,15 +4219,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2715609021010813946}
   m_LocalRotation: {x: -0, y: 0.71480966, z: -0, w: 0.6993191}
-  m_LocalPosition: {x: 12.43, y: -13.82, z: -0.1}
+  m_LocalPosition: {x: 13.136412, y: -14.556775, z: -0.12771508}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 87047087985132073}
   - {fileID: 23222473322752720}
   - {fileID: 7869552601529237467}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 1999570603}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 91.255, z: 0}
 --- !u!1 &3769012727909130308
 GameObject:
@@ -4562,7 +4563,7 @@ Transform:
   - {fileID: 5657144796861097979}
   - {fileID: 5657144797053590267}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5657144797052627057
 MonoBehaviour:
@@ -5797,7 +5798,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &8738343633702778171
 RectTransform:

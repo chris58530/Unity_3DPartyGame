@@ -37,8 +37,10 @@ public class GameManager : Singleton<GameManager>
         DontDestroyOnLoad(gameObject);
         // SceneManager.MoveGameObjectToScene(this.gameObject, SceneManager.GetSceneByName("GameEnd"));
     }
-    private void Update(){
-        if(ReadyScene)
+   
+    private void Update()
+    {
+        if (ReadyScene)
             loadingCanvas.SetActive(false);
     }
     private bool CheckAllPlayerIsReady()
@@ -74,6 +76,7 @@ public class GameManager : Singleton<GameManager>
             networkPlayerData.SetPlayerScore_RPC(PlayerScore);
         }
     }
+  
     public void NextScene()
     {
         //自動判定場景切換
@@ -127,6 +130,7 @@ public class GameManager : Singleton<GameManager>
         //     }
         // }
     }
+    
 }
 
 

@@ -16,7 +16,7 @@ public class BattleManager : Singleton<BattleManager>
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log($"BattleManager 初始化");
+        Debug.Log($"BattleManager.OnSceneLoaded 初始化");
         currentPlayerCount = 0;
         GameManager.Instance.Runner.ProvideInput = true;
     }
