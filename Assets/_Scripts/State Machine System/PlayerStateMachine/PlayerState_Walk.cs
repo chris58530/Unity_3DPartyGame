@@ -13,6 +13,7 @@ public class PlayerState_Walk : NetworkPlayerState
     public override void UpdateNetwork(NetworkInputData inputData)
     {
         base.UpdateNetwork(inputData);
+        Actions.PlayEffect?.Invoke(this.controller.transform, EffectType.Walk);
         controller.SetPlayerMove(inputData);
         // 如果沒有移動輸入，切換到Idle
         if (!inputData.Move)
@@ -51,11 +52,12 @@ public class PlayerState_Walk : NetworkPlayerState
             shooter.PowerTrigger = value;
         }
 
-        
+
 
     }
     public override void Exit()
     {
+        Actions.StopEffect?.Invoke(EffectType.Walk);
     }
 
 

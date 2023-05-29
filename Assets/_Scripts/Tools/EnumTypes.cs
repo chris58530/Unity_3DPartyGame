@@ -6,8 +6,9 @@ public enum MagnetType
 // {
 //     INTRO, BEGINNER, CONNECT, LOBBY, GAME, SETTLE
 // }
-public enum PowerValue{
-    Power1 = 20,Power2 = 55,Power3=85
+public enum PowerValue
+{
+    Power1 = 20, Power2 = 55, Power3 = 85
 }
 public enum PlayerType
 {
@@ -27,5 +28,9 @@ public enum BattleState
 }
 public enum PlayerScore
 {
- Score1 = 55, Score2 = 73, Score3 = 100
+    Score1 = 55, Score2 = 73, Score3 = 100
+}
+public enum EffectType
+{
+    Hit,Jump,Land,RushLV1,RushLV2,RushLV3,Stun,Walk
 }
