@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  EndTime: 2
+  EndTime: 15
 --- !u!114 &3584041
 MonoBehaviour:
   m_ObjectHideFlags: 0

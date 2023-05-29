@@ -12,7 +12,7 @@ public class GameEndManager : NetworkBehaviour
 
     public override void Spawned()
     {
-        TickTimer.CreateFromSeconds(Runner, 3);
+        GameEndTimer = TickTimer.CreateFromSeconds(Runner, EndTime);
         foreach (PlayerRef player in GameManager.Instance.PlayerList.Keys)
         {
             if (GameManager.Instance.PlayerList.TryGetValue(player, out NetworkPlayerData data))
@@ -24,8 +24,12 @@ public class GameEndManager : NetworkBehaviour
     }
     public override void FixedUpdateNetwork()
     {
-        EndTime-= Runner.DeltaTime;
-        if (EndTime <= 0)
+        // EndTime-= Runner.DeltaTime;
+        // if (EndTime <= 0)
+        // {
+
+        // }
+        if (GameEndTimer.Expired(Runner))
         {
             Debug.Log("gameend switch scene");
             GameManager.Instance.NextScene();
