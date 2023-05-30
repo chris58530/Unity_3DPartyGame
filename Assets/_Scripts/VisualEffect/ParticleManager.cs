@@ -11,7 +11,7 @@ public class ParticleManager : NetworkBehaviour
     {
         for (int i = 0; i < thisParticle.Length; i++)
         {
-            thisParticle[i].Stop();
+            Actions.StopEffect?.Invoke((EffectType)i);
         }
 
     }

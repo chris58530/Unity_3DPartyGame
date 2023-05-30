@@ -243,7 +243,6 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
                 StunTimer = TickTimer.CreateFromSeconds(Runner, 2.5f);
                 IsStun = true;
             }
-
         }
         // IStrikeable hitObject = other.gameObject.GetComponent<IStrikeable>();
         // if (hitObject != null && moveInput.SpeedTime > switchToRush && other.gameObject.tag == "HitObject")
