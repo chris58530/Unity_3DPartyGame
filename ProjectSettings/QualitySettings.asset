@@ -149,15 +149,18 @@ QualitySettings:
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
     customRenderPipeline: {fileID: 11400000, guid: 40411ba789bc45948a91f1792892e30b, type: 2}
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Standalone
+    - Server
+    - Android
   m_PerPlatformDefaultQuality:
     Android: 0
     GameCoreScarlett: 1
     GameCoreXboxOne: 1
     PS4: 1
     PS5: 1
-    Server: 3
-    Standalone: 3
+    Server: 0
+    Standalone: 0
     WebGL: 0
     Windows Store Apps: 1
     XboxOne: 1
