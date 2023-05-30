@@ -10388,7 +10388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc924c7d30984643bca3e86e990f131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 3
   thisParticle:
   - {fileID: 4941070578443720123}
   - {fileID: 2594271916770112464}
