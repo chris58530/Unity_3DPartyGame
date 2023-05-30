@@ -9,6 +9,7 @@ public class PlayerState_Stun : NetworkPlayerState
     {
         base.Enter();
         controller.AngryValue += 50;
+        Actions.PlayEffect?.Invoke(EffectType.Stun);
 
 
     }
@@ -33,5 +34,8 @@ public class PlayerState_Stun : NetworkPlayerState
         }
 
     }
-
+    public override void Exit()
+    {
+        Actions.StopEffect?.Invoke(EffectType.Stun);
+    }
 }

@@ -8,12 +8,12 @@ public class PlayerState_Walk : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
+        Actions.PlayEffect?.Invoke(EffectType.Walk);
     }
 
     public override void UpdateNetwork(NetworkInputData inputData)
     {
         base.UpdateNetwork(inputData);
-        Actions.PlayEffect?.Invoke(this.controller.transform, EffectType.Walk);
         controller.SetPlayerMove(inputData);
         // 如果沒有移動輸入，切換到Idle
         if (!inputData.Move)

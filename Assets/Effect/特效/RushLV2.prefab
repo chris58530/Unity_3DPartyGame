@@ -9524,6 +9524,7 @@ GameObject:
   - component: {fileID: 7304241037545455731}
   - component: {fileID: 7304241037559610307}
   - component: {fileID: 7304241037559299013}
+  - component: {fileID: 4699989132886454626}
   m_Layer: 0
   m_Name: RushLV2
   m_TagString: Untagged
@@ -14303,3 +14304,26 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4699989132886454626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304241037545767283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 2305
+  NetworkGuid:
+    RawGuidValue: 34c4da948be71d746a073ad1413273e5
+  NestedObjects: []
+  NetworkedBehaviours: []
+  SimulationBehaviours: []

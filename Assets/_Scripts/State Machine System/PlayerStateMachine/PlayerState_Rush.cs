@@ -12,6 +12,7 @@ public class PlayerState_Rush : NetworkPlayerState
         Debug.Log("Rush State");
 
         controller.SwitchTag("Rush");
+        Actions.PlayEffect?.Invoke(EffectType.RushLV1);
 
         controller.modelCount = 1;
     }
@@ -69,6 +70,8 @@ public class PlayerState_Rush : NetworkPlayerState
     // }
     public override void Exit()
     {
+        Actions.StopEffect?.Invoke(EffectType.RushLV1);
+
         controller.SwitchTag("Walk");
         controller.modelCount = 0;
     }

@@ -7,7 +7,7 @@ public static class Actions
 {
     public static Action GameOverUI;
     public static Action GameStartUI;
-    public static Action<Transform,EffectType> PlayEffect;
+    public static Action<EffectType> PlayEffect;
     public static Action<EffectType> StopEffect;
    
    

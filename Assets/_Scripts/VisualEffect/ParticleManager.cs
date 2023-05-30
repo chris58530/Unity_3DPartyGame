@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class ParticleManager : MonoBehaviour
+using Fusion;
+public class ParticleManager : NetworkBehaviour
 {
 
     [SerializeField]
     private ParticleSystem[] thisParticle;
-    void Start()
+    public override void Spawned()
     {
-        for (int i =0 ; i < thisParticle.Length; i++)
+        for (int i = 0; i < thisParticle.Length; i++)
         {
             thisParticle[i].Stop();
         }
@@ -17,23 +17,22 @@ public class ParticleManager : MonoBehaviour
     }
     void OnEnable()
     {
-        Actions.PlayEffect += PlayParticle;
+        Actions.PlayEffect += RPC_PlayParticle;
         Actions.StopEffect += StopParticle;
     }
     void OnDisable()
     {
-        Actions.PlayEffect -= PlayParticle;
+        Actions.PlayEffect -= RPC_PlayParticle;
         Actions.StopEffect -= StopParticle;
-
     }
-
-    public void PlayParticle(Transform trans, EffectType type)
+    [Rpc(RpcSources.InputAuthority,RpcTargets.All)]
+    public void RPC_PlayParticle(EffectType type)
     {
-        thisParticle[(int)type].gameObject.transform.position = trans.position;
         thisParticle[(int)type].Play();
-        Debug.Log($"{type} 播放中......");
+        Debug.Log($"{type} 播放");
     }
-    public void StopParticle( EffectType type)
+
+    public void StopParticle(EffectType type)
     {
         thisParticle[(int)type].Stop();
         Debug.Log($"{type} 停止......");

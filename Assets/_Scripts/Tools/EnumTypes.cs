@@ -2,10 +2,7 @@ public enum MagnetType
 {
     ATTARCT, REPEL
 }
-// public enum SceneType
-// {
-//     INTRO, BEGINNER, CONNECT, LOBBY, GAME, SETTLE
-// }
+
 public enum PowerValue
 {
     Power1 = 20, Power2 = 55, Power3 = 85
@@ -14,10 +11,7 @@ public enum PlayerType
 {
     FOX, TANUKI, BAT, BRID
 }
-public enum MapType
-{
-    Map01, Map02
-}
+
 public enum PairState
 {
     Lobby, CreatingRoom, InRoom

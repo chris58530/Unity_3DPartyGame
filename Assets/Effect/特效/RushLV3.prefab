@@ -4754,6 +4754,7 @@ GameObject:
   - component: {fileID: 6001885237675434909}
   - component: {fileID: 6001885237693798445}
   - component: {fileID: 6001885237695027243}
+  - component: {fileID: 8992011654106010757}
   m_Layer: 0
   m_Name: RushLV3
   m_TagString: Untagged
@@ -4781,7 +4782,7 @@ Transform:
 --- !u!198 &6001885237693798445
 ParticleSystem:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7304241037559610307, guid: 34c4da948be71d746a073ad1413273e5, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6001885237675254429}
@@ -9533,6 +9534,29 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &8992011654106010757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6001885237675254429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 2305
+  NetworkGuid:
+    RawGuidValue: e460234f7e15e36469aaf606ace2558f
+  NestedObjects: []
+  NetworkedBehaviours: []
+  SimulationBehaviours: []
 --- !u!1 &6003255032083792917
 GameObject:
   m_ObjectHideFlags: 0

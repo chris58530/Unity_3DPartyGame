@@ -8,6 +8,7 @@ public class PlayerState_Land : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
+        Actions.PlayEffect?.Invoke(EffectType.Land);
 
     }
 
