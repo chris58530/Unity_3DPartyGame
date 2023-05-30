@@ -20,6 +20,7 @@ public class PlayerState_Idle : NetworkPlayerState
         if (inputData.Move)
         {
             stateMachine.SwitchState(typeof(PlayerState_Walk));
+            
         }
         if (inputData.IsOpenPressed)
         {

@@ -7,24 +7,24 @@ public class ParticleManager : NetworkBehaviour
 
     [SerializeField]
     private ParticleSystem[] thisParticle;
-    public override void Spawned()
-    {
-        for (int i = 0; i < thisParticle.Length; i++)
-        {
-            Actions.StopEffect?.Invoke((EffectType)i);
-        }
+    // public override void Spawned()
+    // {
+    //     for (int i = 0; i < thisParticle.Length; i++)
+    //     {
+    //         Actions.StopEffect?.Invoke((EffectType)i);
+    //     }
 
-    }
-    void OnEnable()
-    {
-        Actions.PlayEffect += RPC_PlayParticle;
-        Actions.StopEffect += RPC_StopParticle;
-    }
-    void OnDisable()
-    {
-        Actions.PlayEffect -= RPC_PlayParticle;
-        Actions.StopEffect -= RPC_StopParticle;
-    }
+    // }
+    // void OnEnable()
+    // {
+    //     Actions.PlayEffect += RPC_PlayParticle;
+    //     Actions.StopEffect += RPC_StopParticle;
+    // }
+    // void OnDisable()
+    // {
+    //     Actions.PlayEffect -= RPC_PlayParticle;
+    //     Actions.StopEffect -= RPC_StopParticle;
+    // }
     [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
     public void RPC_PlayParticle(EffectType type)
     {

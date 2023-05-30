@@ -3163,7 +3163,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6997106333280293963
 Transform:
   m_ObjectHideFlags: 0
@@ -4045,7 +4045,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6497756733277612402, guid: 4e6c1c548ffca2e46905c69fa12c157c, type: 3}
       propertyPath: Flags
-      value: 3073
+      value: 134145
       objectReference: {fileID: 0}
     - target: {fileID: 6497756733277612402, guid: 4e6c1c548ffca2e46905c69fa12c157c, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -4137,7 +4137,7 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 3073
+  Flags: 134145
   NetworkGuid:
     RawGuidValue: 00000000000000000000000000000000
   NestedObjects: []
@@ -4241,7 +4241,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 526537677382462232, guid: bdac86829651aa243a5567f146c7c204, type: 3}
       propertyPath: Flags
-      value: 3073
+      value: 134145
       objectReference: {fileID: 0}
     - target: {fileID: 526537677382462232, guid: bdac86829651aa243a5567f146c7c204, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -4334,7 +4334,7 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 3073
+  Flags: 134145
   NetworkGuid:
     RawGuidValue: 00000000000000000000000000000000
   NestedObjects: []
@@ -4407,7 +4407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3921223638741154131, guid: f547dc743b0ec9344ae5d0ac7aa7eb32, type: 3}
       propertyPath: Flags
-      value: 3073
+      value: 134145
       objectReference: {fileID: 0}
     - target: {fileID: 3921223638741154131, guid: f547dc743b0ec9344ae5d0ac7aa7eb32, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -4457,7 +4457,7 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 3073
+  Flags: 134145
   NetworkGuid:
     RawGuidValue: 00000000000000000000000000000000
   NestedObjects: []
@@ -4477,7 +4477,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4699989132886454626, guid: 34c4da948be71d746a073ad1413273e5, type: 3}
       propertyPath: Flags
-      value: 3073
+      value: 134145
       objectReference: {fileID: 0}
     - target: {fileID: 4699989132886454626, guid: 34c4da948be71d746a073ad1413273e5, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -4569,7 +4569,7 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 3073
+  Flags: 134145
   NetworkGuid:
     RawGuidValue: 00000000000000000000000000000000
   NestedObjects: []
@@ -4595,7 +4595,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6280055083246536654, guid: 6cf115b9bbb463f48b8285b6a40adec8, type: 3}
       propertyPath: Flags
-      value: 3073
+      value: 134145
       objectReference: {fileID: 0}
     - target: {fileID: 6280055083246536654, guid: 6cf115b9bbb463f48b8285b6a40adec8, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -4688,7 +4688,7 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 3073
+  Flags: 134145
   NetworkGuid:
     RawGuidValue: 00000000000000000000000000000000
   NestedObjects: []
@@ -4713,7 +4713,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3807282919422854412, guid: 6c77ac12c50ea0b45aa40944350045d9, type: 3}
       propertyPath: Flags
-      value: 3073
+      value: 134145
       objectReference: {fileID: 0}
     - target: {fileID: 3807282919422854412, guid: 6c77ac12c50ea0b45aa40944350045d9, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -4805,7 +4805,7 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 3073
+  Flags: 134145
   NetworkGuid:
     RawGuidValue: 00000000000000000000000000000000
   NestedObjects: []
@@ -4879,7 +4879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8992011654106010757, guid: e460234f7e15e36469aaf606ace2558f, type: 3}
       propertyPath: Flags
-      value: 3073
+      value: 134145
       objectReference: {fileID: 0}
     - target: {fileID: 8992011654106010757, guid: e460234f7e15e36469aaf606ace2558f, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -4924,7 +4924,7 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 3073
+  Flags: 134145
   NetworkGuid:
     RawGuidValue: 00000000000000000000000000000000
   NestedObjects: []
@@ -4997,7 +4997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2820896936827423990, guid: 8b182a55e9eed9b4683ad0ac986ce43b, type: 3}
       propertyPath: Flags
-      value: 3073
+      value: 134145
       objectReference: {fileID: 0}
     - target: {fileID: 2820896936827423990, guid: 8b182a55e9eed9b4683ad0ac986ce43b, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -5052,7 +5052,7 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 3073
+  Flags: 134145
   NetworkGuid:
     RawGuidValue: 00000000000000000000000000000000
   NestedObjects: []
