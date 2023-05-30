@@ -18,21 +18,22 @@ public class ParticleManager : NetworkBehaviour
     void OnEnable()
     {
         Actions.PlayEffect += RPC_PlayParticle;
-        Actions.StopEffect += StopParticle;
+        Actions.StopEffect += RPC_StopParticle;
     }
     void OnDisable()
     {
         Actions.PlayEffect -= RPC_PlayParticle;
-        Actions.StopEffect -= StopParticle;
+        Actions.StopEffect -= RPC_StopParticle;
     }
-    [Rpc(RpcSources.InputAuthority,RpcTargets.All)]
+    [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
     public void RPC_PlayParticle(EffectType type)
     {
         thisParticle[(int)type].Play();
         Debug.Log($"{type} 播放");
     }
+    [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
 
-    public void StopParticle(EffectType type)
+    public void RPC_StopParticle(EffectType type)
     {
         thisParticle[(int)type].Stop();
         Debug.Log($"{type} 停止......");

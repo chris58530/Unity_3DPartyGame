@@ -9,6 +9,8 @@ public class PlayerState_FallToGround : NetworkPlayerState
     {
         base.Enter();
         controller.IsBall = false;
+        Actions.PlayEffect?.Invoke(EffectType.Hit);
+
     }
 
     public override void UpdateNetwork(NetworkInputData inputData)
@@ -25,6 +27,10 @@ public class PlayerState_FallToGround : NetworkPlayerState
 
         }
 
+    }
+    public override void Exit()
+    {
+        Actions.StopEffect?.Invoke(EffectType.Hit);
     }
 
 }
