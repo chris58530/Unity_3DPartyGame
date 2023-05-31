@@ -40,6 +40,7 @@ public class ParticleManager : NetworkBehaviour
     public void RPC_StopParticle(EffectType type)
     {
         thisParticle[(int)type].gameObject.SetActive(false);
+        
         thisParticle[(int)type].Stop();
     }
 }
