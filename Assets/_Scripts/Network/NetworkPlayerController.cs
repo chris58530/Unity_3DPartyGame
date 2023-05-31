@@ -3,7 +3,8 @@ using Fusion;
 using UnityEngine;
 using TMPro;
 using Cinemachine;
-
+using System.Collections.Generic;
+using System.Collections;
 
 [RequireComponent(typeof(NetworkRigidbody))]
 // ReSharper disable once CheckNamespace
@@ -42,8 +43,12 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 
     private NetworkPlayerCanvas playerCanvas;
 
-
+    #region Cinemachine
     private CinemachineTargetGroup camGroup;
+    private CinemachineVirtualCamera[] virtualCameras;
+    private CinemachineBasicMultiChannelPerlin[] perlinNoise;
+
+    #endregion
 
     [SerializeField]
     private int dragValue = 10;
@@ -65,6 +70,17 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         defualtScale = DefualtModel.transform.localScale;
         rushScale = RushModel.transform.localScale;
         RushModel.gameObject.transform.localScale = Vector3.zero;
+
+
+        virtualCameras = FindObjectsOfType<CinemachineVirtualCamera>();
+
+        perlinNoise = new CinemachineBasicMultiChannelPerlin[virtualCameras.Length];
+
+        for (int i = 0; i < virtualCameras.Length; i++)
+        {
+            perlinNoise[i] = virtualCameras[i].GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        }
+
         camGroup = FindObjectOfType<CinemachineTargetGroup>();
         if (camGroup != null)
         {
@@ -115,6 +131,19 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         float newDragValue = dragValue - (SpeedTime * 1f);
         rb.Rigidbody.drag = newDragValue < 0f ? 0f : newDragValue;
 
+    }
+    private IEnumerator TogglePerlinNoiseAmplitude(float amplitude, float delay)
+    {
+
+        for (int i = 0; i < perlinNoise.Length; i++)
+        {
+            perlinNoise[i].m_AmplitudeGain = amplitude;
+        }
+          yield return new WaitForSeconds(delay);
+             for (int i = 0; i < perlinNoise.Length; i++)
+        {
+            perlinNoise[i].m_AmplitudeGain = 0;
+        }
     }
     public void SetPlayerMove(NetworkInputData input)
     {
@@ -207,6 +236,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             {
                 camGroup.RemoveMember(this.gameObject.transform);
             }
+            StartCoroutine(TogglePerlinNoiseAmplitude(7f, 0.2f));
             if (!GameManager.Instance.Runner.IsServer) return;
             data.IsDead = true;
             BattleManager.Instance.currentPlayerCount -= 1;
