@@ -18,9 +18,9 @@ public class NetworkPlayer : NetworkBehaviour
             Local = this;
         }
 
-        camGroup = FindObjectOfType<CinemachineTargetGroup>();
-        if (camGroup == null) return;
-        camGroup.AddMember(this.gameObject.transform, 1, 1);
+        // camGroup = FindObjectOfType<CinemachineTargetGroup>();
+        // if (camGroup == null) return;
+        // camGroup.AddMember(this.gameObject.transform, 1, 1);
     }
 
   

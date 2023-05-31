@@ -62,24 +62,23 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     public override void Spawned()
     {
         rb = GetComponent<NetworkRigidbody>();
-
         defualtScale = DefualtModel.transform.localScale;
         rushScale = RushModel.transform.localScale;
         RushModel.gameObject.transform.localScale = Vector3.zero;
-        if (Object.HasInputAuthority)
+        camGroup = FindObjectOfType<CinemachineTargetGroup>();
+        if (camGroup != null)
         {
-           camGroup = FindObjectOfType<CinemachineTargetGroup>();
+            camGroup.AddMember(this.gameObject.transform, 1, 1);
         }
 
-
-        // if (Object.HasInputAuthority)
-        // {
-        //     rb.InterpolationDataSource = InterpolationDataSources.Predicted;
-        // }
-        // else
-        // {
-        //     rb.InterpolationDataSource = InterpolationDataSources.Snapshots;
-        // }
+        if (Object.HasInputAuthority)
+        {
+            rb.InterpolationDataSource = InterpolationDataSources.Predicted;
+        }
+        else
+        {
+            rb.InterpolationDataSource = InterpolationDataSources.Snapshots;
+        }
 
     }
     private void Update()
@@ -120,19 +119,19 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     public void SetPlayerMove(NetworkInputData input)
     {
         if (!NetworkPlayer.Local) return;
-        
-            float x = input.AxisX;
-            float z = input.AxisZ;
-            Vector3 output = Vector3.zero;
-            output.x = x * Mathf.Sqrt(1 - (z * z) / 2.0f);
-            output.z = z * Mathf.Sqrt(1 - (x * x) / 2.0f);
-            if (input.Move)
-            {
-                SetPlayerLookAtForward(output);
-            }
-            rb.Rigidbody.AddForce(output * walkSpeed);
 
-        
+        float x = input.AxisX;
+        float z = input.AxisZ;
+        Vector3 output = Vector3.zero;
+        output.x = x * Mathf.Sqrt(1 - (z * z) / 2.0f);
+        output.z = z * Mathf.Sqrt(1 - (x * x) / 2.0f);
+        if (input.Move)
+        {
+            SetPlayerLookAtForward(output);
+        }
+        rb.Rigidbody.AddForce(output * walkSpeed);
+
+
 
     }
     public void SetPlayerRush(NetworkInputData input)
@@ -200,16 +199,20 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 
         var data = GameManager.Instance.PlayerList.TryGetValue(Object.InputAuthority, out var playerData) ? playerData : null;
         if (data.IsDead) return;
-        
+
         if (other.gameObject.CompareTag("DeadZone"))
         {
+
+            if (camGroup != null)
+            {
+                camGroup.RemoveMember(this.gameObject.transform);
+            }
             if (!GameManager.Instance.Runner.IsServer) return;
             data.IsDead = true;
             BattleManager.Instance.currentPlayerCount -= 1;
             Debug.Log($"(PlayerController)目前人數 : {BattleManager.Instance.currentPlayerCount}");
             Debug.Log($"死亡玩家 : {data.PlayerName}");
 
-           
             return;
         }
         if (other.gameObject.CompareTag("Rush") && !IsStun)
@@ -282,7 +285,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     {
         rb.Rigidbody.AddForce(direction * force, ForceMode.Impulse);
     }
-    
+
     public void SetAttract(Vector3 direction, float force)
     {
         rb.Rigidbody.AddForce((direction - transform.position).normalized * force);
