@@ -33,6 +33,7 @@ public class NetworkPlayerState : ScriptableObject, IState
     }
     public virtual void Enter()
     {
+
         stateStartTime = Time.time;
         if (animator != null)
         {

@@ -9,7 +9,6 @@ public class PlayerState_Jump : NetworkPlayerState
     {
         base.Enter();
         controller.SetPlayerJump();
-        Actions.PlayEffect?.Invoke(EffectType.Jump);
 
     }
     public override void UpdateNetwork(NetworkInputData inputData)
@@ -51,7 +50,8 @@ public class PlayerState_Jump : NetworkPlayerState
     }
     public override void Exit()
     {
-        Actions.StopEffect?.Invoke(EffectType.Jump);
+        // Actions.StopEffect?.Invoke(EffectType.Jump);
+        // particle.RPC_StopParticle(EffectType.Jump);
 
     }
 }

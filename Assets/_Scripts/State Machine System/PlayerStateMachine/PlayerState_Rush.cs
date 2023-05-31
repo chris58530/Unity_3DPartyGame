@@ -12,7 +12,6 @@ public class PlayerState_Rush : NetworkPlayerState
         Debug.Log("Rush State");
 
         controller.SwitchTag("Rush");
-        Actions.PlayEffect?.Invoke(EffectType.RushLV1);
         particle.RPC_PlayParticle(EffectType.RushLV1);
 
 
@@ -72,7 +71,6 @@ public class PlayerState_Rush : NetworkPlayerState
     // }
     public override void Exit()
     {
-        Actions.StopEffect?.Invoke(EffectType.RushLV1);
         particle.RPC_StopParticle(EffectType.RushLV1);
 
         controller.SwitchTag("Walk");

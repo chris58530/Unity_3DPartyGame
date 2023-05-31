@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2721981246459901166
 Transform:
   m_ObjectHideFlags: 0
@@ -11406,7 +11406,7 @@ MonoBehaviour:
   _interpolationDataSource: 3
   playerStates:
   - {fileID: 11400000, guid: 8402db915dc7b7549af12885703cff05, type: 2}
-  - {fileID: 11400000, guid: c87f65a13ec74ae47a4d2cf9b827bf53, type: 2}
+  - {fileID: 11400000, guid: 45543f7b2fccd6a478b0f1079816e411, type: 2}
   - {fileID: 11400000, guid: 80280d9b10cee944f9460c2a770fa641, type: 2}
   - {fileID: 11400000, guid: b8fdb9f280a13dc4e8c5de7587cd6bf5, type: 2}
   - {fileID: 11400000, guid: 81d81edd9e730e248a178a59ac170ce8, type: 2}
@@ -13882,6 +13882,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Landing
       objectReference: {fileID: 0}
+    - target: {fileID: 9151584299299317683, guid: bdac86829651aa243a5567f146c7c204, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdac86829651aa243a5567f146c7c204, type: 3}
 --- !u!114 &89437192504169784 stripped
@@ -14000,6 +14004,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Walk
       objectReference: {fileID: 0}
+    - target: {fileID: 8581308709151528148, guid: 6cf115b9bbb463f48b8285b6a40adec8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cf115b9bbb463f48b8285b6a40adec8, type: 3}
 --- !u!4 &5732891769152401604 stripped
@@ -14058,6 +14066,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2721981246459901166}
     m_Modifications:
+    - target: {fileID: 2916360743950649454, guid: 34c4da948be71d746a073ad1413273e5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4699989132886454626, guid: 34c4da948be71d746a073ad1413273e5, type: 3}
       propertyPath: Flags
       value: 134145
@@ -14069,6 +14081,10 @@ PrefabInstance:
     - target: {fileID: 4699989132886454626, guid: 34c4da948be71d746a073ad1413273e5, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[1]
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7302801131990296571, guid: 34c4da948be71d746a073ad1413273e5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7304241037545455731, guid: 34c4da948be71d746a073ad1413273e5, type: 3}
       propertyPath: m_RootOrder
@@ -14117,6 +14133,10 @@ PrefabInstance:
     - target: {fileID: 7304241037545767283, guid: 34c4da948be71d746a073ad1413273e5, type: 3}
       propertyPath: m_Name
       value: RushLV2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7304241037545767283, guid: 34c4da948be71d746a073ad1413273e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34c4da948be71d746a073ad1413273e5, type: 3}
@@ -14236,6 +14256,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hit
       objectReference: {fileID: 0}
+    - target: {fileID: 6600080390805615766, guid: 4e6c1c548ffca2e46905c69fa12c157c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e6c1c548ffca2e46905c69fa12c157c, type: 3}
 --- !u!114 &4184803159885726876 stripped
@@ -14354,6 +14378,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RushLV1
       objectReference: {fileID: 0}
+    - target: {fileID: 4539909512524293117, guid: 6c77ac12c50ea0b45aa40944350045d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c77ac12c50ea0b45aa40944350045d9, type: 3}
 --- !u!198 &6239944532266479657 stripped
@@ -14415,6 +14443,10 @@ PrefabInstance:
     - target: {fileID: 6001885237675254429, guid: e460234f7e15e36469aaf606ace2558f, type: 3}
       propertyPath: m_Name
       value: RushLV3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001885237675254429, guid: e460234f7e15e36469aaf606ace2558f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6001885237675434909, guid: e460234f7e15e36469aaf606ace2558f, type: 3}
       propertyPath: m_RootOrder
@@ -14578,6 +14610,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jump
       objectReference: {fileID: 0}
+    - target: {fileID: 2344604220521393143, guid: f547dc743b0ec9344ae5d0ac7aa7eb32, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3921223638741154131, guid: f547dc743b0ec9344ae5d0ac7aa7eb32, type: 3}
       propertyPath: Flags
       value: 134145
@@ -14695,6 +14731,10 @@ PrefabInstance:
     - target: {fileID: 166421792251387008, guid: 8b182a55e9eed9b4683ad0ac986ce43b, type: 3}
       propertyPath: m_Name
       value: Stunned
+      objectReference: {fileID: 0}
+    - target: {fileID: 166421792251387008, guid: 8b182a55e9eed9b4683ad0ac986ce43b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2820896936827423990, guid: 8b182a55e9eed9b4683ad0ac986ce43b, type: 3}
       propertyPath: Flags

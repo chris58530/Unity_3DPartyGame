@@ -9,13 +9,14 @@ public class ParticleManager : NetworkBehaviour
     private ParticleSystem[] thisParticle;
     public override void Spawned()
     {
-        if (!Object.HasInputAuthority) return;
+        Debug.Log("所有特效stop()");
         for (int i = 0; i < thisParticle.Length; i++)
         {
             //Actions.StopEffect?.Invoke((EffectType)i);
             thisParticle[i].Stop();
-        }
+            RPC_StopParticle((EffectType)i);
 
+        }
     }
     // void OnEnable()
     // {
@@ -27,17 +28,18 @@ public class ParticleManager : NetworkBehaviour
     //     Actions.PlayEffect -= RPC_PlayParticle;
     //     Actions.StopEffect -= RPC_StopParticle;
     // }
-    [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
+    [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_PlayParticle(EffectType type)
     {
+        thisParticle[(int)type].gameObject.SetActive(true);
         thisParticle[(int)type].Play();
-        Debug.Log($"{type} 播放");
+        
     }
-    [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
+    [Rpc(RpcSources.All, RpcTargets.All)]
 
     public void RPC_StopParticle(EffectType type)
     {
+        thisParticle[(int)type].gameObject.SetActive(false);
         thisParticle[(int)type].Stop();
-        Debug.Log($"{type} 停止......");
     }
 }

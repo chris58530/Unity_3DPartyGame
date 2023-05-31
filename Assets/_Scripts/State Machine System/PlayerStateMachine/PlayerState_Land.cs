@@ -8,28 +8,14 @@ public class PlayerState_Land : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
-        Actions.PlayEffect?.Invoke(EffectType.Land);
+        particle.RPC_PlayParticle(EffectType.Land);
 
     }
 
     public override void UpdateNetwork(NetworkInputData inputData)
     {
         base.UpdateNetwork(inputData);
-        // Debug.Log("stateduration"+StateDuration);
-        // Debug.Log("GetCurrentAnimatorStateInfo"+animator.ani.GetCurrentAnimatorStateInfo(0).length);
 
-        // if (inputData.IsJumpPressed)
-        // {
-        //     stateMachine.SwitchState(typeof(PlayerState_Jump));
-        // }
-
-        // if (inputData.Move)
-        // {
-        //     // if (controller.SpeedTime > controller.switchToRush)
-        //     //     stateMachine.SwitchState(typeof(PlayerState_Rush));
-        //     // else
-        //     stateMachine.SwitchState(typeof(PlayerState_Walk));
-        // }
         if (controller.IsBall)
             stateMachine.SwitchState(typeof(PlayerState_Rush));
         if (StateDuration > animator.ani.GetCurrentAnimatorStateInfo(0).length)
@@ -64,6 +50,10 @@ public class PlayerState_Land : NetworkPlayerState
 
             stateMachine.SwitchState(typeof(PlayerState_Rush));
         }
+    }
+    public override void Exit()
+    {
+        // particle.RPC_StopParticle(EffectType.Land);
     }
 
 }

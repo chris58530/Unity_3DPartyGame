@@ -20,7 +20,7 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
         // shooter = GetComponentInChildren<NetworkMagnetShooter>();
         shooter = null;
         animator = GetComponentInChildren<NetworkAnimator>();
-        particle = GetComponent<ParticleManager>();
+        particle = GetComponentInChildren<ParticleManager>();
         stateTable = new Dictionary<System.Type, IState>(playerStates.Length);
         foreach (NetworkPlayerState state in playerStates)
         {
