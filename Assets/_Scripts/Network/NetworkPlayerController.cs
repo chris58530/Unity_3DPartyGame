@@ -2,6 +2,7 @@ using System;
 using Fusion;
 using UnityEngine;
 using TMPro;
+using Cinemachine;
 
 
 [RequireComponent(typeof(NetworkRigidbody))]
@@ -40,6 +41,10 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 
 
     private NetworkPlayerCanvas playerCanvas;
+
+
+    private CinemachineTargetGroup camGroup;
+
     [SerializeField]
     private int dragValue = 10;
 
@@ -61,6 +66,10 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         defualtScale = DefualtModel.transform.localScale;
         rushScale = RushModel.transform.localScale;
         RushModel.gameObject.transform.localScale = Vector3.zero;
+        if (Object.HasInputAuthority)
+        {
+           camGroup = FindObjectOfType<CinemachineTargetGroup>();
+        }
 
 
         // if (Object.HasInputAuthority)
@@ -110,8 +119,8 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     }
     public void SetPlayerMove(NetworkInputData input)
     {
-        if (NetworkPlayer.Local)
-        {
+        if (!NetworkPlayer.Local) return;
+        
             float x = input.AxisX;
             float z = input.AxisZ;
             Vector3 output = Vector3.zero;
@@ -123,7 +132,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             }
             rb.Rigidbody.AddForce(output * walkSpeed);
 
-        }
+        
 
     }
     public void SetPlayerRush(NetworkInputData input)
@@ -187,15 +196,20 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 
     void OnCollisionStay(Collision other)
     {
+        if (!NetworkPlayer.Local) return;
+
         var data = GameManager.Instance.PlayerList.TryGetValue(Object.InputAuthority, out var playerData) ? playerData : null;
         if (data.IsDead) return;
         
         if (other.gameObject.CompareTag("DeadZone"))
         {
+            if (!GameManager.Instance.Runner.IsServer) return;
             data.IsDead = true;
             BattleManager.Instance.currentPlayerCount -= 1;
             Debug.Log($"(PlayerController)目前人數 : {BattleManager.Instance.currentPlayerCount}");
             Debug.Log($"死亡玩家 : {data.PlayerName}");
+
+           
             return;
         }
         if (other.gameObject.CompareTag("Rush") && !IsStun)

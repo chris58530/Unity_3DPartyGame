@@ -12,18 +12,20 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
     NetworkAnimator animator;
     NetworkPlayerController controller;
     NetworkMagnetShooter shooter;
+   ParticleManager particle;
+
     private void Awake()
     {
         controller = GetComponent<NetworkPlayerController>();
         // shooter = GetComponentInChildren<NetworkMagnetShooter>();
         shooter = null;
         animator = GetComponentInChildren<NetworkAnimator>();
-
+        particle = GetComponent<ParticleManager>();
         stateTable = new Dictionary<System.Type, IState>(playerStates.Length);
         foreach (NetworkPlayerState state in playerStates)
         {
             //初始化資料加入state.Initializ()中
-            state.Initialize(this, animator, controller, shooter);
+            state.Initialize(this, animator, controller, shooter, particle);
             stateTable.Add(state.GetType(), state);
         }
 

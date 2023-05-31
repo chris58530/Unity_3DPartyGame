@@ -9,6 +9,7 @@ public class PlayerState_Walk : NetworkPlayerState
     {
         base.Enter();
         Actions.PlayEffect?.Invoke(EffectType.Walk);
+        particle.RPC_PlayParticle(EffectType.Walk);
     }
 
     public override void UpdateNetwork(NetworkInputData inputData)
@@ -58,6 +59,8 @@ public class PlayerState_Walk : NetworkPlayerState
     public override void Exit()
     {
         Actions.StopEffect?.Invoke(EffectType.Walk);
+        particle.RPC_StopParticle(EffectType.Walk);
+
     }
 
 

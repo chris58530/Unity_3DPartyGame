@@ -11,6 +11,7 @@ public class PlayerState_Stun : NetworkPlayerState
         controller.AngryValue += 50;
         Actions.PlayEffect?.Invoke(EffectType.Stun);
 
+        particle.RPC_PlayParticle(EffectType.Stun);
 
     }
 
@@ -37,5 +38,7 @@ public class PlayerState_Stun : NetworkPlayerState
     public override void Exit()
     {
         Actions.StopEffect?.Invoke(EffectType.Stun);
+        particle.RPC_StopParticle(EffectType.Stun);
+
     }
 }

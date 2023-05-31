@@ -2151,7 +2151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  _KnockForce: 500
+  _KnockForce: 150
 --- !u!1 &2730180120838141871
 GameObject:
   m_ObjectHideFlags: 0
