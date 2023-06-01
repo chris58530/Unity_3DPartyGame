@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RenderPipelineSettings:
     supportShadowMask: 0
-    supportSSR: 0
+    supportSSR: 1
     supportSSRTransparent: 0
     supportSSAO: 1
     supportSSGI: 0
@@ -45,8 +45,8 @@ MonoBehaviour:
     msaaSampleCount: 1
     supportMotionVectors: 1
     supportRuntimeAOVAPI: 0
-    supportDitheringCrossFade: 1
-    supportTerrainHole: 0
+    supportDitheringCrossFade: 0
+    supportTerrainHole: 1
     supportProbeVolume: 0
     probeVolumeMemoryBudget: 1024
     probeVolumeSHBands: 1
