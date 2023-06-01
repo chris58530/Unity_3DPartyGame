@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Collections;
 
 [RequireComponent(typeof(NetworkRigidbody))]
-// ReSharper disable once CheckNamespace
 public class NetworkPlayerController : NetworkBehaviour, IMagnet
 {
     NetworkRigidbody rb;
@@ -39,7 +38,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     private GameObject DefualtModel;
     [SerializeField]
     private GameObject RushModel;
-       [SerializeField]
+    [SerializeField]
     private GameObject BothModel;
     [Networked]
     private TickTimer StunTimer { get; set; }
@@ -118,13 +117,17 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         if (StunTimer.Expired(Runner))
         {
             IsStun = false;
-         
+            IsGhost = true;
+
+            StartCoroutine(GhostFlashing(0.1f));
+            GhostTimer = TickTimer.CreateFromSeconds(Runner, 1);
+            StunTimer = TickTimer.None;
         }
-        if (GhostTimer.ExpiredOrNotRunning(Runner))
+        if (GhostTimer.Expired(Runner))
         {
             IsGhost = false;
         }
-     
+
         if (modelCount == 1)
         {
             SpeedTime += Runner.DeltaTime;
@@ -140,35 +143,31 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         rb.Rigidbody.drag = newDragValue < 0f ? 0f : newDragValue;
 
     }
-    private IEnumerator GhostFlashing(float flashRate){
-        
-               GhostTimer = TickTimer.CreateFromSeconds(Runner, 1f);
-                IsGhost = true;
+    private IEnumerator GhostFlashing(float flashRate)
+    {
         while (IsGhost)
         {
             Debug.Log("isghost");
-          
-                BothModel.transform.localScale = Vector3.zero;
-                yield return new WaitForSeconds(flashRate);
-                BothModel.transform.localScale =bothScale;
-                yield return new WaitForSeconds(flashRate);
-        if(!IsGhost)break;
-         
-            
-        }
-                BothModel.transform.localScale =bothScale;
 
-        yield return null;
+            BothModel.transform.localScale = Vector3.zero;
+            yield return new WaitForSeconds(flashRate);
+            BothModel.transform.localScale = bothScale;
+            yield return new WaitForSeconds(flashRate);
+            if (!IsGhost)
+            {
+                BothModel.transform.localScale = bothScale;
+                yield return null;
+            }
+        }
     }
     private IEnumerator TogglePerlinNoiseAmplitude(float amplitude, float delay)
     {
-
         for (int i = 0; i < perlinNoise.Length; i++)
         {
             perlinNoise[i].m_AmplitudeGain = amplitude;
         }
-          yield return new WaitForSeconds(delay);
-             for (int i = 0; i < perlinNoise.Length; i++)
+        yield return new WaitForSeconds(delay);
+        for (int i = 0; i < perlinNoise.Length; i++)
         {
             perlinNoise[i].m_AmplitudeGain = 0;
         }
@@ -293,10 +292,10 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
                 //暈兩秒開始計時
                 StunTimer = TickTimer.CreateFromSeconds(Runner, 2.5f);
                 IsStun = true;
-                StartCoroutine(GhostFlashing(0.1f));
+                // StartCoroutine(GhostFlashing(0.1f));
 
 
-                
+
             }
         }
         if (other.gameObject.CompareTag("Repel"))
@@ -312,16 +311,17 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         }
         //撞擊普通物件場景物件
 
-        if (other.gameObject.tag == "Untouched" && !IsStun && !IsGhost)
+        if (other.gameObject.tag == "Untouched" && IsBall && !IsGhost)
         {
+            if (IsStun) return;
             if (other.gameObject.TryGetComponent<HeavyObject>(out HeavyObject obj))
             {
                 Vector3 output = (transform.position - other.transform.position).normalized;
                 SetRepel(output, obj.KnockForce);//擊飛數值在對方身上
                 //暈兩秒開始計時
-                StunTimer = TickTimer.CreateFromSeconds(Runner, 2.5f);
+                float stunTime = 2.5f;
+                StunTimer = TickTimer.CreateFromSeconds(Runner, stunTime);
                 IsStun = true;
-                StartCoroutine(GhostFlashing(0.1f));
 
             }
         }

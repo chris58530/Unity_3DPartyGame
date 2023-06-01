@@ -8,10 +8,13 @@ public class PlayerState_FinsihRush : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
+
     }
     public override void UpdateNetwork(NetworkInputData inputData)
     {
+
         base.UpdateNetwork(inputData);
+
         if (StateDuration > animator.ani.GetCurrentAnimatorStateInfo(0).length)
             stateMachine.SwitchState(typeof(PlayerState_Idle));
 
@@ -24,7 +27,7 @@ public class PlayerState_FinsihRush : NetworkPlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
-        
+
         controller.SetPlayerRush(inputData);
         if (inputData.IsOpenPressed)
         {

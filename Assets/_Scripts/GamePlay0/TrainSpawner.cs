@@ -15,6 +15,10 @@ public class TrainSpawner : NetworkBehaviour
     private TickTimer spawnTimer { get; set; }
     [Networked]
     private int spawnTrainNum { get; set; }
+    [Networked]
+    private int lastTrainNum { get; set; }
+    [Networked]
+    private int lastLastTrainNum { get; set; }
 
     public override void Spawned()
     {
@@ -32,8 +36,16 @@ public class TrainSpawner : NetworkBehaviour
     }
     private void SpawnTrain()
     {
-        spawnTrainNum = Random.Range(0, spawnPoint.Length);
+        int newTrainNum = Random.Range(0, spawnPoint.Length);
 
+        while ((newTrainNum <= 2 && newTrainNum + 3 == lastTrainNum) ||
+               (newTrainNum >= 3 && newTrainNum - 3 == lastTrainNum))
+        {
+            newTrainNum = Random.Range(0, spawnPoint.Length);
+        }
+
+        spawnTrainNum = newTrainNum;
+        lastTrainNum = spawnTrainNum;
         Runner.Spawn(trainPrefab, spawnPoint[spawnTrainNum].transform.position,
                spawnPoint[spawnTrainNum].transform.rotation, Object.InputAuthority);
     }
