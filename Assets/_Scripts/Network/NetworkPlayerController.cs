@@ -24,6 +24,9 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     [Networked]
     public bool IsStun { get; set; }
     [Networked]
+    public bool IsGhost { get; set; }
+
+    [Networked]
     public bool IsBall { get; set; }
     [Networked(OnChanged = nameof(OnModelChanged))]
     public int modelCount { get; set; }
@@ -36,8 +39,12 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     private GameObject DefualtModel;
     [SerializeField]
     private GameObject RushModel;
+       [SerializeField]
+    private GameObject BothModel;
     [Networked]
     private TickTimer StunTimer { get; set; }
+    [Networked]
+    private TickTimer GhostTimer { get; set; }
     private float repelTime;
 
 
@@ -59,6 +66,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     public float jumpForce;
     private Vector3 defualtScale;
     private Vector3 rushScale;
+    private Vector3 bothScale;
     private void Awake()
     {
         //  groundDetector = GetComponentInChildren<PlayerGroundDetector>();
@@ -69,6 +77,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         rb = GetComponent<NetworkRigidbody>();
         defualtScale = DefualtModel.transform.localScale;
         rushScale = RushModel.transform.localScale;
+        bothScale = BothModel.transform.localScale;
         RushModel.gameObject.transform.localScale = Vector3.zero;
 
 
@@ -106,17 +115,16 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     {
         DetectCollision();
 
-        if (StunTimer.ExpiredOrNotRunning(Runner))
+        if (StunTimer.Expired(Runner))
         {
             IsStun = false;
+         
         }
-        // if (GetInput(out NetworkInputData inputData))
-        // {
-        //     if (inputData.Move && !IsStun)
-        //         SpeedTime += Runner.DeltaTime;
-        //     else
-        //         SpeedTime = 0;
-        // }
+        if (GhostTimer.ExpiredOrNotRunning(Runner))
+        {
+            IsGhost = false;
+        }
+     
         if (modelCount == 1)
         {
             SpeedTime += Runner.DeltaTime;
@@ -131,6 +139,26 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         float newDragValue = dragValue - (SpeedTime * 1f);
         rb.Rigidbody.drag = newDragValue < 0f ? 0f : newDragValue;
 
+    }
+    private IEnumerator GhostFlashing(float flashRate){
+        
+               GhostTimer = TickTimer.CreateFromSeconds(Runner, 1f);
+                IsGhost = true;
+        while (IsGhost)
+        {
+            Debug.Log("isghost");
+          
+                BothModel.transform.localScale = Vector3.zero;
+                yield return new WaitForSeconds(flashRate);
+                BothModel.transform.localScale =bothScale;
+                yield return new WaitForSeconds(flashRate);
+        if(!IsGhost)break;
+         
+            
+        }
+                BothModel.transform.localScale =bothScale;
+
+        yield return null;
     }
     private IEnumerator TogglePerlinNoiseAmplitude(float amplitude, float delay)
     {
@@ -245,7 +273,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 
             return;
         }
-        if (other.gameObject.CompareTag("Rush") && !IsStun)
+        if (other.gameObject.CompareTag("Rush") && !IsStun && !IsGhost)
         {
             //如果此物件速度大於other物件速度
             NetworkPlayerController otherInput = other.gameObject.GetComponent<NetworkPlayerController>();
@@ -260,11 +288,15 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
                 //擊飛自己
                 Vector3 output = (transform.position - other.transform.position).normalized;
                 float addForce = otherInput.SpeedTime;
-                SetRepel(output, 150 + addForce);
+                SetRepel(output, 50 + addForce);
 
                 //暈兩秒開始計時
                 StunTimer = TickTimer.CreateFromSeconds(Runner, 2.5f);
                 IsStun = true;
+                StartCoroutine(GhostFlashing(0.1f));
+
+
+                
             }
         }
         if (other.gameObject.CompareTag("Repel"))
@@ -280,7 +312,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         }
         //撞擊普通物件場景物件
 
-        if (other.gameObject.tag == "Untouched")
+        if (other.gameObject.tag == "Untouched" && !IsStun && !IsGhost)
         {
             if (other.gameObject.TryGetComponent<HeavyObject>(out HeavyObject obj))
             {
@@ -289,6 +321,8 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
                 //暈兩秒開始計時
                 StunTimer = TickTimer.CreateFromSeconds(Runner, 2.5f);
                 IsStun = true;
+                StartCoroutine(GhostFlashing(0.1f));
+
             }
         }
         // IStrikeable hitObject = other.gameObject.GetComponent<IStrikeable>();

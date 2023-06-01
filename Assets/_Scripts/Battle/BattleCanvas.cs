@@ -21,7 +21,6 @@ public class BattleCanvas : NetworkBehaviour
 
     [SerializeField]
     private float battleTime;
-
     [SerializeField]
     private TMP_Text timeText;
 
@@ -84,10 +83,13 @@ public class BattleCanvas : NetworkBehaviour
                 }
             }
             changed.Behaviour.virtualCamera = FindObjectsOfType<CinemachineVirtualCamera>();
+            if(changed.Behaviour.virtualCamera!=null){
             foreach (CinemachineVirtualCamera cam in changed.Behaviour.virtualCamera)
             {
-                cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = 15;
-            }
+               
+               //var camDis =  cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance;
+               //if(camDis!=null) camDis = 15;
+            }}
             Actions.GameOverUI?.Invoke();
 
             changed.Behaviour.focusTimer = TickTimer.CreateFromSeconds(changed.Behaviour.Runner, changed.Behaviour.focusTime);

@@ -11435,12 +11435,14 @@ MonoBehaviour:
   IsGround: 0
   IsFalling: 0
   _IsStun: 0
+  _IsGhost: 0
   _IsBall: 0
   _modelCount: 0
   _SpeedTime: 0
   _AngryValue: 0
   DefualtModel: {fileID: 2195649626694359012}
   RushModel: {fileID: 3265698474719737460}
+  BothModel: {fileID: 7841252294536957899}
   dragValue: 10
   walkSpeed: 50
   rushSpeed: 100
