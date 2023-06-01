@@ -67,7 +67,7 @@ MonoBehaviour:
     m_Value: 1
   length:
     m_OverrideState: 0
-    m_Value: 0.15
+    m_Value: 0.002
   opacity:
     m_OverrideState: 0
     m_Value: 1
@@ -91,7 +91,7 @@ MonoBehaviour:
     m_Value: 0.2
   thicknessScale:
     m_OverrideState: 0
-    m_Value: 0.15
+    m_Value: 0.074
   m_SampleCount:
     m_OverrideState: 0
     m_Value: 8

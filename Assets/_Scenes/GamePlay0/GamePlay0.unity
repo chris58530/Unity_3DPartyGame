@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 525.31055, g: 546.0834, b: 586.2817, a: 1}
+  m_IndirectSpecularColor: {r: 525.5947, g: 546.343, b: 586.4788, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2469,6 +2469,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2455154799721639149, guid: 35ff227ea08e1ed4dbad073358b5ab0c, type: 3}
+      propertyPath: m_IsGlobal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455154799721639149, guid: 35ff227ea08e1ed4dbad073358b5ab0c, type: 3}
       propertyPath: sharedProfile
       value: 
       objectReference: {fileID: 11400000, guid: 795e209ea772d78498463bae5ff5923c, type: 2}
@@ -3849,8 +3853,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 1999570603}
     m_Modifications:
     - target: {fileID: 1397827100360945952, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397827100360945952, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
       propertyPath: m_Intensity
-      value: 13857.305
+      value: 12391.326
       objectReference: {fileID: 0}
     - target: {fileID: 1397827100360945952, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
       propertyPath: m_FlareTint.b
@@ -3866,6 +3874,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1397827100360945952, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
       propertyPath: useVolumetric
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397827100360945952, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
+      propertyPath: m_InteractsWithSky
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1397827100360945952, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
@@ -3910,27 +3922,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1397827100360945953, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.09804214
+      value: 0.11639356
       objectReference: {fileID: 0}
     - target: {fileID: 1397827100360945953, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.9822555
+      value: 0.9908114
       objectReference: {fileID: 0}
     - target: {fileID: 1397827100360945953, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.015879357
+      value: -0.008036973
       objectReference: {fileID: 0}
     - target: {fileID: 1397827100360945953, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.15909064
+      value: 0.068415515
       objectReference: {fileID: 0}
     - target: {fileID: 1397827100360945953, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 168.6
+      value: 166.6
       objectReference: {fileID: 0}
     - target: {fileID: 1397827100360945953, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -18.4
+      value: -7.9
       objectReference: {fileID: 0}
     - target: {fileID: 1397827100360945953, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -3954,7 +3966,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1397827100360945958, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
       propertyPath: m_Intensity
-      value: 13857.305
+      value: 12391.326
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397827100360945958, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1397827100360945958, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
       propertyPath: m_Shadows.m_Type
@@ -3967,6 +3983,10 @@ PrefabInstance:
     - target: {fileID: 1397827100360945959, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
       propertyPath: m_Name
       value: Train_Directional Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397827100360945959, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e752024e93211a43bf9e4e0b7f14102, type: 3}
@@ -5004,7 +5024,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!33 &6961889610222455050
 MeshFilter:
   m_ObjectHideFlags: 0
