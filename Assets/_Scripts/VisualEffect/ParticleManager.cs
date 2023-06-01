@@ -31,14 +31,15 @@ public class ParticleManager : NetworkBehaviour
     public void RPC_PlayParticle(EffectType type)
     {
         thisParticle[(int)type].gameObject.SetActive(true);
-        // if (!thisParticle[(int)type].isPlaying)
-        thisParticle[(int)type].Play();
+        if (!thisParticle[(int)type].isPlaying)
+            thisParticle[(int)type].Play();
 
     }
     [Rpc(RpcSources.All, RpcTargets.All)]
 
     public void RPC_StopParticle(EffectType type)
     {
+        thisParticle[(int)type].gameObject.SetActive(false);
 
         thisParticle[(int)type].Stop();
     }

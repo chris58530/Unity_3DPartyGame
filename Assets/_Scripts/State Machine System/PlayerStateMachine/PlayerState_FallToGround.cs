@@ -26,6 +26,8 @@ public class PlayerState_FallToGround : NetworkPlayerState
             shooter.PowerTrigger = value;
 
         }
+        particle.RPC_StopParticle(EffectType.RushLV2);
+        particle.RPC_StopParticle(EffectType.RushLV3);
 
     }
     public override void Exit()

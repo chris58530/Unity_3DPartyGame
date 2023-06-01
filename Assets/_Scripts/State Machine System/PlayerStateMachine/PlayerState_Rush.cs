@@ -45,25 +45,31 @@ public class PlayerState_Rush : NetworkPlayerState
             float value = controller.AngryValue;
             shooter.PowerTrigger = value;
         }
-        if (controller.SpeedTime > 5)
+        if (controller.SpeedTime > 2)
         {
             particle.RPC_PlayParticle(EffectType.RushLV2);
 
         }
 
+        if (controller.SpeedTime > 5)
+        {
+            particle.RPC_PlayParticle(EffectType.RushLV3);
 
+        }
 
     }
 
     public override void Exit()
     {
         particle.RPC_StopParticle(EffectType.RushLV1);
-        if (controller.SpeedTime <= 5)
-        {
-            particle.RPC_StopParticle(EffectType.RushLV2);
-        }
-        else particle.RPC_StopParticle(EffectType.RushLV2);
+        // if (controller.SpeedTime <= 5)
+        // {
+        //     particle.RPC_StopParticle(EffectType.RushLV2);
+        // }
+        // else particle.RPC_StopParticle(EffectType.RushLV2);
         particle.RPC_StopParticle(EffectType.RushLV2);
+        particle.RPC_StopParticle(EffectType.RushLV3);
+        particle.RPC_StopAllParticle();
         controller.SwitchTag("Walk");
         controller.modelCount = 0;
     }

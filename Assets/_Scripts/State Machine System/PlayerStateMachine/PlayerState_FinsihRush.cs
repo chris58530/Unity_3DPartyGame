@@ -8,11 +8,13 @@ public class PlayerState_FinsihRush : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
-
+        particle.RPC_StopParticle(EffectType.RushLV2);
+        particle.RPC_StopParticle(EffectType.RushLV3);
     }
     public override void UpdateNetwork(NetworkInputData inputData)
     {
-
+        particle.RPC_StopParticle(EffectType.RushLV2);
+        particle.RPC_StopParticle(EffectType.RushLV3);
         base.UpdateNetwork(inputData);
 
         if (StateDuration > animator.ani.GetCurrentAnimatorStateInfo(0).length)

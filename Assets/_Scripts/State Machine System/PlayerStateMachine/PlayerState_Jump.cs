@@ -14,6 +14,8 @@ public class PlayerState_Jump : NetworkPlayerState
     public override void UpdateNetwork(NetworkInputData inputData)
     {
         base.UpdateNetwork(inputData);
+        particle.RPC_StopParticle(EffectType.RushLV2);
+        particle.RPC_StopParticle(EffectType.RushLV3);
         if (!inputData.IsJumpPressed)
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));
