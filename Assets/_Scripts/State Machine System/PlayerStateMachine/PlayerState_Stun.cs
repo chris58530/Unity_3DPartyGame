@@ -23,13 +23,13 @@ public class PlayerState_Stun : NetworkPlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));
         }
-        if (inputData.IsOpenPressed)
+        if (inputData.IsLeftPressed)
         {
-            if (shooter == null) return;
+            if (ability == null) return;
             float value = controller.AngryValue;
             if (value <= (float)PowerValue.Power2)return;
 
-                shooter.PowerTrigger = value;
+                ability.PowerTrigger = value;
 
         }
 

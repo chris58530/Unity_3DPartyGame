@@ -18,12 +18,12 @@ public class PlayerState_FallToGround : NetworkPlayerState
         base.UpdateNetwork(inputData);
         if (StateDuration > animator.ani.GetCurrentAnimatorStateInfo(0).length)
             stateMachine.SwitchState(typeof(PlayerState_Stun));
-        if (inputData.IsOpenPressed)
+        if (inputData.IsLeftPressed)
         {
-            if (shooter == null) return;
+            if (ability == null) return;
             float value = controller.AngryValue;
 
-            shooter.PowerTrigger = value;
+            ability.PowerTrigger = value;
 
         }
         particle.RPC_StopParticle(EffectType.RushLV2);

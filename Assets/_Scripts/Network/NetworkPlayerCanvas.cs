@@ -9,6 +9,8 @@ public class NetworkPlayerCanvas : NetworkBehaviour
 
     [SerializeField]
     public TMP_Text speedText;
+    // [SerializeField]
+    // public Animator speedTextAni;
     [SerializeField]
     private TMP_Text playerName;
 
@@ -38,7 +40,7 @@ public class NetworkPlayerCanvas : NetworkBehaviour
         {
             if (GameManager.Instance.PlayerList.TryGetValue(Object.InputAuthority, out var data))
             {
-                battleCanvas.SetPlayerData(data.CharaterCount,data.PlayerScore);
+                battleCanvas.SetPlayerData(data.CharaterCount, data.PlayerScore);
             }
         }
         else

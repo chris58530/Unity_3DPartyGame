@@ -31,12 +31,12 @@ public class PlayerState_FinsihRush : NetworkPlayerState
         }
 
         controller.SetPlayerRush(inputData);
-        if (inputData.IsOpenPressed)
+        if (inputData.IsLeftPressed)
         {
-            if (shooter == null) return;
+            if (ability == null) return;
             float value = controller.AngryValue;
 
-            shooter.PowerTrigger = value;
+            ability.PowerTrigger = value;
 
         }
 

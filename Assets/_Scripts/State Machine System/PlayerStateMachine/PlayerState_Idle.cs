@@ -21,7 +21,7 @@ public class PlayerState_Idle : NetworkPlayerState
             stateMachine.SwitchState(typeof(PlayerState_Walk));
             
         }
-        if (inputData.IsOpenPressed)
+        if (inputData.IsLeftPressed)
         {
             controller.IsBall = true;
             stateMachine.SwitchState(typeof(PlayerState_Rush));
@@ -40,11 +40,11 @@ public class PlayerState_Idle : NetworkPlayerState
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
         // shooter.OpenMagnet(inputData);
-        if (inputData.IsOpenPressed)
+        if (inputData.IsLeftPressed)
         {
-            if (shooter == null) return;
+            if (ability == null) return;
             float value = controller.AngryValue;
-            shooter.PowerTrigger = value;
+            ability.PowerTrigger = value;
 
         }
 

@@ -141,7 +141,6 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 
         float newDragValue = dragValue - (SpeedTime * 1f);
         rb.Rigidbody.drag = newDragValue < 0f ? 0f : newDragValue;
-
     }
     private IEnumerator GhostFlashing(float flashRate)
     {
@@ -242,6 +241,20 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
     private static void OnSpeedTimeChanged(Changed<NetworkPlayerController> changed)
     {
         changed.Behaviour.playerCanvas.speedText.text = Mathf.Round(changed.Behaviour.SpeedTime).ToString();
+
+
+
+        // if (changed.Behaviour.SpeedTime % 1 == 0)
+        // {
+        //     Debug.Log("是整数");
+        // }
+
+        // if (Mathf.Floor(changed.Behaviour.SpeedTime) == changed.Behaviour.SpeedTime)
+        // {
+        //     changed.Behaviour.playerCanvas.speedTextAni.SetTrigger("OnTextChange");
+
+        //     Debug.Log("是整数");
+        // }
     }
     private static void OnAngryValueChanged(Changed<NetworkPlayerController> changed)
     {
@@ -290,7 +303,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
                 SetRepel(output, 50 + addForce);
 
                 //暈兩秒開始計時
-                StunTimer = TickTimer.CreateFromSeconds(Runner, 2.5f);
+                StunTimer = TickTimer.CreateFromSeconds(Runner, 2.0f);
                 IsStun = true;
                 // StartCoroutine(GhostFlashing(0.1f));
 
@@ -306,14 +319,16 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             SetRepel(output, 150);
 
             //暈兩秒開始計時
-            StunTimer = TickTimer.CreateFromSeconds(Runner, 2.5f);
+            StunTimer = TickTimer.CreateFromSeconds(Runner, 2.0f);
             IsStun = true;
         }
         //撞擊普通物件場景物件
 
-        if (other.gameObject.tag == "Untouched" && IsBall && !IsGhost)
+        if (other.gameObject.tag == "Untouched")
         {
             if (IsStun) return;
+            if (IsGhost) return;
+            if (!IsBall) return;
             if (other.gameObject.TryGetComponent<HeavyObject>(out HeavyObject obj))
             {
                 Vector3 output = (transform.position - other.transform.position).normalized;
@@ -322,9 +337,20 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
                 float stunTime = 2.5f;
                 StunTimer = TickTimer.CreateFromSeconds(Runner, stunTime);
                 IsStun = true;
-
             }
         }
+        if (other.gameObject.tag == "KnockingObject")
+        {
+            if (IsStun) return;
+            if (IsGhost) return;
+            Vector3 output = (transform.position - other.transform.position).normalized;
+            SetRepel(output, 30);
+            Debug.Log($"被KnockingObject");
+            float stunTime = 2.5f;
+            StunTimer = TickTimer.CreateFromSeconds(Runner, stunTime);
+            IsStun = true;
+        }
+
         // IStrikeable hitObject = other.gameObject.GetComponent<IStrikeable>();
         // if (hitObject != null && moveInput.SpeedTime > switchToRush && other.gameObject.tag == "HitObject")
         // {
@@ -332,6 +358,13 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         //     hitObject.Knock(direction, moveInput.SpeedTime);
         //     Debug.Log("hitobject knock");
         // }
+        if (other.gameObject.TryGetComponent<IStrikeable>(out IStrikeable hitObject))
+        {
+            Vector3 direction = (transform.position - other.gameObject.transform.position).normalized;
+            hitObject.Knock(direction, SpeedTime);
+            Debug.Log("hitobject knock");
+        }
+
     }
 
 

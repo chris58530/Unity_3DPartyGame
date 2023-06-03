@@ -21,7 +21,7 @@ public class PlayerState_Walk : NetworkPlayerState
             stateMachine.SwitchState(typeof(PlayerState_Idle));
         }
         // 如果IsOpenPressed被按下，切換到Rush
-        if (inputData.IsOpenPressed)
+        if (inputData.IsLeftPressed)
         {
             controller.IsBall = true;
             stateMachine.SwitchState(typeof(PlayerState_Rush));
@@ -43,13 +43,13 @@ public class PlayerState_Walk : NetworkPlayerState
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
         // 如果IsOpenPressed被按下
-        if (inputData.IsOpenPressed)
+        if (inputData.IsLeftPressed)
         {
             // 如果shooter為空，返回
-            if (shooter == null) return;
+            if (ability == null) return;
             // 從controller取得玩家的AngryValue，並設定shooter的觸發力度為value
             float value = controller.AngryValue;
-            shooter.PowerTrigger = value;
+            ability.PowerTrigger = value;
         }
 
 

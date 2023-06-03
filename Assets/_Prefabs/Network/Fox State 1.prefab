@@ -526,6 +526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 3
   speedText: {fileID: 1271977601928227157}
+  speedTextAni: {fileID: 6701542424142971716}
   playerName: {fileID: 8528048441610478511}
   AngryBar: {fileID: 1195798712794484548}
 --- !u!1 &1509710182574518894
@@ -572,6 +573,7 @@ GameObject:
   - component: {fileID: 121037446869659212}
   - component: {fileID: 4417183199070658390}
   - component: {fileID: 1271977601928227157}
+  - component: {fileID: 6701542424142971716}
   m_Layer: 5
   m_Name: SpeedText
   m_TagString: Untagged
@@ -698,6 +700,26 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!95 &6701542424142971716
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616863661289444163}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6d0e9d21e1b74864d9408501f45960bf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1652727830502012996
 GameObject:
   m_ObjectHideFlags: 0
@@ -3244,7 +3266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6001885237675254429, guid: e460234f7e15e36469aaf606ace2558f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6001885237675434909, guid: e460234f7e15e36469aaf606ace2558f, type: 3}
       propertyPath: m_RootOrder
@@ -3292,7 +3314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8205207305065720921, guid: e460234f7e15e36469aaf606ace2558f, type: 3}
       propertyPath: Flags
-      value: 3073
+      value: 134145
       objectReference: {fileID: 0}
     - target: {fileID: 8205207305065720921, guid: e460234f7e15e36469aaf606ace2558f, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
@@ -3304,7 +3326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8992011654106010757, guid: e460234f7e15e36469aaf606ace2558f, type: 3}
       propertyPath: Flags
-      value: 3073
+      value: 134145
       objectReference: {fileID: 0}
     - target: {fileID: 8992011654106010757, guid: e460234f7e15e36469aaf606ace2558f, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]

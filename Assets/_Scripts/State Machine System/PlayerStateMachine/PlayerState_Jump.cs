@@ -38,13 +38,13 @@ public class PlayerState_Jump : NetworkPlayerState
         {
             controller.SetPlayerMove(inputData);
         }
-        if (inputData.IsOpenPressed)
+        if (inputData.IsLeftPressed)
         {
-            if (shooter == null) return;
+            if (ability == null) return;
             float value = controller.AngryValue;
-            shooter.PowerTrigger = value;
+            ability.PowerTrigger = value;
         }
-        if (inputData.IsOpenPressed)
+        if (inputData.IsLeftPressed)
         {
             controller.IsBall = true;
             stateMachine.SwitchState(typeof(PlayerState_Rush));

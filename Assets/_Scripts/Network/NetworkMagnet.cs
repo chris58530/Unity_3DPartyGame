@@ -65,7 +65,7 @@ public class NetworkMagnet : NetworkBehaviour
         if (other.TryGetComponent(out IMagnet magnet))
         {
             //用distance判斷距離，越靠近力量越大，之後magnetForce*算出來的數值
-            if (other.gameObject.GetComponentInChildren<NetworkMagnetShooter>().IsOpenMagnet)
+            if (other.gameObject.GetComponentInChildren<NetworkPlayerAbility>().IsOpenMagnet)
                 return;
             magnet.SetAttract(transform.position, magnetForce);
         }
