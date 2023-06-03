@@ -27,7 +27,7 @@ public class NetworkPlayerInput : NetworkBehaviour
         Move = AxisX != 0 || AxisZ != 0;
         Jump = Input.GetButton("Jump");
         StopJump = !Input.GetButton("Jump");
-        Left = Input.GetButton("Fire1")||Input.GetKey(KeyCode.K);
+        Left = Input.GetButtonDown("Fire1")||Input.GetKeyDown(KeyCode.K);
         StopOpen = !Input.GetButton("Fire1");
         Shoot =Input.GetButton("Fire2");
     

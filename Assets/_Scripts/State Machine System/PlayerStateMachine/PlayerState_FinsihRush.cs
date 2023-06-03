@@ -31,15 +31,7 @@ public class PlayerState_FinsihRush : NetworkPlayerState
         }
 
         controller.SetPlayerRush(inputData);
-        if (inputData.IsLeftPressed)
-        {
-            if (ability == null) return;
-            float value = controller.AngryValue;
-
-            ability.PowerTrigger = value;
-
-        }
-
+    
     }
 
     public override void Exit()

@@ -39,14 +39,7 @@ public class PlayerState_Idle : NetworkPlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
-        // shooter.OpenMagnet(inputData);
-        if (inputData.IsLeftPressed)
-        {
-            if (ability == null) return;
-            float value = controller.AngryValue;
-            ability.PowerTrigger = value;
-
-        }
+    
 
 
     }

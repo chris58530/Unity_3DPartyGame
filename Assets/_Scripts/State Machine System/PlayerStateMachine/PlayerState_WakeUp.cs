@@ -19,14 +19,7 @@ public class PlayerState_WakeUp : NetworkPlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));
         }
-        if (inputData.IsLeftPressed)
-        {
-            if (ability == null) return;
-            float value = controller.AngryValue;
-
-            ability.PowerTrigger = value;
-
-        }
+      
     }
 
 }

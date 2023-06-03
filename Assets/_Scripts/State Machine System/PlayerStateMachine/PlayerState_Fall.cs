@@ -12,7 +12,7 @@ public class PlayerState_Fall : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
- 
+
     }
 
     public override void UpdateNetwork(NetworkInputData inputData)
@@ -39,15 +39,8 @@ public class PlayerState_Fall : NetworkPlayerState
         {
             controller.SetPlayerMove(inputData);
         }
+
         if (inputData.IsLeftPressed)
-        {
-            if (ability == null) return;
-            float value = controller.AngryValue;
-
-            ability.PowerTrigger = value;
-
-        }
-    if (inputData.IsLeftPressed)
         {
             controller.IsBall = true;
             stateMachine.SwitchState(typeof(PlayerState_Rush));

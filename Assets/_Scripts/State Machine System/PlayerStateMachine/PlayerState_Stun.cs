@@ -22,16 +22,7 @@ public class PlayerState_Stun : NetworkPlayerState
         if (!controller.IsGround)
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));
-        }
-        if (inputData.IsLeftPressed)
-        {
-            if (ability == null) return;
-            float value = controller.AngryValue;
-            if (value <= (float)PowerValue.Power2)return;
-
-                ability.PowerTrigger = value;
-
-        }
+        } 
 
     }
     public override void Exit()

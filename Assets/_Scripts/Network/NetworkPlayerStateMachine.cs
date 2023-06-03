@@ -12,13 +12,12 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
     NetworkAnimator animator;
     NetworkPlayerController controller;
     NetworkPlayerAbility ability;
-   ParticleManager particle;
+    ParticleManager particle;
 
     private void Awake()
     {
         controller = GetComponent<NetworkPlayerController>();
-        // ability = GetComponentInChildren<NetworkMagnetShooter>();
-        ability = null;
+        ability = GetComponentInChildren<NetworkPlayerAbility>();
         animator = GetComponentInChildren<NetworkAnimator>();
         particle = GetComponentInChildren<ParticleManager>();
         stateTable = new Dictionary<System.Type, IState>(playerStates.Length);

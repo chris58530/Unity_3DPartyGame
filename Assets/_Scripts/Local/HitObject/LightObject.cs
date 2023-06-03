@@ -19,7 +19,8 @@ public class LightObject : NetworkBehaviour, IStrikeable
     public override void FixedUpdateNetwork()
     {
         //當速度大於 " " 時切換成擊飛物體
-        if (rb.Rigidbody.velocity.magnitude > 3)
+        //改成speedtime > x 才能急非
+        if (rb.Rigidbody.velocity.magnitude > 5)
             this.tag = "KnockingObject";
         else
             this.tag = "HitObject";
@@ -29,6 +30,5 @@ public class LightObject : NetworkBehaviour, IStrikeable
     {
         Vector3 direction = new Vector3(forcePoint.x, 0, forcePoint.z);
         rb.Rigidbody.AddForce(-direction * knockForce * force, ForceMode.Impulse);
-        this.tag = "KnockingObject";
     }
 }

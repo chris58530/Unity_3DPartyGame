@@ -134,8 +134,8 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         }
         else SpeedTime = 0;
 
-        if (AngryValue > 0)
-            AngryValue -= Runner.DeltaTime * 2;
+        if (AngryValue <= 100)
+            AngryValue += Runner.DeltaTime * 4;
         if (AngryValue >= 100)
             AngryValue = 100;
 

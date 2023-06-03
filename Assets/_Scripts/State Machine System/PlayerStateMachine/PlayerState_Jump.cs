@@ -38,12 +38,7 @@ public class PlayerState_Jump : NetworkPlayerState
         {
             controller.SetPlayerMove(inputData);
         }
-        if (inputData.IsLeftPressed)
-        {
-            if (ability == null) return;
-            float value = controller.AngryValue;
-            ability.PowerTrigger = value;
-        }
+    
         if (inputData.IsLeftPressed)
         {
             controller.IsBall = true;

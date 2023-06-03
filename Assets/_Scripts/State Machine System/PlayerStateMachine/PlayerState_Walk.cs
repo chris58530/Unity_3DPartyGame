@@ -42,15 +42,7 @@ public class PlayerState_Walk : NetworkPlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
-        // 如果IsOpenPressed被按下
-        if (inputData.IsLeftPressed)
-        {
-            // 如果shooter為空，返回
-            if (ability == null) return;
-            // 從controller取得玩家的AngryValue，並設定shooter的觸發力度為value
-            float value = controller.AngryValue;
-            ability.PowerTrigger = value;
-        }
+ 
 
 
 

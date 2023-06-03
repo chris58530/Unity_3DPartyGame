@@ -14,6 +14,8 @@ public class NetworkPlayerAbility : NetworkBehaviour
 
     [SerializeField, Header("能力冷卻時間")]
     private float CD;
+    [SerializeField]
+    private float AddSpeeTimeValue = 5;
     [Networked]
     public NetworkBool IsOpenMagnet { get; set; }
     [Networked]
@@ -77,30 +79,10 @@ public class NetworkPlayerAbility : NetworkBehaviour
     }
     void AddSpeeTime(Changed<NetworkPlayerAbility> changed)
     {
-        changed.Behaviour.controller.SpeedTime += 5;
-        Debug.Log("power 1");
+        changed.Behaviour.controller.SpeedTime += AddSpeeTimeValue;
+        Debug.Log("Power 1");
     }
-    // void OpenMagnet()
-    // {
-    //     Vector3 currentScale = magnet.transform.localScale;
-    //     if (currentScale.x < detectionRadius)
-    //         if (currentScale.x < detectionRadius)
-    //         {
-    //             MagnetColor = new Color(0, 0, 0, 0.1f);
-    //             magnet.transform.localScale += new Vector3(10, 10, 10) * Runner.DeltaTime;
-    //             Debug.Log($"magnet: opening....");
-    //         }
-    //         else
-    //         {
-    //             IsOpenMagnet = true;
-    //             CanOpenMagnet = false;
-    //             MagnetColor = new Color(0, 0, 1, 0.2f);
-    //             tag = "Repel";
-    //             keepTimer = TickTimer.CreateFromSeconds(Runner, keepTime);
-    //             if (!CanShootMagnet) return; //如果可以射出Magnet為真
-    //             ShootMagnet();
-    //         }
-    // }
+
     private static void OnOpenMagnet(Changed<NetworkPlayerAbility> changed)
     {
         if (!changed.Behaviour.CanOpenMagnet) return;
@@ -129,29 +111,56 @@ public class NetworkPlayerAbility : NetworkBehaviour
 
     private static void OnMagnetPowerChanged(Changed<NetworkPlayerAbility> changed)
     {
-        if (changed.Behaviour.PowerTrigger >= (float)PowerValue.Power1 && changed.Behaviour.PowerTrigger <= (float)PowerValue.Power2)
+        float angryValue = changed.Behaviour.PowerTrigger;
+        if (angryValue - (float)PowerValue.Power1 !< 0)
         {
             //Power level 1
             changed.Behaviour.AddSpeeTime(changed);
-            changed.Behaviour.controller.AngryValue = 0;
+            changed.Behaviour.controller.AngryValue -= 20;
             return;
         }
-        else if (changed.Behaviour.PowerTrigger > (float)PowerValue.Power2 && changed.Behaviour.PowerTrigger < (float)PowerValue.Power3)
-        {
-            //Power level 2
-            changed.Behaviour.CanOpenMagnet = true;
-            changed.Behaviour.controller.AngryValue = 0;
-            return;
-        }
-        else if (changed.Behaviour.PowerTrigger >= (float)PowerValue.Power3)
-        {
-            //Power level 3
-            changed.Behaviour.CanOpenMagnet = true;
-            changed.Behaviour.CanShootMagnet = true;
-            changed.Behaviour.controller.AngryValue = 0;
-            return;
-        }
+        // else if (changed.Behaviour.PowerTrigger > (float)PowerValue.Power2 && changed.Behaviour.PowerTrigger < (float)PowerValue.Power3)
+        // {
+        //     //Power level 2
+        //     changed.Behaviour.CanOpenMagnet = true;
+        //     changed.Behaviour.controller.AngryValue = 0;
+        //     return;
+        // }
+        // else if (changed.Behaviour.PowerTrigger >= (float)PowerValue.Power3)
+        // {
+        //     //Power level 3
+        //     changed.Behaviour.CanOpenMagnet = true;
+        //     changed.Behaviour.CanShootMagnet = true;
+        //     changed.Behaviour.controller.AngryValue = 0;
+        //     return;
+        // }
     }
+    //old 
+    // private static void OnMagnetPowerChanged(Changed<NetworkPlayerAbility> changed)
+    // {
+    //     if (changed.Behaviour.PowerTrigger >= (float)PowerValue.Power1 && changed.Behaviour.PowerTrigger <= (float)PowerValue.Power2)
+    //     {
+    //         //Power level 1
+    //         changed.Behaviour.AddSpeeTime(changed);
+    //         changed.Behaviour.controller.AngryValue = 0;
+    //         return;
+    //     }
+    //     else if (changed.Behaviour.PowerTrigger > (float)PowerValue.Power2 && changed.Behaviour.PowerTrigger < (float)PowerValue.Power3)
+    //     {
+    //         //Power level 2
+    //         changed.Behaviour.CanOpenMagnet = true;
+    //         changed.Behaviour.controller.AngryValue = 0;
+    //         return;
+    //     }
+    //     else if (changed.Behaviour.PowerTrigger >= (float)PowerValue.Power3)
+    //     {
+    //         //Power level 3
+    //         changed.Behaviour.CanOpenMagnet = true;
+    //         changed.Behaviour.CanShootMagnet = true;
+    //         changed.Behaviour.controller.AngryValue = 0;
+    //         return;
+    //     }
+    // }
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Repel"))
