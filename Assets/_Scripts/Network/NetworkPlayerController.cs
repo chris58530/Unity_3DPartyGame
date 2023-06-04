@@ -270,14 +270,12 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 
         if (other.gameObject.CompareTag("DeadZone"))
         {
-
-
             if (camGroup != null)
             {
                 camGroup.RemoveMember(this.gameObject.transform);
             }
             StartCoroutine(TogglePerlinNoiseAmplitude(7f, 0.2f));
-            if (GameManager.Instance.Runner.IsServer)
+            if (Object.HasStateAuthority)
             {
                 data.IsDead = true;
 
@@ -298,7 +296,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
                 camGroup.RemoveMember(this.gameObject.transform);
             }
 
-            if (GameManager.Instance.Runner.IsServer)
+            if (Object.HasStateAuthority)
             {
                 data.IsDead = true;
                 BattleManager.Instance.currentPlayerCount -= 1;

@@ -39,11 +39,7 @@ public class PlayerState_Jump : NetworkPlayerState
             controller.SetPlayerMove(inputData);
         }
     
-        if (inputData.IsLeftPressed)
-        {
-            controller.IsBall = true;
-            stateMachine.SwitchState(typeof(PlayerState_Rush));
-        }
+    
     }
     public override void Exit()
     {
