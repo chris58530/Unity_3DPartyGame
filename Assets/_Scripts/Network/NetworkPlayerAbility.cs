@@ -47,6 +47,9 @@ public class NetworkPlayerAbility : NetworkBehaviour
     public override void Spawned()
     {
         material = magnet.GetComponent<MeshRenderer>().material;
+        IsOpenMagnet = false;
+        CanOpenMagnet = false;
+        CanShootMagnet = false;
     }
     public override void Render()
     {
@@ -56,13 +59,15 @@ public class NetworkPlayerAbility : NetworkBehaviour
     {
         if (keepTimer.Expired(Runner))
         {
-            keepTimer = TickTimer.None;
             Close();
         }
         // if (CanOpenMagnet)
         //     OpenMagnet();
         if (CanOpenMagnet)
+        {
             OpenMagnetTrigger += 1;
+            Debug.Log($"OpenMagnetTrigger : {OpenMagnetTrigger}");
+        }
     }
 
     public void ShootMagnet()
@@ -74,8 +79,10 @@ public class NetworkPlayerAbility : NetworkBehaviour
     {
         IsOpenMagnet = false;
         transform.localScale = Vector3.zero;
+        keepTimer = TickTimer.None;
         MagnetColor = (new Color(0, 0, 0, 0));
         tag = "None";
+        Debug.Log("reset magnet to none");
     }
     void AddSpeeTime(Changed<NetworkPlayerAbility> changed)
     {
@@ -88,7 +95,7 @@ public class NetworkPlayerAbility : NetworkBehaviour
         if (!changed.Behaviour.CanOpenMagnet) return;
 
         Vector3 currentScale = changed.Behaviour.transform.localScale;
-        Debug.Log("power 2");
+        Debug.Log("Power 2");
         if (currentScale.x < changed.Behaviour.detectionRadius)
         {
             changed.Behaviour.MagnetColor = new Color(0, 0, 0, 0.1f);
@@ -112,11 +119,27 @@ public class NetworkPlayerAbility : NetworkBehaviour
     private static void OnMagnetPowerChanged(Changed<NetworkPlayerAbility> changed)
     {
         float angryValue = changed.Behaviour.PowerTrigger;
-        if (angryValue - (float)PowerValue.Power1 !< 0)
+
+        if (angryValue >= (float)PowerValue.Power3)
+        {
+            //避免OnChanged沒有被偵測到
+            changed.Behaviour.PowerTrigger = 0;
+            if (changed.Behaviour.IsOpenMagnet) return;
+            Debug.Log("use power3 ");
+            changed.Behaviour.controller.AngryValue -= (float)PowerValue.Power3;
+            changed.Behaviour.CanOpenMagnet = true;
+
+            return;
+        }
+        else if ((angryValue - (float)PowerValue.Power1) > 0)
         {
             //Power level 1
+            //避免OnChanged沒有被偵測到
+            changed.Behaviour.PowerTrigger = 0;
             changed.Behaviour.AddSpeeTime(changed);
-            changed.Behaviour.controller.AngryValue -= 20;
+            changed.Behaviour.controller.AngryValue -= (float)PowerValue.Power1;
+
+
             return;
         }
         // else if (changed.Behaviour.PowerTrigger > (float)PowerValue.Power2 && changed.Behaviour.PowerTrigger < (float)PowerValue.Power3)
@@ -135,32 +158,7 @@ public class NetworkPlayerAbility : NetworkBehaviour
         //     return;
         // }
     }
-    //old 
-    // private static void OnMagnetPowerChanged(Changed<NetworkPlayerAbility> changed)
-    // {
-    //     if (changed.Behaviour.PowerTrigger >= (float)PowerValue.Power1 && changed.Behaviour.PowerTrigger <= (float)PowerValue.Power2)
-    //     {
-    //         //Power level 1
-    //         changed.Behaviour.AddSpeeTime(changed);
-    //         changed.Behaviour.controller.AngryValue = 0;
-    //         return;
-    //     }
-    //     else if (changed.Behaviour.PowerTrigger > (float)PowerValue.Power2 && changed.Behaviour.PowerTrigger < (float)PowerValue.Power3)
-    //     {
-    //         //Power level 2
-    //         changed.Behaviour.CanOpenMagnet = true;
-    //         changed.Behaviour.controller.AngryValue = 0;
-    //         return;
-    //     }
-    //     else if (changed.Behaviour.PowerTrigger >= (float)PowerValue.Power3)
-    //     {
-    //         //Power level 3
-    //         changed.Behaviour.CanOpenMagnet = true;
-    //         changed.Behaviour.CanShootMagnet = true;
-    //         changed.Behaviour.controller.AngryValue = 0;
-    //         return;
-    //     }
-    // }
+
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Repel"))

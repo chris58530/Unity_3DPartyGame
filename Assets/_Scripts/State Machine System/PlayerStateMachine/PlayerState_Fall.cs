@@ -40,10 +40,10 @@ public class PlayerState_Fall : NetworkPlayerState
             controller.SetPlayerMove(inputData);
         }
 
-        if (inputData.IsLeftPressed)
-        {
-            controller.IsBall = true;
-            stateMachine.SwitchState(typeof(PlayerState_Rush));
-        }
+        // if (inputData.IsLeftPressed)
+        // {
+        //     controller.IsBall = true;
+        //     stateMachine.SwitchState(typeof(PlayerState_Rush));
+        // }
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerState_Rush : NetworkPlayerState
 {
+    bool canPressLeft;
     public override void Enter()
     {
         base.Enter();
@@ -14,6 +15,7 @@ public class PlayerState_Rush : NetworkPlayerState
         particle.RPC_PlayParticle(EffectType.RushLV1);
 
         controller.modelCount = 1;
+        canPressLeft = false;
     }
     public override void UpdateNetwork(NetworkInputData inputData)
     {
@@ -39,11 +41,19 @@ public class PlayerState_Rush : NetworkPlayerState
         {
             stateMachine.SwitchState(typeof(PlayerState_FallToGround));
         }
-        if (inputData.IsLeftPressed)
+
+
+        if (!canPressLeft && !inputData.IsLeftPressed)
+        {
+            canPressLeft = true;
+        }
+
+        if (inputData.IsLeftPressed && canPressLeft)
         {
             if (ability == null) return;
             float value = controller.AngryValue;
             ability.PowerTrigger = value;
+             canPressLeft = false;
         }
         if (controller.SpeedTime > 2)
         {

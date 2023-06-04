@@ -8,7 +8,6 @@ public class PlayerState_Stun : NetworkPlayerState
     public override void Enter()
     {
         base.Enter();
-        controller.AngryValue += 50;
 
         particle.RPC_PlayParticle(EffectType.Stun);
 

@@ -2841,7 +2841,7 @@ MonoBehaviour:
   Move: 0
   Jump: 0
   StopJump: 0
-  Open: 0
+  Left: 0
   StopOpen: 0
   Shoot: 0
   IsGround: 0
@@ -3484,8 +3484,9 @@ MonoBehaviour:
   _interpolationDataSource: 0
   magnetPrefab: {fileID: -2057441826570595257, guid: 29e1880b551fc9b4da706e9f377581c6, type: 3}
   keepTime: 6
-  detectionRadius: 6
+  detectionRadius: 4
   CD: 3
+  AddSpeeTimeValue: 5
   _IsOpenMagnet:
     _value: 0
   _CanOpenMagnet:

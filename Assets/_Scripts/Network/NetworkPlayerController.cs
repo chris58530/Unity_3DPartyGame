@@ -127,7 +127,6 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         {
             IsGhost = false;
         }
-
         if (modelCount == 1)
         {
             SpeedTime += Runner.DeltaTime;
@@ -293,6 +292,8 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             {
                 //重製己方speed time;
                 SpeedTime = 0;
+                AngryValue += 50;
+
                 // otherInput.SpeedTime = 0;
                 // moveInput.ShowRushSpeed(false);
                 // otherInput.ShowRushSpeed(false);

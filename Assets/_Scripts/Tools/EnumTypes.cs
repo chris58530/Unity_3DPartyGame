@@ -5,7 +5,7 @@ public enum MagnetType
 
 public enum PowerValue
 {
-    Power1 = 20, Power2 = 55, Power3 = 85
+    Power1 = 20, Power2 = 55, Power3 = 99
 }
 public enum PlayerType
 {

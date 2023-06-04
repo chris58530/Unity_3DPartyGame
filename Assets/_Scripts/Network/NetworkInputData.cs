@@ -9,7 +9,6 @@ public struct NetworkInputData : INetworkInput
     public NetworkBool IsShootPressed;
     public NetworkBool IsLeftPressed;
     public NetworkBool StopJump;
-
     public NetworkBool StopOpen;
     public Vector3 direction;
     
