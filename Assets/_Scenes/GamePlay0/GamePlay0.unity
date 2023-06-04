@@ -467,7 +467,7 @@ Transform:
   m_Children:
   - {fileID: 967405679737408728}
   m_Father: {fileID: 1171293655}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &130248530
 MonoBehaviour:
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 100
+  knockForce: 20
 --- !u!114 &130248532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,7 +824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 100
+  knockForce: 20
 --- !u!114 &221483019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,9 +1080,6 @@ GameObject:
   - component: {fileID: 375481914}
   - component: {fileID: 375481913}
   - component: {fileID: 375481912}
-  - component: {fileID: 375481911}
-  - component: {fileID: 375481910}
-  - component: {fileID: 375481909}
   m_Layer: 0
   m_Name: signType1
   m_TagString: Untagged
@@ -1104,75 +1101,8 @@ Transform:
   m_Children:
   - {fileID: 8041425112868736849}
   m_Father: {fileID: 1171293655}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &375481909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 375481907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjectInterest: 1
-  DefaultInterestGroups: []
-  DestroyWhenStateAuthorityLeaves: 0
-  AllowStateAuthorityOverride: 1
-  AoiPositionSource: {fileID: 0}
-  Flags: 2561
-  NetworkGuid:
-    RawGuidValue: 7aac9542c72b4f4684e7f4d7f62f227f
-  NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 375481911}
-  - {fileID: 375481910}
-  SimulationBehaviours: []
---- !u!114 &375481910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 375481907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77a4e82629f05364a9e44d7b2920c689, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
-  knockForce: 100
---- !u!114 &375481911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 375481907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1710889294, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
-  InterpolationSpace: 0
-  InterpolationTarget: {fileID: 8041425112868736849}
-  InterpolateErrorCorrection: 1
-  InterpolatedErrorCorrectionSettings:
-    MinRate: 3.3
-    MaxRate: 10
-    PosBlendStart: 0.25
-    PosBlendEnd: 1
-    PosMinCorrection: 0.025
-    PosTeleportDistance: 2
-    RotBlendStart: 0.1
-    RotBlendEnd: 0.5
-    RotTeleportRadians: 1.5
-  UseLegacySharedModeInterpolation: 0
-  TargetInterpolationDelay: 0.03
 --- !u!54 &375481912
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1839,7 +1769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 100
+  knockForce: 20
 --- !u!114 &674836630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2325,7 +2255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 100
+  knockForce: 20
 --- !u!114 &976894609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2567,6 +2497,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 375481908}
   - {fileID: 2157348806651078997}
   - {fileID: 1906336264}
   - {fileID: 6060344203658077407}
@@ -2578,7 +2509,6 @@ Transform:
   - {fileID: 2015215505121029038}
   - {fileID: 1824965496}
   - {fileID: 130248529}
-  - {fileID: 375481908}
   - {fileID: 2008901111}
   - {fileID: 976894606}
   - {fileID: 221483016}
@@ -3877,7 +3807,7 @@ Transform:
   m_Children:
   - {fileID: 967405679492694416}
   m_Father: {fileID: 1171293655}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1824965497
 MonoBehaviour:
@@ -3917,7 +3847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 100
+  knockForce: 20
 --- !u!114 &1824965499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4048,7 +3978,7 @@ Transform:
   m_Children:
   - {fileID: 1257736885620665723}
   m_Father: {fileID: 1171293655}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1837443338
 MonoBehaviour:
@@ -4088,7 +4018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 100
+  knockForce: 20
 --- !u!114 &1837443340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4274,7 +4204,7 @@ Transform:
   m_Children:
   - {fileID: 5170729694794545645}
   m_Father: {fileID: 1171293655}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1883802062
 MonoBehaviour:
@@ -4314,7 +4244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 100
+  knockForce: 20
 --- !u!114 &1883802064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4407,7 +4337,7 @@ Transform:
   m_Children:
   - {fileID: 1107367193647868965}
   m_Father: {fileID: 1171293655}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 7.869, y: 34, z: 9.562}
 --- !u!114 &1906336265
 MonoBehaviour:
@@ -4447,7 +4377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 100
+  knockForce: 20
 --- !u!114 &1906336267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4830,7 +4760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 100
+  knockForce: 20
 --- !u!114 &2008901114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5565,7 +5495,7 @@ Transform:
   m_Children:
   - {fileID: 5989109483852190611}
   m_Father: {fileID: 1171293655}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!23 &1990273584970833241
 MeshRenderer:
@@ -5623,7 +5553,7 @@ Transform:
   m_Children:
   - {fileID: 5170729694225351768}
   m_Father: {fileID: 1171293655}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2157348806651078997
 Transform:
@@ -5639,7 +5569,7 @@ Transform:
   m_Children:
   - {fileID: 1509278618}
   m_Father: {fileID: 1171293655}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 7.869, y: -57.745, z: 9.562}
 --- !u!1 &2244286650038075709
 GameObject:
@@ -5712,7 +5642,7 @@ Transform:
   m_Children:
   - {fileID: 1257736885970623974}
   m_Father: {fileID: 1171293655}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2694848921792298044
 MonoBehaviour:
@@ -5752,7 +5682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 100
+  knockForce: 20
 --- !u!114 &2694848921792298046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6032,7 +5962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 100
+  knockForce: 20
 --- !u!114 &3196754718376955305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6658,7 +6588,7 @@ Transform:
   m_Children:
   - {fileID: 5807196582607169980}
   m_Father: {fileID: 1171293655}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4776206161004014654
 MonoBehaviour:
@@ -6698,7 +6628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 100
+  knockForce: 20
 --- !u!114 &4776206161004014656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7359,7 +7289,7 @@ Transform:
   m_Children:
   - {fileID: 8969954781205554193}
   m_Father: {fileID: 1171293655}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6071282108621065442
 MeshFilter:
@@ -7477,7 +7407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 100
+  knockForce: 20
 --- !u!114 &6323225308255428205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7697,7 +7627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 100
+  knockForce: 20
 --- !u!114 &7533452679327475220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7943,7 +7873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 100
+  knockForce: 20
 --- !u!114 &8517242867857871970
 MonoBehaviour:
   m_ObjectHideFlags: 0
