@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Fusion;
 public class BattleManager : Singleton<BattleManager>
 {
     [Header("目前玩家人數")]
@@ -42,7 +43,7 @@ public class BattleManager : Singleton<BattleManager>
 
     public void CheckAllReadyButton()//Ready大廳
     {
-        if(canSwitch)return;
+        if (canSwitch) return;
         int currentReayBt = 0;
         ReadyButton[] ready = FindObjectsOfType<ReadyButton>();
         foreach (ReadyButton readyButton in ready)
@@ -56,6 +57,26 @@ public class BattleManager : Singleton<BattleManager>
                     canSwitch = true;
                     return;
                 }
+            }
+        }
+    }
+    public void CheckAllPlayerDie()
+    {
+        int dieCount = 0;
+        foreach (PlayerRef player in GameManager.Instance.PlayerList.Keys)
+        {
+            if (GameManager.Instance.PlayerList.TryGetValue(player, out NetworkPlayerData data))
+            {
+                if (data.IsDead)
+                {
+                    dieCount += 1;
+                    if (dieCount >= currentPlayerCount)
+                    {
+
+                        currentPlayerCount -= dieCount;
+                    }
+                }
+
             }
         }
     }

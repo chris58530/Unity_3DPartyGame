@@ -3481,7 +3481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f2e5ca539a5d5c4899fa9cbe5198f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 3
   magnetPrefab: {fileID: -2057441826570595257, guid: 29e1880b551fc9b4da706e9f377581c6, type: 3}
   keepTime: 6
   detectionRadius: 4
@@ -4563,6 +4563,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RushLV2
       objectReference: {fileID: 0}
+    - target: {fileID: 7304241037545767283, guid: 34c4da948be71d746a073ad1413273e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7412122988570561281, guid: 34c4da948be71d746a073ad1413273e5, type: 3}
       propertyPath: Flags
       value: 134145
@@ -4874,6 +4878,10 @@ PrefabInstance:
     - target: {fileID: 6001885237675254429, guid: e460234f7e15e36469aaf606ace2558f, type: 3}
       propertyPath: m_Name
       value: RushLV3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001885237675254429, guid: e460234f7e15e36469aaf606ace2558f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6001885237675434909, guid: e460234f7e15e36469aaf606ace2558f, type: 3}
       propertyPath: m_RootOrder

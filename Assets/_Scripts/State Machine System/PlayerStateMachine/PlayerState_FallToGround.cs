@@ -25,7 +25,6 @@ public class PlayerState_FallToGround : NetworkPlayerState
     }
     public override void Exit()
     {
-        particle.RPC_StopParticle(EffectType.Hit);
 
     }
 

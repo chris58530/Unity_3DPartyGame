@@ -263,7 +263,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 
     void OnCollisionStay(Collision other)
     {
-        if (!NetworkPlayer.Local) return;
+        // if (!NetworkPlayer.Local) return;
 
         var data = GameManager.Instance.PlayerList.TryGetValue(Object.InputAuthority, out var playerData) ? playerData : null;
         if (data.IsDead) return;
@@ -271,17 +271,42 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         if (other.gameObject.CompareTag("DeadZone"))
         {
 
+
             if (camGroup != null)
             {
                 camGroup.RemoveMember(this.gameObject.transform);
             }
             StartCoroutine(TogglePerlinNoiseAmplitude(7f, 0.2f));
-            if (!GameManager.Instance.Runner.IsServer) return;
-            data.IsDead = true;
-            BattleManager.Instance.currentPlayerCount -= 1;
-            Debug.Log($"(PlayerController)目前人數 : {BattleManager.Instance.currentPlayerCount}");
-            Debug.Log($"死亡玩家 : {data.PlayerName}");
+            if (GameManager.Instance.Runner.IsServer)
+            {
+                data.IsDead = true;
 
+                BattleManager.Instance.currentPlayerCount -= 1;
+                Debug.Log($"(PlayerController)目前人數 : {BattleManager.Instance.currentPlayerCount}");
+                Debug.Log($"死亡玩家 : {data.PlayerName}");
+            }
+            return;
+        }
+        if (other.gameObject.CompareTag("TrainHead"))
+        {
+            IsStun = true;
+
+            // if (!GameManager.Instance.Runner.IsServer) return;
+            StartCoroutine(TogglePerlinNoiseAmplitude(7f, 0.2f));
+            if (camGroup != null)
+            {
+                camGroup.RemoveMember(this.gameObject.transform);
+            }
+
+            if (GameManager.Instance.Runner.IsServer)
+            {
+                data.IsDead = true;
+                BattleManager.Instance.currentPlayerCount -= 1;
+                Debug.Log($"(PlayerController)目前人數 : {BattleManager.Instance.currentPlayerCount}");
+                Debug.Log($"死亡玩家 : {data.PlayerName}");
+            }
+            Vector3 output = (transform.position - other.transform.position).normalized;
+            StartCoroutine(ThrowPlayerToOutside(output, 50, data));
             return;
         }
         if (other.gameObject.CompareTag("Rush") && !IsStun && !IsGhost)
@@ -294,9 +319,6 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
                 SpeedTime = 0;
                 AngryValue += 50;
 
-                // otherInput.SpeedTime = 0;
-                // moveInput.ShowRushSpeed(false);
-                // otherInput.ShowRushSpeed(false);
 
                 //擊飛自己
                 Vector3 output = (transform.position - other.transform.position).normalized;
@@ -306,10 +328,6 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
                 //暈兩秒開始計時
                 StunTimer = TickTimer.CreateFromSeconds(Runner, 2.0f);
                 IsStun = true;
-                // StartCoroutine(GhostFlashing(0.1f));
-
-
-
             }
         }
         if (other.gameObject.CompareTag("Repel"))
@@ -352,19 +370,30 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             IsStun = true;
         }
 
-        // IStrikeable hitObject = other.gameObject.GetComponent<IStrikeable>();
-        // if (hitObject != null && moveInput.SpeedTime > switchToRush && other.gameObject.tag == "HitObject")
-        // {
-        //     Vector3 direction = (transform.position - other.gameObject.transform.position).normalized;
-        //     hitObject.Knock(direction, moveInput.SpeedTime);
-        //     Debug.Log("hitobject knock");
-        // }
         if (other.gameObject.TryGetComponent<IStrikeable>(out IStrikeable hitObject))
         {
             Vector3 direction = (transform.position - other.gameObject.transform.position).normalized;
             hitObject.Knock(direction, SpeedTime);
             Debug.Log("hitobject knock");
         }
+
+    }
+    //玩家被火車頭撞到
+    IEnumerator ThrowPlayerToOutside(Vector3 direction, float force, NetworkPlayerData data)
+    {
+        rb.Rigidbody.useGravity = false;
+        CapsuleCollider collider = GetComponent<CapsuleCollider>();
+        collider.isTrigger = true;
+        for (int i = 0; i < 10; i++)
+        {
+            rb.Rigidbody.AddForce((direction + Vector3.up) * force, ForceMode.Impulse);
+            Debug.Log("coroutine start ");
+            yield return new WaitForSeconds(0.1f);
+
+        }
+        yield return null;
+        // CapsuleCollider collider = GetComponent<CapsuleCollider>();
+        // collider.isTrigger = true;
 
     }
 

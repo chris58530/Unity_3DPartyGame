@@ -15,6 +15,7 @@ TagManager:
   - Untouched
   - Repel
   - Attract
+  - TrainHead
   layers:
   - Default
   - TransparentFX

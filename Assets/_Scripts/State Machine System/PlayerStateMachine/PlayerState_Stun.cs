@@ -27,6 +27,7 @@ public class PlayerState_Stun : NetworkPlayerState
     public override void Exit()
     {
         particle.RPC_StopParticle(EffectType.Stun);
+        particle.RPC_StopParticle(EffectType.Hit);
 
     }
 }

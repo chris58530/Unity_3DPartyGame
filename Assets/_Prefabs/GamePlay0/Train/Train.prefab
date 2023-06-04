@@ -323,7 +323,6 @@ MonoBehaviour:
   - {fileID: 2178354000705086231}
   - {fileID: 2388224174914582813}
   - {fileID: 1341969671434096669}
-  - {fileID: 836438891367435677}
   SimulationBehaviours: []
 --- !u!114 &2388224174914582813
 MonoBehaviour:
@@ -2052,10 +2051,10 @@ GameObject:
   - component: {fileID: 5001743513168607127}
   - component: {fileID: 1806599637115690072}
   - component: {fileID: 6834825820117815901}
-  - component: {fileID: 836438891367435677}
+  - component: {fileID: 6841396533653216862}
   m_Layer: 0
   m_Name: DeadZone
-  m_TagString: KnockingObject
+  m_TagString: TrainHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2138,20 +2137,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &836438891367435677
-MonoBehaviour:
+--- !u!54 &6841396533653216862
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2647071296659334916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f79ef87d425ab8489e690393d198669, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
-  _KnockForce: 150
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2730180120838141871
 GameObject:
   m_ObjectHideFlags: 0
