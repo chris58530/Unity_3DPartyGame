@@ -507,7 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 10
+  knockForce: 100
 --- !u!114 &130248532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,7 +824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 10
+  knockForce: 100
 --- !u!114 &221483019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1144,7 +1144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 10
+  knockForce: 100
 --- !u!114 &375481911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1839,7 +1839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 10
+  knockForce: 100
 --- !u!114 &674836630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2325,7 +2325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 10
+  knockForce: 100
 --- !u!114 &976894609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3916,7 +3916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 10
+  knockForce: 100
 --- !u!114 &1824965499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4087,7 +4087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 10
+  knockForce: 100
 --- !u!114 &1837443340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4313,7 +4313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 10
+  knockForce: 100
 --- !u!114 &1883802064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4446,7 +4446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 10
+  knockForce: 100
 --- !u!114 &1906336267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4829,7 +4829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 10
+  knockForce: 100
 --- !u!114 &2008901114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5614,7 +5614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 10
+  knockForce: 100
 --- !u!114 &2694848921792298046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5894,7 +5894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 10
+  knockForce: 100
 --- !u!114 &3196754718376955305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6560,7 +6560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 10
+  knockForce: 100
 --- !u!114 &4776206161004014656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7339,7 +7339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 10
+  knockForce: 100
 --- !u!114 &6323225308255428205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7559,7 +7559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 10
+  knockForce: 100
 --- !u!114 &7533452679327475220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7805,7 +7805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  knockForce: 10
+  knockForce: 100
 --- !u!114 &8517242867857871970
 MonoBehaviour:
   m_ObjectHideFlags: 0
