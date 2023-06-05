@@ -103,7 +103,7 @@ RectTransform:
   m_GameObject: {fileID: 7044437189776006445}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7044437189969747809}
@@ -239,11 +239,11 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.49
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 822577304}
         m_TargetAssemblyTypeName: SoundUI, Assembly-CSharp
         m_MethodName: SFXVolume
         m_Mode: 1
@@ -713,11 +713,11 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.51
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 822577304}
         m_TargetAssemblyTypeName: SoundUI, Assembly-CSharp
         m_MethodName: BGMVolume
         m_Mode: 1
@@ -897,7 +897,7 @@ RectTransform:
   m_GameObject: {fileID: 7044437190595891375}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7044437189990051344}
@@ -1149,6 +1149,7 @@ GameObject:
   - component: {fileID: 7044437190808795334}
   - component: {fileID: 7044437190808795337}
   - component: {fileID: 7044437190808795336}
+  - component: {fileID: 822577304}
   m_Layer: 5
   m_Name: PauseUI
   m_TagString: Untagged
@@ -1243,6 +1244,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &822577304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7044437190808795339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a2b2b838629c6540aee04a58e31a6be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _BGMSlider: {fileID: 7044437190323927660}
+  _SFXSlider: {fileID: 7044437189969747808}
 --- !u!1 &7044437190861123307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,7 +1398,7 @@ RectTransform:
   m_GameObject: {fileID: 7044437190962340813}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7044437190323927661}
@@ -2022,7 +2037,7 @@ RectTransform:
   m_GameObject: {fileID: 7044437191502742962}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7044437190142733853}
