@@ -45,7 +45,6 @@ public class BattleCanvas : NetworkBehaviour
     {
         if (BattleManager.Instance.currentPlayerCount <= 1)
         {
-
             IsEndGame = true;
         }
         if (BattleTime > 0)
