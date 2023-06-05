@@ -30,6 +30,14 @@ public class AudioManager : MonoBehaviour
         PlayBGM("BGM");
         PlaySFX("StartTrainHorn");
     }
+    public void Button_In()
+    {
+        PlaySFX("Button_In");
+    }
+    public void Bottun_Press()
+    {
+        PlaySFX("Button_Press");
+    }
     public void PlayBGM(string name)//播放BGM的方法.要有想撥放BGM的字串,但因為現在只有一個BGM的Clips所以我只取名BGM而不是XX場景BGM
     {
         Sound s = Array.Find(BGMSounds, x=> x.name ==name);//在存放BGM的矩陣中找到要撥放的BGM名稱

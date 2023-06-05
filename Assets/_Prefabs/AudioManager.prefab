@@ -175,13 +175,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BGMSounds:
-  - name: LobbyBGM
+  - name: BGM
     clip: {fileID: 8300000, guid: f85399907c6918b48adad49d21072e5b, type: 3}
   sfxSounds:
   - name: Rush
     clip: {fileID: 8300000, guid: 0b1c90ea1ce1a6343a580b9278e91d25, type: 3}
   - name: Stun
     clip: {fileID: 8300000, guid: 4e7fdfdd4b56a9e4abf51b136d9cb42c, type: 3}
+  - name: Button_In
+    clip: {fileID: 8300000, guid: 425b80e33b57aa240bad8b5db0a9c3ee, type: 3}
+  - name: Button_Press
+    clip: {fileID: 8300000, guid: cc2c478bdd1b59a41aea4c29be441d1c, type: 3}
   BGMSource: {fileID: 6053023971532902256}
   sfxSource: {fileID: 6053023971206132336}
 --- !u!1 &6053023971532902257
