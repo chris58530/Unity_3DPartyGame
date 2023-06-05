@@ -10,7 +10,6 @@ public class PlayerState_Stun : NetworkPlayerState
         base.Enter();
 
         particle.RPC_PlayParticle(EffectType.Stun);
-
     }
 
     public override void UpdateNetwork(NetworkInputData inputData)
@@ -21,7 +20,7 @@ public class PlayerState_Stun : NetworkPlayerState
         if (!controller.IsGround)
         {
             stateMachine.SwitchState(typeof(PlayerState_Fall));
-        } 
+        }
 
     }
     public override void Exit()

@@ -24,24 +24,23 @@ public class Truck : NetworkBehaviour
     [Networked]
     private TickTimer randomTimer { get; set; }
 
-
+    [SerializeField]
+    private Material[] truckColor;
     private MeshRenderer truckMaterial;
-    [Networked(OnChanged = nameof(OnTruckColorChange))]
-    private int truckMaterialCount { get; set; }
+    // [Networked(OnChanged = nameof(OnTruckColorChange))]
+    // private int truckMaterialCount { get; set; }
     public override void Spawned()
     {
         randomTimer = TickTimer.CreateFromSeconds(Runner, 2);
         truckMaterial = GetComponentInChildren<MeshRenderer>();
+        truckMaterial.material = truckColor[Random.Range(0, truckColor.Length)];
     }
-    public override void Render()
-    {
 
-    }
-    private static void OnTruckColorChange(Changed<Truck> changed)
-    {
-        Material[] materials = changed.Behaviour.GetComponentInChildren<MeshRenderer>().materials;
-        changed.Behaviour.truckMaterial.material = materials[changed.Behaviour.truckMaterialCount];
-    }
+    // private static void OnTruckColorChange(Changed<Truck> changed)
+    // {
+    //     Material[] materials = changed.Behaviour.GetComponentInChildren<MeshRenderer>().materials;
+    //     changed.Behaviour.truckMaterial.material = materials[changed.Behaviour.truckMaterialCount];
+    // }
     public override void FixedUpdateNetwork()
     {
         // canBack = false;
@@ -49,7 +48,7 @@ public class Truck : NetworkBehaviour
         {
             truckRandomPos = Random.Range(0, 20);
             randomTimer = TickTimer.CreateFromSeconds(Runner, 1);
-            truckMaterialCount = Random.Range(0, 2);
+            // truckMaterialCount = Random.Range(0, 2);
 
         }
         if (!canMove)
@@ -65,6 +64,7 @@ public class Truck : NetworkBehaviour
         if (timeToBackTimer.Expired(Runner))
         {
             Debug.Log("truck go back");
+            truckMaterial.material = truckColor[Random.Range(0, truckColor.Length)];
             canMove = false;
             // canBack = true;
             timeToBackTimer = TickTimer.None;

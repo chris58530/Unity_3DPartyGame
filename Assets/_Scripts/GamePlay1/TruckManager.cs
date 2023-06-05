@@ -10,7 +10,7 @@ public class TruckManager : NetworkBehaviour
 
 
     [SerializeField]
-    private float truckLeaveRate =5;
+    private float truckLeaveRate = 5;
 
     [Networked]
     private TickTimer truckLeaveTimer { get; set; }
@@ -20,6 +20,7 @@ public class TruckManager : NetworkBehaviour
     public override void Spawned()
     {
         truckLeaveTimer = TickTimer.CreateFromSeconds(Runner, truckLeaveRate);
+        AudioManager.Instance.RPC_PlaySFX("Truck");
 
 
     }
@@ -36,6 +37,8 @@ public class TruckManager : NetworkBehaviour
                 if (i == random)
                 {
                     truck[i].canMove = true;
+                    AudioManager.Instance.RPC_PlaySFX("Truck");
+
                 }
 
             }

@@ -13,10 +13,13 @@ public class Train : NetworkBehaviour
 
     [Networked]
     private TickTimer trainlifeTimer { get; set; }
+
+    
     public override void Spawned()
     {
         trainlifeTimer = TickTimer.None;
         trainlifeTimer = TickTimer.CreateFromSeconds(Runner, lifeTime);
+        AudioManager.Instance.RPC_PlaySFX("Train");
     }
     public override void FixedUpdateNetwork()
     {

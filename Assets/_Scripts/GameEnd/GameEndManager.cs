@@ -10,25 +10,18 @@ public class GameEndManager : NetworkBehaviour
     [Networked]
     private TickTimer GameEndTimer { get; set; }
 
+   
+
     public override void Spawned()
     {
         GameEndTimer = TickTimer.CreateFromSeconds(Runner, EndTime);
-        foreach (PlayerRef player in GameManager.Instance.PlayerList.Keys)
-        {
-            if (GameManager.Instance.PlayerList.TryGetValue(player, out NetworkPlayerData data))
-            {
-                data.PlayerScore = 0;
+       AudioManager.Instance.RPC_PlaySFX("Cheering");
 
-            }
-        }
     }
+
     public override void FixedUpdateNetwork()
     {
-        // EndTime-= Runner.DeltaTime;
-        // if (EndTime <= 0)
-        // {
-
-        // }
+        
         if (GameEndTimer.Expired(Runner))
         {
             Debug.Log("gameend switch scene");
@@ -36,4 +29,5 @@ public class GameEndManager : NetworkBehaviour
         }
 
     }
+    
 }

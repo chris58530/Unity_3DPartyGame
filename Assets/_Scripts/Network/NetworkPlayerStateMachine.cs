@@ -13,6 +13,7 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
     NetworkPlayerController controller;
     NetworkPlayerAbility ability;
     ParticleManager particle;
+    AudioManager audios;
 
     private void Awake()
     {
@@ -20,11 +21,13 @@ public class NetworkPlayerStateMachine : NetworkStateMachine
         ability = GetComponentInChildren<NetworkPlayerAbility>();
         animator = GetComponentInChildren<NetworkAnimator>();
         particle = GetComponentInChildren<ParticleManager>();
+        // audios = FindObjectOfType<AudioManager>();
+        audios = AudioManager.Instance;
         stateTable = new Dictionary<System.Type, IState>(playerStates.Length);
         foreach (NetworkPlayerState state in playerStates)
         {
             //初始化資料加入state.Initializ()中
-            state.Initialize(this, animator, controller, ability, particle);
+            state.Initialize(this, animator, controller, ability, particle, audios);
             stateTable.Add(state.GetType(), state);
         }
 

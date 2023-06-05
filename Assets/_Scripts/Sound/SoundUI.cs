@@ -8,10 +8,10 @@ public class SoundUI : MonoBehaviour
     public Slider _BGMSlider, _SFXSlider;
     public void BGMVolume()
     {
-        AudioManager.Instance.BGMVolume(_BGMSlider.value);
+       FindObjectOfType<AudioManager>().BGMVolume(_BGMSlider.value);
     }
     public void SFXVolume()
     {
-        AudioManager.Instance.SFXVolume(_SFXSlider.value);
+       FindObjectOfType<AudioManager>().SFXVolume(_SFXSlider.value);
     }
 }

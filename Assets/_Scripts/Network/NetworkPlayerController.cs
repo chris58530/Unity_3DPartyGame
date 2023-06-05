@@ -324,7 +324,8 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
                 SetRepel(output, 50 + addForce);
 
                 //暈兩秒開始計時
-                StunTimer = TickTimer.CreateFromSeconds(Runner, 2.0f);
+                float stunTime = 0.5f;
+                StunTimer = TickTimer.CreateFromSeconds(Runner, stunTime);
                 IsStun = true;
             }
         }
@@ -336,7 +337,8 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             SetRepel(output, 150);
 
             //暈兩秒開始計時
-            StunTimer = TickTimer.CreateFromSeconds(Runner, 2.0f);
+            float stunTime = 0.5f;
+            StunTimer = TickTimer.CreateFromSeconds(Runner, stunTime);
             IsStun = true;
         }
         //撞擊普通物件場景物件
@@ -351,7 +353,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
                 Vector3 output = (transform.position - other.transform.position).normalized;
                 SetRepel(output, obj.KnockForce);//擊飛數值在對方身上
                 //暈兩秒開始計時
-                float stunTime = 2.5f;
+                float stunTime = 0.5f;
                 StunTimer = TickTimer.CreateFromSeconds(Runner, stunTime);
                 IsStun = true;
             }
@@ -363,7 +365,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             Vector3 output = (transform.position - other.transform.position).normalized;
             SetRepel(output, 30);
             Debug.Log($"被KnockingObject");
-            float stunTime = 2.5f;
+            float stunTime = 0.5f;
             StunTimer = TickTimer.CreateFromSeconds(Runner, stunTime);
             IsStun = true;
         }

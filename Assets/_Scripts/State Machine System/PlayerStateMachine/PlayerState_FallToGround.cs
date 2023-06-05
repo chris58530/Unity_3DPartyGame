@@ -10,7 +10,10 @@ public class PlayerState_FallToGround : NetworkPlayerState
         base.Enter();
         controller.IsBall = false;
         particle.RPC_PlayParticle(EffectType.Hit);
-
+    
+        audio.RPC_PlaySFX("Stun");
+        // AudioManager.Instance.audioString = "Stun";
+        // audio.RPC_PlaySFX("Stun");
     }
 
     public override void UpdateNetwork(NetworkInputData inputData)
@@ -18,7 +21,7 @@ public class PlayerState_FallToGround : NetworkPlayerState
         base.UpdateNetwork(inputData);
         if (StateDuration > animator.ani.GetCurrentAnimatorStateInfo(0).length)
             stateMachine.SwitchState(typeof(PlayerState_Stun));
-     
+
         particle.RPC_StopParticle(EffectType.RushLV2);
         particle.RPC_StopParticle(EffectType.RushLV3);
 

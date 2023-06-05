@@ -102,13 +102,12 @@ public class GameManager : Singleton<GameManager>
                 break;
 
             case "ReadyScene":
-                Runner.SetActiveScene("GamePlay0");//test
-                // Runner.SetActiveScene("GamePlay0");
+                Runner.SetActiveScene("GamePlay0");//火車
                 Debug.Log("Switch to Scene 'GamePlay0'");
                 break;
 
             case "GamePlay0":
-                Runner.SetActiveScene("GamePlay1");
+                Runner.SetActiveScene("GamePlay1");//巴士
                 Debug.Log("Switch to Scene 'GamePlay1'");
                 break;
 

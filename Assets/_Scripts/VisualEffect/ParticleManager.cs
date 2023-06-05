@@ -17,16 +17,7 @@ public class ParticleManager : NetworkBehaviour
 
         }
     }
-    // void OnEnable()
-    // {
-    //     Actions.PlayEffect += RPC_PlayParticle;
-    //     Actions.StopEffect += RPC_StopParticle;
-    // }
-    // void OnDisable()
-    // {
-    //     Actions.PlayEffect -= RPC_PlayParticle;
-    //     Actions.StopEffect -= RPC_StopParticle;
-    // }
+  
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void RPC_PlayParticle(EffectType type)
     {

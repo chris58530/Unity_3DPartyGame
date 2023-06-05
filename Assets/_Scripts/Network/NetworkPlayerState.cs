@@ -16,6 +16,7 @@ public class NetworkPlayerState : ScriptableObject, IState
     protected NetworkPlayerController controller;
     protected NetworkPlayerAbility ability;
     protected ParticleManager particle;
+    protected AudioManager audio;
     protected float StateDuration;
 
 
@@ -23,13 +24,14 @@ public class NetworkPlayerState : ScriptableObject, IState
     protected float stateStartTime;
 
     public void Initialize(NetworkPlayerStateMachine stateMachine, NetworkAnimator animator,
-    NetworkPlayerController controller, NetworkPlayerAbility ability, ParticleManager particle)
+    NetworkPlayerController controller, NetworkPlayerAbility ability, ParticleManager particle, AudioManager audio)
     {
         this.animator = animator;
         this.stateMachine = stateMachine;
         this.controller = controller;
         this.ability = ability;
         this.particle = particle;
+        this.audio = audio;
     }
     public virtual void Enter()
     {

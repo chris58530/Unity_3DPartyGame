@@ -16,6 +16,8 @@ public class PlayerState_Rush : NetworkPlayerState
 
         controller.modelCount = 1;
         canPressLeft = false;
+        audio.RPC_PlaySFX("Rush");
+
     }
     public override void UpdateNetwork(NetworkInputData inputData)
     {
@@ -53,7 +55,7 @@ public class PlayerState_Rush : NetworkPlayerState
             if (ability == null) return;
             float value = controller.AngryValue;
             ability.PowerTrigger = value;
-             canPressLeft = false;
+            canPressLeft = false;
         }
         if (controller.SpeedTime > 2)
         {
