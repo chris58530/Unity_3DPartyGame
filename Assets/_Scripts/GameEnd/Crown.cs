@@ -5,7 +5,7 @@ using Fusion;
 
 public class Crown : NetworkBehaviour
 {
-    private NetworkObject winPlayer;
+    [Networked] private NetworkObject winPlayer { get; set; }
     public override void Spawned()
     {
         if (Object.HasStateAuthority)
@@ -22,10 +22,17 @@ public class Crown : NetworkBehaviour
                 }
             }
         }
+        foreach (PlayerRef player in GameManager.Instance.PlayerList.Keys)
+        {
+            if (GameManager.Instance.PlayerList.TryGetValue(player, out NetworkPlayerData data))
+            {
+                data.PlayerScore = 0;
+            }
+        }
     }
     public override void FixedUpdateNetwork()
     {
-        transform.position = winPlayer.transform.position + new Vector3(0,-1f,0);
+        transform.position = winPlayer.transform.position + new Vector3(0, -1f, 0);
 
     }
 }

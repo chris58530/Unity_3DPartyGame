@@ -15,13 +15,7 @@ public class GameEndManager : NetworkBehaviour
     {
         GameEndTimer = TickTimer.CreateFromSeconds(Runner, EndTime);
         AudioManager.Instance.RPC_PlaySFX("Cheering");
-        foreach (PlayerRef player in GameManager.Instance.PlayerList.Keys)
-        {
-            if (GameManager.Instance.PlayerList.TryGetValue(player, out NetworkPlayerData data))
-            {
-                data.PlayerScore = 0;
-            }
-        }
+       
     }
 
     public override void FixedUpdateNetwork()
