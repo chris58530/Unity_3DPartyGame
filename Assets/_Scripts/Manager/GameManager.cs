@@ -112,9 +112,13 @@ public class GameManager : Singleton<GameManager>
                 break;
 
             case "GamePlay1":
+                Runner.SetActiveScene("GamePlay2");//岩漿
+                Debug.Log("Switch to Scene 'GamePlay2'");
+                break;
+            case "GamePlay2":
                 Runner.SetActiveScene("GamePlay0");
                 Debug.Log("Switch to Scene 'GamePlay0'");
-                break;
+                break;    
 
             case "GameEnd":
                 Runner.SetActiveScene("ReadyScene");
