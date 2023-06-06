@@ -1379,6 +1379,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1446295542553379113, guid: 56eb3fe9928c0504289bb70a1bfa384c, type: 3}
+      propertyPath: BGMSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446295542553379113, guid: 56eb3fe9928c0504289bb70a1bfa384c, type: 3}
+      propertyPath: BGMSounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5059413ec429c4507bb7bca2286fad19, type: 3}
+    - target: {fileID: 1446295542553379113, guid: 56eb3fe9928c0504289bb70a1bfa384c, type: 3}
+      propertyPath: BGMSounds.Array.data[0].name
+      value: BGM
+      objectReference: {fileID: 0}
     - target: {fileID: 1446295542553379117, guid: 56eb3fe9928c0504289bb70a1bfa384c, type: 3}
       propertyPath: Flags
       value: 2561

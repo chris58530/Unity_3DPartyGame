@@ -54,6 +54,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         }
         if (playerInput != null)
         {
+            if (GameManager.isPause) return;
             input.Set(playerInput.GetNetworkInput());
         }
 

@@ -1023,7 +1023,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &587481737
 Transform:
   m_ObjectHideFlags: 0
@@ -5410,7 +5410,8 @@ GameObject:
   - component: {fileID: 249185187350434436}
   - component: {fileID: 8274470406031950577}
   - component: {fileID: 5573531430060559380}
-  m_Layer: 0
+  - component: {fileID: 8274470406031950578}
+  m_Layer: 3
   m_Name: Circle.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9660,6 +9661,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492440803040180543}
   m_Mesh: {fileID: -5854088795082504319, guid: 112fb1e108dbd254aa19729715691cb0, type: 3}
+--- !u!65 &8274470406031950578
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492440803040180543}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.991846, y: 0.2999336, z: 8.984154}
+  m_Center: {x: -0.12789346, y: 0.28708336, z: -1.385718}
 --- !u!33 &8373555444049637907
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9679,7 +9693,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8314571269056883277, guid: 112fb1e108dbd254aa19729715691cb0, type: 3}
 --- !u!23 &8442510507096014073

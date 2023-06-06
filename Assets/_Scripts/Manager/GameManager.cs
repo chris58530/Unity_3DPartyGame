@@ -26,6 +26,9 @@ public class GameManager : Singleton<GameManager>
     public Dictionary<PlayerRef, NetworkPlayerData> PlayerList = new Dictionary<PlayerRef, NetworkPlayerData>();
     [SerializeField]
     private GameObject loadingCanvas;
+    [SerializeField]
+    private GameObject pauseCanvas;
+    public static bool isPause;
     public bool ReadyScene = false;
 
     public event Action OnPlayerListUpdated = null;
@@ -37,11 +40,18 @@ public class GameManager : Singleton<GameManager>
         DontDestroyOnLoad(gameObject);
         // SceneManager.MoveGameObjectToScene(this.gameObject, SceneManager.GetSceneByName("GameEnd"));
     }
-   
+
     private void Update()
     {
         if (ReadyScene)
             loadingCanvas.SetActive(false);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseCanvas.SetActive(pauseCanvas.activeSelf ? false : true);
+            isPause = pauseCanvas.activeSelf ? true : false;
+        }
+
     }
     private bool CheckAllPlayerIsReady()
     {
@@ -76,7 +86,7 @@ public class GameManager : Singleton<GameManager>
             networkPlayerData.SetPlayerScore_RPC(PlayerScore);
         }
     }
-  
+
     public void NextScene()
     {
         //自動判定場景切換
@@ -118,7 +128,7 @@ public class GameManager : Singleton<GameManager>
             case "GamePlay2":
                 Runner.SetActiveScene("GamePlay0");
                 Debug.Log("Switch to Scene 'GamePlay0'");
-                break;    
+                break;
 
             case "GameEnd":
                 Runner.SetActiveScene("ReadyScene");
@@ -133,7 +143,7 @@ public class GameManager : Singleton<GameManager>
         //     }
         // }
     }
-    
+
 }
 
 
