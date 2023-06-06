@@ -41,6 +41,10 @@ public class NetworkPlayerCanvas : NetworkBehaviour
             if (GameManager.Instance.PlayerList.TryGetValue(Object.InputAuthority, out var data))
             {
                 battleCanvas.SetPlayerData(data.CharaterCount, data.PlayerScore);
+                if(data.IsDead){
+                    this.gameObject.layer = LayerMask.NameToLayer("Default");
+                }
+
             }
         }
         else
