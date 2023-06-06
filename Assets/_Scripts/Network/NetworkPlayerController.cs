@@ -350,6 +350,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             if (!IsBall) return;
             if (other.gameObject.TryGetComponent<HeavyObject>(out HeavyObject obj))
             {
+                AudioManager.Instance.RPC_PlaySFX("HitIron");
                 Vector3 output = (transform.position - other.transform.position).normalized;
                 SetRepel(output, obj.KnockForce);//擊飛數值在對方身上
                 //暈兩秒開始計時
