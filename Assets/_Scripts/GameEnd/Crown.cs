@@ -6,6 +6,7 @@ using Fusion;
 public class Crown : NetworkBehaviour
 {
     [Networked] private NetworkObject winPlayer { get; set; }
+    [SerializeField] private GameObject winCam;
     public override void Spawned()
     {
         if (Object.HasStateAuthority)
@@ -33,6 +34,6 @@ public class Crown : NetworkBehaviour
     public override void FixedUpdateNetwork()
     {
         transform.position = winPlayer.transform.position + new Vector3(0, -1f, 0);
-
+        winCam.transform.position = winPlayer.transform.position + new Vector3(0, 1.5f, -4);
     }
 }

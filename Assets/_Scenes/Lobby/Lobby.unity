@@ -2396,19 +2396,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7044437189990051344, guid: 8027f51583981c44cb24dbcd4a4f30ed, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7044437189990051344, guid: 8027f51583981c44cb24dbcd4a4f30ed, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7044437190142733853, guid: 8027f51583981c44cb24dbcd4a4f30ed, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7044437190142733853, guid: 8027f51583981c44cb24dbcd4a4f30ed, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7044437190185883690, guid: 8027f51583981c44cb24dbcd4a4f30ed, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2526,17 +2526,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7044437190808795339, guid: 8027f51583981c44cb24dbcd4a4f30ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7044437190915100890, guid: 8027f51583981c44cb24dbcd4a4f30ed, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7044437190915100890, guid: 8027f51583981c44cb24dbcd4a4f30ed, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7044437190915100890, guid: 8027f51583981c44cb24dbcd4a4f30ed, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7044437191223572788, guid: 8027f51583981c44cb24dbcd4a4f30ed, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2552,15 +2556,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7044437191263851558, guid: 8027f51583981c44cb24dbcd4a4f30ed, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7044437191263851558, guid: 8027f51583981c44cb24dbcd4a4f30ed, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7044437191263851558, guid: 8027f51583981c44cb24dbcd4a4f30ed, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8027f51583981c44cb24dbcd4a4f30ed, type: 3}
@@ -2574,12 +2578,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 822577304, guid: 8027f51583981c44cb24dbcd4a4f30ed, type: 3}
   m_PrefabInstance: {fileID: 1806459746}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1806459749}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a2b2b838629c6540aee04a58e31a6be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1806459749 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7044437190808795339, guid: 8027f51583981c44cb24dbcd4a4f30ed, type: 3}
+  m_PrefabInstance: {fileID: 1806459746}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1822229722
 GameObject:
   m_ObjectHideFlags: 0
@@ -5118,6 +5127,7 @@ MonoBehaviour:
   PlayerCharacter: 0
   PlayerScore: 0
   loadingCanvas: {fileID: 8927413425134015848}
+  pauseCanvas: {fileID: 1806459749}
   ReadyScene: 0
 --- !u!4 &2938647509399805577
 Transform:
