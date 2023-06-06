@@ -34,6 +34,6 @@ public class Crown : NetworkBehaviour
     public override void FixedUpdateNetwork()
     {
         transform.position = winPlayer.transform.position + new Vector3(0, -1f, 0);
-        winCam.transform.position = winPlayer.transform.position + new Vector3(0, 0, -2);
+        winCam.transform.position = winPlayer.transform.position + new Vector3(0, 1.5f, -4);
     }
 }
