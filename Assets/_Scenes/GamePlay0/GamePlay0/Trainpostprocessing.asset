@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   rotation:
     m_OverrideState: 1
-    m_Value: 106
+    m_Value: 0
   skyIntensityMode:
     m_OverrideState: 0
     m_Value: 0
@@ -27,10 +27,10 @@ MonoBehaviour:
     m_Value: 1
   upperHemisphereLuxValue:
     m_OverrideState: 0
-    m_Value: 1.9379183
+    m_Value: 1.2178566
   upperHemisphereLuxColor:
     m_OverrideState: 0
-    m_Value: {x: 0.18728843, y: 0.32941556, z: 0.5}
+    m_Value: {x: 0.2750177, y: 0.3637525, z: 0.5}
   desiredLuxValue:
     m_OverrideState: 0
     m_Value: 20000
@@ -45,7 +45,7 @@ MonoBehaviour:
     m_Value: 0
   hdriSky:
     m_OverrideState: 1
-    m_Value: {fileID: 8900000, guid: 6f1f5223bde1c434590f5ebd79600224, type: 3}
+    m_Value: {fileID: 8900000, guid: eecd79dafc780de44aeda6b81a35826b, type: 3}
   distortionMode:
     m_OverrideState: 0
     m_Value: 0
@@ -135,8 +135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   maxShadowDistance:
-    m_OverrideState: 1
-    m_Value: 100
+    m_OverrideState: 0
+    m_Value: 157
   directionalTransmissionMultiplier:
     m_OverrideState: 0
     m_Value: 1
@@ -179,13 +179,13 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: -0.1
+    m_Value: 0.1
   contrast:
     m_OverrideState: 0
     m_Value: 0
   colorFilter:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.9277155, b: 0.9103774, a: 1}
   hueShift:
     m_OverrideState: 0
     m_Value: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: Trainprocessing 1
+  m_Name: Trainpostprocessing
   m_EditorClassIdentifier: 
   components:
   - {fileID: 6168766226782356020}
@@ -226,13 +226,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 0.7387755, y: 0.93791175, z: 1, w: -0.0231761}
+    m_Value: {x: 0.7387755, y: 0.93791175, z: 1, w: -0.26518387}
   midtones:
     m_OverrideState: 1
     m_Value: {x: 1, y: 0.96977365, z: 0.8893972, w: 0}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 0.90121794, y: 0.95182645, z: 1, w: 0}
+    m_Value: {x: 1, y: 0.98377603, z: 0.8424671, w: 0}
   shadowsStart:
     m_OverrideState: 1
     m_Value: 0
@@ -269,10 +269,10 @@ MonoBehaviour:
     m_Value: 1
   fixedExposure:
     m_OverrideState: 1
-    m_Value: 12.872152
+    m_Value: 9.575238
   compensation:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.24
   limitMin:
     m_OverrideState: 1
     m_Value: -1
@@ -417,10 +417,10 @@ MonoBehaviour:
     m_Value: 0.5
   intensity:
     m_OverrideState: 1
-    m_Value: 0.275
+    m_Value: 0.185
   scatter:
     m_OverrideState: 1
-    m_Value: 0.272
+    m_Value: 0.256
   tint:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
