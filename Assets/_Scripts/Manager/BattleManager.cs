@@ -46,7 +46,7 @@ public class BattleManager : Singleton<BattleManager>
 
                     if (camGroup != null)
                     {
-                        camGroup.RemoveMember(this.gameObject.transform);
+                        camGroup.RemoveMember(obj.gameObject.transform);
                     }
                     return;
                 }
