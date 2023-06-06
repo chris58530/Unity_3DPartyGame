@@ -1509,6 +1509,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1439730007547781893, guid: 50ff7b6f1bcb59f43834ca8e40d0348d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: db0da898bd6d8fc44a14a988ba3bc852, type: 2}
+    - target: {fileID: -1439730007547781893, guid: 50ff7b6f1bcb59f43834ca8e40d0348d, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: db0da898bd6d8fc44a14a988ba3bc852, type: 2}
     - target: {fileID: 919132149155446097, guid: 50ff7b6f1bcb59f43834ca8e40d0348d, type: 3}
       propertyPath: m_Name
       value: Spinstone
@@ -1517,6 +1525,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7202271454713460447, guid: 50ff7b6f1bcb59f43834ca8e40d0348d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ae49f5f49e5d50f45b0f7f0ca893c651, type: 2}
+    - target: {fileID: 7202271454713460447, guid: 50ff7b6f1bcb59f43834ca8e40d0348d, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ae49f5f49e5d50f45b0f7f0ca893c651, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50ff7b6f1bcb59f43834ca8e40d0348d, type: 3}
 --- !u!1 &611738450
