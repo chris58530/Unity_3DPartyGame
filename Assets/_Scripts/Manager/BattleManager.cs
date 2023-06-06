@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Fusion;
+using Cinemachine;
+
 public class BattleManager : Singleton<BattleManager>
 {
     [Header("目前玩家人數")]
     public int currentPlayerCount;
     float time;
     bool canSwitch = false;
+    private CinemachineTargetGroup camGroup;
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(this);
+        camGroup = FindObjectOfType<CinemachineTargetGroup>();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
     private void FixedUpdate()
@@ -30,6 +34,26 @@ public class BattleManager : Singleton<BattleManager>
 
         }
     }
+    void Update()
+    {
+        foreach (PlayerRef player in GameManager.Instance.PlayerList.Keys)
+        {
+            if (GameManager.Instance.PlayerList.TryGetValue(player, out NetworkPlayerData data))
+            {
+                if (data.IsDead)
+                {
+                    NetworkObject obj = GameManager.Instance.Runner.GetPlayerObject(player);
+
+                    if (camGroup != null)
+                    {
+                        camGroup.RemoveMember(this.gameObject.transform);
+                    }
+                    return;
+                }
+            }
+        }
+    }
+
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {

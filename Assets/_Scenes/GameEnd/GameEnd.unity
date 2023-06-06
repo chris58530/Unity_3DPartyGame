@@ -7294,6 +7294,7 @@ GameObject:
   - component: {fileID: 1135615633}
   - component: {fileID: 1135615632}
   - component: {fileID: 1135615631}
+  - component: {fileID: 1135615636}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -7309,7 +7310,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135615629}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 4, y: 0, z: -5.23}
+  m_LocalPosition: {x: 4, y: 0, z: -3.89}
   m_LocalScale: {x: 1, y: 31.526962, z: 34.13162}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7417,6 +7418,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135615629}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1135615636
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135615629}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &1140544779
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7929,6 +7946,7 @@ GameObject:
   - component: {fileID: 1181518573}
   - component: {fileID: 1181518572}
   - component: {fileID: 1181518571}
+  - component: {fileID: 1181518576}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -8052,6 +8070,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1181518569}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1181518576
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181518569}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1193307988
 GameObject:
   m_ObjectHideFlags: 0
@@ -11924,6 +11958,7 @@ GameObject:
   - component: {fileID: 1887551478}
   - component: {fileID: 1887551477}
   - component: {fileID: 1887551476}
+  - component: {fileID: 1887551481}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -12047,6 +12082,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887551474}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1887551481
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887551474}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1896363751
 GameObject:
   m_ObjectHideFlags: 0
@@ -14268,7 +14319,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8144394005001203540}
   m_LocalRotation: {x: -0.7071068, y: 0.000000061817246, z: 0.000000061817246, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 4.02, z: 5.57}
+  m_LocalPosition: {x: 0, y: 4, z: 11.9}
   m_LocalScale: {x: 23.86, y: 6.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14968,6 +15019,7 @@ GameObject:
   - component: {fileID: 2707245410034099372}
   - component: {fileID: 1714938218975992152}
   - component: {fileID: 8835409691395877970}
+  - component: {fileID: 8835409691395877971}
   m_Layer: 3
   m_Name: Object001
   m_TagString: Untagged
@@ -15138,6 +15190,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8835409691395877971
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144394005001203540}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.000003, y: 12.985355, z: 0.0000014305193}
+  m_Center: {x: -0.00000095367426, y: 6.492676, z: -4.000002}
 --- !u!33 &8991783434709328084
 MeshFilter:
   m_ObjectHideFlags: 0

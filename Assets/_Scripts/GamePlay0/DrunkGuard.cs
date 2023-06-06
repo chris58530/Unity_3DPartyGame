@@ -31,7 +31,7 @@ public class DrunkGuard : NetworkBehaviour
         Vector3 direction = currentWaypoint.position - transform.position;
         rb.Rigidbody.AddForce(direction.normalized * 3);
 
-        if (Vector3.Distance(transform.position, currentWaypoint.position) < 1f)
+        if (Vector3.Distance(transform.position, currentWaypoint.position) < 3f)
         {
             SetCurrentWaypoint();
             rb.Rigidbody.velocity = Vector3.zero;
