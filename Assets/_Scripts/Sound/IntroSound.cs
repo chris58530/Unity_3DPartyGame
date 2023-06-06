@@ -14,7 +14,7 @@ public class IntroSound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "ReadScene")
+        if (SceneManager.GetActiveScene().name == "ReadyScene")
         {
             Destroy(this.gameObject);
         }
