@@ -266,7 +266,14 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         // if (!NetworkPlayer.Local) return;
 
         var data = GameManager.Instance.PlayerList.TryGetValue(Object.InputAuthority, out var playerData) ? playerData : null;
-        if (data.IsDead) return;
+        if (data.IsDead)
+        {
+            if (camGroup != null)
+            {
+                camGroup.RemoveMember(this.gameObject.transform);
+            }
+             return;
+        }
 
         if (other.gameObject.CompareTag("DeadZone"))
         {
