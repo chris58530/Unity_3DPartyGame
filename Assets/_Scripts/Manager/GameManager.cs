@@ -29,6 +29,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField]
     private GameObject pauseCanvas;
     public static bool isPause;
+    public static bool isGame;
     public bool ReadyScene = false;
 
     public event Action OnPlayerListUpdated = null;

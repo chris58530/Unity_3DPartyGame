@@ -35,7 +35,7 @@ public class BattleCanvas : NetworkBehaviour
     public override void Spawned()
     {
         IsEndGame = false;
-
+    GameManager.isGame =false;
         BattleTime = battleTime;
         focusTimer = TickTimer.None;
 

@@ -10,7 +10,7 @@ public class BattleManager : Singleton<BattleManager>
     [Header("目前玩家人數")]
     public int currentPlayerCount;
     float time;
-    bool canSwitch = false;
+    public static bool canSwitch = false;
     private CinemachineTargetGroup camGroup;
     protected override void Awake()
     {
