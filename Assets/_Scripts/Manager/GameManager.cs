@@ -106,29 +106,34 @@ public class GameManager : Singleton<GameManager>
         }
         switch (activeSceneName)
         {
-            case "Lobby":
+            case "Lobby"://Lobby to ready scene
                 // Runner.SetActiveScene("GamePlay1");//test
                 Runner.SetActiveScene("ReadyScene");
                 Debug.Log("Switch to Scene 'ReadyScene'");
                 break;
 
-            case "ReadyScene":
+            case "ReadyScene"://ready scene to Gameplay3
+                Runner.SetActiveScene("GamePlay3");//火車
+                Debug.Log("Switch to Scene 'GamePlay3'");
+                break;
+
+            case "GamePlay3"://G3 to G0
                 Runner.SetActiveScene("GamePlay0");//火車
                 Debug.Log("Switch to Scene 'GamePlay0'");
                 break;
-
-            case "GamePlay0":
+            case "GamePlay0"://G0 to G1
                 Runner.SetActiveScene("GamePlay1");//巴士
                 Debug.Log("Switch to Scene 'GamePlay1'");
                 break;
 
-            case "GamePlay1":
+            case "GamePlay1"://G1 to G2
                 Runner.SetActiveScene("GamePlay2");//岩漿
                 Debug.Log("Switch to Scene 'GamePlay2'");
                 break;
-            case "GamePlay2":
-                Runner.SetActiveScene("GamePlay0");
-                Debug.Log("Switch to Scene 'GamePlay0'");
+                
+            case "GamePlay2"://G2 to G3
+                Runner.SetActiveScene("GamePlay3");
+                Debug.Log("Switch to Scene 'GamePlay3'");
                 break;
 
             case "GameEnd":
