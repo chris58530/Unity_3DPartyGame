@@ -277,7 +277,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
 
         if (other.gameObject.CompareTag("DeadZone"))
         {
-            AudioManager.Instance.RPC_PlaySFX("DeadZone");
+            //AudioManager.Instance.RPC_PlaySFX("DeadZone");
             
 
             if (camGroup != null)
