@@ -22,8 +22,8 @@ public class TrainSpawner : NetworkBehaviour
 
     public override void Spawned()
     {
+
         spawnTimer = TickTimer.CreateFromSeconds(Runner, spawnRate);
-        SpawnTrain();
     }
     public override void FixedUpdateNetwork()
     {

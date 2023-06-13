@@ -5,13 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class IntroSound : MonoBehaviour
 {
-    // Start is called before the first frame update
+    AudioSource src;
     void Awake()
     {
+        src = GetComponent<AudioSource>();
         DontDestroyOnLoad(this.gameObject);
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        StartCoroutine(MusicPlay());
+    }
     void Update()
     {
         if (SceneManager.GetActiveScene().name == "ReadyScene")
@@ -19,5 +23,12 @@ public class IntroSound : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+    }
+    IEnumerator MusicPlay()
+    {
+
+        yield return new WaitForSeconds(3.8f);
+        src.Play();
+        yield return null;
     }
 }
