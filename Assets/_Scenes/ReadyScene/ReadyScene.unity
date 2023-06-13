@@ -702,6 +702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  dontNeed: 1
   startCanvas: {fileID: 4051334289721100283, guid: 26f37649bc5f5ba40a08458e0458449c, type: 3}
 --- !u!4 &267371240
 Transform:
