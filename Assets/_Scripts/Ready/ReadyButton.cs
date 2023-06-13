@@ -34,7 +34,6 @@ public class ReadyButton : NetworkBehaviour
     private void DetectCollision()
     {
         if (Object == null) return;
-        if(BattleManager.canSwitch)return;
         Collider[] colliders = Physics.OverlapSphere(transform.position, 0.8f);
         bool isColliderFound = false;
 
