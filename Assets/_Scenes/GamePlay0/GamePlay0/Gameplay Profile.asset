@@ -17,7 +17,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 4
   meteringMode:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 2
   luminanceSource:
     m_OverrideState: 1
@@ -26,13 +26,13 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 14.133098
   compensation:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.05
   limitMin:
     m_OverrideState: 1
-    m_Value: -1
+    m_Value: 1.0135136
   limitMax:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 14
   curveMap:
     m_OverrideState: 1
@@ -113,22 +113,22 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   adaptationMode:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   adaptationSpeedDarkToLight:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 3
   adaptationSpeedLightToDark:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   weightTextureMask:
     m_OverrideState: 1
     m_Value: {fileID: 0}
   histogramPercentages:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 40, y: 90}
   histogramUseCurveRemapping:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   targetMidGray:
     m_OverrideState: 0
