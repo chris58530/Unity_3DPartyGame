@@ -684,7 +684,7 @@ MonoBehaviour:
   AoiPositionSource: {fileID: 0}
   Flags: 2561
   NetworkGuid:
-    RawGuidValue: 4896d340cdc04118ac51f763fd380270
+    RawGuidValue: c8bdd6fef9b04b76ae663d68b7bf9378
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 267371239}
