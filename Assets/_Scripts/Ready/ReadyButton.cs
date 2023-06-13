@@ -36,7 +36,6 @@ public class ReadyButton : NetworkBehaviour
         if (Object == null) return;
         Collider[] colliders = Physics.OverlapSphere(transform.position, 0.8f);
         bool isColliderFound = false;
-
         foreach (var collider in colliders)
         {
             if (collider.GetComponent<Rigidbody>())

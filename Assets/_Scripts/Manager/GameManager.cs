@@ -49,8 +49,7 @@ public class GameManager : Singleton<GameManager>
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            pauseCanvas.SetActive(pauseCanvas.activeSelf ? false : true);
-            isPause = pauseCanvas.activeSelf ? true : false;
+            ContinueGame();
         }
 
     }
@@ -87,6 +86,16 @@ public class GameManager : Singleton<GameManager>
             networkPlayerData.SetPlayerScore_RPC(PlayerScore);
         }
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+    public void ContinueGame()
+    {
+        pauseCanvas.SetActive(pauseCanvas.activeSelf ? false : true);
+        isPause = pauseCanvas.activeSelf ? true : false;
+    }
+
 
     public void NextScene()
     {
@@ -130,7 +139,7 @@ public class GameManager : Singleton<GameManager>
                 Runner.SetActiveScene("GamePlay2");//岩漿
                 Debug.Log("Switch to Scene 'GamePlay2'");
                 break;
-                
+
             case "GamePlay2"://G2 to G3
                 Runner.SetActiveScene("GamePlay3");
                 Debug.Log("Switch to Scene 'GamePlay3'");

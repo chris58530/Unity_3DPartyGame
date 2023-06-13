@@ -35,16 +35,15 @@ public class BattleCanvas : NetworkBehaviour
     public override void Spawned()
     {
         IsEndGame = false;
-    GameManager.isGame =false;
+        GameManager.isGame = false;
         BattleTime = battleTime;
         focusTimer = TickTimer.None;
-
     }
     public override void FixedUpdateNetwork()
     {
-        if (BattleManager.Instance.currentPlayerCount <= 0)
+        if (BattleManager.Instance.currentPlayerCount <= 1)
         {
-            
+
             IsEndGame = true;
         }
         if (BattleTime > 0)
@@ -83,13 +82,15 @@ public class BattleCanvas : NetworkBehaviour
                 }
             }
             changed.Behaviour.virtualCamera = FindObjectsOfType<CinemachineVirtualCamera>();
-            if(changed.Behaviour.virtualCamera!=null){
-            foreach (CinemachineVirtualCamera cam in changed.Behaviour.virtualCamera)
+            if (changed.Behaviour.virtualCamera != null)
             {
-               
-               //var camDis =  cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance;
-               //if(camDis!=null) camDis = 15;
-            }}
+                foreach (CinemachineVirtualCamera cam in changed.Behaviour.virtualCamera)
+                {
+
+                    //var camDis =  cam.GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance;
+                    //if(camDis!=null) camDis = 15;
+                }
+            }
             Actions.GameOverUI?.Invoke();
 
             changed.Behaviour.focusTimer = TickTimer.CreateFromSeconds(changed.Behaviour.Runner, changed.Behaviour.focusTime);

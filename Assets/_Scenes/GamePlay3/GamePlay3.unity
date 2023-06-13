@@ -4122,7 +4122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827418796}
   m_LocalRotation: {x: 0.30070576, y: -0, z: -0, w: 0.953717}
-  m_LocalPosition: {x: -1.6304865, y: 14.018327, z: -56.32663}
+  m_LocalPosition: {x: -1.6304865, y: 14.215104, z: -56.188847}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4300,6 +4300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  dontNeed: 0
   startCanvas: {fileID: 4051334289721100283, guid: 26f37649bc5f5ba40a08458e0458449c, type: 3}
 --- !u!4 &1855814416
 Transform:
@@ -4967,6 +4968,18 @@ PrefabInstance:
     - target: {fileID: 1446295542553379112, guid: 56eb3fe9928c0504289bb70a1bfa384c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446295542553379113, guid: 56eb3fe9928c0504289bb70a1bfa384c, type: 3}
+      propertyPath: BGMSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446295542553379113, guid: 56eb3fe9928c0504289bb70a1bfa384c, type: 3}
+      propertyPath: BGMSounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b02a83e0b795b14fa2f8ffe1910910c, type: 3}
+    - target: {fileID: 1446295542553379113, guid: 56eb3fe9928c0504289bb70a1bfa384c, type: 3}
+      propertyPath: BGMSounds.Array.data[0].name
+      value: BGM
       objectReference: {fileID: 0}
     - target: {fileID: 1446295542553379113, guid: 56eb3fe9928c0504289bb70a1bfa384c, type: 3}
       propertyPath: sfxSounds.Array.data[2].clip

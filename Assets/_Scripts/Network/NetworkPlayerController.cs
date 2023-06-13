@@ -272,7 +272,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
             {
                 camGroup.RemoveMember(this.gameObject.transform);
             }
-             return;
+            return;
         }
 
         if (other.gameObject.CompareTag("DeadZone"))
@@ -295,6 +295,7 @@ public class NetworkPlayerController : NetworkBehaviour, IMagnet
         if (other.gameObject.CompareTag("TrainHead"))
         {
             IsStun = true;
+            AudioManager.Instance.RPC_PlaySFX("HitIron");
 
             // if (!GameManager.Instance.Runner.IsServer) return;
             StartCoroutine(TogglePerlinNoiseAmplitude(7f, 0.2f));
