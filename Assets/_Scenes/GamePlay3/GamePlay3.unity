@@ -4974,6 +4974,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1446295542553379113, guid: 56eb3fe9928c0504289bb70a1bfa384c, type: 3}
+      propertyPath: sfxSounds.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446295542553379113, guid: 56eb3fe9928c0504289bb70a1bfa384c, type: 3}
       propertyPath: BGMSounds.Array.data[0].clip
       value: 
       objectReference: {fileID: 8300000, guid: 6b02a83e0b795b14fa2f8ffe1910910c, type: 3}
@@ -4984,6 +4988,14 @@ PrefabInstance:
     - target: {fileID: 1446295542553379113, guid: 56eb3fe9928c0504289bb70a1bfa384c, type: 3}
       propertyPath: sfxSounds.Array.data[2].clip
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446295542553379113, guid: 56eb3fe9928c0504289bb70a1bfa384c, type: 3}
+      propertyPath: sfxSounds.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7b60b68a92bfcc64fa7a1311bb3d9aa7, type: 3}
+    - target: {fileID: 1446295542553379113, guid: 56eb3fe9928c0504289bb70a1bfa384c, type: 3}
+      propertyPath: sfxSounds.Array.data[7].name
+      value: DeadZone
       objectReference: {fileID: 0}
     - target: {fileID: 1446295542553379117, guid: 56eb3fe9928c0504289bb70a1bfa384c, type: 3}
       propertyPath: Flags

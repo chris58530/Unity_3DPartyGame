@@ -477,6 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  dontNeed: 0
   startCanvas: {fileID: 4051334289721100283, guid: 26f37649bc5f5ba40a08458e0458449c, type: 3}
 --- !u!4 &160987136
 Transform:
@@ -5753,6 +5754,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: e23838960ada26d46af624d6dad487d7, type: 3}
   - name: Cheering
     clip: {fileID: 8300000, guid: eb0f29415842d9c428b12e19bacc03f8, type: 3}
+  - name: DeadZone
+    clip: {fileID: 8300000, guid: 22e13536404018140830b2d3b6d20c19, type: 3}
   UISounds:
   - name: Press1
     clip: {fileID: 8300000, guid: 425b80e33b57aa240bad8b5db0a9c3ee, type: 3}
